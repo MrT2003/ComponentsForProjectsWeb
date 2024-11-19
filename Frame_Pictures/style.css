@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.rating {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: transparent;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.new-mark {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: red;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.title {
+    padding: 16px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
