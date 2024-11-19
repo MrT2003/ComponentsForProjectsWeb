@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
+  background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,19 +10,21 @@ body {
 }
 
 .carousel {
-  width: 50%; /* Set the width to 50% */
+  width: 50%; /* Kích thước carousel */
+  margin: auto;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-.carousel .carousel-inner img {
-  width: 100%; /* Ensure the images fill the carousel width */
-  height: 50%; /* Maintain aspect ratio */
-  /* max-height: 300px; Set a maximum height */
-  object-fit: cover; /* Ensure the images are scaled and cropped to fit the specified size */
+.carousel-inner img {
+  width: 100%; /* Đảm bảo ảnh rộng bằng carousel */
+  height: 300px; /* Đặt chiều cao cố định (có thể thay đổi tùy ý) */
+  object-fit: cover; /* Cắt ảnh để vừa khung và giữ đúng tỷ lệ */
+  border-radius: 10px; /* Giữ bo tròn góc */
 }
 
 .fixed-size-image {
   width: 100%; /* Ensure all images are of the same width */
-  /* height: 1000px; Set a fixed height for uniformity */
   object-fit: fill; /* Ensure images maintain their aspect ratio while fitting into the specified size */
 }
 
@@ -34,22 +37,23 @@ body {
   width: 100%;
   z-index: 10;
 }
-.dot {
-  width: 15px;
-  height: 15px;
+.custom-indicators .dot {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color: white;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .dot.active {
   background-color: teal;
 }
 
 /* Design left btn */
-.left-btn, .right-btn {
+.left-btn,
+.right-btn {
   width: 50px;
   height: 50px;
-  background-color: grey;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 20%;
   display: flex;
   justify-content: center;
@@ -57,7 +61,56 @@ body {
 }
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  width: 30px; /* Adjust size as needed */
-  height: 30px; /* Adjust size as needed */
-  /* Optional: Add rounded corners */
+  background-size: 50%; /* Giảm kích thước icon mũi tên */
+}
+
+/* components above image */
+.carousel-item {
+  position: relative;
+}
+.name-film {
+  position: absolute;
+  top: 30px; /* Adjust to place the title above the image */
+  left: 50px;
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+  z-index: 1;
+}
+.watch-list {
+  width: 150px;
+  height: 53px;
+  position: absolute;
+  bottom: 50px; /* Adjust to place the button inside the image */
+  left: 20px;
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 15px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.watch-now {
+  width: 178px;
+  height: 53px;
+  position: absolute;
+  bottom: 50px; /* Adjust to place the button inside the image */
+  right: 20px;
+  color: black;
+  font-weight: 800;
+  font-size: 17;
+  background-color: rgba(0, 185, 174, 1);
+  padding: 10px 20px;
+  border-radius: 15px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.watch-list i {
+  margin-right: 10px;
 }
