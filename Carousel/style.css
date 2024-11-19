@@ -1,0 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.carousel {
+  width: 50%; /* Set the width to 50% */
+}
+
+.carousel .carousel-inner img {
+  width: 100%; /* Ensure the images fill the carousel width */
+  height: 50%; /* Maintain aspect ratio */
+  /* max-height: 300px; Set a maximum height */
+  object-fit: cover; /* Ensure the images are scaled and cropped to fit the specified size */
+}
+
+.fixed-size-image {
+  width: 100%; /* Ensure all images are of the same width */
+  /* height: 1000px; Set a fixed height for uniformity */
+  object-fit: fill; /* Ensure images maintain their aspect ratio while fitting into the specified size */
+}
+
+.custom-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  z-index: 10;
+}
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+.dot.active {
+  background-color: teal;
+}
+
+/* Design left btn */
+.left-btn, .right-btn {
+  width: 50px;
+  height: 50px;
+  background-color: grey;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  /* Optional: Add rounded corners */
+}

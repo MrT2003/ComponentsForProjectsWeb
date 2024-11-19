@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Bootstrap Carousel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-dark">
+
+<div class="container mt-5">
+    <div id="customCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Carousel Items -->
+        <div class="carousel-inner rounded-4 shadow">
+            <div class="carousel-item active">
+                <div class="carousel-slide-content d-flex align-items-center justify-content-between px-5">
+                    <div>
+                        <h1 class="text-white fw-bold">The Crown</h1>
+                        <button class="btn btn-light me-3"><i class="bi bi-plus"></i> Watchlist</button>
+                        <button class="btn btn-primary">Watch Now</button>
+                    </div>
+                    <img src="images/image_1.jpg" class="d-block img-fluid rounded-4" alt="The Crown">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-slide-content d-flex align-items-center justify-content-between px-5">
+                    <div>
+                        <h1 class="text-white fw-bold">Breaking Bad</h1>
+                        <button class="btn btn-light me-3"><i class="bi bi-plus"></i> Watchlist</button>
+                        <button class="btn btn-primary">Watch Now</button>
+                    </div>
+                    <img src="images/image_2.jpg" class="d-block img-fluid rounded-4" alt="Breaking Bad">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-slide-content d-flex align-items-center justify-content-between px-5">
+                    <div>
+                        <h1 class="text-white fw-bold">Stranger Things</h1>
+                        <button class="btn btn-light me-3"><i class="bi bi-plus"></i> Watchlist</button>
+                        <button class="btn btn-primary">Watch Now</button>
+                    </div>
+                    <img src="images/image_3.jpg" class="d-block img-fluid rounded-4" alt="Stranger Things">
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#customCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
