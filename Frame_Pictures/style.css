@@ -22,7 +22,6 @@ body {
   
   .image-container {
     position: relative;
-    border-radius: 10px;
   }
   
   .image-container img {
