@@ -1,33 +1,26 @@
 body {
   font-family: Arial, sans-serif;
-  /* background-color: #f0f0f0; */
   background-color: red;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   height: 100vh;
   margin: 0;
 }
-
 .carousel {
-  width: 50%; /* Kích thước carousel */
+  width: 50%;
   margin: auto;
   border-radius: 15px;
   overflow: hidden;
 }
-
 .carousel-inner img {
-  width: 100%; /* Đảm bảo ảnh rộng bằng carousel */
-  height: 300px; /* Đặt chiều cao cố định (có thể thay đổi tùy ý) */
-  object-fit: cover; /* Cắt ảnh để vừa khung và giữ đúng tỷ lệ */
-  border-radius: 10px; /* Giữ bo tròn góc */
+  width: 100%;
+  height: 700px; 
+  object-fit: cover; 
+  border-radius: 10px;
 }
-
-.fixed-size-image {
-  width: 100%; /* Ensure all images are of the same width */
-  object-fit: fill; /* Ensure images maintain their aspect ratio while fitting into the specified size */
-}
-
 .custom-indicators {
   display: flex;
   justify-content: center;
@@ -42,13 +35,10 @@ body {
   height: 12px;
   border-radius: 50%;
   background-color: white;
-  /* cursor: pointer; */
 }
 .dot.active {
   background-color: teal;
 }
-
-/* Design left btn */
 .carousel-control-next,
 .carousel-control-prev {
   height: 50px;
@@ -56,18 +46,16 @@ body {
   position: absolute;
   top: 50%;
 }
-
 .carousel-control-next {
   right: 20px;
 }
 .carousel-control-prev {
   left: 20px;
 }
-
 .left-btn,
 .right-btn {
-  width: 100%; /* Make the div take full width of the parent */
-  height: 100%; /* Make the div take full height of the parent */
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 20%;
   display: flex;
@@ -76,18 +64,15 @@ body {
 }
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  /* background-size: 50%; Giảm kích thước icon mũi tên */
-  width: 30px; /* Adjust size as needed */
+  width: 30px;
   height: 30px;
 }
-
-/* components above image */
 .carousel-item {
   position: relative;
 }
 .name-film {
   position: absolute;
-  top: 30px; /* Adjust to place the title above the image */
+  top: 30px;
   left: 50px;
   color: white;
   font-size: 45px;
@@ -95,39 +80,44 @@ body {
   z-index: 1;
 }
 .watch-list {
-  width: 150px;
-  height: 53px;
+  width: 20%;
+  height: 12%;
   position: absolute;
-  bottom: 50px; /* Adjust to place the button inside the image */
+  bottom: 50px;
   left: 20px;
+
   color: white;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 800;
   background-color: rgba(0, 0, 0, 0.5);
+
   padding: 10px 20px;
   border-radius: 15px;
   z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.watch-now {
-  width: 178px;
-  height: 53px;
-  position: absolute;
-  bottom: 50px; /* Adjust to place the button inside the image */
-  right: 20px;
-  color: black;
-  font-weight: 800;
-  font-size: 17;
-  background-color: rgba(0, 185, 174, 1);
-  padding: 10px 20px;
-  border-radius: 15px;
-  z-index: 1;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .watch-list i {
   margin-right: 10px;
+}
+.watch-now {
+  width: 20%;
+  height: 12%;
+  position: absolute;
+  bottom: 50px;
+  right: 20px;
+
+  color: black;
+  font-weight: 800;
+  font-size: 17;
+  background-color: rgba(0, 185, 174, 1);
+
+  padding: 10px 20px;
+  border-radius: 15px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
