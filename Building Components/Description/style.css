@@ -72,6 +72,11 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   padding: 5px;
   border-radius: 5px;
+
+  font-size: 17px;
+  font-weight: 700;
+  color: #F9F9F9;
+  line-height: 17px;
 }
 .thumbnail img {
   width: 100%;
@@ -92,10 +97,22 @@ body {
   flex-direction: column;
   text-align: left;
 }
+.details-left p {
+ font-size: 17px;
+ font-weight: 700;
+ color: #F9F9F9B2;
+ line-height: 17px;
+}
 .details-right {
     text-align: right;
     margin-top: 30px;
     columns: #F9F9F9B2;
+}
+.details-right p {
+  font-size: 17px;
+  font-weight: 700;
+  color: #F9F9F9B2;
+  line-height: 17px;
 }
 
 
