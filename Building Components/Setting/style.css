@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #16181e;
+}
+.profile-header {
+  background-image: url("./images/background.png");
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  position: relative;
+  color: white;
+}
+.profile-picture {
+  width: 235px;
+  height: 235px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  bottom: -100px;
+  left: 100px;
+  border: 10px solid #16181e;
+}
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-name {
+  position: absolute;
+  top: 220px;
+  left: 350px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 40px;
+}
+.log-out {
+    position: absolute;
+    top: 220px;
+    right: 50px;
+}
+.profile-camera img {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+}
+.log-out .btn-design {
+    background-color: #16181e;
+    color: #F9F9F9;
+    font-size: 18px;
+    font-weight: 600;
+}
+.log-out img {
+    width: 25px;
+    height: 30px;
+}
