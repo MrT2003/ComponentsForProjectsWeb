@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './sign-in-page.component.css'
 })
 export class SignInPageComponent {
-  logoPath = '/angular_project_web/src/assets/images/logo.png';
-  googlePath = '/angular_project_web/src/assets/images/mdi_google.png';
+  logoPath = 'assets/images/logo.png';
+  googlePath = 'assets/images/mdi_google.png';
+  facebookPath = 'assets/images/Vector.png';
 }

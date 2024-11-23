@@ -12,7 +12,7 @@ import { GenresPageComponent } from './pages/genres-page/genres-page.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'signin',
+    redirectTo: 'signup',
     pathMatch: 'full',
   },
 

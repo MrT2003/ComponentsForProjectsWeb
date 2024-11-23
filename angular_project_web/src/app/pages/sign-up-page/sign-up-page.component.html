@@ -1,1 +1,43 @@
-<p>sign-up-page works!</p>
+<body>
+    <div class="left">
+        <div class="logo">
+            <img [src]="logoPath" alt="logo" />
+        </div>
+        <div class="greeting">
+            <div class="welcome">Welcome,</div>
+            <div class="description">Dive into the latest movie releases and enjoy a world of cinema right here!</div>
+        </div>
+
+    </div>
+    <div class="right">
+        <div class="container-form">
+            <h2>Sign Up</h2>
+
+            <form> 
+                <label for="fullname">Full name</label> <input id="fullname" type="text" class="form-control"
+                    placeholder="Enter your Full name"> <label for="email">Email</label> <input id="email" type="email"
+                    class="form-control" placeholder="Enter your Email"> <label for="password">Password</label>
+                <div class="input-container"> <input id="password" type="password" class="form-control"
+                        placeholder="Enter your Password"> <span class="toggle-password"> 
+                            <!-- <i class="fa-solid fa-eye-slash"></i>  -->
+                            <i class="fa-solid fa-eye"></i>
+                        </span> </div> <label for="confirm-password">Confirm
+                    Password</label> <!-- Added for clarity -->
+                <div class="input-container"> <input id="confirm-password" type="password" class="form-control"
+                        placeholder="Enter your Password"> <span class="toggle-password"> <i
+                            class="fa-solid fa-eye-slash"></i> </span> </div>
+                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            </form>
+            <div class="orwith d-flex align-items-center my-3 ">
+                <div class="flex-grow-1 border-bottom"></div> <span class="mx-3 text-muted">Or With</span>
+                <div class="flex-grow-1 border-bottom"></div>
+            </div>
+            <div class="social-buttons "> 
+                <a href="#" class="google"> <img [src]="googlePath" alt="gmail"></a> 
+                <a href="#" class="facebook"><img [src]="facebookPath" alt="facebook"></a>
+            </div>
+            <div class="sign-in"> I already have an account. <a href="#">Sign in</a> </div>
+        </div>
+    </div>
+    
+</body>
