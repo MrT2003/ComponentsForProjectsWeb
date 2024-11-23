@@ -50,7 +50,7 @@ body {
 }
 
 .right {
-    /* background-color: red; */
+
     display: flex;
     /* Enables flexbox */
     justify-content: center;
@@ -73,8 +73,7 @@ body {
 
 .right h2 {
     color: #00bfa5;
-    /* margin-top: 40px; */
-    /* margin-bottom: 10px; */
+    
     font-family: 'Lato', sans-serif;
     font-weight: 900;
 }
@@ -109,7 +108,6 @@ body {
 .input-container input {
     width: 100%;
     padding-right: 40px;
-
     /* Tạo khoảng trống cho biểu tượng */
 }
 
@@ -162,8 +160,6 @@ body {
     /* Ensures the image is well within the button */
     max-height: 50%;
     /* Ensures the image is well within the button */
-    /* border-radius: 50%; */
-    /* Keeps the image circular */
     object-fit: cover;
 }
 
@@ -175,8 +171,6 @@ body {
 
     background-color: #00B9AE;
 }
-
-
 .sign-in {
     font-family: 'Lato', sans-serif;
     font-size: 18px;
