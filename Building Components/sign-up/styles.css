@@ -1,0 +1,186 @@
+body {
+
+    background: url('res/background.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.left {
+
+    padding: 40px;
+    width: 50%;
+    height: 100%;
+}
+
+.left .logo img {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    left: 20px;
+    top: 20px;
+    width: 8.8%;
+}
+
+.left .greeting {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+}
+
+.left .welcome {
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.left .description {
+
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #fff;
+    font-size: 26px;
+    max-width: 60%;
+}
+
+.right {
+    /* background-color: red; */
+    display: flex;
+    /* Enables flexbox */
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: center;
+    /* Centers vertically */
+    padding: 0px;
+    width: 46%;
+    height: 100vh;
+    /* Adjust to full height of viewport */
+}
+
+.right .container-form {
+
+    width: 74%;
+    height: 80%;
+    border-radius: 10px;
+
+}
+
+.right h2 {
+    color: #00bfa5;
+    /* margin-top: 40px; */
+    /* margin-bottom: 10px; */
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+}
+
+.container-form {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+
+}
+
+.container-form input {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    border: 0;
+    background-color: #F6F6F6;
+    margin-bottom: 10px;
+
+
+}
+
+.container-form button {
+
+    margin-top: 10px;
+}
+
+.input-container {
+    position: relative;
+    /* padding: 0; */
+    width: 100%;
+}
+
+.input-container input {
+    width: 100%;
+    padding-right: 40px;
+
+    /* Tạo khoảng trống cho biểu tượng */
+}
+
+.input-container .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #00bfa5;
+    border: none;
+}
+
+.orwith {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+}
+
+.social-buttons {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.social-buttons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    /* Adjust this size as needed */
+    height: 40px;
+    /* Adjust this size as needed */
+    padding: 0;
+    margin: 5px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #00B9AE;
+}
+
+.social-buttons img {
+    max-width: 50%;
+    /* Ensures the image is well within the button */
+    max-height: 50%;
+    /* Ensures the image is well within the button */
+    /* border-radius: 50%; */
+    /* Keeps the image circular */
+    object-fit: cover;
+}
+
+.social-buttons .google {
+    background-color: #00B9AE;
+}
+
+.social-buttons .facebook {
+
+    background-color: #00B9AE;
+}
+
+
+.sign-in {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    margin: 0 20px;
+    text-align: center;
+    margin: 10px 0;
+}
