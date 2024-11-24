@@ -1,1 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <div class="container-fluid">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Movies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">TV Series</a>
+      </li>
+    </ul>
+
+    <form class="d-flex align-items-center search-bar">
+      <div class="input-group">
+        <span class="input-group-text bg-dark text-light border-0">
+          <img src="res\search-icon.png" alt="Search" width="16" height="16" />
+        </span>
+        <input
+          type="text"
+          class="form-control bg-dark text-light border-0"
+          placeholder="Search"
+        />
+        <span class="input-group-text bg-dark text-light border-0">
+          <img src="res\Filter.png" alt="Filter" width="16" height="16" />
+        </span>
+      </div>
+    </form>
+  </div>
+</nav>
 <router-outlet />
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 text-start">
+        <img class="logo" [src]="frame4" alt="logo" />
+        <p>
+          Have <a href="#">feedback</a> or <a href="#">suggestions</a>? Don’t
+          hesitate to share them with us!
+        </p>
+        <p>Your contributions help us build a better website for everyone.</p>
+        <p>Copyright © 2024 Watch Free Movie</p>
+      </div>
+      <div class="col-md-6 container-input">
+        <form>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="form-control form-control-lg input"
+                placeholder="Full Name"
+              />
+            </div>
+            <div class="col-md-6">
+              <input
+                type="email"
+                class="form-control form-control-lg input"
+                placeholder="Email Address"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <textarea
+              class="form-control input"
+              cols="5"
+              rows="5"
+              placeholder="Your message"
+            ></textarea>
+          </div>
+
+          <div class="mb-12">
+            <button type="submit" class="btn">
+              <i class="fa-regular fa-paper-plane"></i> Send Feedback
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>

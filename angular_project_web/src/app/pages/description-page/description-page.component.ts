@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './description-page.component.css'
 })
 export class DescriptionPageComponent {
-
+  wedPath = 'assets/images/Wednesday.png';
+  lokiPath = 'assets/images/loki.jpg';
 }

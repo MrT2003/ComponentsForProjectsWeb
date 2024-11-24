@@ -10,4 +10,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular_project_web';
+  frame4 = 'assets/images/Frame 4.png'
+
 }

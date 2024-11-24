@@ -1,5 +1,5 @@
 .navbar {
-  width: 57.5%;
+  width: 100%;
   margin: 0 auto; /* Căn giữa header */
   padding: 10px; /* Giữ khoảng cách bên trong */
 }
@@ -16,7 +16,7 @@
     bottom: -3px;
     width: 100%;
     height: 2px;
-    background-color: #00cccc;
+    background-color: #00cccc; 
   }
   
   .navbar {
