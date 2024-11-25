@@ -223,6 +223,7 @@ a.text-primary:hover {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 /* 
 .card-img-overlay{
   justify-content: space-between;
@@ -244,3 +245,15 @@ a.text-primary:hover {
   background-color: #00bfa5;
   color: white;
 }
+
+.progress, .progress-bar{
+  height: 3px;
+}
+
+ 
+
+.progress .progress-bar {
+  background-color: #00bfa5;
+  /* Change this value to your desired color */
+}
+
