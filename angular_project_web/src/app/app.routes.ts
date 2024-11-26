@@ -8,21 +8,31 @@ import { SettingPageComponent } from './pages/setting-page/setting-page.componen
 import { SortingPageComponent } from './pages/sorting-page/sorting-page.component';
 import { NewestFilmPageComponent } from './pages/newest-film-page/newest-film-page.component';
 import { GenresPageComponent } from './pages/genres-page/genres-page.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    component: AuthLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'signin', pathMatch: 'full' },
+      { path: 'signin', component: SignInPageComponent },
+      { path: 'signup', component: SignUpPageComponent },
+    ],
+  },
+  {
+    path: '',
+    component: MainLayoutComponent, // Layout chính
+    children: [
+      { path: 'home', component: HomePageComponent },
+      { path: 'description', component: DescriptionPageComponent },
+      { path: 'watch', component: WatchPageComponent },
+      { path: 'settings', component: SettingPageComponent },
+      { path: 'sorting', component: SortingPageComponent },
+      { path: 'newest', component: NewestFilmPageComponent },
+      { path: 'genres', component: GenresPageComponent },
+    ],
   },
 
-  { path: 'signin', component: SignInPageComponent },
-  { path: 'signup', component: SignUpPageComponent },
-  { path: 'home', component: HomePageComponent },
-  { path: 'description', component: DescriptionPageComponent },
-  { path: 'watch', component: WatchPageComponent },
-  { path: 'settings', component: SettingPageComponent },
-  { path: 'sorting', component: SortingPageComponent },
-  { path: 'newest', component: NewestFilmPageComponent },
-  { path: 'genres', component: GenresPageComponent },
 ];
