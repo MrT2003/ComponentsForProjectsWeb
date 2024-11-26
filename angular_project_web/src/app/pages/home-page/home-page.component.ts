@@ -12,4 +12,21 @@ export class HomePageComponent {
   image2 = 'assets/images/image_2.jpg';
   image3 = 'assets/images/image_3.jpg';
   lokiPath = 'assets/images/loki.jpg';
+
+// icon left menu
+  show = 'assets/res-leftmenu/Arrow down-circle.png';
+  home = 'assets/res-leftmenu/Squircle.png';
+  sort = 'assets/res-leftmenu/Discover.png';
+  recent = 'assets/res-leftmenu/Recent.png';  
+  playlists = 'assets/res-leftmenu/Playlists.png';
+  watchlist = 'assets/res-leftmenu/Watchlist.png';
+  continue = 'assets/res-leftmenu/Continue.png';
+  settings = 'assets/res-leftmenu/Settings.png';
+  logout = 'assets/res-leftmenu/Log Out.png';
+ 
+
+//img right menu
+  newest = 'assets/res-rightmenu/rick.jpg'; 
+  genre = 'assets/res-rightmenu/rick.jpg';
+  ctn = 'assets/res-rightmenu/th.jpg';
 }

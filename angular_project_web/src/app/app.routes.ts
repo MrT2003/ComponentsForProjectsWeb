@@ -12,7 +12,7 @@ import { GenresPageComponent } from './pages/genres-page/genres-page.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'settings',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
 
