@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-  <div class="container-fluid">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<nav class="navbar navbar-expand-lg navbar-dark row bg-dark w-100 p-0 m-0 py-2 align-items-center justify-content-between">
+  <img [src]="logo" alt="Search" class="logo col-2 ms-1">
+  <div class="mb-2 mb-lg-0 col-4 mx-auto">
+    <ul class="navbar-nav d-flex justify-content-between w-100 ">
       <li class="nav-item">
         <a class="nav-link active" href="#">Home</a>
       </li>
@@ -11,22 +12,39 @@
         <a class="nav-link" href="#">TV Series</a>
       </li>
     </ul>
-
-    <form class="d-flex align-items-center search-bar">
+  </div>
+  <div class=" col-3 p-0 m-0 ">
+    <form class="align-items-center search-bar">
       <div class="input-group">
         <span class="input-group-text bg-dark text-light border-0">
-          <img src="res\search-icon.png" alt="Search" width="16" height="16" />
+          <img [src]="search" alt="Search" width="16" height="16">
         </span>
-        <input
-          type="text"
-          class="form-control bg-dark text-light border-0"
-          placeholder="Search"
-        />
+        <input type="text" class="form-control bg-dark text-light border-0" placeholder="Search" />
         <span class="input-group-text bg-dark text-light border-0">
-          <img src="res\Filter.png" alt="Filter" width="16" height="16" />
+          <img [src]="filter" alt="Filter" width="16" height="16">
         </span>
       </div>
     </form>
+  </div>
+
+  
+  <div class="col-3 d-flex p-0 m-0 justify-content-end">
+    <div class="d-flex align-items-center justify-content-end account me-3">
+      <button class="btn btn-secondary me-3">
+        <i class="fa-regular fa-moon"></i>
+      </button>
+
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDarkDropdownMenuLink" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        Samantha
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another</a></li>
+        <li><a class="dropdown-item" href="#">Something</a></li>
+      </ul>
+      <img [src]="avt" alt="avatar" />
+    </div>
   </div>
 </nav>
 <router-outlet />
@@ -81,3 +99,4 @@
     </div>
   </div>
 </footer>
+

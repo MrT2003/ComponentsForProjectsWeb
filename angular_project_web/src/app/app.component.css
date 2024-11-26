@@ -1,3 +1,68 @@
+/* Nav */
+
+.navbar .logo{
+  width: 10%;
+  height: auto;
+}
+.nav-link.active {
+    color: #00cccc;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: #00cccc; 
+  }
+  
+/* Căn đều các mục bên trong ul */
+.navbar-nav {
+  display: flex; /* Sử dụng Flexbox */
+  gap: 20px; /* Khoảng cách giữa các mục menu */
+  margin-bottom: 0; /* Loại bỏ khoảng cách mặc định */
+}
+
+/* Điều chỉnh form (search-bar) */
+.search-bar {
+  flex-shrink: 1; /* Giữ kích thước của form không bị thu nhỏ */
+  margin-left: auto; /* Đẩy form về phía bên phải */
+}
+
+  .search-bar {
+    /* background-color: #AEAFB2; */
+    border: 1px solid #AEAFB2;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* .search-bar .input-group-text {
+    background-color: #AEAFB2;
+  } */
+  
+  /* Thay đổi màu cho placeholder */
+.search-bar input::placeholder {
+    color: #AEAFB2;
+    opacity: 1; /* Bỏ mờ mặc định của placeholder */
+  }
+/* Loại bỏ viền outline mặc định khi focus */
+.search-bar input:focus {
+    outline: none; /* Loại bỏ viền focus mặc định */
+    border-color: none; /*Thay bằng màu viền tùy chỉnh */
+    box-shadow: none; /*Tùy chọn: hiệu ứng đổ bóng */
+  }
+  
+
+.account img{
+  
+  width: 12%;
+  border-radius: 12px;
+}
+
 
 /* Footer */
 .footer {
