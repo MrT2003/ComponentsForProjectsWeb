@@ -3,40 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Right Menu & Left Menu with Bootstrap 5</title>
-    <!-- Link Bootstrap CSS -->
+    <title>Loki Thumbnails</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url("./images/loki-bg.jpg");
+            height: auto;
+            width: 100%;
+            object-fit: fill;
+        }
+        .poster .upper-part {
+            margin: 200px 0 0 80px;
+        }
+        .upper-part .title {
+            font-size: 100px !important;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 2%;
+        }
+        .upper-part .description {
+            display: block;
+            max-width: 500px;
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            line-height: 20px;
+        }
+        .upper-part .buttons {
+            margin-top: 2%;
+        }
+        .container-row-wrapper {
+            overflow: visible; /* Cho phép các phần tử con mở rộng ra bên ngoài */
+        }
+        .container-row {
+            display: flex;
+            overflow-x: scroll;
+            gap: 80px;
+            margin-top: 5%;
+            scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+            -ms-overflow-style: none; /* Ẩn thanh cuộn trên Internet Explorer và Edge */
+        }
+        .container-row::-webkit-scrollbar {
+            display: none; /* Ẩn thanh cuộn trên Chrome, Safari và Opera */
+        }
+        .thumbnail {
+            position: relative;
+            text-align: center;
+            color: white;
+            min-width: 250px;
+            transition: transform 0.3s, box-shadow 0.3s, z-index 0.3s;
+        }
+        .thumbnail:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .thumbnail .rating {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #f9f9f9;
+            line-height: 17px;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .thumbnail .details {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Left Menu -->
-            <nav class="col-md-2 bg-light p-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="#">Left Menu 1</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Left Menu 2</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Left Menu 3</a></li>
-                </ul>
-            </nav>
-
-            <!-- Main Content -->
-            <main class="col-md-8 p-3">
-                <h1>Main Content</h1>
-                <p>This is the main area for your content.</p>
-            </main>
-
-            <!-- Right Menu -->
-            <nav class="col-md-2 bg-light p-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="#">Right Menu A</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Right Menu B</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Right Menu C</a></li>
-                </ul>
-            </nav>
+    <div class="container mt-5">
+        <div class="below-part">
+            <div class="container-row-wrapper">
+                <div class="container-row">
+                    <div class="thumbnail">
+                        <div class="rating">⭐ 7.8</div>
+                        <img src="./images/loki.jpg" alt="Loki">
+                        <div class="details">
+                            <h5>Loki</h5>
+                        </div>
+                    </div>
+                    <!-- Thêm các thumbnail khác tương tự vào đây -->
+                    <div class="thumbnail">
+                        <div class="rating">⭐ 7.8</div>
+                        <img src="./images/loki.jpg" alt="Loki">
+                        <div class="details">
+                            <h5>Loki</h5>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <div class="rating">⭐ 7.8</div>
+                        <img src="./images/loki.jpg" alt="Loki">
+                        <div class="details">
+                            <h5>Loki</h5>
+                        </div>
+                    </div>
+                    <!-- Thêm các thumbnail khác tương tự vào đây -->
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- Link Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

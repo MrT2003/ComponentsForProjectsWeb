@@ -114,7 +114,6 @@ body {
   border-radius: 10px;
 }
 .thumbnail .details {
-  /* background-color: red; */
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
@@ -150,6 +149,7 @@ body {
   justify-content: space-between;
 }
 
+/*--------------------------- NAV -------------------------- */
 .nav-fix {
   margin-right: 10px;
   margin-bottom: 5px;
