@@ -1,249 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie Web Right Menu</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div>Main Content</div>
-    <div class="right-menu p-0">
-      <div class="container p-4 pe-0 bg-dark">
-        <!-- User Info -->
-        <div class="user-info d-flex align-items-center mb-4">
-          <button class="btn btn-secondary me-3">
-            <img src="./res/Moon.png" alt="dark/light mode" />
-          </button>
-          <div class="info d-flex">
-            <div class="d-flex me-2 align-items-center">
-              <h5 class="mb-0">Samantha</h5>
-              <a href="#"><i class="fa-solid fa-chevron-down px-2"></i></a>
-              <a href="#" class="container-fluid avatar p-0">
-                <img src="res\th.jpg" alt="Avatar" />
-              </a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Right Menu</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="text-white">
+
+  <!-- Main Container -->
+  <div class="container-fluid vh-100">
+    <div class="row h-100">
+      <div class="col-md-8"></div>
+
+      <div class="col-md-4 p-4 bg-dark">
+        <!-- <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+              <button class="btn btn-secondary rounded-circle p-2">
+                <i class="bi bi-moon"></i>
+              </button>
+            </div>  
+            
+            <div class="d-flex align-items-center">
+              <span class="me-2">Samantha</span>
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="rounded-circle"
+                width="40"
+                height="40"
+              />
             </div>
-          </div>
-        </div>
+          </div> -->
+        <!-- Right Menu -->
         <!-- Genres Section -->
-        <div class="genres mb-4">
-          <div class="d-flex align-items-center mb-3">
-            <span class="me-4">
-              <h6 class="mb-0">Genres</h6>
-              <i class="fa-solid fa-chevron-left px-2"></i>
-              <i class="fa-solid fa-chevron-right"></i>
-            </span>
-            <a href="#" class="text-primary">See More</a>
-            <i class="fa-solid fa-chevron-right ps-2"></i>
+        <div class="part-genres">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fw-bold">Genres</h2>
+            <div>
+              <button class="btn btn-link text-white">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button class="btn btn-link text-white">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+              <a href="#" class="text-decoration-none text-white fw-bold">See More</a>
+            </div>
           </div>
-          <div class="row genres-cards m-0 p-0">
-            <div class="col-6 mb-3 p-0">
-              <div class="card text-light">
-                <img src="res\picture.png" alt="Drama" />
-                <div class="details">
-                  <h6 class="card-title mb-1">Drama</h6>
+          <!-- Genres Grid -->
+          <div class="row">
+            <!-- Drama -->
+            <div class="col-6 container-fix">
+              <div class="card text-white w-100">
+                <img src="./res/rick.jpg" class="card-img larger-image" alt="Drama" />
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                  <h5 class="card-title fw-bold">Drama</h5>
                 </div>
               </div>
             </div>
-            <div class="col-6 mb-3 p-0">
-              <div class="card text-light">
-                <img src="res\picture.png" alt="Drama" />
-                <div class="details">
-                  <h6 class="card-title mb-1">Drama</h6>
+            <!-- Thriller -->
+            <div class="col-6 container-fix">
+              <div class="card text-white w-100">
+                <img src="./res/supernatural.jpg" class="card-img larger-image" alt="Thriller" />
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                  <h5 class="card-title fw-bold">Thriller</h5>
                 </div>
               </div>
             </div>
-            <div class="col-6 mb-3 p-0">
-              <div class="card text-light">
-                <img src="res\picture.png" alt="Drama" />
-                <div class="details">
-                  <h6 class="card-title mb-1">Drama</h6>
+            <!-- Sitcom -->
+            <div class="col-6 container-fix">
+              <div class="card text-white w-100">
+                <img src="./res/rick.jpg" class="card-img larger-image" alt="Sitcom" />
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                  <h5 class="card-title fw-bold">Sitcom</h5>
                 </div>
               </div>
             </div>
-            <div class="col-6 mb-3 p-0">
-              <div class="card text-light">
-                <img src="res\picture.png" alt="Drama" />
-                <div class="details">
-                  <h6 class="card-title mb-1">Drama</h6>
+            <!-- Superhero -->
+            <div class="col-6 container-fix">
+              <div class="card text-white w-100">
+                <img src="./res/supernatural.jpg" class="card-img larger-image" alt="Superhero" />
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                  <h5 class="card-title fw-bold">Superhero</h5>
                 </div>
               </div>
             </div>
-            <div class="col-6 mb-3 p-0">
-              <div class="card text-light">
-                <img src="res\picture.png" alt="Drama" />
-                <div class="details">
-                  <h6 class="card-title mb-1">Drama</h6>
+            <!-- Sitcom -->
+            <div class="col-6 container-fix">
+              <div class="card text-white w-100">
+                <img src="./res/rick.jpg" class="card-img larger-image" alt="Sitcom" />
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                  <h5 class="card-title fw-bold">Sitcom</h5>
                 </div>
               </div>
             </div>
-            <div class="col-6 mb-3 p-0">
-              <div class="card text-light">
-                <img src="res\picture.png" alt="Drama" />
-                <div class="details">
-                  <h6 class="card-title mb-1">Drama</h6>
+            <!-- Superhero -->
+            <div class="col-6 container-fix">
+              <div class="card text-white w-100">
+                <img src="./res/supernatural.jpg" class="card-img larger-image" alt="Superhero" />
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                  <h5 class="card-title fw-bold">Superhero</h5>
                 </div>
               </div>
             </div>
-            <div class="col-6 mb-3 p-0">
-              <div class="card text-light">
-                <img src="res\picture.png" alt="Drama" />
-                <div class="details">
-                  <h6 class="card-title mb-1">Drama</h6>
+            <!-- Sitcom -->
+            <div class="col-6 container-fix">
+              <div class="card text-white w-100">
+                <img src="./res/rick.jpg" class="card-img larger-image" alt="Sitcom" />
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                  <h5 class="card-title fw-bold">Sitcom</h5>
                 </div>
               </div>
             </div>
-            <div class="col-6 mb-3 p-0">
-              <div class="card text-light">
-                <img src="res\picture.png" alt="Drama" />
-                <div class="details">
-                  <h6 class="card-title mb-1">Drama</h6>
+            <!-- Superhero -->
+            <div class="col-6 container-fix">
+              <div class="card text-white w-100">
+                <img src="./res/supernatural.jpg" class="card-img larger-image" alt="Superhero" />
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                  <h5 class="card-title fw-bold">Superhero</h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Newest Section -->
-        <div class="container mt-5">
-          <div class="section-title">
-            <h2>Newest</h2>
-            <div class="navigation-icons">
-              <button class="btn btn-secondary">&lt;</button>
-              <button class="btn btn-secondary">&gt;</button>
-              <a href="#" class="text-white ms-3">See More &gt;</a>
+        <!-- Newest -->
+        <div class="part-newest">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fw-bold">Newest</h2>
+            <div>
+              <button class="btn btn-link text-white">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button class="btn btn-link text-white">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+              <a href="#" class="text-decoration-none text-white fw-bold">See More</a>
             </div>
           </div>
+
+         
+          <!-- Grid -->
           <div class="row">
-            <div class="col-md-6">
-              <div class="card">
-                <img
-                  src="./res/supernatural.jpg"
-                  class="card-img-top"
-                  alt="Supernatural"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Supernatural</h5>
-                  <p class="card-text">320 Ep<br />Horror, Fantasy</p>
-                  <button class="btn btn-outline-light">+</button>
-                  <button class="btn btn-watch">Watch</button>
+            <!-- Drama -->
+            
+            <div class=" col-6 container-fix mb-3">
+              <div class="card text-white w-100 p-0 m-0"> <img src="./res/rick.jpg" class="card-img larger-image"
+                  alt="Drama" />
+                <div class="p-2 card-img-overlay d-block justify-content-center align-items-center">
+                  <h5 class="card-title d-block col-12 p-0 m-0">Rick and Morty</h5>
+                  <div class="details d-flex p-0 m-0">
+                    <p class="card-text text-start col-6 p-0 m-0">49 Ep</p>
+                    <p class="card-text text-end col-6 ">Sitcom</p>
+                  </div>
+                  <div class="card-buttons d-flex text-end p-0 m-0 gap-2 justify-content-center"> <button
+                    class="btn btn-outline-light col-3"><span>+</span></button> <button
+                    class="btn btn-primary btn-sm col-8"><span>Watch</span></button> </div>
                 </div>
+                
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="card">
-                <img
-                  src="./res/rick.jpg"
-                  class="card-img-top"
-                  alt="Rick and Morty"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Rick and Morty</h5>
-                  <p class="card-text">49 Ep<br />Sitcom</p>
-                  <button class="btn btn-outline-light">+</button>
-                  <button class="btn btn-watch">Watch</button>
+            <!-- Thriller -->
+            <div class=" col-6 container-fix mb-3">
+              <div class="card text-white w-100 p-0 m-0"> <img src="./res/rick.jpg" class="card-img larger-image"
+                  alt="Drama" />
+                <div class="p-2 card-img-overlay d-block justify-content-center align-items-center">
+                  <h5 class="card-title d-block col-12 p-0 m-0">Rick and Morty</h5>
+                  <div class="details d-flex p-0 m-0">
+                    <p class="card-text text-start col-6 p-0 m-0">49 Ep</p>
+                    <p class="card-text text-end col-6 ">Sitcom</p>
+                  </div>
+                  <div class="card-buttons d-flex text-end p-0 m-0 gap-2 justify-content-center"> <button
+                    class="btn btn-outline-light col-3"><span>+</span></button> <button
+                    class="btn btn-primary btn-sm col-8"><span>Watch</span></button> </div>
                 </div>
+                
+              </div>
+            </div>
+            <!-- Sitcom -->
+            <div class=" col-6 container-fix mb-3">
+              <div class="card text-white w-100 p-0 m-0"> <img src="./res/rick.jpg" class="card-img larger-image"
+                  alt="Drama" />
+                <div class="p-2 card-img-overlay d-block justify-content-center align-items-center">
+                  <h5 class="card-title d-block col-12 p-0 m-0">Rick and Morty</h5>
+                  <div class="details d-flex p-0 m-0">
+                    <p class="card-text text-start col-6 p-0 m-0">49 Ep</p>
+                    <p class="card-text text-end col-6 ">Sitcom</p>
+                  </div>
+                  <div class="card-buttons d-flex text-end p-0 m-0 gap-2 justify-content-center"> <button
+                    class="btn btn-outline-light col-3"><span>+</span></button> <button
+                    class="btn btn-primary btn-sm col-8"><span>Watch</span></button> </div>
+                </div>
+                
+              </div>
+            </div>
+            <!-- Superhero -->
+            <div class=" col-6 container-fix mb-3">
+              <div class="card text-white w-100 p-0 m-0"> <img src="./res/rick.jpg" class="card-img larger-image"
+                  alt="Drama" />
+                <div class="p-2 card-img-overlay d-block justify-content-center align-items-center">
+                  <h5 class="card-title d-block col-12 p-0 m-0">Rick and Morty</h5>
+                  <div class="details d-flex p-0 m-0">
+                    <p class="card-text text-start col-6 p-0 m-0">49 Ep</p>
+                    <p class="card-text text-end col-6 ">Sitcom</p>
+                  </div>
+                  <div class="card-buttons d-flex text-end p-0 m-0 gap-2 justify-content-center"> <button
+                    class="btn btn-outline-light col-3"><span>+</span></button> <button
+                    class="btn btn-primary btn-sm col-8"><span>Watch</span></button> </div>
+                </div>
+                
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="card">
-                <img
-                  src="./res/supernatural.jpg"
-                  class="card-img-top"
-                  alt="Supernatural"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Supernatural</h5>
-                  <p class="card-text">320 Ep<br />Horror, Fantasy</p>
-                  <button class="btn btn-outline-light">+</button>
-                  <button class="btn btn-watch">Watch</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="card">
-                <img
-                  src="./res/rick.jpg"
-                  class="card-img-top"
-                  alt="Rick and Morty"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Rick and Morty</h5>
-                  <p class="card-text">49 Ep<br />Sitcom</p>
-                  <button class="btn btn-outline-light">+</button>
-                  <button class="btn btn-watch">Watch</button>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
 
-        <!-- Continue Watching Section -->
-        <div class="continue mb-4">
-          <div class="d-flex align-items-center mb-3">
-            <h6 class="mb-0">Continue</h6>
-            <i class="fa-solid fa-chevron-left px-2"></i>
-            <i class="fa-solid fa-chevron-right"></i>
-            <a href="#" class="text-primary ms-auto">See More</a>
-            <i class="fa-solid fa-chevron-right ps-2"></i>
+         <!-- Continue Watching Section -->
+        <div class="part-continue">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fw-bold">Continue</h2>
+            <div>
+              <button class="btn btn-link text-white">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button class="btn btn-link text-white">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+              <a href="#" class="text-decoration-none text-white fw-bold">See More</a>
+            </div>
           </div>
-          <div class="continue-cards d-flex gap-3 mb-0 pb-0">
-            <!-- Card 1 -->
-            <div class="card text-light d-flex p-2">
-              <div class="card-head d-flex">
-                <img src="res\th.jpg" alt="Avatar" />
-                <div class="details ms-auto">
-                  <h6 class="card-title mb-1">WandaVision</h6>
-                  <p class="card-text small mb-2">1 Episode left</p>
-                  <div class="progress">
-                    <div
-                      class="progress-bar bg-primary"
-                      role="progressbar"
-                    ></div>
+
+          <!-- Grid -->
+          <div class="row ">
+            <div class=" col-6 container-fix mb-3">
+              <div class="card d-flex w-100 text-light d-flex p-2 m-0 ">
+                <div class="d-flex gap-2">
+                  <img style="opacity: 1;" class="col-4" src="res\th.jpg" alt="Avatar" />
+                  <div class="details col-8">
+                    <h6 class="card-title d-block mb-1">WandaVision</h6>
+                    <p class="card-text small mb-2">1 Episode left</p>
+                    <div class="progress " >
+                      <div
+                        class="progress-bar" style="width: 50%;"
+                        role="progressbar"
+                      ></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-buttons d-flex gap-2 mt-2">
-                <button class="btn btn-secondary">Drop</button>
-                <button class="btn btn-primary btn-sm ms-auto">Watch</button>
+                <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"> <button
+                  class="btn btn-outline-light col-3"><span>+</span></button> <button
+                  class="btn btn-primary btn-sm col-8"><span>Watch</span></button> </div>
               </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="card text-light d-flex p-2">
-              <div class="card-head d-flex">
-                <img src="res\th.jpg" alt="Avatar" />
-                <div class="details ms-auto">
-                  <h6 class="card-title mb-1">WandaVision</h6>
-                  <p class="card-text small mb-2">1 Episode left</p>
-                  <div class="progress">
-                    <div
-                      class="progress-bar bg-primary"
-                      role="progressbar"
-                    ></div>
+            <div class=" col-6 container-fix mb-3">
+              <div class="card d-flex w-100 text-light d-flex p-2 m-0 ">
+                <div class="d-flex gap-2">
+                  <img style="opacity: 1;" class="col-4" src="res\th.jpg" alt="Avatar" />
+                  <div class="details col-8">
+                    <h6 class="card-title d-block mb-1">WandaVision</h6>
+                    <p class="card-text small mb-2">1 Episode left</p>
+                    <div class="progress " >
+                      <div
+                        class="progress-bar" style="width: 50%;"
+                        role="progressbar"
+                      ></div>
+                    </div>
                   </div>
                 </div>
+                <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"> <button
+                  class="btn btn-outline-light col-3"><span>+</span></button> <button
+                  class="btn btn-primary btn-sm col-8"><span>Watch</span></button> </div>
               </div>
-              <div class="card-buttons d-flex gap-2 mt-2">
-                <button class="btn btn-secondary">Drop</button>
-                <button class="btn btn-primary btn-sm ms-auto">Watch</button>
+            </div>
+
+            <div class=" col-6 container-fix mb-3">
+              <div class="card d-flex w-100 text-light d-flex p-2 m-0 ">
+                <div class="d-flex gap-2">
+                  <img style="opacity: 1;" class="col-4" src="res\th.jpg" alt="Avatar" />
+                  <div class="details col-8">
+                    <h6 class="card-title d-block mb-1">WandaVision</h6>
+                    <p class="card-text small mb-2">1 Episode left</p>
+                    <div class="progress " >
+                      <div
+                        class="progress-bar" style="width: 50%;"
+                        role="progressbar"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"> <button
+                  class="btn btn-outline-light col-3"><span>+</span></button> <button
+                  class="btn btn-primary btn-sm col-8"><span>Watch</span></button> </div>
+              </div>
+            </div>
+
+            <div class=" col-6 container-fix mb-3">
+              <div class="card d-flex w-100 text-light d-flex p-2 m-0 ">
+                <div class="d-flex gap-2">
+                  <img style="opacity: 1;" class="col-4" src="res\th.jpg" alt="Avatar" />
+                  <div class="details col-8">
+                    <h6 class="card-title d-block mb-1">WandaVision</h6>
+                    <p class="card-text small mb-2">1 Episode left</p>
+                    <div class="progress " >
+                      <div
+                        class="progress-bar" style="width: 50%;"
+                        role="progressbar"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"> <button
+                  class="btn btn-outline-light col-3"><span>+</span></button> <button
+                  class="btn btn-primary btn-sm col-8"><span>Watch</span></button> </div>
               </div>
             </div>
           </div>
+          
         </div>
       </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+
+      </div>
+
+    </div>
+  </div>
+
+  
+  <!-- Bootstrap Icons and JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
 </html>
