@@ -11,7 +11,6 @@ body, html {
   background-color: #2c2c2c;
   color: white;
   padding: 50px 0;
-  /* height: 330px; */
   padding: 0 8vw ;
   width: 100vw;
 }
@@ -28,7 +27,6 @@ body, html {
   color: white;
 }
 .footer .logo {
-    /* height: 100px; */
     width: 25%;
     object-fit: cover;
     margin: 0 0 50px 10%;

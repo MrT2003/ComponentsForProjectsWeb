@@ -1,7 +1,8 @@
-.navbar {
-  width: 100%;
-  margin: 0 auto; /* Căn giữa header */
-  padding: 10px; /* Giữ khoảng cách bên trong */
+
+
+.navbar .logo{
+  width: 10%;
+  height: auto;
 }
 .nav-link.active {
     color: #00cccc;
@@ -19,18 +20,6 @@
     background-color: #00cccc; 
   }
   
-  .navbar {
-    padding: 10px;
-  }
-  
-  /* Căn đều các mục trong navbar */
-.navbar .container-fluid {
-  max-width: 100%; 
-  display: flex; /* Sử dụng Flexbox */
-  justify-content: space-between; /* Dãn đều các phần tử */
-  align-items: center; /* Căn giữa theo chiều dọc */
-}
-
 /* Căn đều các mục bên trong ul */
 .navbar-nav {
   display: flex; /* Sử dụng Flexbox */
@@ -67,6 +56,12 @@
     box-shadow: none; /*Tùy chọn: hiệu ứng đổ bóng */
   }
   
+
+.account img{
+  
+  width: 12%;
+  border-radius: 12px;
+}
   
  
   
