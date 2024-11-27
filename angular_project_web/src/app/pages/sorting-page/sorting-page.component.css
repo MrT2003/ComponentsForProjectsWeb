@@ -6,7 +6,7 @@ body {
 .form-select {
   background-color: #21242d;
   border: 1px solid #00b9ae;
-  border-radius: 50px;
+  border-radius: 50px; 
   color: white;
 }
 .genres-select {

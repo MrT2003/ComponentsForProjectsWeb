@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
@@ -29,4 +30,10 @@ export class HomePageComponent {
   newest = 'assets/res-rightmenu/rick.jpg'; 
   genre = 'assets/res-rightmenu/rick.jpg';
   ctn = 'assets/res-rightmenu/th.jpg';
+
+  constructor(private router: Router) {}
+
+  onSetting(): void {
+    this.router.navigate(['/settings']);
+  }
 }

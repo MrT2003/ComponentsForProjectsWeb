@@ -14,9 +14,17 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 export const routes: Routes = [
   {
     path: '',
+    component: AuthLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'signin', pathMatch: 'full' },
+      { path: 'signin', component: SignInPageComponent },
+      { path: 'signup', component: SignUpPageComponent },
+    ],
+  },
+  {
+    path: '',
     component: MainLayoutComponent, // Layout chính
     children: [
-      { path: '', redirectTo: 'watch', pathMatch: 'full' },
       { path: 'home', component: HomePageComponent },
       { path: 'description', component: DescriptionPageComponent },
       { path: 'watch', component: WatchPageComponent },
@@ -26,14 +34,5 @@ export const routes: Routes = [
       { path: 'genres', component: GenresPageComponent },
     ],
   },
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      { path: 'signin', component: SignInPageComponent },
-      { path: 'signup', component: SignUpPageComponent },
-    ],
-  },
-
 
 ];

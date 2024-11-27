@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './newest-film-page.component.css'
 })
 export class NewestFilmPageComponent {
-
+  lokiPath = 'assets/images/loki.jpg';
 }
