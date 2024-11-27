@@ -16,7 +16,7 @@ export const routes: Routes = [
     path: '',
     component: MainLayoutComponent, // Layout chính
     children: [
-      { path: '', redirectTo: 'watch', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomePageComponent },
       { path: 'description', component: DescriptionPageComponent },
       { path: 'watch', component: WatchPageComponent },
