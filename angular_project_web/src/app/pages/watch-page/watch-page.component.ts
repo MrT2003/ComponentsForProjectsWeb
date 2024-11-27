@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './watch-page.component.css'
 })
 export class WatchPageComponent {
-
+  avtcmt = 'assets/images/avatar.jpg';
+  //img right menu
+  newest = 'assets/res-rightmenu/rick.jpg'; 
+  genre = 'assets/res-rightmenu/rick.jpg';
+  ctn = 'assets/res-rightmenu/th.jpg';
 }
