@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './sorting-page.component.css'
 })
 export class SortingPageComponent {
+  lokiPath = 'assets/images/loki.jpg';
 
 }
