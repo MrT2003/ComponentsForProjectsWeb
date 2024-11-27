@@ -1,10 +1,40 @@
 body {
     background-color: #16181E;
 }
+.title-watching , .label span{
+    font-family: 'Lato',sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+}
+/* .watching {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.label span {
+    display: block;
+    flex-grow: 1; 
+    border-bottom: 1px solid white; 
+
+.my-auto {
+    flex-shrink: 0; 
+}
+
+.title-movie {
+    margin-top: 5px; 
+} */
+
+
+
+
+
+
+
 
 .watching-frame {
     height: 500px;
-   
+   background-color: #21242D;
 }
 
 .play-button {

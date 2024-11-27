@@ -29,22 +29,32 @@
     />
   </head>
   <body>
-    <div class="watching container-fluid col-12">
-        <div class="container p-0 m-0 w-100 text-light border-light border-bottom">
-            You are watching
-        </div>
-        <p class="title-movie text-light">Wednesday</p>
+    <div class="watching container-fluid col-12 align-items-center">
+        <div class="d-flex">
+            <div class="my-auto me-2 " style="background-color: #00B9AE; width: 4px; height: 2em;"></div>
+        <div class="container-fluid label p-0 m-0 text-light">
+            <span class="d-block  m-0 p-0 bg-red  container ">You are watching:</span>
+            <hr class="p-0 m-0" >
+       
 
-        <div class=" bg-primary watching-frame col-12">
-            <div class="frame bg-danger w-100 h-100 d-flex justify-content-center align-items-center">
+        </div>
+
+        </div>
+        <p class="title-watching text-light my-2">Wednesday</p>
+
+        
+
+        <div class="  watching-frame col-12">
+            <div class="frame w-100 h-100 d-flex justify-content-center align-items-center">
                 <div class="play-button bg-secondary d-flex justify-content-center align-items-center">
                     <i class="fa-solid fa-play"></i>
                 </div>
             </div>
         </div>
-        <div class="rating d-flex gap-1 text-light" > 
-            Rating:
-            <ul class="d-flex gap-1 p-0 " style="list-style: none;">
+        <div class="rating d-flex gap-1 text-light my-3" > 
+            <p class="title-watching text-light my-0 me-2 ">Rating: </p>
+
+            <ul class="d-flex gap-1 p-0  " style="list-style: none;">
                 <li><button type="button" class="btn btn-link active p-0"><i class="fa-solid fa-star"></i></button></li>
                 <li><button type="button" class="btn btn-link active p-0"><i class="fa-solid fa-star"></i></button></li>
                 <li><button type="button" class="btn btn-link active p-0"><i class="fa-solid fa-star"></i></button></li>
@@ -53,7 +63,8 @@
             </ul>
         </div>
         <div class="episode d-flex gap-1 text-light">
-            Episode: 
+            <p class="title-watching text-light my-0 me-2 ">Episode: </p>
+            
             <ul class="d-flex gap-2 p-0 " style="list-style: none;">
                 <li>
                     <button type="button" class="btn active text-light p-0 ">
