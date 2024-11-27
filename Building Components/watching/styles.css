@@ -1,0 +1,39 @@
+body {
+    background-color: #16181E;
+}
+
+.watching-frame {
+    height: 500px;
+   
+}
+
+.play-button {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50px;
+    color: #828282;
+}
+.play-button i{
+    z-index: 1;
+    color: #f9f9f9;
+}
+.rating .btn{
+    color: #808080;
+}
+.rating .active{
+    color: #F0E264;
+}
+
+.episode ul li .btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid #00B9AE;
+
+}
+.episode .active{
+    background-color: #00B9AE;
+}
