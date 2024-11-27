@@ -6,31 +6,6 @@ body {
     font-size: 24px;
     font-weight: 900;
 }
-/* .watching {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
-}
-
-.label span {
-    display: block;
-    flex-grow: 1; 
-    border-bottom: 1px solid white; 
-
-.my-auto {
-    flex-shrink: 0; 
-}
-
-.title-movie {
-    margin-top: 5px; 
-} */
-
-
-
-
-
-
-
 
 .watching-frame {
     height: 500px;
@@ -53,7 +28,17 @@ body {
 .rating .active{
     color: #F0E264;
 }
+.episode ul {
+    display: flex;           
+    flex-wrap: wrap;        
+    gap: 10px;               
+    padding: 0;            
+    margin: 0;               
+}
 
+.episode li {
+    list-style: none;       
+}
 .episode ul li .btn {
     width: 40px;
     height: 40px;
