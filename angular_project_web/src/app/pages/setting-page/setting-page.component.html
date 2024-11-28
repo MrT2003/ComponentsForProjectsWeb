@@ -1,142 +1,219 @@
-<div class="profile-header">
-    <div class="profile-picture">
-      <img [src]="avatarPath" alt="Profile Picture" />
-    </div>
-    <div class="profile-name">Samantha</div>
-    <div class="profile-camera">
-      <img [src]="cameraPath" alt="camera" />
-    </div>
-    <div class="log-out">
-      <button class="btn btn-design">
-        <img [src]="logoutPath" alt="logout icon" /> Log Out
-      </button>
-    </div>
-  </div>
+<div class=" d-flex">
+  <!--Left menu-->
+  <aside class="col-2 left-menu bg-dark text-light">
+    <div class=" d-flex flex-column h-100">
+      <!-- Logo Section -->
+      <!-- <div class="logo my-4">
+      <img src="res\Logo.png" alt="logo">
+       
+    </div> -->
 
-  <div class="container playlist-container">
-    <ul class="nav nav-tabs">
-      <li class="nav-item nav-fix">
-        <a class="nav-link active" href="#">Playlist</a>
-      </li>
-      <li class="nav-item nav-fix"><a class="nav-link" href="#">Watch List</a></li>
-      <li class="nav-item nav-fix"><a class="nav-link" href="#">Continue List</a></li>
-    </ul>
-    <div class="row container-row">
-      <div class="col-md-3">
-        <div class="thumbnail">
-          <div class="rating">⭐ 7.8</div>
-          <img [src]="lokiPath" alt="Loki" />
-          <div class="details">
-            <div class="details-left">
-              <h5>Loki</h5>
-              <p>2023</p>
-            </div>
-            <div class="details-right"><p>Complete</p></div>
-          </div>
+      <!-- Menu Items -->
+      <img class="arrow-down" [src]="show" alt="icon logo down">
+      <nav class="flex-grow-1">
+        <div class="menu-section">
+          <p class="section-title">Menu</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="home" alt="home-icon"> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="sort" alt="home-icon"> Sorting
+              </a>
+            </li>
+          </ul>
         </div>
+
+        <div class="menu-section">
+          <p class="section-title">Library</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="recent" alt="home-icon"> Recent
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="playlists" alt="home-icon"> Playlists
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="watchlist" alt="home-icon"> Watchlist
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="continue" alt="home-icon"> Continue
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="menu-section">
+          <p class="section-title">General</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="settings" alt="home-icon"> Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="logout" alt="home-icon"> Log Out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </aside>
+  <div class="col-10">
+    <div class="profile-header">
+      <div class="profile-picture">
+        <img [src]="avatarPath" alt="Profile Picture" />
       </div>
-      <div class="col-md-3">
-        <div class="thumbnail">
-          <div class="rating">⭐ 7.8</div>
-          <img [src]="lokiPath" alt="Loki" />
-          <div class="details">
-            <div class="details-left">
-              <h5>Loki</h5>
-              <p>2023</p>
-            </div>
-            <div class="details-right"><p>Complete</p></div>
-          </div>
-        </div>
+      <div class="profile-name">Samantha</div>
+      <div class="profile-camera">
+        <img [src]="cameraPath" alt="camera" />
       </div>
-      <div class="col-md-3">
-        <div class="thumbnail">
-          <div class="rating">⭐ 7.8</div>
-          <img [src]="lokiPath" alt="Loki" />
-          <div class="details">
-            <div class="details-left">
-              <h5>Loki</h5>
-              <p>2023</p>
-            </div>
-            <div class="details-right"><p>Complete</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="thumbnail">
-          <div class="rating">⭐ 7.8</div>
-          <img [src]="lokiPath" alt="Loki" />
-          <div class="details">
-            <div class="details-left">
-              <h5>Loki</h5>
-              <p>2023</p>
-            </div>
-            <div class="details-right"><p>Complete</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="thumbnail">
-          <div class="rating">⭐ 7.8</div>
-          <img [src]="lokiPath" alt="Loki" />
-          <div class="details">
-            <div class="details-left">
-              <h5>Loki</h5>
-              <p>2023</p>
-            </div>
-            <div class="details-right"><p>Complete</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="thumbnail">
-          <div class="rating">⭐ 7.8</div>
-          <img [src]="lokiPath" alt="Loki" />
-          <div class="details">
-            <div class="details-left">
-              <h5>Loki</h5>
-              <p>2023</p>
-            </div>
-            <div class="details-right"><p>Complete</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="thumbnail">
-          <div class="rating">⭐ 7.8</div>
-          <img [src]="lokiPath" alt="Loki" />
-          <div class="details">
-            <div class="details-left">
-              <h5>Loki</h5>
-              <p>2023</p>
-            </div>
-            <div class="details-right"><p>Complete</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="thumbnail">
-          <div class="rating">⭐ 7.8</div>
-          <img [src]="lokiPath" alt="Loki" />
-          <div class="details">
-            <div class="details-left">
-              <h5>Loki</h5>
-              <p>2023</p>
-            </div>
-            <div class="details-right"><p>Complete</p></div>
-          </div>
-        </div>
+      <div class="log-out">
+        <button class="btn btn-design">
+          <img [src]="logoutPath" alt="logout icon" /> Log Out
+        </button>
       </div>
     </div>
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">...</a></li>
-        <li class="page-item"><a class="page-link" href="#">67</a></li>
-        <li class="page-item"><a class="page-link" href="#">68</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  
+    <div class="container playlist-container">
+      <ul class="nav nav-tabs">
+        <li class="nav-item nav-fix">
+          <a class="nav-link active" href="#">Playlist</a>
+        </li>
+        <li class="nav-item nav-fix"><a class="nav-link" href="#">Watch List</a></li>
+        <li class="nav-item nav-fix"><a class="nav-link" href="#">Continue List</a></li>
       </ul>
-    </nav>
+      <div class="row container-row">
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="rating">⭐ 7.8</div>
+            <img [src]="lokiPath" alt="Loki" />
+            <div class="details">
+              <div class="details-left">
+                <h5>Loki</h5>
+                <p>2023</p>
+              </div>
+              <div class="details-right"><p>Complete</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="rating">⭐ 7.8</div>
+            <img [src]="lokiPath" alt="Loki" />
+            <div class="details">
+              <div class="details-left">
+                <h5>Loki</h5>
+                <p>2023</p>
+              </div>
+              <div class="details-right"><p>Complete</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="rating">⭐ 7.8</div>
+            <img [src]="lokiPath" alt="Loki" />
+            <div class="details">
+              <div class="details-left">
+                <h5>Loki</h5>
+                <p>2023</p>
+              </div>
+              <div class="details-right"><p>Complete</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="rating">⭐ 7.8</div>
+            <img [src]="lokiPath" alt="Loki" />
+            <div class="details">
+              <div class="details-left">
+                <h5>Loki</h5>
+                <p>2023</p>
+              </div>
+              <div class="details-right"><p>Complete</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="rating">⭐ 7.8</div>
+            <img [src]="lokiPath" alt="Loki" />
+            <div class="details">
+              <div class="details-left">
+                <h5>Loki</h5>
+                <p>2023</p>
+              </div>
+              <div class="details-right"><p>Complete</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="rating">⭐ 7.8</div>
+            <img [src]="lokiPath" alt="Loki" />
+            <div class="details">
+              <div class="details-left">
+                <h5>Loki</h5>
+                <p>2023</p>
+              </div>
+              <div class="details-right"><p>Complete</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="rating">⭐ 7.8</div>
+            <img [src]="lokiPath" alt="Loki" />
+            <div class="details">
+              <div class="details-left">
+                <h5>Loki</h5>
+                <p>2023</p>
+              </div>
+              <div class="details-right"><p>Complete</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="rating">⭐ 7.8</div>
+            <img [src]="lokiPath" alt="Loki" />
+            <div class="details">
+              <div class="details-left">
+                <h5>Loki</h5>
+                <p>2023</p>
+              </div>
+              <div class="details-right"><p>Complete</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">...</a></li>
+          <li class="page-item"><a class="page-link" href="#">67</a></li>
+          <li class="page-item"><a class="page-link" href="#">68</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
+</div>
+
