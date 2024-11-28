@@ -1,5 +1,77 @@
-<body>
-  <div class="container-fluid">
+<div class="row w-100">
+  <!--Left menu-->
+  <aside class="col-2 left-menu bg-dark text-light">
+    <div class="d-flex flex-column h-100">
+      <!-- Logo Section -->
+      <!-- <div class="logo my-4">
+        <img src="res\Logo.png" alt="logo">
+        
+      </div> -->
+
+      <!-- Menu Items -->
+      <img class="arrow-down" [src]="show" alt="icon logo down" />
+      <nav class="flex-grow-1">
+        <div class="menu-section">
+          <p class="section-title">Menu</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="#"  class="nav-link text-light">
+                <img [src]="home" alt="home-icon" /> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#"  class="nav-link text-light">
+                <img [src]="sort" alt="home-icon" /> Sorting
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="menu-section">
+          <p class="section-title">Library</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="#"  class="nav-link text-light">
+                <img [src]="recent" alt="home-icon" /> Recent
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="playlists" alt="home-icon" /> Playlists
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="watchlist" alt="home-icon" /> Watchlist
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="continue" alt="home-icon" /> Continue
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="menu-section">
+          <p class="section-title">General</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="settings" alt="home-icon"/> Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-light">
+                <img [src]="logout" alt="home-icon" /> Log Out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </aside>
+  <div class="col-10">
     <div class="d-flex align-items-center mb-3 mx-4 pt-4">
       <select class="form-select genres-select" aria-label="Genres">
         <option selected>Genres</option>
@@ -129,5 +201,14 @@
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+</div>
+
+
+
+
+<!-- 
+  <div class="container-fluid">
+    
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
