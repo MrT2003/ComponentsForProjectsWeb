@@ -82,7 +82,7 @@
   </div>
 
   <!--Main content-->
-  <div class=" col-6 container-fluid" [class.full-width]="isCollapsed">
+  <div class=" col-6 container-fluid text-light" [class.full-width]="isCollapsed">
     <!-- Carousel -->
     <div id="demo" class="carousel slide mx-auto" data-bs-ride="carousel">
       <!-- Custom Indicators -->
@@ -97,8 +97,9 @@
       </div>
 
       <!-- The slideshow/carousel -->
-      <div class="carousel-inner">
+      <div class="carousel-inner ">
         <div class="carousel-item active">
+          <div class="container filter w-100 h-100"></div>
           <img [src]="image1" alt="Los Angeles" class="d-block image-fix" />
           <div class="name-film">The Crown</div>
           <div class="watch-list">
@@ -108,6 +109,7 @@
           <div class="watch-now">Watch Now</div>
         </div>
         <div class="carousel-item">
+          <div class="container filter w-100 h-100"></div>
           <img [src]="image2" alt="Chicago" class="d-block image-fix" />
           <div class="name-film">The Crown</div>
           <div class="watch-list">
@@ -117,6 +119,7 @@
           <div class="watch-now">Watch Now</div>
         </div>
         <div class="carousel-item">
+          <div class="container filter w-100 h-100"></div>
           <img [src]="image3" alt="New York" class="d-block image-fix" />
           <div class="name-film">The Crown</div>
           <div class="watch-list">
@@ -153,166 +156,136 @@
     <!-- Movies -->
     <div class="container mt-5">
       <div class="title-bar">
-        <h4>Movies</h4>
-        <p>See more ></p>
+        <div class="my-auto me-2  " style="background-color: #00B9AE; width: 4px; height: 2em;"></div>
+        <div class="container-fluid d-flex justify-content-between label p-0 m-0 text-light">
+          <h4>Movies</h4>
+          <p>See more >></p>
+        </div>
+        
       </div>
       <hr />
       <div class="row">
-        <div class="col-md-3">
+        
+        <div class="col-md-4">
           <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
+            <!-- <div class="rating">⭐ 7.8</div> -->
+            <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
+            <div class="details d-block">
+              <div class="details-top col-12 text-start ">
                 <h5>Loki</h5>
-                <p>2023</p>
               </div>
-              <div class="details-right">
+              <div class="details-bottom d-flex justify-content-between">
+                <p>2023</p>
                 <p>Complete</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
+            <!-- <div class="rating">⭐ 7.8</div> -->
+            <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
+            <div class="details d-block">
+              <div class="details-top col-12 text-start ">
                 <h5>Loki</h5>
-                <p>2023</p>
               </div>
-              <div class="details-right">
+              <div class="details-bottom d-flex justify-content-between">
+                <p>2023</p>
                 <p>Complete</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
+            <!-- <div class="rating">⭐ 7.8</div> -->
+            <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
+            <div class="details d-block">
+              <div class="details-top col-12 text-start ">
                 <h5>Loki</h5>
-                <p>2023</p>
               </div>
-              <div class="details-right">
+              <div class="details-bottom d-flex justify-content-between">
+                <p>2023</p>
                 <p>Complete</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <h5>Loki</h5>
-                <p>2023</p>
-              </div>
-              <div class="details-right">
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
 
     <!-- TV series -->
     <div class="container mt-5">
       <div class="title-bar">
-        <h4>TV Series</h4>
-        <p>See more ></p>
+        <div class="my-auto me-2  " style="background-color: #00B9AE; width: 4px; height: 2em;"></div>
+        <div class="container-fluid d-flex justify-content-between label p-0 m-0 text-light">
+          <h4>TV Series</h4>
+          <p>See more >></p>
+        </div>
+        
       </div>
       <hr />
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
+            <!-- <div class="rating">⭐ 7.8</div> -->
+            <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
+            <div class="details d-block">
+              <div class="details-top col-12 text-start ">
                 <h5>Loki</h5>
-                <p>2023</p>
               </div>
-              <div class="details-right">
+              <div class="details-bottom d-flex justify-content-between">
+                <p>2023</p>
                 <p>Complete</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
+            <!-- <div class="rating">⭐ 7.8</div> -->
+            <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
+            <div class="details d-block">
+              <div class="details-top col-12 text-start ">
                 <h5>Loki</h5>
-                <p>2023</p>
               </div>
-              <div class="details-right">
+              <div class="details-bottom d-flex justify-content-between">
+                <p>2023</p>
                 <p>Complete</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
+            <!-- <div class="rating">⭐ 7.8</div> -->
+            <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
+            <div class="details d-block">
+              <div class="details-top col-12 text-start ">
                 <h5>Loki</h5>
-                <p>2023</p>
               </div>
-              <div class="details-right">
+              <div class="details-bottom d-flex justify-content-between">
+                <p>2023</p>
                 <p>Complete</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <h5>Loki</h5>
-                <p>2023</p>
-              </div>
-              <div class="details-right">
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </div>
   </div>
 
   <!--Right menu-->
-  <div class="col-4 p-4 right-menu bg-dark">
-    <!-- <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <button class="btn btn-secondary rounded-circle p-2">
-            <i class="bi bi-moon"></i>
-          </button>
-        </div>  
-        
-        <div class="d-flex align-items-center">
-          <span class="me-2">Samantha</span>
-          <img
-            src="https://via.placeholder.com/40"
-            alt="Avatar"
-            class="rounded-circle"
-            width="40"
-            height="40"
-          />
-        </div>
-      </div> -->
+  <div class="col-4 p-4 right-menu  bg-dark">
+    
     <!-- Right Menu -->
     <!-- Genres Section -->
     <div class="part-genres">
