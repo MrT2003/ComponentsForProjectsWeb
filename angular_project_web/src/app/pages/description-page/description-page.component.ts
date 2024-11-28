@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-description-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './description-page.component.html',
   styleUrl: './description-page.component.css'
 })

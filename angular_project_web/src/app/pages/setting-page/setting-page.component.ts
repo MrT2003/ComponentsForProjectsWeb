@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-setting-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './setting-page.component.html',
   styleUrl: './setting-page.component.css'
 })

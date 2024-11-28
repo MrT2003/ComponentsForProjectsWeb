@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-newest-film-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './newest-film-page.component.html',
   styleUrl: './newest-film-page.component.css'
 })

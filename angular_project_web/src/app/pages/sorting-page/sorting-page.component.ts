@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sorting-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './sorting-page.component.html',
   styleUrl: './sorting-page.component.css'
 })

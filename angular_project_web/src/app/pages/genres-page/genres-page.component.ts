@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-genres-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './genres-page.component.html',
   styleUrl: './genres-page.component.css'
 })
