@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './genres-page.component.css'
 })
 export class GenresPageComponent {
+  //img right menu (genres)
+  newest = 'assets/res-rightmenu/rick.jpg'; 
+  genre = 'assets/res-rightmenu/rick.jpg';
+  ctn = 'assets/res-rightmenu/th.jpg';
   // icon left menu
   show = 'assets/res-leftmenu/Arrow down-circle.png';
   home = 'assets/res-leftmenu/Squircle.png';
