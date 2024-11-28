@@ -66,11 +66,6 @@
   background-color: #00b9ae;
   color: #16181e;
 }
-/* .pagination .page-item.active .page-link {
-    background-color: red; 
-    color: white; 
-    border-color: none; 
-  } */
 
 /* PLAYLIST */
 .playlist-container {
@@ -187,7 +182,6 @@
   width: 12%;
   aspect-ratio: 1/1;
 }
-/* Khu vực đang fix */
 .left-menu {
   width: 14.5%;
   font-family: "Lato", sans-serif;

@@ -1,15 +1,17 @@
 <div class="row w-100">
   <!--Left menu-->
-  <aside class="col-2 left-menu bg-dark text-light">
-    <div class="d-flex flex-column h-100">
-      <!-- Logo Section -->
-      <!-- <div class="logo my-4">
-        <img src="res\Logo.png" alt="logo">
-         
-      </div> -->
-
+  <aside
+    class="col-2 left-menu bg-dark text-light"
+    [class.collapsed]="isCollapsed"
+  >
+    <div *ngIf="!isCollapsed" class="d-flex flex-column h-100">
+      <img
+        [src]="sideBarPath"
+        alt="Collapse Menu"
+        class="icon"
+        (click)="toggleMenu()"
+      />
       <!-- Menu Items -->
-      <img class="arrow-down" [src]="show" alt="icon logo down" />
       <nav class="flex-grow-1">
         <div class="menu-section">
           <p class="section-title">Menu</p>
@@ -26,7 +28,6 @@
             </li>
           </ul>
         </div>
-
         <div class="menu-section">
           <p class="section-title">Library</p>
           <ul class="nav flex-column">
@@ -52,13 +53,12 @@
             </li>
           </ul>
         </div>
-
         <div class="menu-section">
           <p class="section-title">General</p>
           <ul class="nav flex-column">
             <li class="nav-item">
               <a [routerLink]="'/settings'" class="nav-link text-light">
-                <img [src]="settings" alt="home-icon"/> Settings
+                <img [src]="settings" alt="home-icon" /> Settings
               </a>
             </li>
             <li class="nav-item">
@@ -68,12 +68,21 @@
             </li>
           </ul>
         </div>
+        <!-- <i class="fa-regular fa-circle-left icon" (click)="toggleMenu()"></i> -->
       </nav>
     </div>
   </aside>
+  <!-- Icon hiển thị khi menu thu nhỏ -->
+  <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
+    <img
+      [src]="sideBarPath"
+      alt="Collapse Menu"
+      class="icon-out"
+    />
+  </div>
 
   <!--Main content-->
-  <div class=" col-6 container-fluid">
+  <div class=" col-6 container-fluid" [class.full-width]="isCollapsed">
     <!-- Carousel -->
     <div id="demo" class="carousel slide mx-auto" data-bs-ride="carousel">
       <!-- Custom Indicators -->
@@ -316,7 +325,7 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a href="#" class="text-decoration-none text-white fw-bold"
+          <a [routerLink]="'/genres'" class="text-decoration-none text-white fw-bold"
             >See More</a
           >
         </div>

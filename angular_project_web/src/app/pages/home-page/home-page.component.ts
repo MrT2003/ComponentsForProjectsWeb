@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
@@ -24,6 +25,7 @@ export class HomePageComponent {
   continue = 'assets/res-leftmenu/Continue.png';
   settings = 'assets/res-leftmenu/Settings.png';
   logout = 'assets/res-leftmenu/Log Out.png';
+  sideBarPath = 'assets/res-leftmenu/sidebar.png';
  
 
 //img right menu
@@ -35,5 +37,11 @@ export class HomePageComponent {
 
   onSetting(): void {
     this.router.navigate(['/settings']);
+  }
+
+  isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
+
+  toggleMenu(): void {
+    this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
   }
 }
