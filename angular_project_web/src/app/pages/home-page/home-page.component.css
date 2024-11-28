@@ -4,13 +4,17 @@
   border-radius: 15px;
   overflow: hidden;
   margin-top: 50px;
+  
 }
 .carousel-inner img {
+ 
   width: 100%;
-  height: 700px;
+  aspect-ratio: 2/1;
   object-fit: cover;
   border-radius: 10px;
 }
+
+
 .custom-indicators {
   display: flex;
   justify-content: center;
@@ -49,7 +53,7 @@
 .right-btn {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(249, 249, 249, 0.2);
   border-radius: 20%;
   display: flex;
   justify-content: center;
@@ -62,6 +66,14 @@
 }
 .carousel-item {
   position: relative;
+}
+.filter{
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);;
 }
 .name-film {
   position: absolute;
@@ -80,17 +92,21 @@
   left: 20px;
 
   color: white;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 800;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(249, 249, 249, 0.2);
 
   padding: 10px 20px;
   border-radius: 15px;
   z-index: 1;
-
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
 }
 .watch-list i {
   margin-right: 10px;
@@ -101,7 +117,7 @@
   position: absolute;
   bottom: 50px;
   right: 20px;
-
+  cursor: pointer;
   color: black;
   font-weight: 800;
   font-size: 17;
@@ -113,6 +129,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  box-sizing: border-box; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
 
 /* YOU MAY LIKE */
@@ -136,7 +157,8 @@
 }
 .thumbnail img {
   width: 100%;
-  height: 400px;
+  /* height: 400px; */
+  aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -148,23 +170,18 @@
   align-items: start;
   height: 50px;
 }
-.details-left {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-.details-left p {
+
+.details-top  
+.details-top p {
+  font-family: 'Lato', sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: #f9f9f9b2;
   line-height: 17px;
 }
-.details-right {
-  text-align: right;
-  margin-top: 30px;
-  columns: #f9f9f9b2;
-}
-.details-right p {
+
+.details-bottom p {
+  font-family: 'Lato', sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: #f9f9f9b2;
