@@ -8,7 +8,7 @@
   color: #00cccc;
   font-weight: bold;
   position: relative;
-}
+} 
 
 .nav-link.active::after {
   content: "";
