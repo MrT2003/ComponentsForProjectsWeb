@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-newest-film-page',
@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './newest-film-page.component.css',
 })
 export class NewestFilmPageComponent {
+  constructor(private router: Router) {} 
   lokiPath = 'assets/images/loki.jpg';
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
@@ -24,9 +25,10 @@ export class NewestFilmPageComponent {
   settings = 'assets/res-leftmenu/Settings.png';
   logout = 'assets/res-leftmenu/Log Out.png';
 
-  isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
+  isCollapsed = false; 
 
   toggleMenu(): void {
     this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
   }
+  onWatchMovie() { this.router.navigate(['/watch']); }
 }

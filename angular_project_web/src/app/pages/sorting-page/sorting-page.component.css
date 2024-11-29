@@ -204,3 +204,21 @@ hr {
 .nav-link.active {
   color: #00cccc;
 }
+
+/*---------------EFFECTS LEFT MENU--------------*/
+.nav-link {
+  color: white; /* Màu mặc định */
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #16181e; /* Màu chữ khi hover */
+  background-color: #00B9AE; /* Màu nền khi hover */
+  border-radius: 5px; /* Thêm góc bo nếu cần */
+}
+
+.nav-link.active {
+  color: #16181e; /* Màu chữ khi active */
+  background-color: #00B9AE; /* Màu nền khi active */
+  border-radius: 5px;
+}
