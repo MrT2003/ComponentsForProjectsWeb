@@ -193,7 +193,7 @@
 }
 
 .full-width {
-  width: 100%; /* Mở rộng nội dung chính khi menu bị ẩn */
+  width: 100%;
 }
 
 .left-menu.collapsed .section-title,
