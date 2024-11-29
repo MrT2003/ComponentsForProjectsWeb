@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-description-page',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './description-page.component.html',
   styleUrl: './description-page.component.css'
 })
 export class DescriptionPageComponent {
   wedPath = 'assets/images/Wednesday.png';
   lokiPath = 'assets/images/loki.jpg';
+  bg = 'assets/images/image.png';
 
   
+
 // icon left menu
 show = 'assets/res-leftmenu/Arrow down-circle.png';
 home = 'assets/res-leftmenu/Squircle.png';
