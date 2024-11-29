@@ -7,6 +7,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: 'Lato', sans-serif;
 }
 .poster .upper-part {
   padding-top: 5%;
@@ -23,13 +24,33 @@
   display: block;
   max-width: 500px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   color: white;
-  line-height: 20px;
+  /* line-height: 20px; */
 }
 .upper-part .buttons {
   margin-top: 2%;
 }
+
+.buttons .btn {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  min-width: 100px;
+  padding: 10px 20px;
+}
+
+.buttons .btn-watch {
+  background-color: #00B9AE;
+
+}
+
+
+
 /*----------------- BELOW PART ---------------*/
 
 .container-row {
@@ -53,10 +74,15 @@
   color: white;
   min-width: 250px;
   transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 10px;
 }
 .thumbnail:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+}
+.thumbnail img:hover{
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+
 }
 .thumbnail .rating {
   position: absolute;
@@ -79,6 +105,23 @@
 .thumbnail .details {
   margin-top: 10px;
 }
+
+.details-top  
+.details-top p {
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #f9f9f9b2;
+  line-height: 17px;
+}
+
+/* .details-bottom p {
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #f9f9f9b2;
+  line-height: 17px;
+} */
 /*-----------------------------------LEFT MENU ------------------------------------------------------ */
 .left-menu{
   background-color: rgba(22, 24, 30, 0.7);
