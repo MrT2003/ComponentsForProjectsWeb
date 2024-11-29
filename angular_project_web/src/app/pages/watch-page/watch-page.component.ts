@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-watch-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './watch-page.component.html',
   styleUrl: './watch-page.component.css'
 })

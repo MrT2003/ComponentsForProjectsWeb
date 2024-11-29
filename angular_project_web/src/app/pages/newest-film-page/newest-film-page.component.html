@@ -1,9 +1,6 @@
 <div class="container-fluid row">
   <!--Left menu-->
-  <aside
-    class="col-2 left-menu text-light"
-    [class.collapsed]="isCollapsed"
-  >
+  <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
     <div *ngIf="!isCollapsed" class="d-flex flex-column h-100">
       <img
         [src]="sideBarPath"
@@ -17,12 +14,20 @@
           <p class="section-title">Menu</p>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a [routerLink]="'/home'" class="nav-link text-light">
+              <a
+                [routerLink]="'/home'"
+                class="nav-link active text-light"
+                routerLinkActive="active"
+              >
                 <img [src]="home" alt="home-icon" /> Home
               </a>
             </li>
             <li class="nav-item">
-              <a [routerLink]="'/sorting'" class="nav-link text-light">
+              <a
+                [routerLink]="'/sorting'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
                 <img [src]="sort" alt="home-icon" /> Sorting
               </a>
             </li>
@@ -32,22 +37,38 @@
           <p class="section-title">Library</p>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a [routerLink]="'/newest'" class="nav-link text-light">
+              <a
+                [routerLink]="'/newest'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
                 <img [src]="recent" alt="home-icon" /> Recent
               </a>
             </li>
             <li class="nav-item">
-              <a [routerLink]="'/settings'" class="nav-link text-light">
+              <a
+                [routerLink]="'/settings'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
                 <img [src]="playlists" alt="home-icon" /> Playlists
               </a>
             </li>
             <li class="nav-item">
-              <a [routerLink]="'/settings'" class="nav-link text-light">
+              <a
+                [routerLink]="'/settings'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
                 <img [src]="watchlist" alt="home-icon" /> Watchlist
               </a>
             </li>
             <li class="nav-item">
-              <a [routerLink]="'/settings'" class="nav-link text-light">
+              <a
+                [routerLink]="'/settings'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
                 <img [src]="continue" alt="home-icon" /> Continue
               </a>
             </li>
@@ -57,18 +78,21 @@
           <p class="section-title">General</p>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a [routerLink]="'/settings'" class="nav-link text-light">
+              <a
+                [routerLink]="'/settings'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
                 <img [src]="settings" alt="home-icon" /> Settings
               </a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link text-light">
+              <a href="" class="nav-link text-light" routerLinkActive="active">
                 <img [src]="logout" alt="home-icon" /> Log Out
               </a>
             </li>
           </ul>
         </div>
-        <!-- <i class="fa-regular fa-circle-left icon" (click)="toggleMenu()"></i> -->
       </nav>
     </div>
   </aside>
@@ -86,7 +110,7 @@
           a new series that takes place after the events of 'Avengers: Endgame'.
         </div>
         <div class="buttons my-5">
-          <button class="btn btn-watch align-items-center py-2  text-light"><i
+          <button class="btn btn-watch align-items-center py-2  text-light" (click)="onWatchMovie()"><i
             class="fa-regular fa-circle-play text-light me-2 mt-1"></i>WATCH NOW</button>
           <button class="btn btn-detail ms-4">DETAIL</button>
         </div>

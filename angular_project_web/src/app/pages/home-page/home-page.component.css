@@ -1,20 +1,16 @@
-
 .carousel {
   width: 100%;
   margin: auto;
   border-radius: 15px;
   overflow: hidden;
   margin-top: 50px;
-  
 }
 .carousel-inner img {
- 
   width: 100%;
   aspect-ratio: 2/1;
   object-fit: cover;
   border-radius: 10px;
 }
-
 
 .custom-indicators {
   display: flex;
@@ -68,7 +64,7 @@
 .carousel-item {
   position: relative;
 }
-.filter{
+.filter {
   position: absolute;
   width: 150%;
   height: 100%;
@@ -76,8 +72,6 @@
   object-fit: cover;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.5);
-  
-  
 }
 .name-film {
   position: absolute;
@@ -108,8 +102,8 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  white-space: nowrap; 
-  overflow: hidden; 
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 .watch-list i {
@@ -134,10 +128,10 @@
   justify-content: center;
   align-items: center;
 
-  box-sizing: border-box; 
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* YOU MAY LIKE */
@@ -178,9 +172,8 @@
   display: flex;
   justify-content: space-between;
 }
-.details-top  
-.details-top p {
-  font-family: 'Lato', sans-serif;
+.details-top .details-top p {
+  font-family: "Lato", sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: #f9f9f9b2;
@@ -188,7 +181,7 @@
 }
 
 .details-bottom p {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: #f9f9f9b2;
@@ -209,11 +202,11 @@
 hr {
   margin-top: 0;
 }
-.title-bar h4{
+.title-bar h4 {
   font-weight: 700;
 }
 /*-----------------------------------LEFT MENU ------------------------------------------------------ */
-.left-menu{
+.left-menu {
   background-color: rgba(22, 24, 30, 0.7);
 }
 .arrow-down {
@@ -305,6 +298,26 @@ hr {
 .nav-link.active {
   color: #00cccc;
 }
+
+/*---------------EFFECTS LEFT MENU--------------*/
+.nav-link {
+  color: white; /* Màu mặc định */
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #16181e; /* Màu chữ khi hover */
+  background-color: #00B9AE; /* Màu nền khi hover */
+  border-radius: 5px; /* Thêm góc bo nếu cần */
+}
+
+.nav-link.active {
+  color: #16181e; /* Màu chữ khi active */
+  background-color: #00B9AE; /* Màu nền khi active */
+  border-radius: 5px;
+}
+
+
 /*-----------------------------------RIGHT MENU ------------------------------------------------------ */
 /* .right-menu {
     position: absolute;
