@@ -1,4 +1,4 @@
-<div class="row w-100">
+<div class="row whole">
   <!--Left menu-->
   <aside
     class="col-2 left-menu text-light"
@@ -37,17 +37,17 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link text-light">
+              <a [routerLink]="'/settings'" class="nav-link text-light">
                 <img [src]="playlists" alt="home-icon" /> Playlists
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link text-light">
+              <a [routerLink]="'/settings'" class="nav-link text-light">
                 <img [src]="watchlist" alt="home-icon" /> Watchlist
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link text-light">
+              <a [routerLink]="'/settings'" class="nav-link text-light">
                 <img [src]="continue" alt="home-icon" /> Continue
               </a>
             </li>
@@ -74,15 +74,14 @@
   </aside>
   <!-- Icon hiển thị khi menu thu nhỏ -->
   <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
-    <img
-      [src]="sideBarPath"
-      alt="Collapse Menu"
-      class="icon-out"
-    />
+    <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
   </div>
 
   <!--Main content-->
-  <div class=" col-6 container-fluid text-light" [class.full-width]="isCollapsed">
+  <div
+    class="col-6 container-fluid text-light"
+    [class.full-width]="isCollapsed"
+  >
     <!-- Carousel -->
     <div id="demo" class="carousel slide mx-auto" data-bs-ride="carousel">
       <!-- Custom Indicators -->
@@ -97,7 +96,7 @@
       </div>
 
       <!-- The slideshow/carousel -->
-      <div class="carousel-inner ">
+      <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="container filter w-100 h-100"></div>
           <img [src]="image1" alt="Los Angeles" class="d-block image-fix" />
@@ -156,23 +155,26 @@
     <!-- Movies -->
     <div class="container mt-5 ">
       <div class="title-bar">
-        <div class="my-auto me-2  " style="background-color: #00B9AE; width: 4px; height: 2em;"></div>
-        <div class="container-fluid d-flex justify-content-between label p-0 m-0 text-light">
+        <div
+          class="my-auto me-2"
+          style="background-color: #00b9ae; width: 4px; height: 2em"
+        ></div>
+        <div
+          class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
+        >
           <h4>Movies</h4>
           <p>See more >></p>
         </div>
-        
       </div>
       <hr />
       <div class="row">
-        
         <div class="col-md-4">
           <div class="thumbnail">
             <!-- <div class="rating">⭐ 7.8</div> -->
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -188,7 +190,7 @@
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -204,7 +206,7 @@
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -214,19 +216,22 @@
             </div>
           </div>
         </div>
-        
       </div>
     </div>
 
     <!-- TV series -->
     <div class="container mt-5 mb-5">
       <div class="title-bar">
-        <div class="my-auto me-2  " style="background-color: #00B9AE; width: 4px; height: 2em;"></div>
-        <div class="container-fluid d-flex justify-content-between label p-0 m-0 text-light">
+        <div
+          class="my-auto me-2"
+          style="background-color: #00b9ae; width: 4px; height: 2em"
+        ></div>
+        <div
+          class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
+        >
           <h4>TV Series</h4>
           <p>See more >></p>
         </div>
-        
       </div>
       <hr />
       <div class="row">
@@ -236,7 +241,7 @@
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -252,7 +257,7 @@
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -268,7 +273,7 @@
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -278,14 +283,12 @@
             </div>
           </div>
         </div>
-      
       </div>
     </div>
   </div>
 
   <!--Right menu-->
-  <div class="col-4 p-4 right-menu  bg-dark">
-    
+  <div class="col-4 p-4 right-menu bg-dark">
     <!-- Right Menu -->
     <!-- Genres Section -->
     <div class="part-genres">
@@ -298,7 +301,9 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a [routerLink]="'/genres'" class="text-decoration-none text-white fw-bold"
+          <a
+            [routerLink]="'/genres'"
+            class="text-decoration-none text-white fw-bold"
             >See More</a
           >
         </div>
@@ -407,7 +412,9 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a [routerLink]="'/newest'" class="text-decoration-none text-white fw-bold"
+          <a
+            [routerLink]="'/newest'"
+            class="text-decoration-none text-white fw-bold"
             >See More</a
           >
         </div>
@@ -530,7 +537,9 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a [routerLink]="'/settings'" class="text-decoration-none text-white fw-bold"
+          <a
+            [routerLink]="'/settings'"
+            class="text-decoration-none text-white fw-bold"
             >See More</a
           >
         </div>

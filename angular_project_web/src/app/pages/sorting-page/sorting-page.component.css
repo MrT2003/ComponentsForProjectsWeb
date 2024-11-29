@@ -1,12 +1,19 @@
 body {
-  background-color: #1a1a1a;
-  color: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 /* sorting */
+.select-container.with-menu {
+  margin: 0;
+}
+.select-container.without-menu {
+  margin: 0 5%;
+}
 .form-select {
   background-color: #21242d;
   border: 1px solid #00b9ae;
-  border-radius: 50px; 
+  border-radius: 50px;
   color: white;
 }
 .genres-select {
@@ -113,68 +120,87 @@ hr {
   width: 12%;
   aspect-ratio: 1/1;
 }
-
 .left-menu {
-    width: 14.5%; 
-    font-family: 'Lato', sans-serif;
+  width: 14.5%;
+  font-family: "Lato", sans-serif;
+  transition: width 0.3s ease;
 }
-  
-  /* SHOW ICON Styling */
-.left-menu img {
-    display: block;
-    max-width: 56%;
-    height: auto;    
-    max-height: 80px;
-    margin: 0 auto; 
-  }
-  
-  .menu-section {
-    padding: 10px 0px;
-  
-  }
-  .section-title {
-   
-    padding: 10px 20px;
-    font-size: 17.33px;
-    text-transform: capitalize;
-    color: #AEAFB2;
-    margin-bottom: 10px;
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis;
-  }
-  .nav{
-    
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-  }
-  
-  .nav-link {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    font-size: 17.33px;
-    transition: background-color 0.2s ease;
-    overflow: hidden; 
-    text-overflow: ellipsis;
-    white-space: nowrap; 
-   
-  }
+.left-menu.collapsed {
+  width: 0; /* Thu nhỏ menu */
+  overflow: hidden; /* Ẩn nội dung */
+}
 
-  .nav-link img{
-    max-width: 1em;
-    height: auto; 
-    padding: 0;
-    margin: 0 10px 0 0;
-  }
-  
-  .nav-link:hover {
-    background-color: #343a40; 
-    border-radius: 5px;
-  }
-  
- 
-  .nav-link.active {
-    color: #00cccc;
-  }
+.full-width {
+  width: 100%;
+}
+
+.left-menu.collapsed .section-title,
+.left-menu.collapsed .nav-link span {
+  display: none; /* Ẩn text khi menu bị thu nhỏ */
+}
+
+.left-menu.collapsed .nav-link img {
+  margin: 0 auto;
+}
+/* SHOW ICON Styling */
+.left-menu .icon {
+  margin: 5% 0 0 6%;
+  width: 30px;
+  height: auto;
+  cursor: pointer;
+}
+
+.toggle-icon .icon-out {
+  position: absolute;
+  top: 12%;
+  left: 1%;
+  cursor: pointer;
+  width: 30px;
+  z-index: 10;
+}
+
+.menu-section {
+  padding: 10px 0px;
+}
+.section-title {
+  padding: 10px 20px;
+  font-size: 17.33px;
+  text-transform: capitalize;
+  color: #aeafb2;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nav {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-link {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  font-size: 17.33px;
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-link img {
+  max-width: 1em;
+  height: auto;
+  padding: 0;
+  margin: 0 10px 0 0;
+}
+
+.nav-link:hover {
+  background-color: #343a40;
+  border-radius: 5px;
+}
+
+.nav-link.active {
+  color: #00cccc;
+}

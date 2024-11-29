@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="row">
   <!--Left menu-->
   <aside
     class="col-2 left-menu text-light"
@@ -37,17 +37,17 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link text-light">
+              <a href="" class="nav-link text-light">
                 <img [src]="playlists" alt="home-icon" /> Playlists
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link text-light">
+              <a href="" class="nav-link text-light">
                 <img [src]="watchlist" alt="home-icon" /> Watchlist
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link text-light">
+              <a href="" class="nav-link text-light">
                 <img [src]="continue" alt="home-icon" /> Continue
               </a>
             </li>
@@ -80,7 +80,7 @@
       class="icon-out"
     />
   </div>
-  <div class="col-10" [class.full-width]="isCollapsed">
+  <div class="col-10 container-fluid" [class.full-width]="isCollapsed">
     <div class="profile-header">
       <div class="profile-picture">
         <img [src]="avatarPath" alt="Profile Picture" />
