@@ -4,6 +4,7 @@
   width: 10%;
   height: auto;
 }
+
 .nav-link.active {
   color: #00cccc;
   font-weight: bold;
@@ -18,6 +19,10 @@
   width: 100%;
   height: 2px;
   background-color: #00cccc;
+}
+
+.nav-link{ 
+  color: #fff;
 }
 
 /* Căn đều các mục bên trong ul */

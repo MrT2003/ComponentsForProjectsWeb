@@ -113,6 +113,7 @@ color: #00B9AE;
     aspect-ratio: 1/1;
     border-radius: 50px;
     color: #828282;
+    cursor: pointer;
 }
 .play-button i{
     z-index: 1;

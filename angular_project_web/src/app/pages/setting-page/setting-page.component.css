@@ -41,6 +41,7 @@
   right: 20px;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 .log-out .btn-design {
   background-color: #16181e;
@@ -81,6 +82,7 @@
   position: relative;
   text-align: center;
   color: white;
+  cursor: pointer;
 }
 .thumbnail .rating {
   position: absolute;

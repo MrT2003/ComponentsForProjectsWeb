@@ -26,5 +26,13 @@ watchlist = 'assets/res-leftmenu/Watchlist.png';
 continue = 'assets/res-leftmenu/Continue.png';
 settings = 'assets/res-leftmenu/Settings.png';
 logout = 'assets/res-leftmenu/Log Out.png';
+sideBarPath = 'assets/res-leftmenu/sidebar.png';
+
+
+isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
+
+toggleMenu(): void {
+  this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
+}
 
 }

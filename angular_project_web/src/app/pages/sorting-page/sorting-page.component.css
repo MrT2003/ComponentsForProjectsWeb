@@ -50,6 +50,7 @@ body {
   position: relative;
   text-align: center;
   color: white;
+  cursor: pointer;
 }
 
 .thumbnail .rating {

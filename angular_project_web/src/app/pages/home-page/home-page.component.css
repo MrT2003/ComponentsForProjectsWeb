@@ -139,6 +139,7 @@
   position: relative;
   text-align: center;
   color: white;
+  cursor: pointer;
 }
 .thumbnail .rating {
   position: absolute;
@@ -197,6 +198,9 @@
 .title-bar h4,
 .title-bar p {
   margin-bottom: 0;
+}
+.title-bar p {
+  cursor: pointer;
 }
 
 hr {
