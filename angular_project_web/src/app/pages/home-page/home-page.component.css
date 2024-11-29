@@ -70,11 +70,14 @@
 }
 .filter{
   position: absolute;
-  width: 100%;
+  width: 150%;
+  height: 100%;
   aspect-ratio: 2/1;
   object-fit: cover;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);;
+  background-color: rgba(0, 0, 0, 0.5);
+  
+  
 }
 .name-film {
   position: absolute;
