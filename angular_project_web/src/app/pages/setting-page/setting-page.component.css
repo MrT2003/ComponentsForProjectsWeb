@@ -6,6 +6,7 @@
   position: relative;
   color: white;
 }
+
 .profile-picture {
   width: 235px;
   height: 235px;
@@ -194,6 +195,8 @@
 
 .full-width {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .left-menu.collapsed .section-title,
