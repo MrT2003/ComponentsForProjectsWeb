@@ -45,7 +45,7 @@
 }
 
 .buttons .btn-watch {
-  background-color: #00B9AE;
+  background-color: var(--blue-highlight);
 
 }
 .buttons .btn-detail{
@@ -98,7 +98,7 @@
   border-radius: 5px;
   font-size: 17px;
   font-weight: 700;
-  color: #f9f9f9;
+  color: var(--white-color);
   line-height: 17px;
 }
 .thumbnail img {
@@ -116,7 +116,7 @@
   font-family: 'Lato', sans-serif;
   font-size: 17px;
   font-weight: 700;
-  color: #f9f9f9b2;
+  color: var(--white-color)b2;
   line-height: 17px;
 }
 
@@ -124,7 +124,7 @@
   font-family: 'Lato', sans-serif;
   font-size: 17px;
   font-weight: 700;
-  color: #f9f9f9b2;
+  color: var(--white-color)b2;
   line-height: 17px;
 } */
 /*-----------------------------------LEFT MENU ------------------------------------------------------ */
@@ -228,13 +228,13 @@
 }
 
 .nav-link:hover {
-  color: #16181e; /* Màu chữ khi hover */
-  background-color: #00B9AE; /* Màu nền khi hover */
+  color: var(--dark-background); /* Màu chữ khi hover */
+  background-color: var(--blue-highlight); /* Màu nền khi hover */
   border-radius: 5px; /* Thêm góc bo nếu cần */
 }
 
 .nav-link.active {
-  color: #16181e; /* Màu chữ khi active */
-  background-color: #00B9AE; /* Màu nền khi active */
+  color: var(--dark-background); /* Màu chữ khi active */
+  background-color: var(--blue-highlight); /* Màu nền khi active */
   border-radius: 5px;
 }

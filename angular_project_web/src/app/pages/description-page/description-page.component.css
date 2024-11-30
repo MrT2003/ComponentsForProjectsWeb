@@ -57,7 +57,7 @@
 }
 
 .details .genres .badge {
-  background-color: #00B9AE;
+  background-color: var(--blue-highlight);
   border-radius: 20px;
   margin-right: 20px;
   padding: 9px 14px;
@@ -91,14 +91,14 @@
 }
 
 .details .actions .btn-watch {
-  background-color: #00B9AE;
+  background-color: var(--blue-highlight);
 
 }
 
 
 .details .actions .icon-favor {
   font-size: 46px;
-  color: #00B9AE;
+  color: var(--blue-highlight);
 
 }
 
@@ -121,6 +121,7 @@
   margin-bottom: 0;
   cursor: pointer;
 }
+
 hr {
   margin-top: 0;
 }
@@ -142,7 +143,7 @@ hr {
 
   font-size: 17px;
   font-weight: 700;
-  color: #F9F9F9;
+  color: var(--white-color);
   line-height: 17px;
 }
 
@@ -177,20 +178,20 @@ hr {
 .details-left p {
   font-size: 17px;
   font-weight: 700;
-  color: #F9F9F9B2;
+  color: var(--white-color)B2;
   line-height: 17px;
 }
 
 .details-right {
   text-align: right;
   margin-top: 30px;
-  columns: #F9F9F9B2;
+  columns: var(--white-color)B2;
 }
 
 .details-right p {
   font-size: 17px;
   font-weight: 700;
-  color: #F9F9F9B2;
+  color: var(--white-color)B2;
   line-height: 17px;
 }
 
@@ -218,9 +219,10 @@ hr {
 }
 
 /*-----------------------------------LEFT MENU ------------------------------------------------------ */
-.left-menu{
+.left-menu {
   background-color: rgba(22, 24, 30, 0.7);
 }
+
 .arrow-down {
   width: 12%;
   aspect-ratio: 1/1;
@@ -321,21 +323,24 @@ hr {
 
 .nav-link.active {
   color: #00cccc;
+
 }
+
 /*---------------EFFECTS LEFT MENU--------------*/
 .nav-link {
-  color: white; /* Màu mặc định */
+  color: white;
+  /* Màu mặc định */
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #16181e; /* Màu chữ khi hover */
-  background-color: #00B9AE; /* Màu nền khi hover */
-  border-radius: 5px; /* Thêm góc bo nếu cần */
+  color: var(--dark-background);
+  background-color: var(--blue-highlight);
+  border-radius: 5px;
 }
 
 .nav-link.active {
-  color: #16181e; /* Màu chữ khi active */
-  background-color: #00B9AE; /* Màu nền khi active */
+  color: var(--dark-background);
+  background-color: var(--blue-highlight);
   border-radius: 5px;
 }

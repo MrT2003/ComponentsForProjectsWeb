@@ -8,8 +8,8 @@
 }
 
 .form-select {
-  background-color: #21242d;
-  border: 1px solid #00b9ae;
+  background-color: var(--light-dark-background);
+  border: 1px solid var(--blue-highlight);
   border-radius: 50px;
   color: white;
 }
@@ -31,12 +31,12 @@
 }
 
 .sorting-btn {
-  color: #16181E;
+  color: var(--dark-background);
   font-weight: 700;
-  background-color: #00b9ae;
+  background-color: var(--blue-highlight);
   border-radius: 36px;
   width: 10%;
-  border: 1px solid #00b9ae;
+  border: 1px solid var(--blue-highlight);
 }
 
 /* SORTING */
@@ -57,7 +57,7 @@
 
   font-size: 17px;
   font-weight: 700;
-  color: #f9f9f9;
+  color: var(--white-color);
   line-height: 17px;
 }
 
@@ -86,20 +86,20 @@
 .details-left p {
   font-size: 17px;
   font-weight: 700;
-  color: #f9f9f9b2;
+  color: var(--white-color)b2;
   line-height: 17px;
 }
 
 .details-right {
   text-align: right;
   margin-top: 30px;
-  columns: #f9f9f9b2;
+  columns: var(--white-color)b2;
 }
 
 .details-right p {
   font-size: 17px;
   font-weight: 700;
-  color: #f9f9f9b2;
+  color: var(--white-color)b2;
   line-height: 17px;
 }
 
@@ -155,7 +155,7 @@ hr {
 }
 .pagination-dark .page-item.active .page-link {
   cursor: pointer;
-  background-color: #00B9AE;
+  background-color: var(--blue-highlight);
 }
 .pagination-dark .page-item:not(.disabled) .page-link {
   cursor: pointer;
@@ -266,13 +266,13 @@ hr {
 }
 
 .nav-link:hover {
-  color: #16181e; /* Màu chữ khi hover */
-  background-color: #00B9AE; /* Màu nền khi hover */
+  color: var(--dark-background); /* Màu chữ khi hover */
+  background-color: var(--blue-highlight); /* Màu nền khi hover */
   border-radius: 5px; /* Thêm góc bo nếu cần */
 }
 
 .nav-link.active {
-  color: #16181e; /* Màu chữ khi active */
-  background-color: #00B9AE; /* Màu nền khi active */
+  color: var(--dark-background); /* Màu chữ khi active */
+  background-color: var(--blue-highlight); /* Màu nền khi active */
   border-radius: 5px;
 }

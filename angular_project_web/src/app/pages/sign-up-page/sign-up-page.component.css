@@ -152,7 +152,7 @@ body {
     margin: 5px;
     border-radius: 50%;
     color: #fff;
-    background-color: #00B9AE;
+    background-color: var(--blue-highlight);
 }
 
 .social-buttons img {
@@ -164,12 +164,12 @@ body {
 }
 
 .social-buttons .google {
-    background-color: #00B9AE;
+    background-color: var(--blue-highlight);
 }
 
 .social-buttons .facebook {
 
-    background-color: #00B9AE;
+    background-color: var(--blue-highlight);
 }
 .sign-in {
     font-family: 'Lato', sans-serif;

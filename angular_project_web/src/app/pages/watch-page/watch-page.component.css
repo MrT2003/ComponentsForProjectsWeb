@@ -48,7 +48,7 @@ body {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: #00B9AE;
+    background-color: var(--blue-highlight);
     border: none;
     color: #fff;
     font-weight: 700;
@@ -58,7 +58,7 @@ body {
   }
 
   .btn-comment:hover {
-    background-color: #00B9AE;
+    background-color: var(--blue-highlight);
   }
 
   .part-comment ul li{
@@ -66,7 +66,7 @@ body {
   }
 
   .cmt-time{
-color: #00B9AE;
+color: var(--blue-highlight);
   }
 
 .pagination-dark .page-item{
@@ -90,7 +90,7 @@ color: #00B9AE;
   }
   .pagination-dark .page-item.active .page-link {
     cursor: pointer;
-    background-color: #00B9AE;
+    background-color: var(--blue-highlight);
   }
   .pagination-dark .page-item:not(.disabled) .page-link {
     cursor: pointer;
@@ -105,25 +105,25 @@ color: #00B9AE;
 
 .watching-frame {
     height: 500px;
-   background-color: #21242D;
+   background-color: var(--light-dark-background);
 }
 
 .play-button {
     width: 50px;
     aspect-ratio: 1/1;
     border-radius: 50px;
-    color: #828282;
+    color: var(--grey);
     cursor: pointer;
 }
 .play-button i{
     z-index: 1;
-    color: #f9f9f9;
+    color: var(--white-color);
 }
 .rating .btn{
     color: #808080;
 }
 .rating .active{
-    color: #F0E264;
+    color: var(--star);
 }
 .episode ul {
     display: flex;           
@@ -143,11 +143,11 @@ color: #00B9AE;
     justify-content: center;
     align-items: center;
     position: relative;
-    border: 1px solid #00B9AE;
+    border: 1px solid var(--blue-highlight);
 
 }
 .episode .active{
-    background-color: #00B9AE;
+    background-color: var(--blue-highlight);
 }
 
 
@@ -217,7 +217,7 @@ color: #00B9AE;
   
   .card {
     width: 50%;
-    background-color: #16181e;
+    background-color: var(--dark-background);
     border-radius: 10px;
     border: 1px solid rgba(249, 249, 249, 0.1);
   }
