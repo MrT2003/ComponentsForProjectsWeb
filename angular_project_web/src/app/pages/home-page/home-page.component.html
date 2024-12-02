@@ -2,7 +2,12 @@
   <!--Left menu-->
   <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
     <div *ngIf="!isCollapsed" class="d-flex flex-column h-100">
-      <img [src]="sideBarPath" alt="Collapse Menu" class="icon" (click)="toggleMenu()" />
+      <img
+        [src]="sideBarPath"
+        alt="Collapse Menu"
+        class="icon"
+        (click)="toggleMenu()"
+      />
       <!-- Menu Items -->
       <nav class="flex-grow-1">
         <div class="menu-section">
@@ -97,12 +102,19 @@
   </div>
 
   <!--Main content-->
-  <div class="col-6 container-fluid text-light" [class.full-width]="isCollapsed">
+  <div
+    class="col-6 container-fluid text-light"
+    [class.full-width]="isCollapsed"
+  >
     <!-- Carousel -->
     <div id="demo" class="carousel slide mx-auto" data-bs-ride="carousel">
       <!-- Custom Indicators -->
       <div class="custom-indicators">
-        <span class="dot active" data-bs-target="#demo" data-bs-slide-to="0"></span>
+        <span
+          class="dot active"
+          data-bs-target="#demo"
+          data-bs-slide-to="0"
+        ></span>
         <span class="dot" data-bs-target="#demo" data-bs-slide-to="1"></span>
         <span class="dot" data-bs-target="#demo" data-bs-slide-to="2"></span>
       </div>
@@ -143,12 +155,22 @@
         </div>
 
         <!-- Left and right controls/icons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide="prev"
+        >
           <div class="left-btn">
             <span class="carousel-control-prev-icon"></span>
           </div>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide="next"
+        >
           <div class="right-btn">
             <span class="carousel-control-next-icon"></span>
           </div>
@@ -159,124 +181,72 @@
     <!-- Movies -->
     <div class="container mt-5">
       <div class="title-bar">
-        <div class="my-auto me-2" style="background-color: #00b9ae; width: 4px; height: 2em"></div>
-        <div class="container-fluid d-flex justify-content-between label p-0 m-0 text-light">
+        <div
+          class="my-auto me-2"
+          style="background-color: #00b9ae; width: 4px; height: 2em"
+        ></div>
+        <div
+          class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
+        >
           <h4>Movies</h4>
           <p>See more >></p>
         </div>
       </div>
       <hr />
       <div class="row">
+        @for (item of movieList().slice(0, 3); track $index) {
         <div class="col-md-4">
           <div [routerLink]="'/description'" class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
             <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
+            <img [src]="item.thumb_url" alt="Loki" />
             <div class="details d-block">
               <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
+                <h5>{{ item.name }}</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
+                <p>{{ item.created | date : "yyyy" }}</p>
                 <p>Complete</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        }
       </div>
     </div>
 
     <!-- TV series -->
     <div class="container mt-5 mb-5">
       <div class="title-bar">
-        <div class="my-auto me-2" style="background-color: #00b9ae; width: 4px; height: 2em"></div>
-        <div class="container-fluid d-flex justify-content-between label p-0 m-0 text-light">
+        <div
+          class="my-auto me-2"
+          style="background-color: #00b9ae; width: 4px; height: 2em"
+        ></div>
+        <div
+          class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
+        >
           <h4>TV Series</h4>
           <p>See more >></p>
         </div>
       </div>
       <hr />
       <div class="row">
+        @for (item of tvList().slice(0, 3); track $index) {
         <div class="col-md-4">
-          <div class="thumbnail " [routerLink]="'/description'" >
-            <!-- <div class="rating">⭐ 7.8</div> -->
+          <div class="thumbnail" [routerLink]="'/description'">
             <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
+            <img [src]="item.thumb_url" alt="Loki" />
             <div class="details d-block">
               <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
+                <h5>{{ item.name }}</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
+                <p>{{ item.created | date : "yyyy" }}</p>
                 <p>Complete</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        }
       </div>
     </div>
   </div>
@@ -295,7 +265,11 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a [routerLink]="'/genres'" class="text-decoration-none text-white fw-bold">See More</a>
+          <a
+            [routerLink]="'/genres'"
+            class="text-decoration-none text-white fw-bold"
+            >See More</a
+          >
         </div>
       </div>
       <!-- Genres Grid -->
@@ -304,7 +278,9 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div
+              class="card-img-overlay d-flex justify-content-center align-items-center"
+            >
               <h5 class="card-title fw-bold">Drama</h5>
             </div>
           </div>
@@ -313,7 +289,9 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div
+              class="card-img-overlay d-flex justify-content-center align-items-center"
+            >
               <h5 class="card-title fw-bold">Thriller</h5>
             </div>
           </div>
@@ -322,7 +300,9 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div
+              class="card-img-overlay d-flex justify-content-center align-items-center"
+            >
               <h5 class="card-title fw-bold">Sitcom</h5>
             </div>
           </div>
@@ -331,7 +311,9 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div
+              class="card-img-overlay d-flex justify-content-center align-items-center"
+            >
               <h5 class="card-title fw-bold">Superhero</h5>
             </div>
           </div>
@@ -340,7 +322,9 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div
+              class="card-img-overlay d-flex justify-content-center align-items-center"
+            >
               <h5 class="card-title fw-bold">Sitcom</h5>
             </div>
           </div>
@@ -349,7 +333,9 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div
+              class="card-img-overlay d-flex justify-content-center align-items-center"
+            >
               <h5 class="card-title fw-bold">Superhero</h5>
             </div>
           </div>
@@ -358,7 +344,9 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div
+              class="card-img-overlay d-flex justify-content-center align-items-center"
+            >
               <h5 class="card-title fw-bold">Sitcom</h5>
             </div>
           </div>
@@ -367,7 +355,9 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div
+              class="card-img-overlay d-flex justify-content-center align-items-center"
+            >
               <h5 class="card-title fw-bold">Superhero</h5>
             </div>
           </div>
@@ -386,7 +376,11 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a [routerLink]="'/newest'" class="text-decoration-none text-white fw-bold">See More</a>
+          <a
+            [routerLink]="'/newest'"
+            class="text-decoration-none text-white fw-bold"
+            >See More</a
+          >
         </div>
       </div>
 
@@ -516,7 +510,11 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a [routerLink]="'/settings'" class="text-decoration-none text-white fw-bold">See More</a>
+          <a
+            [routerLink]="'/settings'"
+            class="text-decoration-none text-white fw-bold"
+            >See More</a
+          >
         </div>
       </div>
 
@@ -530,15 +528,24 @@
                 <h6 class="card-title d-block mb-1">WandaVision</h6>
                 <p class="card-text small mb-2">1 Episode left</p>
                 <div class="progress">
-                  <div class="progress-bar" style="width: 50%" role="progressbar"></div>
+                  <div
+                    class="progress-bar"
+                    style="width: 50%"
+                    role="progressbar"
+                  ></div>
                 </div>
               </div>
             </div>
-            <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center">
+            <div
+              class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"
+            >
               <button class="btn btn-outline-light col-3">
                 <span>+</span>
               </button>
-              <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8">
+              <button
+                [routerLink]="'/watch'"
+                class="btn btn-primary btn-sm col-8"
+              >
                 <span>Watch</span>
               </button>
             </div>
@@ -553,15 +560,24 @@
                 <h6 class="card-title d-block mb-1">WandaVision</h6>
                 <p class="card-text small mb-2">1 Episode left</p>
                 <div class="progress">
-                  <div class="progress-bar" style="width: 50%" role="progressbar"></div>
+                  <div
+                    class="progress-bar"
+                    style="width: 50%"
+                    role="progressbar"
+                  ></div>
                 </div>
               </div>
             </div>
-            <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center">
+            <div
+              class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"
+            >
               <button class="btn btn-outline-light col-3">
                 <span>+</span>
               </button>
-              <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8">
+              <button
+                [routerLink]="'/watch'"
+                class="btn btn-primary btn-sm col-8"
+              >
                 <span>Watch</span>
               </button>
             </div>
@@ -576,15 +592,24 @@
                 <h6 class="card-title d-block mb-1">WandaVision</h6>
                 <p class="card-text small mb-2">1 Episode left</p>
                 <div class="progress">
-                  <div class="progress-bar" style="width: 50%" role="progressbar"></div>
+                  <div
+                    class="progress-bar"
+                    style="width: 50%"
+                    role="progressbar"
+                  ></div>
                 </div>
               </div>
             </div>
-            <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center">
+            <div
+              class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"
+            >
               <button class="btn btn-outline-light col-3">
                 <span>+</span>
               </button>
-              <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8">
+              <button
+                [routerLink]="'/watch'"
+                class="btn btn-primary btn-sm col-8"
+              >
                 <span>Watch</span>
               </button>
             </div>
@@ -599,15 +624,24 @@
                 <h6 class="card-title d-block mb-1">WandaVision</h6>
                 <p class="card-text small mb-2">1 Episode left</p>
                 <div class="progress">
-                  <div class="progress-bar" style="width: 50%" role="progressbar"></div>
+                  <div
+                    class="progress-bar"
+                    style="width: 50%"
+                    role="progressbar"
+                  ></div>
                 </div>
               </div>
             </div>
-            <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center">
+            <div
+              class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"
+            >
               <button class="btn btn-outline-light col-3">
                 <span>+</span>
               </button>
-              <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8">
+              <button
+                [routerLink]="'/watch'"
+                class="btn btn-primary btn-sm col-8"
+              >
                 <span>Watch</span>
               </button>
             </div>

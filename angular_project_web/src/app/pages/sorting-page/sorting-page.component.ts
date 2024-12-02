@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { APIMoviesModel } from '../../model/Movies';
+import { MasterService } from '../../service/master.service';
+import { GenreList } from '../../model/Categories';
 @Component({
   selector: 'app-sorting-page',
   standalone: true,
@@ -8,7 +11,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './sorting-page.component.html',
   styleUrl: './sorting-page.component.css',
 })
-export class SortingPageComponent {
+export class SortingPageComponent implements OnInit {
   lokiPath = 'assets/images/loki.jpg';
   // icon left menu
   show = 'assets/res-leftmenu/Arrow down-circle.png';
@@ -22,6 +25,19 @@ export class SortingPageComponent {
   logout = 'assets/res-leftmenu/Log Out.png';
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
+
+  masterService = inject(MasterService);
+  genreList = signal<GenreList[]>([]);
+
+  ngOnInit(): void {
+    this.loadGenres();
+  }
+  loadGenres() {
+    this.masterService.getAllGenres().subscribe((res: GenreList[]) => {
+      this.genreList.set(res);
+    });
+  }
+
   toggleMenu(): void {
     this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
   }
