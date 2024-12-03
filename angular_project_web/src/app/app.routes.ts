@@ -10,6 +10,7 @@ import { NewestFilmPageComponent } from './pages/newest-film-page/newest-film-pa
 import { GenresPageComponent } from './pages/genres-page/genres-page.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
   {
@@ -23,7 +24,8 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: MainLayoutComponent, // Layout chính
+    component: MainLayoutComponent,
+    canActivate: [authGuard],
     children: [
       { path: 'home', component: HomePageComponent },
       { path: 'description', component: DescriptionPageComponent },
@@ -34,5 +36,4 @@ export const routes: Routes = [
       { path: 'genres', component: GenresPageComponent },
     ],
   },
-
 ];

@@ -5,3 +5,6 @@ export interface GenreList {
   image: string;
   __v: number;
 }
+
+
+

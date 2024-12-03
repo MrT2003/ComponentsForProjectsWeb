@@ -22,6 +22,8 @@
           type="email"
           class="form-control"
           placeholder="Enter your Email"
+          name="EmailId"
+          [(ngModel)]="emailId"
         />
         <label for="password">Password</label>
         <div class="input-container">
@@ -30,6 +32,8 @@
             type="password"
             class="form-control"
             placeholder="Enter your Password"
+            name="Password"
+            [(ngModel)]="password"
           />
           <span class="toggle-password">
             <i class="fa-solid fa-eye-slash"></i>
