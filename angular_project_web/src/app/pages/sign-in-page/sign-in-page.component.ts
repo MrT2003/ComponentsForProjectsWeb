@@ -32,6 +32,7 @@ export class SignInPageComponent {
       },
       (error) => {
         console.error('Login failed:', error);
+        alert("Please check email and password again")
       }
     );
   }
