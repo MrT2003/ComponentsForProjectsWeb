@@ -16,7 +16,7 @@ export class SignInPageComponent {
   googlePath = 'assets/images/mdi_google.png';
   facebookPath = 'assets/images/Vector.png';
 
-  emailId = '';
+  email = '';
   password = '';
 
   // constructor(private router: Router) {}
@@ -25,7 +25,7 @@ export class SignInPageComponent {
   authService = inject(AuthService);
 
   onSignIn(): void {
-    this.authService.login(this.emailId, this.password).subscribe(
+    this.authService.login(this.email, this.password).subscribe(
       (response) => {
         this.authService.saveToken(response.token);
         this.router.navigate(['/home']); // Chuyển hướng sau khi đăng nhập thành công

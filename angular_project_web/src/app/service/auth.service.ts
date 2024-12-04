@@ -11,16 +11,18 @@ export class AuthService {
   constructor() {}
   http = inject(HttpClient);
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { username, password });
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, { email, password });
   }
 
-  // Lưu token vào localStorage
+  register(userData: { fullName: string; email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/`, userData);
+  }
+
   saveToken(token: string): void {
     localStorage.setItem('token', token);
   }
 
-  // Lấy token
   getToken(): string | null {
     return localStorage.getItem('token');
   }
@@ -30,7 +32,6 @@ export class AuthService {
     return !!token;
   }
 
-  // Xóa token khi logout
   logout(): void {
     localStorage.removeItem('token');
   }
