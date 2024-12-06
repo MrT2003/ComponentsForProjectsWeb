@@ -11,6 +11,7 @@ import { GenresPageComponent } from './pages/genres-page/genres-page.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { authGuard } from './guard/auth.guard';
+import { MoviePageComponent } from './pages/movie-page/movie-page.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,7 @@ export const routes: Routes = [
       { path: 'sorting', component: SortingPageComponent },
       { path: 'newest', component: NewestFilmPageComponent },
       { path: 'genres', component: GenresPageComponent },
+      { path: 'movie', component: MoviePageComponent },
     ],
   },
 ];

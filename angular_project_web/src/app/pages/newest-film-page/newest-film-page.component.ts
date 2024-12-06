@@ -35,7 +35,7 @@ export class NewestFilmPageComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadAllMovies()
-    this.loadNewestMovies()
+    // this.loadNewestMovies()
   }
 
   masterService = inject(MasterService)

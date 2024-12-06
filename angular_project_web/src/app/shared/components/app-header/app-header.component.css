@@ -1,3 +1,7 @@
+.navbar{
+  z-index: 1;
+
+}
 .navbar .logo {
   width: 10%;
   height: auto;
@@ -26,7 +30,8 @@
 .navbar-nav {
   display: flex;
   gap: 20px; 
-  margin-bottom: 0;
+
+  margin-bottom: 0; 
 }
 
 .search-bar {

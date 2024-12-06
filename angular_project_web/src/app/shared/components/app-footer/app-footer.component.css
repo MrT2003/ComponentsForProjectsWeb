@@ -5,6 +5,8 @@
   padding: 50px 0;
   padding: 0 8vw;
   width: 100vw;
+  z-index: 1;
+
 }
 .footer a {
   color: var(--blue-highlight);
@@ -22,6 +24,7 @@
   width: 25%;
   object-fit: cover;
   margin: 0 0 50px 10%;
+
 }
 .footer p {
   font-family: "Lato", sans-serif;

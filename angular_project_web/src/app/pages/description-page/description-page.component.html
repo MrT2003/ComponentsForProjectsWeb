@@ -1,9 +1,4 @@
-<div class="descript d-flex text-light">
-  <div class="container-fluid filter"></div>
-
-  <div class="background p-0 m-0 bg-danger">
-    <img [src]="description.poster_url" alt="background" />
-  </div>
+<div class="container-fluid p-0 descript d-flex text-light " [ngStyle]="{'background-image': 'url(' + description.thumb_url + ')'}">
   <!--Left menu-->
   <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
     <div *ngIf="!isCollapsed" class="d-flex flex-column h-100">
@@ -105,7 +100,7 @@
   <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
     <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
   </div>
-  <div class="col-10 p-4" [class.full-width]="isCollapsed">
+  <div class="col-10 p-4 main-content " [class.full-width]="isCollapsed">
     <div
       class="container m-0 mt-5 d-flex p-0 align-items-center"
     >
@@ -113,7 +108,7 @@
         <img [src]="description.thumb_url" alt="poster" class="img-fluid" />
       </div>
 
-      <div class="details col-8">
+      <div class="details col-8 ">
         <h1>{{ description.name }}</h1>
         <p>{{ description.description }}</p>
         <div class="d-flex align-items-center evaluation">
@@ -160,7 +155,7 @@
       <div class="row mb-5">
         @for (item of newestList().slice(0,6); track $index){
           <div class="col-md-2">
-            <div [routerLink]="'/description'" class="thumbnail " >
+            <div [routerLink]="'/description'" class="thumbnail " (click)="goToDescription(item)">
               <!-- <div class="rating">⭐ 7.8</div> -->
               <div class="rating">{{item.quality}} {{item.language}}</div>
               <img [src]="item.thumb_url" alt="image thumbnails" [attr.data-poster-url]="item.poster_url"/>
