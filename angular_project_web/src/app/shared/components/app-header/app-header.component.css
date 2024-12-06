@@ -1,5 +1,3 @@
-/* Nav */
-
 .navbar .logo {
   width: 10%;
   height: auto;
@@ -25,43 +23,65 @@
   color: #fff;
 }
 
-/* Căn đều các mục bên trong ul */
 .navbar-nav {
-  display: flex; /* Sử dụng Flexbox */
-  gap: 20px; /* Khoảng cách giữa các mục menu */
-  margin-bottom: 0; /* Loại bỏ khoảng cách mặc định */
-}
-
-/* Điều chỉnh form (search-bar) */
-.search-bar {
-  flex-shrink: 1; /* Giữ kích thước của form không bị thu nhỏ */
-  margin-left: auto; /* Đẩy form về phía bên phải */
+  display: flex;
+  gap: 20px; 
+  margin-bottom: 0; /
 }
 
 .search-bar {
-  /* background-color: #AEAFB2; */
+  flex-shrink: 1;
+  margin-left: auto; 
+}
+
+.search-bar {
   border: 1px solid #aeafb2;
   border-radius: 10px;
   overflow: hidden;
 }
 
-/* .search-bar .input-group-text {
-        background-color: #AEAFB2;
-      } */
-
-/* Thay đổi màu cho placeholder */
 .search-bar input::placeholder {
   color: #aeafb2;
-  opacity: 1; /* Bỏ mờ mặc định của placeholder */
+  opacity: 1; 
 }
-/* Loại bỏ viền outline mặc định khi focus */
+
 .search-bar input:focus {
-  outline: none; /* Loại bỏ viền focus mặc định */
-  border-color: none; /*Thay bằng màu viền tùy chỉnh */
-  box-shadow: none; /*Tùy chọn: hiệu ứng đổ bóng */
+  outline: none; 
+  border-color: none; 
+  box-shadow: none; 
 }
 
 .account img {
   width: 12%;
   border-radius: 12px;
 }
+/* Search result */
+
+.search-results {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-top: 10px;
+}
+
+.search-results ul {
+  list-style: none;
+  padding: 0;
+}
+
+.search-results li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.search-results img {
+  margin-right: 10px;
+  border-radius: 5px;
+}
+

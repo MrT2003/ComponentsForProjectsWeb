@@ -25,12 +25,24 @@
           type="text"
           class="form-control bg-dark text-light border-0"
           placeholder="Search"
+          name="searchText"
+          (input)="onSearch()"
+          [(ngModel)]="searchText"
         />
         <span class="input-group-text bg-dark text-light border-0">
           <img [src]="filter" alt="Filter" width="16" height="16" />
         </span>
       </div>
     </form>
+  </div>
+
+  <div class="search-results" *ngIf="filteredMovies.length > 0">
+    <ul class="list-group">
+      <li *ngFor="let movie of filteredMovies()" class="list-group-item">
+        <img [src]="movie.poster_url" alt="Movie Poster" width="50" height="50" />
+        <span>{{ movie.name }}</span>
+      </li>
+    </ul>
   </div>
 
   <div class="col-3 d-flex p-0 m-0 justify-content-end">
