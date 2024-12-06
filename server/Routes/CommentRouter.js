@@ -5,7 +5,7 @@ import { protect, admin } from '../middlewares/Auth.js';
 const router = express.Router();
 
 // Create a new comment
-router.post("/", protect, createComment);
+router.post("/", protect, createComment); 
 
 // Get comments for a specific movie
 router.get("/:movieId", protect, getComments);

@@ -1,6 +1,5 @@
 .container-fluid {
-  background-image: url("/assets/images/loki-bg.jpg");
-  height: 1000px;
+  height: 100vh;
   width: 100vw;
   background-size: cover;
   background-position: center;
@@ -27,6 +26,14 @@
   font-weight: 400;
   color: white;
   /* line-height: 20px; */
+
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  -webkit-line-clamp: 3; 
+  line-height: 1.5; 
+  max-height: calc(1.5em * 3); 
 }
 .upper-part .buttons {
   margin-top: 2%;

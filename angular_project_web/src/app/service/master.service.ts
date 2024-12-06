@@ -18,6 +18,9 @@ export class MasterService {
   getAllMovies():Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(this.apiMovies + "movies")
   }
+  getNewestMovies():Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(this.apiMovies + "newest")
+  }
   getAllTvSeries():Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(this.apiMovies + "tv-series")
   }
