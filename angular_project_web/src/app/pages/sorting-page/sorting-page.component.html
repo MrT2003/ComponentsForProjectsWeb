@@ -105,21 +105,37 @@
       class="d-flex align-items-center mt-4 mb-3 pt-4 select-container"
       [ngClass]="{ 'with-menu': !isCollapsed, 'without-menu': isCollapsed }"
     >
-      <select class="form-select genres-select" aria-label="Genres">
-        <option selected>Genres</option>
+      <select
+        class="form-select genres-select"
+        aria-label="Genres"
+        [(ngModel)]="selectedGenre"
+      >
+        <option value="" disabled selected>Genres</option>
         <option *ngFor="let genre of genreList()" [value]="genre.slug">
           {{ genre.name }}
         </option>
       </select>
-      <select class="form-select year-select" aria-label="Year">
-        <option selected>Year</option>
-        <!-- Add more options here -->
+      <select
+        class="form-select year-select"
+        aria-label="Year"
+        [(ngModel)]="selectedYear"
+      >
+        <option value="" disabled selected>Year</option>
+        <option *ngFor="let year of yearList()" [value]="year._id">
+          {{ year.year }}
+        </option>
       </select>
-      <select class="form-select country-select" aria-label="Country">
-        <option selected>Country</option>
-        <!-- Add more options here -->
+      <select
+        class="form-select country-select"
+        aria-label="Country"
+        [(ngModel)]="selectedCountry"
+      >
+        <option value="" disabled selected>Country</option>
+        <option *ngFor="let country of countryList()" [value]="country.slug">
+          {{ country.name }}
+        </option>
       </select>
-      <button class="btn sorting-btn">Sorting</button>
+      <button class="btn sorting-btn" (click)="filterMovies()">Sorting</button>
     </div>
     <div class="container-fluid mt-5">
       <div class="title-bar">
@@ -131,242 +147,30 @@
           class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
         >
           <h4>SORTING</h4>
-          <!-- <p>See more >></p> -->
         </div>
       </div>
 
       <hr />
       <div class="row my-5">
+        @for (item of filteredMovies(); track $index) {
         <div class="col-md-3">
           <div class="thumbnail">
             <!-- <div class="rating">⭐ 7.8</div> -->
             <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
+            <img [src]="item.thumb_url" [alt]="item.name" />
             <div class="details d-block">
               <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
+                <h5>{{ item.name }}</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
+                <p>{{ item.time }}</p>
+                <p>{{ item.current_episode }}</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div [routerLink]="'/description'" class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="d-flex col-12 justify-content-center align-items-center my-0 mb-5"
-      >
-        <ul class="pagination pagination-dark d-flex gap-2 py-0 mt-2 mb-0">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">
-                <i class="fa-solid fa-arrow-left me-2"></i>
-                Previous</span
-              >
-            </a>
-          </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">...</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">67</a></li>
-          <li class="page-item"><a class="page-link" href="#">68</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true"
-                >Next
-                <i class="fa-solid fa-arrow-right ms-2"></i>
-              </span>
-            </a>
-          </li>
-        </ul>
+        }
       </div>
     </div>
   </div>
 </div>
-
-<!-- 
-  <div class="container-fluid">
-    
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->

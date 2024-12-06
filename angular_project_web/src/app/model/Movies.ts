@@ -54,12 +54,3 @@ export interface TvList {
   casts: string;
 }
 
-// export class Customer {
-//   custId: number;
-//   name: String;
-//   MobileNo: 
-//   constructor() {
-
-//   }
-// }
-

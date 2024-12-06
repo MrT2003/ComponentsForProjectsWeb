@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { APIMoviesModel } from '../../model/Movies';
+import { APIMoviesModel, MovieList } from '../../model/Movies';
 import { MasterService } from '../../service/master.service';
-import { GenreList } from '../../model/Categories';
+import { CountryList, GenreList, YearList } from '../../model/Categories';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-sorting-page',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, FormsModule],
   templateUrl: './sorting-page.component.html',
   styleUrl: './sorting-page.component.css',
 })
@@ -28,9 +29,18 @@ export class SortingPageComponent implements OnInit {
 
   masterService = inject(MasterService);
   genreList = signal<GenreList[]>([]);
+  yearList = signal<YearList[]>([]);
+  countryList = signal<CountryList[]>([]);
+  filteredMovies = signal<MovieList[]>([]);
+
+  selectedGenre: string = '';
+  selectedYear: string = '';
+  selectedCountry: string = '';
 
   ngOnInit(): void {
     this.loadGenres();
+    this.loadYears();
+    this.loadCountries();
   }
   loadGenres() {
     this.masterService.getAllGenres().subscribe((res: GenreList[]) => {
@@ -38,7 +48,29 @@ export class SortingPageComponent implements OnInit {
     });
   }
 
+  loadYears() {
+    this.masterService.getAllYears().subscribe((res: YearList[]) => {
+      this.yearList.set(res);
+    });
+  }
+
+  loadCountries() {
+    this.masterService.getAllCoutries().subscribe((res: CountryList[]) => {
+      this.countryList.set(res);
+    });
+  }
+
   toggleMenu(): void {
     this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
+  }
+
+  filterMovies() {
+    const genre = this.selectedGenre;
+    const year = this.selectedYear;
+    const country = this.selectedCountry;
+
+    this.masterService.getMoviesByFilters(genre, year, country).subscribe((res) => {
+      this.filteredMovies.set(res.items);
+    });
   }
 }
