@@ -24,6 +24,7 @@ export class MasterService {
   getAllTvSeries():Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(this.apiMovies + "tv-series")
   }
+
   getMoviesByYears(year: string): Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(`${this.apiMovies}year/${year}`)
   }

@@ -151,205 +151,220 @@ color: var(--blue-highlight);
 }
 
 
-/*------------------ right-menu---------------------------------------- */
+/*-----------------------------------RIGHT MENU ------------------------------------------------------ */
 .right-menu{
-    margin-top: -20px;
-    
+  background-color: var(--light-dark-background);
+}
+.card img {
+  object-fit: cover;
+}
+
+.card-body h6 {
+  font-size: 0.9rem;
+}
+
+.btn {
+  font-size: 0.8rem;
+}
+
+a.text-primary {
+  text-decoration: none;
+}
+
+a.text-primary:hover {
+  text-decoration: underline;
+}
+
+/* user info */
+.user-info {
+  width: 100%;
+  height: auto;
+}
+
+.user-info .btn {
+  width: 20%;
+  aspect-ratio: 3117 / 2800;
+}
+
+.user-info .me-3 img {
+  width: 90%;
+  height: auto;
+}
+
+.user-info .info {
+  display: block;
+}
+
+.user-info .avatar {
+  width: 20%;
+  aspect-ratio: 1/1;
+}
+
+.user-info .avatar img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* continue */
+.continue-cards {
+  display: flex;
+  gap: 20px;
 }
 
 .card img {
-    object-fit: cover;
-  }
-  
-  .card-body h6 {
-    font-size: 0.9rem;
-  }
-  
-  .btn {
-    font-size: 0.8rem;
-  }
-  
-  a.text-primary {
-    text-decoration: none;
-  }
-  
-  a.text-primary:hover {
-    text-decoration: underline;
-  }
-  
-  /* user info */
-  .user-info {
-    width: 100%;
-    height: auto;
-  }
-  
-  .user-info .btn {
-    width: 20%;
-    aspect-ratio: 3117 / 2800;
-  }
-  
-  .user-info .me-3 img {
-    width: 90%;
-    height: auto;
-  }
-  
-  .user-info .info {
-    display: block;
-  }
-  
-  .user-info .avatar {
-    width: 20%;
-    aspect-ratio: 1/1;
-  }
-  
-  .user-info .avatar img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-  }
-  
-  /* continue */
-  .continue-cards {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .card {
-    width: 50%;
-    background-color: var(--dark-background);
-    border-radius: 10px;
-    border: 1px solid rgba(249, 249, 249, 0.1);
-  }
-  
-  .card img {
-    border-radius: 8px;
-    flex: 0 0 30%;
-    overflow: hidden;
-    object-fit: cover;
-  }
-  
-  .card-body {
-    text-align: center;
-  }
-  
-  .card-title {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .card-text {
-    font-size: 14px;
-    color: #b3b3b3;
-  }
-  
-  .progress {
-    background-color: #3a3a4f;
-    border-radius: 10px;
-  }
-  
-  .progress-bar {
-    background-color: #4caf50;
-  }
-  
-  .card-buttons button {
-    border-radius: 5px;
-  }
-  
-  .card-buttons .btn-secondary {
-    background-color: #555;
-    border-color: #555;
-  }
-  
-  .card-buttons .btn-primary {
-    background-color: #00c9a7;
-    border-color: #00c9a7;
-  }
-  
-  /* genre */
-  .genres-cards {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  
-  }
-  
-  .genres-cards .card {
-    position: relative;
-    width: 90%;
-  
-  }
-  
-  .genres-cards .card img {
-    object-fit: cover;
-    height: 100%;
-  }
-  
-  .genres-cards .card .details {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-  }
-  
-  /* newest */
-  .card {
-  
-  
-    position: relative;
-    background-color: #2c2c2c;
-    color: white;
-    border: none;
-    margin: 10px;
-  
-  }
-  
-  .card img {
-      opacity: 0.5;
-  }
-  
-  .card-body {
-  
-    position: absolute;
-    top: 0px
-  }
-  .card-title {
-  
-    font-size: 1em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .details .card-text {
-  
-    display: block;
-    font-size: 0.8em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .card-buttons .btn {
-    display: flex;
-    padding: auto;
-    z-index: 1;
-    text-align: center;
-    justify-content: center;
-  }
-  .btn-watch {
-    background-color: #00bfa5;
-    color: white;
-  }
-  
-  .progress, .progress-bar{
-    height: 3px;
-  }
-  
-  .progress .progress-bar {
-    background-color: #00bfa5;
-  }
-  
+  border-radius: 8px;
+  flex: 0 0 30%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 14px;
+  color: var(--white-color);
+  opacity: 0.7;
+}
+
+.progress {
+  background-color: var(--white-color);
+  border-radius: 10px;
+}
+
+.card-buttons button {
+  border-radius: 5px;
+}
+
+.card-buttons .btn-primary {
+  background-color: var(--blue-highlight);
+  border-color: var(--blue-highlight);
+}
+
+/* genre */
+.genres-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.genres-cards .card {
+  position: relative;
+  width: 90%;
+}
+
+.genres-cards .card img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.genres-cards .card .details {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+/* newest */
+.card {                               /*all right-menu cards*/
+  position: relative;
+  background-color: var(--semi-opaque-dark-background);
+  color: var(--white-color);
+  border: none;
+  margin: 10px;
+}
+.card-img-wrapper {
+  position: relative;
+  height: auto;
+  display: block;
+}
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Đẩy nội dung xuống dưới cùng */
+  background: var(--half-opaque-dark-background) ;
+}
+.card-newest {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100%;
+  height: 100%;
+}
+.card-details {
+  color: var(--white-color);
+  opacity: 70%;
+}
+.card img {
+  opacity: 0.5;
+} 
+
+.card-body {
+  position: absolute;
+  top: 0px;
+}
+.card-title {
+  font-size: 1.2em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.details .card-text {
+  display: block;
+  font-size: 0.8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 20%;
+}
+
+.details .card-newest {
+  position: absolute;
+  top: 30%;
+  left: 10px;
+  width: 90%;
+  height: 100%;
+  display: block;
+  font-size: 0.8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-buttons .btn {
+  display: flex;
+  padding: auto;
+  z-index: 1;
+  text-align: center;
+  justify-content: center;
+}
+.btn-watch {
+  background-color: var(--blue-highlight);
+  color: var(--white-color);
+}
+
+.progress,
+.progress-bar {
+  height: 3px;
+}
+
+.progress .progress-bar {
+  background-color: var(--blue-highlight);
+}

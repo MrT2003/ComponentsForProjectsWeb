@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MasterService } from '../../service/master.service';
-import { APIMoviesModel, MovieList } from '../../model/Movies';
+import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 
 @Component({
   selector: 'app-newest-film-page',
@@ -27,6 +27,10 @@ export class NewestFilmPageComponent implements OnInit{
   settings = 'assets/res-leftmenu/Settings.png';
   logout = 'assets/res-leftmenu/Log Out.png';
 
+
+  
+
+  
   isCollapsed = false; 
 
   ngOnInit(): void {

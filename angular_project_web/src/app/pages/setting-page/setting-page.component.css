@@ -4,7 +4,7 @@
   background-position: center;
   height: 200px;
   position: relative;
-  color: white;
+  color: var(--white-color);
 }
 
 .profile-picture {
@@ -61,7 +61,7 @@
 }
 .pagination .page-item .page-link {
   background-color: var(--dark-background);
-  color: white;
+  color: var(--white-color);
   border: none;
 }
 .pagination .page-item .page-link:hover {
@@ -78,17 +78,18 @@
   margin-top: 5%;
 }
 
+/* YOU MAY LIKE */
 .thumbnail {
   position: relative;
   text-align: center;
-  color: white;
+  color: var(--white-color);
   cursor: pointer;
 }
 .thumbnail .rating {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--semi-opaque-dark-background);
   padding: 5px;
   border-radius: 5px;
 
@@ -99,7 +100,8 @@
 }
 .thumbnail img {
   width: 100%;
-  height: 400px;
+  /* height: 400px; */
+  aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -110,33 +112,26 @@
   align-items: start;
   height: 50px;
 }
-.details-left {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-.details-left p {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--white-color)b2;
-  line-height: 17px;
-}
-.details-right {
-  text-align: right;
-  margin-top: 30px;
-  columns: var(--white-color)b2;
-}
-.details-right p {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--white-color)b2;
-  line-height: 17px;
-}
 .thumbnail .details .complete {
-  background-color: blue;
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+.details-top .details-top p {
+  font-family: "Lato", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white-color);
+  line-height: 17px;
+}
+
+.details-bottom p {
+  font-family: "Lato", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white-color);
+  line-height: 17px;
+  opacity: 70%;
 }
 
 .nav-fix {
@@ -148,14 +143,14 @@
   border: 1px solid var(--blue-highlight);
   border-radius: 5px 5px 0 0;
   background-color: transparent;
-  color: white;
+  color: var(--white-color);
   border-bottom: none;
   transition: transform 0.2s, border-bottom-width 0.2s;
 }
 .nav-tabs .nav-link.active {
   border: 1px solid var(--blue-highlight);
   background-color: transparent;
-  color: white;
+  color:  var(--white-color);
   border-bottom: none;
 }
 .nav-tabs {
@@ -174,19 +169,22 @@
 }
 .nav-tabs .nav-link.active {
   background-color: var(--blue-highlight);
-  color: white;
+  color:  var(--white-color);
 }
 .col-md-3 {
   margin-bottom: 2%;
 }
 /*-----------------------------------LEFT MENU ------------------------------------------------------ */
-.left-menu{
-  background-color: rgba(22, 24, 30, 0.7);
+.left-menu {
+  background-color: var(--semi-opaque-dark-background);
+  /* background-color: var(--dark-background); 
+  opacity: 0.7; */
 }
 .arrow-down {
   width: 12%;
   aspect-ratio: 1/1;
 }
+
 .left-menu {
   width: 14.5%;
   font-family: "Lato", sans-serif;
@@ -198,14 +196,12 @@
 }
 
 .full-width {
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  width: 60%; /* Mở rộng nội dung chính khi menu bị ẩn */
 }
 
 .left-menu.collapsed .section-title,
 .left-menu.collapsed .nav-link span {
-  display: none; /* Ẩn text khi menu bị thu nhỏ */
+  display: none; 
 }
 
 .left-menu.collapsed .nav-link img {
@@ -235,11 +231,13 @@
   padding: 10px 20px;
   font-size: 17.33px;
   text-transform: capitalize;
-  color: #aeafb2;
+  color: var(--white-color);
   margin-bottom: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  opacity: 67%;
+
 }
 .nav {
   white-space: nowrap;
@@ -265,29 +263,19 @@
   margin: 0 10px 0 0;
 }
 
-.nav-link:hover {
-  background-color: #343a40;
-  border-radius: 5px;
-}
-
-.nav-link.active {
-  color: #00cccc;
-}
 
 /*---------------EFFECTS LEFT MENU--------------*/
 .nav-link {
-  color: white; /* Màu mặc định */
+  color: var(--white-color); /* Màu mặc định */
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: var(--dark-background); /* Màu chữ khi hover */
-  background-color: var(--blue-highlight); /* Màu nền khi hover */
+  background-color: var(--light-dark-background);
   border-radius: 5px; /* Thêm góc bo nếu cần */
 }
 
 .nav-link.active {
-  color: var(--dark-background); /* Màu chữ khi active */
-  background-color: var(--blue-highlight); /* Màu nền khi active */
+  background-color: var(--blue-highlight);
   border-radius: 5px;
 }

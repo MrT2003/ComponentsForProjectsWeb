@@ -33,7 +33,7 @@ body {
 }
 
 .left .welcome {
-    color: #fff;
+    color: var(--white-color);
     font-family: 'Lato', sans-serif;
     font-size: 48px;
     font-weight: 900;
@@ -44,7 +44,7 @@ body {
 
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    color: #fff;
+    color: var(--white-color);
     font-size: 26px;
     max-width: 60%;
 }
@@ -72,7 +72,7 @@ body {
 }
 
 .right h2 {
-    color: #00bfa5;
+    color: var(--blue-highlight);
     
     font-family: 'Lato', sans-serif;
     font-weight: 900;
@@ -88,7 +88,7 @@ body {
     font-family: 'Lato', sans-serif;
     font-size: 18px;
     border: 0;
-    background-color: #F6F6F6;
+    background-color: var(--light-grey);
     margin-bottom: 10px;
 
 
@@ -117,7 +117,7 @@ body {
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #666;
+    color: var(--grey);
 }
 
 .form-control {
@@ -125,7 +125,7 @@ body {
 }
 
 .btn-primary {
-    background-color: #00bfa5;
+    background-color: var(--blue-highlight);
     border: none;
 }
 
@@ -151,7 +151,7 @@ body {
     padding: 0;
     margin: 5px;
     border-radius: 50%;
-    color: #fff;
+    color: var(--white-color);
     background-color: var(--blue-highlight);
 }
 

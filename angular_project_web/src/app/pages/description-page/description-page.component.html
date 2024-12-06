@@ -2,7 +2,7 @@
   <div class="container-fluid filter"></div>
 
   <div class="background p-0 m-0 bg-danger">
-    <img [src]="bg" alt="background" />
+    <img [src]="description.poster_url" alt="background" />
   </div>
   <!--Left menu-->
   <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
@@ -107,13 +107,13 @@
   </div>
   <div class="col-10 p-4" [class.full-width]="isCollapsed">
     <div
-      class="container-fluid col-12 mt-5 d-flex justify-content-between align-items-center"
+      class="container m-0 mt-5 d-flex p-0 align-items-center"
     >
-      <div class="poster">
-        <img [src]="description.thumb_url" alt="Wednesday Poster" class="img-fluid" />
+      <div class="poster ">
+        <img [src]="description.thumb_url" alt="poster" class="img-fluid" />
       </div>
 
-      <div class="details">
+      <div class="details col-8">
         <h1>{{ description.name }}</h1>
         <p>{{ description.description }}</p>
         <div class="d-flex align-items-center evaluation">
@@ -158,70 +158,28 @@
 
       <hr />
       <div class="row mb-5">
-        <div class="col-md-3">
-          <div [routerLink]="'/description'" class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
+        @for (item of newestList().slice(0,6); track $index){
+          <div class="col-md-2">
+            <div [routerLink]="'/description'" class="thumbnail " >
+              <!-- <div class="rating">⭐ 7.8</div> -->
+              <div class="rating">{{item.quality}} {{item.language}}</div>
+              <img [src]="item.thumb_url" alt="image thumbnails" [attr.data-poster-url]="item.poster_url"/>
+              <div class="details d-block">
+                <div class="details-top col-12 text-start">
+                  <h5>{{item.name}}</h5>
+                </div>
+                <!-- <div class="details-bottom d-flex justify-content-between">
+                  <p>2023</p>
+                  <p>Complete</p>
+                </div> -->
+                
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <!-- <div class="rating">⭐ 7.8</div> -->
-            <div class="rating">HD Vietsub</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>Loki</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>2023</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
-        </div>
+          
+        
+        }
+        
       </div>
     </div>
   </div>

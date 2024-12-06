@@ -1,10 +1,8 @@
 .descript {
-
   font-family: 'Lato', sans-serif;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
 }
 
 .background img {
@@ -21,21 +19,35 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 200vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -99;
 }
 
 .poster {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  width: 100em;
+  height: auto;
+  margin-right: 2em;
+  /* background-color: red; */
+  
+  overflow: hidden;
+  
 }
 
 .poster img {
   border-radius: 10px;
-  width: 50%;
-  height: 50%;
+  overflow: hidden;
+  width: 30em;
+  object-fit: cover; 
+ 
+  
+ 
+
+  
 }
+
 
 .details h1 {
   font-size: 50px;
@@ -47,7 +59,6 @@
 .details p {
   font-size: 20px;
   font-weight: 400;
-  /* line-height: 21px; */
   margin-bottom: 30px;
 }
 
@@ -149,7 +160,6 @@ hr {
 
 .thumbnail img {
   width: 100%;
-  /* height: 400px; */
   aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 10px;
@@ -178,25 +188,24 @@ hr {
 .details-left p {
   font-size: 17px;
   font-weight: 700;
-  color: var(--white-color)B2;
+  color: var(--white-color);
   line-height: 17px;
 }
 
 .details-right {
   text-align: right;
   margin-top: 30px;
-  columns: var(--white-color)B2;
+  columns: var(--white-color);
 }
 
 .details-right p {
   font-size: 17px;
   font-weight: 700;
-  color: var(--white-color)B2;
+  color: var(--white-color);
   line-height: 17px;
 }
 
 .thumbnail .details .complete {
-  background-color: blue;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -235,9 +244,7 @@ hr {
 
 .left-menu.collapsed {
   width: 0;
-  /* Thu nhỏ menu */
   overflow: hidden;
-  /* Ẩn nội dung */
 }
 
 .full-width {
@@ -247,7 +254,6 @@ hr {
 .left-menu.collapsed .section-title,
 .left-menu.collapsed .nav-link span {
   display: none;
-  /* Ẩn text khi menu bị thu nhỏ */
 }
 
 .left-menu.collapsed .nav-link img {
@@ -282,11 +288,13 @@ hr {
   padding: 10px 20px;
   font-size: 17.33px;
   text-transform: capitalize;
-  color: #AEAFB2;
+  color: var(--white-color);
   margin-bottom: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  opacity: 67%;
+
 }
 
 .nav {
@@ -315,27 +323,21 @@ hr {
   margin: 0 10px 0 0;
 }
 
-.nav-link:hover {
-  background-color: #343a40;
-  border-radius: 5px;
-}
-
 
 .nav-link.active {
-  color: #00cccc;
+  color: var(--blue-highlight);
 
 }
 
 /*---------------EFFECTS LEFT MENU--------------*/
 .nav-link {
-  color: white;
+  color: var(--white-color);
   /* Màu mặc định */
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: var(--dark-background);
-  background-color: var(--blue-highlight);
+  background-color:var(--light-dark-background);
   border-radius: 5px;
 }
 

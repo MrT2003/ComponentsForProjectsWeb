@@ -110,67 +110,33 @@
     <div id="demo" class="carousel slide mx-auto" data-bs-ride="carousel">
       <!-- Custom Indicators -->
       <div class="custom-indicators">
-        <span
-          class="dot active"
-          data-bs-target="#demo"
-          data-bs-slide-to="0"
-        ></span>
+        <span class="dot active" data-bs-target="#demo" data-bs-slide-to="0"></span>
         <span class="dot" data-bs-target="#demo" data-bs-slide-to="1"></span>
         <span class="dot" data-bs-target="#demo" data-bs-slide-to="2"></span>
       </div>
 
       <!-- The slideshow/carousel -->
       <div class="carousel-inner">
+        @for (item of newestList().slice(0,3); track $index){
         <div class="carousel-item active">
           <div class="container-fluid filter"></div>
-          <img [src]="image1" alt="Los Angeles" class="d-block image-fix" />
-          <div class="name-film">The Crown</div>
+          <img [src]="item.poster_url" alt="background" class="d-block image-fix" />
+          <div class="name-film">{{item.name}}</div>
           <div class="watch-list">
             <i class="fa-solid fa-plus"></i>
             Watchlist
           </div>
           <div [routerLink]="'/watch'" class="watch-now">Watch Now</div>
         </div>
-        <div class="carousel-item">
-          <div class="container-fluid filter"></div>
-
-          <img [src]="image2" alt="Chicago" class="d-block image-fix" />
-          <div class="name-film">The Crown</div>
-          <div class="watch-list">
-            <i class="fa-solid fa-plus"></i>
-            Watchlist
-          </div>
-          <div [routerLink]="'/watch'" class="watch-now">Watch Now</div>
-        </div>
-        <div class="carousel-item">
-          <div class="container-fluid filter"></div>
-
-          <img [src]="image3" alt="New York" class="d-block image-fix" />
-          <div class="name-film">The Crown</div>
-          <div class="watch-list">
-            <i class="fa-solid fa-plus"></i>
-            Watchlist
-          </div>
-          <div [routerLink]="'/watch'" class="watch-now">Watch Now</div>
-        </div>
+      }
 
         <!-- Left and right controls/icons -->
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#demo"
-          data-bs-slide="prev"
-        >
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
           <div class="left-btn">
             <span class="carousel-control-prev-icon"></span>
           </div>
         </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#demo"
-          data-bs-slide="next"
-        >
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
           <div class="right-btn">
             <span class="carousel-control-next-icon"></span>
           </div>
@@ -253,7 +219,7 @@
 
   <!--Right menu-->
   <div class="col-4 p-4 right-menu bg-dark">
-    <!-- Right Menu -->
+     <!-- Right Menu -->
     <!-- Genres Section -->
     <div class="part-genres">
       <div class="d-flex justify-content-between align-items-center mb-3">
@@ -265,33 +231,29 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a
-            [routerLink]="'/genres'"
-            class="text-decoration-none text-white fw-bold"
-            >See More</a
-          >
+          <a [routerLink]="'/genres'" class="text-decoration-none text-white fw-bold">See More</a>
         </div>
       </div>
       <!-- Genres Grid -->
       <div class="row">
+        <!-- @for (item of genrersList().slice(0,8); track $index){ -->
+
+        
         <!-- Drama -->
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div
-              class="card-img-overlay d-flex justify-content-center align-items-center"
-            >
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
               <h5 class="card-title fw-bold">Drama</h5>
             </div>
           </div>
         </div>
+      <!-- } -->
         <!-- Thriller -->
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div
-              class="card-img-overlay d-flex justify-content-center align-items-center"
-            >
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
               <h5 class="card-title fw-bold">Thriller</h5>
             </div>
           </div>
@@ -300,9 +262,7 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div
-              class="card-img-overlay d-flex justify-content-center align-items-center"
-            >
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
               <h5 class="card-title fw-bold">Sitcom</h5>
             </div>
           </div>
@@ -311,9 +271,7 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div
-              class="card-img-overlay d-flex justify-content-center align-items-center"
-            >
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
               <h5 class="card-title fw-bold">Superhero</h5>
             </div>
           </div>
@@ -322,9 +280,7 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div
-              class="card-img-overlay d-flex justify-content-center align-items-center"
-            >
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
               <h5 class="card-title fw-bold">Sitcom</h5>
             </div>
           </div>
@@ -333,9 +289,7 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div
-              class="card-img-overlay d-flex justify-content-center align-items-center"
-            >
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
               <h5 class="card-title fw-bold">Superhero</h5>
             </div>
           </div>
@@ -344,9 +298,7 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div
-              class="card-img-overlay d-flex justify-content-center align-items-center"
-            >
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
               <h5 class="card-title fw-bold">Sitcom</h5>
             </div>
           </div>
@@ -355,9 +307,7 @@
         <div class="col-6 container-fix">
           <div class="card text-white w-100">
             <img [src]="genre" class="card-img larger-image" alt="Drama" />
-            <div
-              class="card-img-overlay d-flex justify-content-center align-items-center"
-            >
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
               <h5 class="card-title fw-bold">Superhero</h5>
             </div>
           </div>
@@ -376,34 +326,26 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a
-            [routerLink]="'/newest'"
-            class="text-decoration-none text-white fw-bold"
-            >See More</a
-          >
+          <a [routerLink]="'/newest'" class="text-decoration-none text-white fw-bold">See More</a>
         </div>
       </div>
 
       <!-- Grid -->
       <div class="row">
         <!-- Drama -->
-
+        @for (item of newestList().slice(0,4); track $index){
         <div class="col-6 container-fix mb-3">
           <div class="card text-white w-100 p-0 m-0 d-flex flex-column">
-            <div class="card-img-wrapper">
-              <img [src]="newest" class="card-img larger-image" alt="Drama" />
-              <div
-                class="card-img-overlay p-2 d-flex flex-column justify-content-end"
-              >
-                <h5 class="card-title card-newest">Rick and Morty</h5>
-                <div
-                  class="details d-flex align-items-center justify-content-between"
-                >
-                  <p class="card-newest text-start">49 Ep</p>
+            <div class="card-img-wrapper ">
+              <img [src]="item.poster_url" class="card-img h-100" alt="newest thumbnail" />
+              <div class="card-img-overlay p-2 d-flex flex-column justify-content-end">
+                <h5 class="card-title card-newest">{{item.name}}</h5>
+                <div class="card-details  details d-flex align-items-center justify-content-between">
+                  <p class="card-newest text-start">{{item.current_episode}}</p>
                   <p class="card-newest text-end">Sitcom</p>
                 </div>
                 <div class="card-buttons d-flex gap-2">
-                  <button class="btn btn-outline-light col-3">
+                  <button class="btn btn-left col-3">
                     <span>+</span>
                   </button>
                   <button class="btn btn-primary btn-sm col-8">
@@ -414,88 +356,8 @@
             </div>
           </div>
         </div>
-
-        <!-- Thriller -->
-        <div class="col-6 container-fix mb-3">
-          <div class="card text-white w-100 p-0 m-0 d-flex flex-column">
-            <div class="card-img-wrapper">
-              <img [src]="newest" class="card-img larger-image" alt="Drama" />
-              <div
-                class="card-img-overlay p-2 d-flex flex-column justify-content-end"
-              >
-                <h5 class="card-title card-newest">Rick and Morty</h5>
-                <div
-                  class="details d-flex align-items-center justify-content-between"
-                >
-                  <p class="card-newest text-start">49 Ep</p>
-                  <p class="card-newest text-end">Sitcom</p>
-                </div>
-                <div class="card-buttons d-flex gap-2">
-                  <button class="btn btn-outline-light col-3">
-                    <span>+</span>
-                  </button>
-                  <button class="btn btn-primary btn-sm col-8">
-                    <span>Watch</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Sitcom -->
-        <div class="col-6 container-fix mb-3">
-          <div class="card text-white w-100 p-0 m-0 d-flex flex-column">
-            <div class="card-img-wrapper">
-              <img [src]="newest" class="card-img larger-image" alt="Drama" />
-              <div
-                class="card-img-overlay p-2 d-flex flex-column justify-content-end"
-              >
-                <h5 class="card-title card-newest">Rick and Morty</h5>
-                <div
-                  class="details d-flex align-items-center justify-content-between"
-                >
-                  <p class="card-newest text-start">49 Ep</p>
-                  <p class="card-newest text-end">Sitcom</p>
-                </div>
-                <div class="card-buttons d-flex gap-2">
-                  <button class="btn btn-outline-light col-3">
-                    <span>+</span>
-                  </button>
-                  <button class="btn btn-primary btn-sm col-8">
-                    <span>Watch</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Superhero -->
-        <div class="col-6 container-fix mb-3">
-          <div class="card text-white w-100 p-0 m-0 d-flex flex-column">
-            <div class="card-img-wrapper">
-              <img [src]="newest" class="card-img larger-image" alt="Drama" />
-              <div
-                class="card-img-overlay p-2 d-flex flex-column justify-content-end"
-              >
-                <h5 class="card-title card-newest">Rick and Morty</h5>
-                <div
-                  class="details d-flex align-items-center justify-content-between"
-                >
-                  <p class="card-newest text-start">49 Ep</p>
-                  <p class="card-newest text-end">Sitcom</p>
-                </div>
-                <div class="card-buttons d-flex gap-2">
-                  <button class="btn btn-outline-light col-3">
-                    <span>+</span>
-                  </button>
-                  <button class="btn btn-primary btn-sm col-8">
-                    <span>Watch</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      }
+       
       </div>
     </div>
 
@@ -510,11 +372,7 @@
           <button class="btn btn-link text-white">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a
-            [routerLink]="'/settings'"
-            class="text-decoration-none text-white fw-bold"
-            >See More</a
-          >
+          <a [routerLink]="'/settings'" class="text-decoration-none text-white fw-bold">See More</a>
         </div>
       </div>
 
@@ -528,24 +386,15 @@
                 <h6 class="card-title d-block mb-1">WandaVision</h6>
                 <p class="card-text small mb-2">1 Episode left</p>
                 <div class="progress">
-                  <div
-                    class="progress-bar"
-                    style="width: 50%"
-                    role="progressbar"
-                  ></div>
+                  <div class="progress-bar" style="width: 50%" role="progressbar"></div>
                 </div>
               </div>
             </div>
-            <div
-              class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"
-            >
-              <button class="btn btn-outline-light col-3">
-                <span>+</span>
+            <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center">
+              <button class="btn btn-left col-3">
+                <span>Drop</span>
               </button>
-              <button
-                [routerLink]="'/watch'"
-                class="btn btn-primary btn-sm col-8"
-              >
+              <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8">
                 <span>Watch</span>
               </button>
             </div>
@@ -560,24 +409,15 @@
                 <h6 class="card-title d-block mb-1">WandaVision</h6>
                 <p class="card-text small mb-2">1 Episode left</p>
                 <div class="progress">
-                  <div
-                    class="progress-bar"
-                    style="width: 50%"
-                    role="progressbar"
-                  ></div>
+                  <div class="progress-bar" style="width: 50%" role="progressbar"></div>
                 </div>
               </div>
             </div>
-            <div
-              class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"
-            >
-              <button class="btn btn-outline-light col-3">
-                <span>+</span>
+            <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center">
+              <button class="btn btn-left col-3">
+                <span>Drop</span>
               </button>
-              <button
-                [routerLink]="'/watch'"
-                class="btn btn-primary btn-sm col-8"
-              >
+              <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8">
                 <span>Watch</span>
               </button>
             </div>
@@ -592,24 +432,15 @@
                 <h6 class="card-title d-block mb-1">WandaVision</h6>
                 <p class="card-text small mb-2">1 Episode left</p>
                 <div class="progress">
-                  <div
-                    class="progress-bar"
-                    style="width: 50%"
-                    role="progressbar"
-                  ></div>
+                  <div class="progress-bar" style="width: 50%" role="progressbar"></div>
                 </div>
               </div>
             </div>
-            <div
-              class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"
-            >
-              <button class="btn btn-outline-light col-3">
-                <span>+</span>
+            <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center">
+              <button class="btn btn-left col-3">
+                <span>Drop</span>
               </button>
-              <button
-                [routerLink]="'/watch'"
-                class="btn btn-primary btn-sm col-8"
-              >
+              <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8">
                 <span>Watch</span>
               </button>
             </div>
@@ -624,24 +455,15 @@
                 <h6 class="card-title d-block mb-1">WandaVision</h6>
                 <p class="card-text small mb-2">1 Episode left</p>
                 <div class="progress">
-                  <div
-                    class="progress-bar"
-                    style="width: 50%"
-                    role="progressbar"
-                  ></div>
+                  <div class="progress-bar" style="width: 50%" role="progressbar"></div>
                 </div>
               </div>
             </div>
-            <div
-              class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center"
-            >
-              <button class="btn btn-outline-light col-3">
-                <span>+</span>
+            <div class="card-buttons d-flex text-end p-0 mt-2 gap-2 justify-content-center">
+              <button class="btn btn-left col-3">
+                <span>Drop</span>
               </button>
-              <button
-                [routerLink]="'/watch'"
-                class="btn btn-primary btn-sm col-8"
-              >
+              <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8">
                 <span>Watch</span>
               </button>
             </div>

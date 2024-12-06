@@ -25,7 +25,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: white;
+  background-color: var(--white-color);
 }
 .dot.active {
   background-color: var(--blue-highlight);
@@ -71,16 +71,16 @@
   aspect-ratio: 2/1;
   object-fit: cover;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--half-opaque-dark-background);
 }
 .name-film {
   position: absolute;
   top: 30px;
   left: 50px;
-  color: white;
+  color: var(--white-color);
   font-size: 45px;
   font-weight: bold;
-  z-index: 1;
+
 }
 .watch-list {
   width: 20%;
@@ -88,12 +88,10 @@
   position: absolute;
   bottom: 50px;
   left: 20px;
-
-  color: white;
+  color: var(--white-color);
   font-size: 17px;
   font-weight: 800;
   background-color: rgba(249, 249, 249, 0.2);
-
   padding: 10px 20px;
   border-radius: 15px;
   z-index: 1;
@@ -116,18 +114,16 @@
   bottom: 50px;
   right: 20px;
   cursor: pointer;
-  color: black;
+  color:  var(--dark-background);
   font-weight: 800;
   font-size: 17px;
   background-color: var(--blue-highlight);
-
   padding: 10px 20px;
   border-radius: 15px;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-
   box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
@@ -138,14 +134,14 @@
 .thumbnail {
   position: relative;
   text-align: center;
-  color: white;
+  color: var(--white-color);
   cursor: pointer;
 }
 .thumbnail .rating {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--semi-opaque-dark-background);
   padding: 5px;
   border-radius: 5px;
 
@@ -167,6 +163,7 @@
   justify-content: space-between;
   align-items: start;
   height: 50px;
+  color: var(--white-color);
 }
 .thumbnail .details .complete {
   width: 100%;
@@ -177,7 +174,7 @@
   font-family: "Lato", sans-serif;
   font-size: 17px;
   font-weight: 700;
-  color: var(--white-color)b2;
+  color: var(--white-color);
   line-height: 17px;
 }
 
@@ -185,8 +182,9 @@
   font-family: "Lato", sans-serif;
   font-size: 17px;
   font-weight: 700;
-  color: var(--white-color)b2;
+  color: var(--white-color);
   line-height: 17px;
+  opacity: 70%;
 }
 
 .title-bar {
@@ -211,7 +209,9 @@ hr {
 }
 /*-----------------------------------LEFT MENU ------------------------------------------------------ */
 .left-menu {
-  background-color: rgba(22, 24, 30, 0.7);
+  background-color: var(--semi-opaque-dark-background);
+  /* background-color: var(--dark-background); 
+  opacity: 0.7; */
 }
 .arrow-down {
   width: 12%;
@@ -234,7 +234,7 @@ hr {
 
 .left-menu.collapsed .section-title,
 .left-menu.collapsed .nav-link span {
-  display: none; /* Ẩn text khi menu bị thu nhỏ */
+  display: none; 
 }
 
 .left-menu.collapsed .nav-link img {
@@ -264,11 +264,13 @@ hr {
   padding: 10px 20px;
   font-size: 17.33px;
   text-transform: capitalize;
-  color: #aeafb2;
+  color: var(--white-color);
   margin-bottom: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  opacity: 67%;
+
 }
 .nav {
   white-space: nowrap;
@@ -294,35 +296,27 @@ hr {
   margin: 0 10px 0 0;
 }
 
-.nav-link:hover {
-  background-color: #343a40;
-  border-radius: 5px;
-}
-
-.nav-link.active {
-  color: var(--blue-highlight);
-}
 
 /*---------------EFFECTS LEFT MENU--------------*/
 .nav-link {
-  color: white; /* Màu mặc định */
+  color: var(--white-color); /* Màu mặc định */
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-link:hover {
-  color:  var(--dark-background); /* Màu chữ khi hover */
-  background-color: var(--blue-highlight);
+  background-color: var(--light-dark-background);
   border-radius: 5px; /* Thêm góc bo nếu cần */
 }
 
 .nav-link.active {
-  color: var(--dark-background); /* Màu chữ khi active */
   background-color: var(--blue-highlight);
   border-radius: 5px;
 }
 
 /*-----------------------------------RIGHT MENU ------------------------------------------------------ */
-
+.right-menu{
+  background-color: var(--light-dark-background);
+}
 .card img {
   object-fit: cover;
 }
@@ -381,13 +375,6 @@ a.text-primary:hover {
   gap: 20px;
 }
 
-.card {
-  width: 50%;
-  background-color: var(--dark-background);
-  border-radius: 10px;
-  border: 1px solid rgba(249, 249, 249, 0.1);
-}
-
 .card img {
   border-radius: 8px;
   flex: 0 0 30%;
@@ -406,30 +393,22 @@ a.text-primary:hover {
 
 .card-text {
   font-size: 14px;
-  color: #b3b3b3;
+  color: var(--white-color);
+  opacity: 0.7;
 }
 
 .progress {
-  background-color: #3a3a4f;
+  background-color: var(--white-color);
   border-radius: 10px;
-}
-
-.progress-bar {
-  background-color: #4caf50;
 }
 
 .card-buttons button {
   border-radius: 5px;
 }
 
-.card-buttons .btn-secondary {
-  background-color: #555;
-  border-color: #555;
-}
-
 .card-buttons .btn-primary {
-  background-color: #00c9a7;
-  border-color: #00c9a7;
+  background-color: var(--blue-highlight);
+  border-color: var(--blue-highlight);
 }
 
 /* genre */
@@ -460,18 +439,21 @@ a.text-primary:hover {
 }
 
 /* newest */
-.card {
+.card {                               /*all right-menu cards*/
   position: relative;
-  background-color: #2c2c2c;
-  color: white;
+  background-color: var(--semi-opaque-dark-background);
+  color: var(--white-color);
   border: none;
   margin: 10px;
 }
 .card-img-wrapper {
   position: relative;
-  height: auto;
+  height: 6em;
   display: block;
+  border-radius: 5px;
+  overflow: hidden;
 }
+
 .card-img-overlay {
   position: absolute;
   top: 0;
@@ -481,8 +463,13 @@ a.text-primary:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* Đẩy nội dung xuống dưới cùng */
-  background: rgba(0, 0, 0, 0.5); /* Hiệu ứng mờ */
+  background: var(--half-opaque-dark-background) ;
 }
+.card-details {
+  color: var(--white-color);
+  opacity: 70%;
+}
+
 .card-newest {
   position: absolute;
   top: 10px;
@@ -490,6 +477,8 @@ a.text-primary:hover {
   width: 100%;
   height: 100%;
 }
+
+
 .card img {
   opacity: 0.5;
 } 
@@ -534,9 +523,18 @@ a.text-primary:hover {
   text-align: center;
   justify-content: center;
 }
+.card-buttons .btn-left{
+  background-color: rgba(249, 249, 249, 0.2);
+  /* opacity: 20%; */
+  color: var(--white-color);
+  backdrop-filter: blur(10px); /* Đặt giá trị độ mờ (blur) cho nền */ 
+  -webkit-backdrop-filter: blur(10px); /* Để hỗ trợ các trình duyệt WebKit như Safari */
+
+}
+
 .btn-watch {
-  background-color: #00bfa5;
-  color: white;
+  background-color: var(--blue-highlight);
+  color: var(--white-color);
 }
 
 .progress,
@@ -545,5 +543,5 @@ a.text-primary:hover {
 }
 
 .progress .progress-bar {
-  background-color: #00bfa5;
+  background-color: var(--blue-highlight);
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { RouterModule, ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MovieList } from '../../model/Movies';
+import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
+import { MasterService } from '../../service/master.service';
 
 @Component({
   selector: 'app-description-page',
@@ -32,9 +33,12 @@ export class DescriptionPageComponent implements OnInit {
   description: any;
   // route = inject(route);
   constructor(private router: ActivatedRoute) {}
+  masterService = inject(MasterService);
+  newestList = signal<NewestList[]>([]);
 
   ngOnInit(): void {
     this.loadDescription()
+    this.loadNewestMovies();
   }
 
 
@@ -46,5 +50,12 @@ export class DescriptionPageComponent implements OnInit {
     this.router.queryParams.subscribe((params) => {
       this.description = params;
     });
+  }
+
+  loadNewestMovies(){
+    this.masterService.getNewestMovies().subscribe((res:APIMoviesModel) => {
+      this.newestList.set(res.items); 
+
+    })
   }
 }

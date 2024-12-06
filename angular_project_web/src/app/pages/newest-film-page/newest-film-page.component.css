@@ -7,6 +7,7 @@
   padding: 0;
   overflow: hidden;
   font-family: 'Lato', sans-serif;
+  z-index: 3;
 }
 .poster .upper-part {
   padding-top: 5%;
@@ -16,7 +17,7 @@
   font-size: 100px !important;
   font-weight: 800;
   /* line-height: 96px; */
-  color: white;
+  color: var(--white-color);
   margin-bottom: 2%;
 }
 .upper-part .description {
@@ -24,7 +25,7 @@
   max-width: 500px;
   font-size: 20px;
   font-weight: 400;
-  color: white;
+  color: var(--white-color);
   /* line-height: 20px; */
 
   display: -webkit-box; 
@@ -56,8 +57,7 @@
 
 }
 .buttons .btn-detail{
-  color: #fff;
-  background-color: rgba(255, 245, 245, 0.2);
+  background-color: var(--mini-opaque-gray-background);
 
 }
 
@@ -100,7 +100,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--semi-opaque-dark-background);
   padding: 5px;
   border-radius: 5px;
   font-size: 17px;
@@ -135,8 +135,9 @@
   line-height: 17px;
 } */
 /*-----------------------------------LEFT MENU ------------------------------------------------------ */
-.left-menu{
-  background-color: rgba(22, 24, 30, 0.7);
+  background-color: var(--semi-opaque-dark-background);
+  /* background-color: var(--dark-background); 
+  opacity: 0.7; */
 }
 .arrow-down {
   width: 12%;
@@ -154,12 +155,12 @@
 }
 
 .full-width {
-  width: 80%; /* Mở rộng nội dung chính khi menu bị ẩn */
+  width: 60%; /* Mở rộng nội dung chính khi menu bị ẩn */
 }
 
 .left-menu.collapsed .section-title,
 .left-menu.collapsed .nav-link span {
-  display: none; /* Ẩn text khi menu bị thu nhỏ */
+  display: none; 
 }
 
 .left-menu.collapsed .nav-link img {
@@ -189,11 +190,13 @@
   padding: 10px 20px;
   font-size: 17.33px;
   text-transform: capitalize;
-  color: #aeafb2;
+  color: var(--white-color);
   margin-bottom: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  opacity: 67%;
+
 }
 .nav {
   white-space: nowrap;
@@ -219,29 +222,20 @@
   margin: 0 10px 0 0;
 }
 
-.nav-link:hover {
-  background-color: #343a40;
-  border-radius: 5px;
-}
-
-.nav-link.active {
-  color: #00cccc;
 }
 
 /*---------------EFFECTS LEFT MENU--------------*/
 .nav-link {
-  color: white; /* Màu mặc định */
+  color: var(--white-color); /* Màu mặc định */
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: var(--dark-background); /* Màu chữ khi hover */
-  background-color: var(--blue-highlight); /* Màu nền khi hover */
+  background-color: var(--light-dark-background);
   border-radius: 5px; /* Thêm góc bo nếu cần */
 }
 
 .nav-link.active {
-  color: var(--dark-background); /* Màu chữ khi active */
-  background-color: var(--blue-highlight); /* Màu nền khi active */
+  background-color: var(--blue-highlight);
   border-radius: 5px;
 }

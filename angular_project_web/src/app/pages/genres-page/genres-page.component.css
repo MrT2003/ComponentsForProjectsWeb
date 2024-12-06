@@ -30,11 +30,13 @@
       padding: 10px 20px;
       font-size: 17.33px;
       text-transform: capitalize;
-      color: #AEAFB2;
+      color: var(--white-color);
       margin-bottom: 10px;
       white-space: nowrap; 
       overflow: hidden; 
       text-overflow: ellipsis;
+      opacity: 67%;
+
     }
     .nav{
       
@@ -63,20 +65,17 @@
     }
     
     .nav-link:hover {
-      background-color: #343a40; 
+      background-color: var(--light-dark-background); 
       border-radius: 5px;
     }
     
    
     .nav-link.active {
-      color: hsl(180, 100%, 40%);
+      color: var(--blue-highlight);
     }
 
     /*-----------------------------------GENRES------------------------------------------------------ */
-    /* .part-genres{
-      font-family: 'Lato', sans-serif;
-    } */
-    
+
     .filter {
       content: "";
       position: absolute;
@@ -93,7 +92,6 @@
   .card{
     border: none; 
     border-radius: 10px;
-    background-color: black;
   }
   .card img {
     object-fit: cover;

@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --dark-background: #16181E;
+    --semi-opaque-dark-background: rgba(22, 24, 30, 0.7);
+    --half-opaque-dark-background: rgba(22, 24, 30, 0.5);
+    /* --mini-opaque-gray-background: rgba(255, 245, 245, 0.2);  */
     --blue-highlight: #00B9AE;
     --light-dark-background: #21242D;
     --white-color: #F9F9F9;
+    
     --star: #F0E264;
+    --light-grey: #F6F6F6; 
+    --md-grey: #C9C9C9;
+    --search-bar: #aeafb2; 
     --grey: #828282;
 }
 

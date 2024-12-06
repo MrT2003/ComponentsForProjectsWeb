@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MasterService } from '../../service/master.service';
-import { APIMoviesModel, MovieList, TvList } from '../../model/Movies';
+import { APIMoviesModel, MovieList, NewestList, TvList } from '../../model/Movies';
 
 @Component({
   selector: 'app-home-page',
@@ -40,11 +40,13 @@ export class HomePageComponent implements OnInit{
   masterService = inject(MasterService)
   movieList = signal<MovieList []>([]);
   tvList = signal<TvList []>([]);
+  newestList = signal<NewestList[]>([]);
   
 
   ngOnInit(): void {
     this.loadAllMovies();
     this.loadAllTvSeries();
+    this.loadNewestMovies();
   }
 
   loadAllMovies() {
@@ -56,6 +58,13 @@ export class HomePageComponent implements OnInit{
   loadAllTvSeries() {
     this.masterService.getAllTvSeries().subscribe((res:APIMoviesModel) => {
       this.tvList.set(res.items);
+    })
+  }
+
+  loadNewestMovies(){
+    this.masterService.getNewestMovies().subscribe((res:APIMoviesModel) => {
+      this.newestList.set(res.items); 
+
     })
   }
 
