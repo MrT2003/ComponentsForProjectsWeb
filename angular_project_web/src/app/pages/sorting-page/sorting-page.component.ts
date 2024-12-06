@@ -96,5 +96,16 @@ export class SortingPageComponent implements OnInit {
       console.warn('No filters selected!');
     }
   }
-  
+
+  resetFilters() {
+    // Xóa giá trị đã chọn cho year, genre, và country
+    this.selectedYear = '';
+    this.selectedCountry = '';
+    this.selectedGenre = '';
+
+    // Reset danh sách phim
+    this.movieList.set([]);
+
+    console.log('Filters reset. Ready for new selection!');
+  }
 }

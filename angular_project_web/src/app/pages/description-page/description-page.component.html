@@ -1,126 +1,159 @@
-<div class="descript d-flex text-light ">
-  <div class="container-fluid filter  "></div>
+<div class="descript d-flex text-light">
+  <div class="container-fluid filter"></div>
 
-  <div class="background p-0 m-0 bg-danger ">
-    <img [src]="bg" alt="background">
+  <div class="background p-0 m-0 bg-danger">
+    <img [src]="bg" alt="background" />
   </div>
-   <!--Left menu--> 
-   <aside
-   class="col-2 left-menu text-light"
-   [class.collapsed]="isCollapsed"
- >
-   <div *ngIf="!isCollapsed" class="d-flex flex-column h-100">
-     <img
-       [src]="sideBarPath"
-       alt="Collapse Menu"
-       class="icon"
-       (click)="toggleMenu()"
-     />
-     <!-- Menu Items -->
-     <nav class="flex-grow-1">
-       <div class="menu-section">
-         <p class="section-title">Menu</p>
-         <ul class="nav flex-column">
-           <li class="nav-item"> 
-             <a [routerLink]="'/home'" class="nav-link active text-light" routerLinkActive="active">
-               <img [src]="home" alt="home-icon" /> Home
-             </a>
-           </li>
-           <li class="nav-item">
-             <a [routerLink]="'/sorting'" class="nav-link text-light" routerLinkActive="active">
-               <img [src]="sort" alt="home-icon" /> Sorting
-             </a>
-           </li>
-         </ul>
-       </div>
-       <div class="menu-section">
-         <p class="section-title">Library</p>
-         <ul class="nav flex-column">
-           <li class="nav-item">
-             <a [routerLink]="'/newest'" class="nav-link text-light" routerLinkActive="active">
-               <img [src]="recent" alt="home-icon" /> Recent
-             </a>
-           </li>
-           <li class="nav-item">
-             <a [routerLink]="'/settings'" class="nav-link text-light" routerLinkActive="active">
-               <img [src]="playlists" alt="home-icon" /> Playlists
-             </a>
-           </li>
-           <li class="nav-item">
-             <a [routerLink]="'/settings'" class="nav-link text-light" routerLinkActive="active">
-               <img [src]="watchlist" alt="home-icon" /> Watchlist
-             </a>
-           </li>
-           <li class="nav-item">
-             <a [routerLink]="'/settings'" class="nav-link text-light" routerLinkActive="active">
-               <img [src]="continue" alt="home-icon" /> Continue
-             </a>
-           </li>
-         </ul>
-       </div>
-       <div class="menu-section">
-         <p class="section-title">General</p>
-         <ul class="nav flex-column">
-           <li class="nav-item">
-             <a [routerLink]="'/settings'" class="nav-link text-light" routerLinkActive="active">
-               <img [src]="settings" alt="home-icon" /> Settings
-             </a>
-           </li>
-           <li class="nav-item">
-             <a href="" class="nav-link text-light" routerLinkActive="active">
-               <img [src]="logout" alt="home-icon" /> Log Out
-             </a>
-           </li>
-         </ul>
-       </div>
-     </nav>
-   </div>
- </aside>
- <!-- Icon hiển thị khi menu thu nhỏ -->
- <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
-   <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
- </div>
-  <div class="col-10 p-4  " [class.full-width]="isCollapsed">
-    <div class="container-fluid col-12 mt-5 d-flex justify-content-between align-items-center">
+  <!--Left menu-->
+  <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
+    <div *ngIf="!isCollapsed" class="d-flex flex-column h-100">
+      <img
+        [src]="sideBarPath"
+        alt="Collapse Menu"
+        class="icon"
+        (click)="toggleMenu()"
+      />
+      <!-- Menu Items -->
+      <nav class="flex-grow-1">
+        <div class="menu-section">
+          <p class="section-title">Menu</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a
+                [routerLink]="'/home'"
+                class="nav-link active text-light"
+                routerLinkActive="active"
+              >
+                <img [src]="home" alt="home-icon" /> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                [routerLink]="'/sorting'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
+                <img [src]="sort" alt="home-icon" /> Sorting
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <p class="section-title">Library</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a
+                [routerLink]="'/newest'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
+                <img [src]="recent" alt="home-icon" /> Recent
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                [routerLink]="'/settings'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
+                <img [src]="playlists" alt="home-icon" /> Playlists
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                [routerLink]="'/settings'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
+                <img [src]="watchlist" alt="home-icon" /> Watchlist
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                [routerLink]="'/settings'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
+                <img [src]="continue" alt="home-icon" /> Continue
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <p class="section-title">General</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a
+                [routerLink]="'/settings'"
+                class="nav-link text-light"
+                routerLinkActive="active"
+              >
+                <img [src]="settings" alt="home-icon" /> Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link text-light" routerLinkActive="active">
+                <img [src]="logout" alt="home-icon" /> Log Out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </aside>
+  <!-- Icon hiển thị khi menu thu nhỏ -->
+  <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
+    <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
+  </div>
+  <div class="col-10 p-4" [class.full-width]="isCollapsed">
+    <div
+      class="container-fluid col-12 mt-5 d-flex justify-content-between align-items-center"
+    >
       <div class="poster">
-        <img [src]="wedPath" alt="Wednesday Poster" class="img-fluid" />
+        <img [src]="description.thumb_url" alt="Wednesday Poster" class="img-fluid" />
       </div>
 
       <div class="details">
-        <h1>Wednesday</h1>
-        <p>
-          Follows Wednesday Addams' years as a student, when she attempts to
-          master her emerging psychic ability, thwart a killing spree, and solve
-          the mystery that embroiled her parents.
-        </p>
+        <h1>{{ description.name }}</h1>
+        <p>{{ description.description }}</p>
         <div class="d-flex align-items-center evaluation">
           <!-- <div class="rating"><span>⭐ 7.8</span></div> -->
           <div class="genres d-flex">
-            <span class="badge ">Fantasy</span>
-            <span class="badge ">Fantasy</span>
-            <span class="badge ">Fantasy</span>
-            <span class="badge ">Fantasy</span>
+            <span class="badge">Fantasy</span>
+            <span class="badge">Fantasy</span>
+            <span class="badge">Fantasy</span>
+            <span class="badge">Fantasy</span>
           </div>
         </div>
         <div class="actions mt-3">
           <i class="icon-favor me-2 fa-regular fa-heart"></i>
-          <button class="btn btn-outline-light align-items-center py-2"><i class="fa-solid fa-plus text-light me-2"></i>
-            MY LIST</button>
-          <button [routerLink]="'/watch'" routerLinkActive="active" class="btn btn-watch align-items-center py-2  text-light">
+          <button class="btn btn-outline-light align-items-center py-2">
+            <i class="fa-solid fa-plus text-light me-2"></i> MY LIST
+          </button>
+          <button
+            [routerLink]="'/watch'"
+            routerLinkActive="active"
+            class="btn btn-watch align-items-center py-2 text-light"
+          >
             <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i>
-              WATCH NOW</button>
+            WATCH NOW
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="container-fluid col-12 mt-5 ">
+    <div class="container-fluid col-12 mt-5">
       <div class="title-bar">
-        <div class="my-auto me-2  " style="background-color: #00B9AE; width: 4px; height: 2em;"></div>
-        <div class="container-fluid d-flex justify-content-between label p-0 m-0 text-light">
+        <div
+          class="my-auto me-2"
+          style="background-color: #00b9ae; width: 4px; height: 2em"
+        ></div>
+        <div
+          class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
+        >
           <h4>YOU MAY ALSO LIKE</h4>
           <p>See more >></p>
         </div>
-
       </div>
 
       <hr />
@@ -131,7 +164,7 @@
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -147,7 +180,7 @@
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -163,7 +196,7 @@
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -179,7 +212,7 @@
             <div class="rating">HD Vietsub</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details d-block">
-              <div class="details-top col-12 text-start ">
+              <div class="details-top col-12 text-start">
                 <h5>Loki</h5>
               </div>
               <div class="details-bottom d-flex justify-content-between">
@@ -189,9 +222,6 @@
             </div>
           </div>
         </div>
-
-
-
       </div>
     </div>
   </div>

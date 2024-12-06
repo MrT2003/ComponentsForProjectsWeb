@@ -196,7 +196,7 @@
       <div class="row">
         @for (item of movieList().slice(0, 3); track $index) {
         <div class="col-md-4">
-          <div [routerLink]="'/description'" class="thumbnail">
+          <div [routerLink]="'/description'" class="thumbnail" (click)="goToDescription(item)" style="cursor: pointer;">
             <div class="rating">HD Vietsub</div>
             <img [src]="item.thumb_url" alt="Loki" />
             <div class="details d-block">
@@ -232,7 +232,7 @@
       <div class="row">
         @for (item of tvList().slice(0, 3); track $index) {
         <div class="col-md-4">
-          <div class="thumbnail" [routerLink]="'/description'">
+          <div class="thumbnail" [routerLink]="'/description'" (click)="goToDescription(item)" style="cursor: pointer;">
             <div class="rating">HD Vietsub</div>
             <img [src]="item.thumb_url" alt="Loki" />
             <div class="details d-block">
