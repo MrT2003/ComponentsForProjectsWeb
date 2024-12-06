@@ -24,30 +24,28 @@ export class AppHeaderComponent implements OnInit{
 
   masterService = inject(MasterService)
 
-
   ngOnInit(): void {
-    this.loadMovies()
-    this.onSearch()
-
+    this.loadMovies(); // Gọi loadMovies khi component khởi tạo
   }
 
   loadMovies(): void {
-    this.masterService.getAllMovies().subscribe((res:APIMoviesModel) => {
+    this.masterService.getAllMovies().subscribe((res: APIMoviesModel) => {
       this.movieList.set(res.items);
-    })
+    });
   }
 
   onSearch(): void {
-    const searchText = this.searchText.trim().toLowerCase();
-    const movies = this.movieList(); 
+    const searchText = this.searchText.trim().toLowerCase(); // Lấy giá trị từ input và chuyển thành chữ thường
+    const movies = this.movieList(); // Lấy mảng phim từ signal
 
     if (searchText) {
       // Tìm phim có tên chứa giá trị tìm kiếm
       const filtered = movies.filter((movie) =>
         movie.name.toLowerCase().includes(searchText)
       );
-      this.filteredMovies.set(filtered); 
+      this.filteredMovies.set(filtered); // Cập nhật filteredMovies
     } else {
+      // Nếu không có gì để tìm kiếm, xóa danh sách kết quả
       this.filteredMovies.set([]);
     }
   }
