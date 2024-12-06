@@ -55,7 +55,6 @@ export class DescriptionPageComponent implements OnInit {
   loadNewestMovies(){
     this.masterService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items); 
-
     })
   }
 }
