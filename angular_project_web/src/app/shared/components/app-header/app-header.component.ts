@@ -25,7 +25,7 @@ export class AppHeaderComponent implements OnInit{
   masterService = inject(MasterService)
 
   ngOnInit(): void {
-    this.loadMovies(); // Gọi loadMovies khi component khởi tạo
+    this.loadMovies();
   }
 
   loadMovies(): void {
