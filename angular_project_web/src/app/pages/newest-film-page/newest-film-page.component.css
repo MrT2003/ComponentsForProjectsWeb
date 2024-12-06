@@ -57,6 +57,7 @@
 
 }
 .buttons .btn-detail{
+  color: var(--white-color);
   background-color: var(--mini-opaque-gray-background);
 
 }
@@ -83,7 +84,7 @@
 .thumbnail {
   position: relative;
   text-align: center;
-  color: white;
+  color: var(--white-color);
   min-width: 250px;
   transition: transform 0.3s, box-shadow 0.3s;
   border-radius: 10px;
@@ -135,6 +136,7 @@
   line-height: 17px;
 } */
 /*-----------------------------------LEFT MENU ------------------------------------------------------ */
+.left-menu {
   background-color: var(--semi-opaque-dark-background);
   /* background-color: var(--dark-background); 
   opacity: 0.7; */
@@ -222,7 +224,6 @@
   margin: 0 10px 0 0;
 }
 
-}
 
 /*---------------EFFECTS LEFT MENU--------------*/
 .nav-link {
