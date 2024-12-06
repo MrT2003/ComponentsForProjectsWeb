@@ -21,19 +21,14 @@ export class MasterService {
   getAllTvSeries():Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(this.apiMovies + "tv-series")
   }
-  // getMoviesByFilters(filters: { genre: string, year: string, country: string }): Observable<APIMoviesModel> {
-  //   let url = `${this.apiMovies}movies?`;
-
-  //   if (filters.genre) url += `genre=${filters.genre}&`;
-  //   if (filters.year) url += `year=${filters.year}&`;
-  //   if (filters.country) url += `country=${filters.country}&`;
-
-  //   return this.http.get<APIMoviesModel>(url);
-  // }
-
-  getMoviesByFilters(year: string, genre: string, country: string): Observable<APIMoviesModel> {
-    const url = `${this.apiMovies}?year=${year}&genre=${genre}&country=${country}`;
-    return this.http.get<APIMoviesModel>(url);
+  getMoviesByYears(year: string): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(`${this.apiMovies}year/${year}`)
+  }
+  getMoviesByCountries(country: string): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(`${this.apiMovies}country/${country}`);
+  }
+  getMoviesByGenres(genre: string): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(`${this.apiMovies}genres/${genre}`);
   }
   
 

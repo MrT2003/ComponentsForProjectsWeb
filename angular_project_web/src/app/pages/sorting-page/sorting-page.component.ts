@@ -31,7 +31,7 @@ export class SortingPageComponent implements OnInit {
   genreList = signal<GenreList[]>([]);
   yearList = signal<YearList[]>([]);
   countryList = signal<CountryList[]>([]);
-  filteredMovies = signal<MovieList[]>([]);
+  movieList = signal<MovieList[]>([]);
 
   selectedGenre: string = '';
   selectedYear: string = '';
@@ -65,12 +65,36 @@ export class SortingPageComponent implements OnInit {
   }
 
   filterMovies() {
-    const genre = this.selectedGenre;
-    const year = this.selectedYear;
-    const country = this.selectedCountry;
-
-    this.masterService.getMoviesByFilters(genre, year, country).subscribe((res) => {
-      this.filteredMovies.set(res.items);
-    });
+    if (this.selectedYear) {
+      this.masterService.getMoviesByYears(this.selectedYear).subscribe(
+        (res) => {
+          this.movieList.set(res.items);
+        },
+        (err) => {
+          console.error('Error fetching movies by year:', err);
+        }
+      );
+    } else if (this.selectedGenre) {
+      this.masterService.getMoviesByGenres(this.selectedGenre).subscribe(
+        (res) => {
+          this.movieList.set(res.items);
+        },
+        (err) => {
+          console.error('Error fetching movies by genre:', err);
+        }
+      );
+    } else if (this.selectedCountry) {
+      this.masterService.getMoviesByCountries(this.selectedCountry).subscribe(
+        (res) => {
+          this.movieList.set(res.items);
+        },
+        (err) => {
+          console.error('Error fetching movies by country:', err);
+        }
+      );
+    } else {
+      console.warn('No filters selected!');
+    }
   }
+  
 }
