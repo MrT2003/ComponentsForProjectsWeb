@@ -52,6 +52,7 @@ export class HomePageComponent implements OnInit{
       this.movieList.set(res.items);
     })
   }
+  
   loadAllTvSeries() {
     this.masterService.getAllTvSeries().subscribe((res:APIMoviesModel) => {
       this.tvList.set(res.items);
@@ -66,5 +67,15 @@ export class HomePageComponent implements OnInit{
 
   toggleMenu(): void {
     this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
+  }
+
+  goToDescription(movie: MovieList) {
+    this.router.navigate(['/description'], {
+      queryParams: {
+        name: movie.name,
+        thumb_url: movie.thumb_url,
+        description: movie.description,
+      },
+    });
   }
 }
