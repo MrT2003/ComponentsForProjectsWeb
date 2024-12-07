@@ -96,6 +96,15 @@ export class HomePageComponent implements OnInit{
       },
     });
   }
-
+  goToWatch(movie: MovieList){
+    this.router.navigate(['/watch'], {
+      queryParams: {
+        name: movie.name,
+        
+        total_episodes: movie.total_episodes,
+        poster_url: movie.poster_url,
+      },
+    });
+  }
 
 }

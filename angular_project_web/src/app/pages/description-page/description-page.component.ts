@@ -31,7 +31,7 @@ export class DescriptionPageComponent implements OnInit {
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
 
   description: any;
-  // route = inject(route);
+  routerDesc = inject(Router);
   constructor(private router: ActivatedRoute) {}
   masterService = inject(MasterService);
   newestList = signal<NewestList[]>([]);
@@ -64,7 +64,6 @@ export class DescriptionPageComponent implements OnInit {
   //     this.selectedMovie.set(movies[randomIndex]); // Gán bộ phim ngẫu nhiên vào signal
   //   }
   // }
-  routerDesc = inject(Router);
   goToDescription(movie: MovieList) {
     this.routerDesc.navigate(['/description'], {
       queryParams: {

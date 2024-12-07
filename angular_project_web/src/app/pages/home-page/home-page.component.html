@@ -126,7 +126,7 @@
             <i class="fa-solid fa-plus"></i>
             Watchlist
           </div>
-          <div [routerLink]="'/watch'" class="watch-now">Watch Now</div>
+          <div [routerLink]="'/watch'" class="watch-now" (click)="goToWatch(item)" style="cursor: pointer;">Watch Now</div>
         </div>
       }
 

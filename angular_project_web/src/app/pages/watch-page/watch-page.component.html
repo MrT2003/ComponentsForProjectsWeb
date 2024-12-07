@@ -9,7 +9,7 @@
             <hr class="p-0 m-0" />
           </div>
         </div>
-        <p class="title-watching text-light my-2">Wednesday</p>
+        <p class="title-watching text-light my-2">{{watch.name}}</p>
 
         <div class="watching-frame col-12">
           <div class="frame w-100 h-100 d-flex justify-content-center align-items-center">
@@ -22,6 +22,8 @@
           <p class="title-watching text-light my-0 me-2">Rating:</p>
 
           <ul class="d-flex gap-1 p-0" style="list-style: none">
+            
+
             <li>
               <button type="button" class="btn btn-link active p-0">
                 <i class="fa-solid fa-star"></i>
@@ -52,22 +54,14 @@
         <div class="episode d-flex gap-1 text-light">
           <p class="title-watching text-light my-0 me-2">Episode:</p>
 
-          <ul class="d-flex gap-2 p-0" style="list-style: none">
-            <li>
+          <ul class="d-flex gap-2 p-0" style="list-style: none" *ngIf="episodeArray.length">
+
+            <li *ngFor="let episode of episodeArray">
               <button type="button" class="btn active text-light p-0">
-                <span>1</span>
+                <span>{{ episode}}</span>
               </button>
             </li>
-            <li>
-              <button type="button" class="btn text-light p-0">
-                <span>2</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn text-light p-0">
-                <span>3</span>
-              </button>
-            </li>
+            
           </ul>
         </div>
       </div>

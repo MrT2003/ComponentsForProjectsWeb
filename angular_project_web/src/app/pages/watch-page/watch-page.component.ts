@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { GenreList } from '../../model/Categories';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { CommonModule } from '@angular/common';
@@ -13,22 +13,27 @@ import { MasterService } from '../../service/master.service';
   styleUrl: './watch-page.component.css'
 })
 export class WatchPageComponent implements OnInit{
+[x: string]: any;
   avtcmt = 'assets/images/avatar.jpg';
   //img right menu
   newest = 'assets/res-rightmenu/rick.jpg'; 
   genre = 'assets/res-rightmenu/rick.jpg';
   ctn = 'assets/res-rightmenu/th.jpg';
-  // masterService: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: ActivatedRoute) {}
   masterService = inject(MasterService);
+
+  watch:any;
+  routerDesc = inject(Router);
 
   newestList = signal<NewestList[]>([]);
   genreList = signal<GenreList[]>([]);
- 
+  episodeArray: number[] = [];
+
   ngOnInit(): void {
     this.loadNewestMovies();
     this.loadAllGenres();
+    this.loadWatch();
   }
 
   loadNewestMovies(){
@@ -43,14 +48,27 @@ export class WatchPageComponent implements OnInit{
       this.genreList.set(res); 
     })
   }
-  goToDescription(movie: MovieList) {
-    this.router.navigate(['/description'], {
+  loadWatch() {
+    this.router.queryParams.subscribe((params) => {
+      const totalEpisodes = parseInt(params['total_episodes'], 10) || 0;
+      this.watch = {
+        name: params['name'],
+        total_episodes: totalEpisodes,
+        poster_url: params['poster_url'],
+      };
+      this.episodeArray = Array.from({ length: totalEpisodes }, (_, i) => i + 1); // Tạo mảng [1, 2, ..., totalEpisodes]
+    });
+  }
+  goToWatch(movie: MovieList){
+    this.routerDesc.navigate(['/watch'], {
       queryParams: {
         name: movie.name,
-        thumb_url: movie.thumb_url,
-        description: movie.description,
+
+        
+        total_episodes: movie.total_episodes,
         poster_url: movie.poster_url,
       },
     });
   }
+  
 }
