@@ -317,8 +317,14 @@ hr {
 .right-menu{
   background-color: var(--light-dark-background);
 }
+.card{
+  /* width: 10em; */
+  height: auto;
+  aspect-ratio: 2/1;
+}
 .card img {
   object-fit: cover;
+  overflow: hidden;
 }
 
 .card-body h6 {
@@ -337,7 +343,7 @@ a.text-primary:hover {
   text-decoration: underline;
 }
 
-/* user info */
+/* user info
 .user-info {
   width: 100%;
   height: auto;
@@ -367,7 +373,7 @@ a.text-primary:hover {
   max-height: 100%;
   object-fit: cover;
   border-radius: 15px;
-}
+} */
 
 /* continue */
 .continue-cards {

@@ -155,8 +155,14 @@ color: var(--blue-highlight);
 .right-menu{
   background-color: var(--light-dark-background);
 }
+.card{
+  /* width: 10em; */
+  height: auto;
+  aspect-ratio: 2/1;
+}
 .card img {
   object-fit: cover;
+  overflow: hidden;
 }
 
 .card-body h6 {
@@ -175,7 +181,7 @@ a.text-primary:hover {
   text-decoration: underline;
 }
 
-/* user info */
+/* user info
 .user-info {
   width: 100%;
   height: auto;
@@ -205,7 +211,7 @@ a.text-primary:hover {
   max-height: 100%;
   object-fit: cover;
   border-radius: 15px;
-}
+} */
 
 /* continue */
 .continue-cards {
@@ -286,9 +292,12 @@ a.text-primary:hover {
 }
 .card-img-wrapper {
   position: relative;
-  height: auto;
+  height: 6em;
   display: block;
+  border-radius: 5px;
+  overflow: hidden;
 }
+
 .card-img-overlay {
   position: absolute;
   top: 0;
@@ -300,6 +309,11 @@ a.text-primary:hover {
   justify-content: flex-end; /* Đẩy nội dung xuống dưới cùng */
   background: var(--half-opaque-dark-background) ;
 }
+.card-details {
+  color: var(--white-color);
+  opacity: 70%;
+}
+
 .card-newest {
   position: absolute;
   top: 10px;
@@ -307,10 +321,8 @@ a.text-primary:hover {
   width: 100%;
   height: 100%;
 }
-.card-details {
-  color: var(--white-color);
-  opacity: 70%;
-}
+
+
 .card img {
   opacity: 0.5;
 } 
@@ -355,6 +367,15 @@ a.text-primary:hover {
   text-align: center;
   justify-content: center;
 }
+.card-buttons .btn-left{
+  background-color: rgba(249, 249, 249, 0.2);
+  /* opacity: 20%; */
+  color: var(--white-color);
+  backdrop-filter: blur(10px); /* Đặt giá trị độ mờ (blur) cho nền */ 
+  -webkit-backdrop-filter: blur(10px); /* Để hỗ trợ các trình duyệt WebKit như Safari */
+
+}
+
 .btn-watch {
   background-color: var(--blue-highlight);
   color: var(--white-color);
@@ -368,3 +389,4 @@ a.text-primary:hover {
 .progress .progress-bar {
   background-color: var(--blue-highlight);
 }
+
