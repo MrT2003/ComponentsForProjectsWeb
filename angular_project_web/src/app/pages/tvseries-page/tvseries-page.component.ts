@@ -1,17 +1,18 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { APIMoviesModel, MovieList } from '../../model/Movies';
+import { APIMoviesModel, MovieList, TvList } from '../../model/Movies';
 import { MasterService } from '../../service/master.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-movie-page',
+  selector: 'app-tvseries-page',
   standalone: true,
   imports: [RouterModule, CommonModule],
-  templateUrl: './movie-page.component.html',
-  styleUrl: './movie-page.component.css'
+  templateUrl: './tvseries-page.component.html',
+  styleUrl: './tvseries-page.component.css'
+ 
 })
-export class MoviePageComponent implements OnInit {
+export class TvseriesPageComponent implements OnInit {
   lokiPath = 'assets/images/loki.jpg';
   // icon left menu
   show = 'assets/res-leftmenu/Arrow down-circle.png';
@@ -27,12 +28,14 @@ export class MoviePageComponent implements OnInit {
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
 
   masterService = inject(MasterService);
-  movieList = signal<MovieList[]>([]);
+  tvList = signal<TvList []>([]);
+  
   router = inject(Router);
 
 
   ngOnInit(): void {
-    this.loadAllMovies();
+    this.loadAllTvSeries();
+    
   }
   
   toggleMenu(): void {
@@ -41,23 +44,21 @@ export class MoviePageComponent implements OnInit {
   onSetting(): void {
     this.router.navigate(['/settings']);
   }
-  loadAllMovies() {
-    this.masterService.getAllMovies().subscribe((res:APIMoviesModel) => {
-      this.movieList.set(res.items);
+  loadAllTvSeries() {
+    this.masterService.getAllTvSeries().subscribe((res:APIMoviesModel) => {
+      this.tvList.set(res.items);
     })
   }
-
   goToDescription(movie: MovieList) {
     this.router.navigate(['/description'], {
       queryParams: {
         name: movie.name,
         thumb_url: movie.thumb_url,
         description: movie.description,
-        poster_url: movie.poster_url,
       },
     });
   }
 
-  
 }
+
 

@@ -71,7 +71,10 @@ export class DescriptionPageComponent implements OnInit {
         name: movie.name,
         thumb_url: movie.thumb_url,
         description: movie.description,
+        poster_url: movie.poster_url,
       },
     });
   }
+
+  
 }
