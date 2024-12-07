@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MasterService } from '../../service/master.service';
+import { GenreList } from '../../model/Categories';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-genres-page',
   standalone: true,
-  imports: [RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './genres-page.component.html',
   styleUrl: './genres-page.component.css'
 })
-export class GenresPageComponent {
+export class GenresPageComponent  implements OnInit{
+ 
   //img right menu (genres)
   newest = 'assets/res-rightmenu/rick.jpg'; 
   genre = 'assets/res-rightmenu/rick.jpg';
@@ -23,4 +27,21 @@ export class GenresPageComponent {
   continue = 'assets/res-leftmenu/Continue.png';
   settings = 'assets/res-leftmenu/Settings.png';
   logout = 'assets/res-leftmenu/Log Out.png';
+
+
+  masterService = inject(MasterService);
+  genreList =  signal<GenreList[]>([]);
+  trackById(index: number, item: GenreList): number {
+    return item._id; // Trả về thuộc tính `_id` làm giá trị duy nhất
+  }
+  ngOnInit(): void {
+    
+    this.loadAllGenres();
+  }
+  loadAllGenres(){
+    this.masterService.getAllGenres().subscribe((res:GenreList[]) => {
+      this.genreList.set(res); 
+    })
+  }
+
 }

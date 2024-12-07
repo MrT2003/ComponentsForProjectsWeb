@@ -89,94 +89,24 @@
             </div>
             <hr />
             <!-- Genres Grid -->
-            <div class="row ">
-              <!-- Drama -->
-              <div class="col-6 container-fix mb-4 ">
+            <div class="grid-container mb-4">
+              <!-- @for (item of genreList().slice(0, 22); track $index) { -->
+              <div *ngFor="let item of genreList(); let i = index; trackBy: trackById">
+                <!-- Drama -->
+                <div class=" container-fix  ">
                 <div class="card text-white w-100 ">
                   <div class="container-fluid filter "></div>
-                  <img [src]="genre" class="card-img larger-image" alt="Drama" />
+                  <img [src]="item.image" class="card-img larger-image" alt="Drama" />
                   <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <h5 class="card-title fw-bold">Drama</h5>
+                    <h5 class="card-title fw-bold">{{item.name}}</h5>
                   </div>
                 </div>
-              </div>
-              <!-- Thriller -->
-              <div class="col-6 container-fix mb-4">
-                <div class="card text-white w-100">
-                  <div class="container-fluid filter "></div>
-
-                  <img [src]="genre" class="card-img larger-image" alt="Thriller" />
-                  <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <h5 class="card-title fw-bold">Thriller</h5>
-                  </div>
                 </div>
-              </div>
-              <!-- Sitcom -->
-              <div class="col-6 container-fix mb-4">
-                <div class="card text-white w-100">
-                  <div class="container-fluid filter "></div>
-
-                  <img [src]="genre" class="card-img larger-image" alt="Sitcom" />
-                  <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <h5 class="card-title fw-bold">Sitcom</h5>
-                  </div>
-                </div>
-              </div>
-              <!-- Superhero -->
-              <div class="col-6 container-fix mb-4">
-                <div class="card text-white w-100">
-                  <div class="container-fluid filter "></div>
-
-                  <img  [src]="genre" class="card-img larger-image" alt="Superhero" />
-                  <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <h5 class="card-title fw-bold">Superhero</h5>
-                  </div>
-                </div>
-              </div>
-              <!-- Sitcom -->
-              <div class="col-6 container-fix mb-4">
-                <div class="card text-white w-100">
-                  <div class="container-fluid filter "></div>
-
-                  <img  [src]="genre" class="card-img larger-image" alt="Sitcom" />
-                  <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <h5 class="card-title fw-bold">Sitcom</h5>
-                  </div>
-                </div>
-              </div>
-              <!-- Superhero -->
-              <div class="col-6 container-fix mb-4">
-                <div class="card text-white w-100">
-                  <div class="container-fluid filter "></div>
-
-                  <img  [src]="genre" class="card-img larger-image" alt="Superhero" />
-                  <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <h5 class="card-title fw-bold">Superhero</h5>
-                  </div>
-                </div>
-              </div>
-              <!-- Sitcom -->
-              <div class="col-6 container-fix mb-4">
-                <div class="card text-white w-100">
-                  <div class="container-fluid filter "></div>
-
-                  <img  [src]="genre" class="card-img larger-image" alt="Sitcom" />
-                  <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <h5 class="card-title fw-bold">Sitcom</h5>
-                  </div>
-                </div>
-              </div>
-              <!-- Superhero -->
-              <div class="col-6 container-fix mb-4">
-                <div class="card text-white w-100">
-                  <div class="container-fluid filter "></div>
-
-                  <img  [src]="genre" class="card-img larger-image" alt="Superhero" />
-                  <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <h5 class="card-title fw-bold">Superhero</h5>
-                  </div>
-                </div>
-              </div>
+            </div>
+              
+            <!-- } -->
+              
+             
             </div>
           </div>
   

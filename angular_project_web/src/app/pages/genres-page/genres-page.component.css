@@ -75,6 +75,11 @@
     }
 
     /*-----------------------------------GENRES------------------------------------------------------ */
+    .grid-container{
+      display: grid;             /* Kích hoạt CSS Grid */
+      grid-template-columns: repeat(2, 1fr); /* Tạo 2 cột đều nhau */
+      gap: 30px;                
+    }
 
     .filter {
       content: "";
@@ -92,10 +97,12 @@
   .card{
     border: none; 
     border-radius: 10px;
+    height: 15em;
   }
   .card img {
     object-fit: cover;
     border-radius: 10px;
+    overflow: hidden;
   }
   .card .card-img-overlay .card-title{
     font-size: 50px;
