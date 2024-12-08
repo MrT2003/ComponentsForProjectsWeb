@@ -1,17 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-
-import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
-
 import { Router, RouterModule } from '@angular/router';
+
+//COMPONENTS
+import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
+import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
+//SERVICES  
 import { MasterService } from '../../service/master.service';
+import { FilmsServiceService } from '../../service/films-service.service';
+
+//MODELS
 import { APIMoviesModel, MovieList, NewestList, TvList } from '../../model/Movies';
 import { GenreList } from '../../model/Categories';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, RightMenuComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
@@ -39,19 +44,22 @@ export class HomePageComponent implements OnInit{
   genre = 'assets/res-rightmenu/rick.jpg';
   ctn = 'assets/res-rightmenu/th.jpg';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private filmsService: FilmsServiceService) {}
 
   masterService = inject(MasterService);
   movieList = signal<MovieList []>([]);
   tvList = signal<TvList []>([]);
   newestList = signal<NewestList[]>([]);
   genreList =  signal<GenreList[]>([]);
-
+  isExpanded = false;
   ngOnInit(): void {
     this.loadAllMovies();
     this.loadAllTvSeries();
     this.loadNewestMovies();
-    this.loadAllGenres();
+  }
+
+  toggleRightMenu() {
+    this.isExpanded = !this.isExpanded;
   }
 
   loadAllMovies() {
@@ -72,12 +80,6 @@ export class HomePageComponent implements OnInit{
 
     })
   }
-
-  loadAllGenres(){
-    this.masterService.getAllGenres().subscribe((res:GenreList[]) => {
-      this.genreList.set(res); 
-    })
-  }
   
   onSetting(): void {
     this.router.navigate(['/settings']);
@@ -89,25 +91,21 @@ export class HomePageComponent implements OnInit{
     this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
   }
 
-  goToDescription(movie: MovieList) {
-    this.router.navigate(['/description'], {
-      queryParams: {
-        name: movie.name,
-        thumb_url: movie.thumb_url,
-        description: movie.description,
-        poster_url: movie.poster_url,
-      },
-    });
-  }
-  goToWatch(movie: MovieList){
-    this.router.navigate(['/watch'], {
-      queryParams: {
-        name: movie.name,
-        
-        total_episodes: movie.total_episodes,
-        poster_url: movie.poster_url,
-      },
-    });
-  }
+  // goToDescription(movie: MovieList) {
+  //   this.router.navigate(['/description'], {
+  //     queryParams: {
+  //       name: movie.name,
+  //       thumb_url: movie.thumb_url,
+  //       description: movie.description,
+  //       poster_url: movie.poster_url,
+  //     },
+  //   });
+  // }
 
+  goToWatch(movie: MovieList){
+    this.filmsService.goToWatch(movie);
+  }
+  goToDescription(movie: MovieList) {
+    this.filmsService.goToDescription(movie);
+  }
 }

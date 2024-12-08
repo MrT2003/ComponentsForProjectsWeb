@@ -1,3 +1,4 @@
+/*-----------------------------------Carousel-----------------------------------*/
 .carousel {
   width: 100%;
   margin: auto;
@@ -5,6 +6,7 @@
   overflow: hidden;
   margin-top: 50px;
 }
+
 .carousel-inner img {
   width: 100%;
   aspect-ratio: 2/1;
@@ -21,18 +23,22 @@
   width: 100%;
   z-index: 10;
 }
+
 .custom-indicators .dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background-color: var(--white-color);
 }
+
 .dot.active {
   background-color: var(--blue-highlight);
 }
+
 .carousel-inner {
   position: relative;
 }
+
 .carousel-control-next,
 .carousel-control-prev {
   height: 50px;
@@ -40,12 +46,15 @@
   position: absolute;
   top: 50%;
 }
+
 .carousel-control-next {
   right: 20px;
 }
+
 .carousel-control-prev {
   left: 20px;
 }
+
 .left-btn,
 .right-btn {
   width: 100%;
@@ -56,14 +65,17 @@
   justify-content: center;
   align-items: center;
 }
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   width: 30px;
   height: 30px;
 }
+
 .carousel-item {
   position: relative;
 }
+
 .filter {
   position: absolute;
   width: 150%;
@@ -73,6 +85,7 @@
   border-radius: 10px;
   background-color: var(--half-opaque-dark-background);
 }
+
 .name-film {
   position: absolute;
   top: 30px;
@@ -80,8 +93,8 @@
   color: var(--white-color);
   font-size: 45px;
   font-weight: bold;
-
 }
+
 .watch-list {
   width: 20%;
   height: 12%;
@@ -104,9 +117,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .watch-list i {
   margin-right: 10px;
 }
+
 .watch-now {
   width: 20%;
   height: 12%;
@@ -114,7 +129,7 @@
   bottom: 50px;
   right: 20px;
   cursor: pointer;
-  color:  var(--dark-background);
+  color: var(--dark-background);
   font-weight: 800;
   font-size: 17px;
   background-color: var(--blue-highlight);
@@ -130,13 +145,14 @@
   text-overflow: ellipsis;
 }
 
-/* YOU MAY LIKE */
+/*-------------------Thumbnail (for Movies & TV Series)----------------------*/
 .thumbnail {
   position: relative;
   text-align: center;
   color: var(--white-color);
   cursor: pointer;
 }
+
 .thumbnail .rating {
   position: absolute;
   top: 10px;
@@ -144,19 +160,19 @@
   background-color: var(--semi-opaque-dark-background);
   padding: 5px;
   border-radius: 5px;
-
   font-size: 17px;
   font-weight: 700;
   color: var(--white-color);
   line-height: 17px;
 }
+
 .thumbnail img {
   width: 100%;
-  /* height: 400px; */
   aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 10px;
 }
+
 .thumbnail .details {
   margin-top: 10px;
   display: flex;
@@ -165,11 +181,13 @@
   height: 50px;
   color: var(--white-color);
 }
+
 .thumbnail .details .complete {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
+
 .details-top .details-top p {
   font-family: "Lato", sans-serif;
   font-size: 17px;
@@ -187,367 +205,41 @@
   opacity: 70%;
 }
 
-.title-bar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-.title-bar h4,
-.title-bar p {
-  margin-bottom: 0;
-}
-.title-bar p {
-  cursor: pointer;
-}
+/*-----------------------------------Right Menu-----------------------------------*/
 
-hr {
-  margin-top: 0;
-}
-.title-bar h4 {
-  font-weight: 700;
-}
-/*-----------------------------------LEFT MENU ------------------------------------------------------ */
-.left-menu {
-  background-color: var(--semi-opaque-dark-background);
-  /* background-color: var(--dark-background); 
-  opacity: 0.7; */
-}
-.arrow-down {
-  width: 12%;
-  aspect-ratio: 1/1;
-}
-
-.left-menu {
-  width: 14.5%;
-  font-family: "Lato", sans-serif;
+.right-menu-container {
+  position: relative;
+  overflow: hidden;
   transition: width 0.3s ease;
 }
-.left-menu.collapsed {
-  width: 0; /* Thu nhỏ menu */
-  overflow: hidden; /* Ẩn nội dung */
+
+.right-menu-container.col-3 {
+  width: 25%; /* Adjust this value as needed */
 }
 
+.right-menu-container.col-4 {
+  width: 33.33%; /* Adjust this value as needed */
+}
+
+.right-menu-content {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.right-menu-container.col-3 .right-menu-content {
+  transform: translateX(25%); /* Adjust this value as needed */
+}
+
+.right-menu-container.col-4 .right-menu-content {
+  transform: translateX(0);
+}
+
+/* Adjust for full-width when the left menu is collapsed */
 .full-width {
-  width: 60%; /* Mở rộng nội dung chính khi menu bị ẩn */
+  width: 60%;
 }
 
-.left-menu.collapsed .section-title,
-.left-menu.collapsed .nav-link span {
-  display: none; 
-}
-
-.left-menu.collapsed .nav-link img {
-  margin: 0 auto;
-}
-/* SHOW ICON Styling */
-.left-menu .icon {
-  margin: 5% 0 0 6%;
-  width: 30px;
-  height: auto;
-  cursor: pointer;
-}
-
-.toggle-icon .icon-out {
-  position: absolute;
-  top: 12%;
-  left: 1%;
-  cursor: pointer;
-  width: 30px;
-  z-index: 10;
-}
-
-.menu-section {
-  padding: 10px 0px;
-}
-.section-title {
-  padding: 10px 20px;
-  font-size: 17.33px;
-  text-transform: capitalize;
-  color: var(--white-color);
-  margin-bottom: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  opacity: 67%;
-
-}
-.nav {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.nav-link {
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  font-size: 17.33px;
-  transition: background-color 0.2s ease;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.nav-link img {
-  max-width: 1em;
-  height: auto;
-  padding: 0;
-  margin: 0 10px 0 0;
-}
-
-
-/*---------------EFFECTS LEFT MENU--------------*/
-.nav-link {
-  color: var(--white-color); /* Màu mặc định */
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.nav-link:hover {
-  background-color: var(--light-dark-background);
-  border-radius: 5px; /* Thêm góc bo nếu cần */
-}
-
-.nav-link.active {
-  background-color: var(--blue-highlight);
-  border-radius: 5px;
-}
-
-/*-----------------------------------RIGHT MENU ------------------------------------------------------ */
-.right-menu{
-  background-color: var(--light-dark-background);
-}
-.card{
-  /* width: 10em; */
-  height: auto;
-  aspect-ratio: 2/1;
-}
-.card img {
-  object-fit: cover;
-  overflow: hidden;
-}
-
-.card-body h6 {
-  font-size: 0.9rem;
-}
-
-.btn {
-  font-size: 0.8rem;
-}
-
-a.text-primary {
-  text-decoration: none;
-}
-
-a.text-primary:hover {
-  text-decoration: underline;
-}
-
-/* user info
-.user-info {
-  width: 100%;
-  height: auto;
-}
-
-.user-info .btn {
-  width: 20%;
-  aspect-ratio: 3117 / 2800;
-}
-
-.user-info .me-3 img {
-  width: 90%;
-  height: auto;
-}
-
-.user-info .info {
-  display: block;
-}
-
-.user-info .avatar {
-  width: 20%;
-  aspect-ratio: 1/1;
-}
-
-.user-info .avatar img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  border-radius: 15px;
-} */
-
-/* continue */
-.continue-cards {
-  display: flex;
-  gap: 20px;
-}
-
-.card img {
-  border-radius: 8px;
-  flex: 0 0 30%;
-  overflow: hidden;
-  object-fit: cover;
-}
-
-.card-body {
-  text-align: center;
-}
-
-.card-title {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.card-text {
-  font-size: 14px;
-  color: var(--white-color);
-  opacity: 0.7;
-}
-
-.progress {
-  background-color: var(--white-color);
-  border-radius: 10px;
-}
-
-.card-buttons button {
-  border-radius: 5px;
-}
-
-.card-buttons .btn-primary {
-  background-color: var(--blue-highlight);
-  border-color: var(--blue-highlight);
-}
-
-/* genre */
-.genres-cards {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.genres-cards .card {
-  position: relative;
-  width: 90%;
-}
-
-.genres-cards .card img {
-  object-fit: cover;
-  height: 100%;
-}
-
-.genres-cards .card .details {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-
-/* newest */
-.card {                               /*all right-menu cards*/
-  position: relative;
-  background-color: var(--semi-opaque-dark-background);
-  color: var(--white-color);
-  border: none;
-  margin: 10px;
-}
-.card-img-wrapper {
-  position: relative;
-  height: 6em;
-  display: block;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.card-img-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Đẩy nội dung xuống dưới cùng */
-  background: var(--half-opaque-dark-background) ;
-}
-.card-details {
-  color: var(--white-color);
-  opacity: 70%;
-}
-
-.card-newest {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 100%;
-  height: 100%;
-}
-
-
-.card img {
-  opacity: 0.5;
-} 
-
-.card-body {
-  position: absolute;
-  top: 0px;
-}
-.card-title {
-  font-size: 1.2em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.details .card-text {
-  display: block;
-  font-size: 0.8em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 20%;
-}
-
-.details .card-newest {
-  position: absolute;
-  top: 30%;
-  left: 10px;
-  width: 90%;
-  height: 100%;
-  display: block;
-  font-size: 0.8em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.card-buttons .btn {
-  display: flex;
-  padding: auto;
-  z-index: 1;
-  text-align: center;
-  justify-content: center;
-}
-.card-buttons .btn-left{
-  background-color: rgba(249, 249, 249, 0.2);
-  /* opacity: 20%; */
-  color: var(--white-color);
-  backdrop-filter: blur(10px); /* Đặt giá trị độ mờ (blur) cho nền */ 
-  -webkit-backdrop-filter: blur(10px); /* Để hỗ trợ các trình duyệt WebKit như Safari */
-
-}
-
-.btn-watch {
-  background-color: var(--blue-highlight);
-  color: var(--white-color);
-}
-
-.progress,
-.progress-bar {
-  height: 3px;
-}
-
-.progress .progress-bar {
-  background-color: var(--blue-highlight);
-}

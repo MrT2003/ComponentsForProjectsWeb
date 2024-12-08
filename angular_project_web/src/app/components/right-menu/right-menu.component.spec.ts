@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RightMenuComponent } from './right-menu.component';
 
 describe('RightMenuComponent', () => {
