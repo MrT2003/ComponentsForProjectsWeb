@@ -1,0 +1,110 @@
+
+    <div class="d-flex flex-column h-100 ">
+      <!-- <img
+        [src]="sideBarPath"
+        alt="Collapse Menu"
+        class="icon"
+        (click)="toggleMenu()"
+      /> -->
+      <!-- Menu Items -->
+      <nav class="flex-grow-1 ml-3">
+        <div class="menu-section">
+          <p class="section-title fix-padding">Menu</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+                <a
+                  [routerLink]="'/home'"
+                  [ngClass]="{'active': isHome}"
+                  (click)="setActivePage('home')"
+                  class="nav-link text-light fix-padding"
+                  routerLinkActive="active"                  
+                >
+                  <img [src]="home" alt="home-icon" /> Home
+                </a>
+            </li>
+            <li class="nav-item">
+              <a
+                [routerLink]="'/sorting'"
+                [ngClass]="{'active': isSorting}"
+                (click)="setActivePage('sorting')"
+                class="nav-link text-light fix-padding"
+                routerLinkActive="active"
+              >
+                <img [src]="sort" alt="home-icon" /> Sorting
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <p class="section-title fix-padding">Library</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a
+                [routerLink]="'/newest'"
+                [ngClass]="{'active': isRecent}"
+                (click)="setActivePage('newest')"
+                class="nav-link text-light fix-padding"
+                routerLinkActive="active"
+              >
+                <img [src]="recent" alt="home-icon" /> Recent
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                [routerLink]="'/settings'"
+                [ngClass]="{'active': isPlaylists}"
+                (click)="setActivePage('playlists')"
+                class="nav-link text-light fix-padding"
+                routerLinkActive="active"
+              >
+                <img [src]="playlists" alt="home-icon" /> Playlists
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                [routerLink]="'/settings'"
+                [ngClass]="{'active': isWatchlist}"
+                (click)="setActivePage('watchlist')"
+                class="nav-link text-light fix-padding"
+                routerLinkActive="active"
+              >
+                <img [src]="watchlist" alt="home-icon" /> Watchlist
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                [routerLink]="'/settings'"
+                [ngClass]="{'active': isContinue}"
+                (click)="setActivePage('continue')"
+                class="nav-link text-light fix-padding"
+                routerLinkActive="active"
+              >
+                <img [src]="continue" alt="home-icon" /> Continue
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <p class="section-title fix-padding">General</p>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a
+                [routerLink]="'/settings'"
+                [ngClass]="{'active': isSettings}"
+                (click)="setActivePage('settings')"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="nav-link text-light fix-padding"
+                routerLinkActive="active"
+              >
+                <img [src]="settings" alt="home-icon" /> Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link text-light fix-padding" routerLinkActive="active">
+                <img [src]="logout" alt="home-icon" /> Log Out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>

@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
+
+import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
+
 import { Router, RouterModule } from '@angular/router';
 import { MasterService } from '../../service/master.service';
 import { APIMoviesModel, MovieList, NewestList, TvList } from '../../model/Movies';
@@ -8,7 +11,7 @@ import { GenreList } from '../../model/Categories';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, LeftMenuComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })

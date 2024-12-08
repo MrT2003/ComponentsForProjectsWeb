@@ -5,10 +5,11 @@ import { APIMoviesModel, MovieList } from '../../model/Movies';
 import { MasterService } from '../../service/master.service';
 import { CountryList, GenreList, YearList } from '../../model/Categories';
 import { FormsModule } from '@angular/forms';
+import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
 @Component({
   selector: 'app-sorting-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule],
+  imports: [RouterModule, CommonModule, FormsModule, LeftMenuComponent],
   templateUrl: './sorting-page.component.html',
   styleUrl: './sorting-page.component.css',
 })

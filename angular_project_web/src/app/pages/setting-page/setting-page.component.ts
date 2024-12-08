@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
 
 @Component({
   selector: 'app-setting-page',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, LeftMenuComponent],
   templateUrl: './setting-page.component.html',
   styleUrl: './setting-page.component.css',
 })

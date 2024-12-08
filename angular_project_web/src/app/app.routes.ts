@@ -13,7 +13,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { authGuard } from './guard/auth.guard';
 import { MoviePageComponent } from './pages/movie-page/movie-page.component';
 import { TvseriesPageComponent } from './pages/tvseries-page/tvseries-page.component';
-
+import { LeftMenuComponent } from './components/left-menu/left-menu.component';
 export const routes: Routes = [
   {
     path: '',
@@ -38,7 +38,7 @@ export const routes: Routes = [
       { path: 'genres', component: GenresPageComponent },
       { path: 'movie', component: MoviePageComponent },
       { path: 'tvseries', component: TvseriesPageComponent },
-
+      { path: 'test', component: LeftMenuComponent},
     ],
   },
 ];

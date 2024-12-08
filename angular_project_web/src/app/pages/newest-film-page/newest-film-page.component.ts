@@ -3,11 +3,12 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MasterService } from '../../service/master.service';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
+import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
 
 @Component({
   selector: 'app-newest-film-page',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, LeftMenuComponent],
   templateUrl: './newest-film-page.component.html',
   styleUrl: './newest-film-page.component.css',
 })

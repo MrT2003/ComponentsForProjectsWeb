@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
 import { SortingPageComponent } from './sorting-page.component';
 
 describe('SortingPageComponent', () => {

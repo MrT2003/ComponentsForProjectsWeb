@@ -1,0 +1,92 @@
+/* Left Menu Styling */
+.arrow-down{
+    width: 12%;
+    aspect-ratio: 1/1;
+  }
+  /* .logo{
+    height: 20px;
+  } */
+  .left-menu {
+      width: 14.5%; /* Độ rộng menu */
+      font-family: 'Lato', sans-serif;
+      /* padding: 0 10px; */
+      
+    }
+    
+    /* Logo Styling */
+  .left-menu img {
+      display: block;
+      max-width: 56%; /* Đảm bảo logo không vượt quá chiều rộng của menu */
+      height: auto;    /* Duy trì tỉ lệ gốc */
+      max-height: 80px; /* Giới hạn chiều cao của logo */
+      margin: 0 auto;  /* Căn giữa logo */
+      
+      
+    }
+    
+    .menu-section {
+      padding: 10px 0px;
+      /* background-color: red; */
+    }
+    
+    .section-title {
+     
+      padding: 10px 20px;
+      font-size: 17.33px;
+      text-transform: capitalize;
+      color: #AEAFB2;
+      margin-bottom: 10px;
+      white-space: nowrap; /* Ngăn chữ xuống dòng */
+      overflow: hidden; /* Cắt chữ nếu vượt quá khung */
+      text-overflow: ellipsis; /* Hiển thị "..." nếu chữ bị cắt */
+    }
+    .nav{
+      
+      white-space: nowrap; /* Ngăn chữ xuống dòng */
+      overflow: hidden; /* Cắt chữ nếu vượt quá khung */
+      text-overflow: ellipsis; /* Hiển thị "..." nếu chữ bị cắt */
+    }
+    
+    .nav-link {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      font-size: 17.33px;
+      transition: background-color 0.2s ease;
+  
+      /* Make sure the nav-link has a restricted width */
+      overflow: hidden; /* Hide the overflow text */
+      text-overflow: ellipsis; /* Display ellipsis when overflow occurs */
+      white-space: nowrap; /* Prevent text wrapping */
+     
+    }
+  
+    .nav-link img{
+      max-width: 1em;
+      height: auto;    /* Duy trì tỉ lệ gốc */
+      padding: 0;
+      margin: 0 10px 0 0;
+    }
+    
+/*---------------EFFECTS LEFT MENU--------------*/
+.nav-link {
+    color: var(--white-color); /* Màu mặc định */
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background-color: var(--light-dark-background);
+    border-radius: 5px; /* Thêm góc bo nếu cần */
+  }
+  
+  .nav-link.active {
+    background-color: var(--blue-highlight);
+    border-radius: 5px;
+  }
+    .fix-padding{
+        padding-left: 2em;
+    }
+    .active{
+        background-color: var(--blue-highlight);
+        border-radius: 5px;
+    }
