@@ -14,7 +14,118 @@
     --search-bar: #aeafb2; 
     --grey: #828282;
 }
+/*==================== MEDIA QUERIES ====================*/
+/* For small devices */
+@media (max-width: 480px) {
+    html {
+      font-size: 0.875em; /* Smaller base font size (14px) */
+    }
+  
+    body {
+      font-size: clamp(0.9em, 4vw, 1em); /* Paragraph text scales between 14px and 16px */
+    }
+  
+    h1 {
+      font-size: clamp(1.5em, 8vw, 3em); /* Headings are smaller for mobile */
+    }
+  
+    h2 {
+      font-size: clamp(1.25em, 6vw, 2.5em);
+    }
+  
+    h3 {
+      font-size: clamp(1.1em, 5.5vw, 2em);
+    }
+  
+    p {
+      font-size: clamp(0.875em, 4vw, 1em); /* Paragraph text adjusts */
+    }
+  }
+  
+  /* For medium devices */
+  @media (max-width: 768px) {
+    html {
+      font-size: 0.9375em; /* Slightly smaller base font size (15px) */
+    }
+  
+    body {
+      font-size: clamp(1em, 3.5vw, 1.125em); /* Paragraph text scales between 15px and 18px */
+    }
+  
+    h1 {
+      font-size: clamp(1.75em, 7vw, 3.5em); /* Headings for tablets */
+    }
+  
+    h2 {
+      font-size: clamp(1.5em, 5.5vw, 3em);
+    }
+  
+    h3 {
+      font-size: clamp(1.25em, 5vw, 2.5em);
+    }
+  
+    p {
+      font-size: clamp(0.9em, 3.5vw, 1em); /* Adjusted for medium screens */
+    }
+  }
+  
+  /* For large devices */
+  @media (min-width: 769px) {
+    html {
+      font-size: 1em; /* Default base font size (16px) */
+    }
+  
+    body {
+      font-size: clamp(1em, 2.5vw, 1.25em); /* Paragraph text scales between 16px and 20px */
+    }
+  
+    h1 {
+      font-size: clamp(2em, 6vw, 4em); /* Headings are larger for PCs */
+    }
+  
+    h2 {
+      font-size: clamp(1.75em, 5vw, 3.5em);
+    }
+  
+    h3 {
+      font-size: clamp(1.5em, 4.5vw, 3em);
+    }
+  
+    p {
+      font-size: clamp(1em, 3vw, 1.125em); /* Optimal size for desktop */
+    }
+  }
+  
 
 body {
     background-color: #16181e;
 }
+
+.right-menu-container {
+    position: relative;
+    overflow: hidden;
+    transition: width 0.3s ease;
+  }
+  
+  .right-menu-container.col-3 {
+    width: 30%; /* Adjust this value as needed */
+  }
+  
+  .right-menu-content {
+    position: absolute;
+    top: 3.125em;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  .right-menu-container.col-3 .right-menu-content {
+    transform: translateX(25%); /* Adjust this value as needed */
+  }
+  
+  .right-menu-container.col-4 .right-menu-content {
+    transform: translateX(0);
+  }
+  /* delete later */
+  

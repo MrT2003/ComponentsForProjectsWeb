@@ -5,7 +5,8 @@ import { Router, RouterModule } from '@angular/router';
 //COMPONENTS
 import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
-//SERVICES  
+import {FilmFrameComponent} from '../../components/film-frame/film-frame.component';
+//SERVICES   
 import { MasterService } from '../../service/master.service';
 import { FilmsServiceService } from '../../service/films-service.service';
 
@@ -16,7 +17,7 @@ import { GenreList } from '../../model/Categories';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent, RightMenuComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, RightMenuComponent, FilmFrameComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
@@ -90,17 +91,6 @@ export class HomePageComponent implements OnInit{
   toggleMenu(): void {
     this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
   }
-
-  // goToDescription(movie: MovieList) {
-  //   this.router.navigate(['/description'], {
-  //     queryParams: {
-  //       name: movie.name,
-  //       thumb_url: movie.thumb_url,
-  //       description: movie.description,
-  //       poster_url: movie.poster_url,
-  //     },
-  //   });
-  // }
 
   goToWatch(movie: MovieList){
     this.filmsService.goToWatch(movie);

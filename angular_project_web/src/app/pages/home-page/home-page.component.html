@@ -69,19 +69,7 @@
       <div class="row">
         @for (item of movieList().slice(0, 3); track $index) {
         <div class="col-md-4">
-          <div [routerLink]="'/description'" class="thumbnail" (click)="goToDescription(item)" style="cursor: pointer;">
-            <div class="rating">HD Vietsub</div>
-            <img [src]="item.thumb_url" alt="thumbnail" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>{{ item.name }}</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>{{ item.created | date : "yyyy" }}</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
+          <app-film-frame [item]="item"></app-film-frame>
         </div>
         }
       </div>
@@ -105,20 +93,7 @@
       <div class="row">
         @for (item of tvList().slice(0, 3); track $index) {
         <div class="col-md-4">
-          <div class="thumbnail" [routerLink]="'/description'" (click)="goToDescription(item)" style="cursor: pointer;">
-            <div class="rating">HD Vietsub</div> 
-            <!-- nhớ chỉnh hd viétub -->
-            <img [src]="item.thumb_url" alt="Loki" />
-            <div class="details d-block">
-              <div class="details-top col-12 text-start">
-                <h5>{{ item.name }}</h5>
-              </div>
-              <div class="details-bottom d-flex justify-content-between">
-                <p>{{ item.created | date : "yyyy" }}</p>
-                <p>Complete</p>
-              </div>
-            </div>
-          </div>
+          <app-film-frame [item]="item"></app-film-frame>
         </div>
         }
       </div>

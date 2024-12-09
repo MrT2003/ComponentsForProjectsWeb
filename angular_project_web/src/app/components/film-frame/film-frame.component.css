@@ -1,0 +1,64 @@
+.thumbnail {
+  position: relative;
+  text-align: center;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.thumbnail .rating {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--semi-opaque-dark-background);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white-color);
+  line-height: 17px;
+}
+
+.thumbnail img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.thumbnail .details {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  height: 50px;
+  color: var(--white-color);
+}
+
+.thumbnail .details .complete {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-top .details-top p {
+  font-family: "Lato", sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--white-color);
+  line-height: 17px;
+}
+
+.details-bottom p {
+  font-family: "Lato", sans-serif;
+  font-size: 0.8em;
+  color: var(--white-color);
+  line-height: 17px;
+  opacity: 70%;
+}
+.film-tile{
+    display: -webkit-box;               /* Use webkit box model */
+    -webkit-box-orient: vertical;       /* Align children vertically */
+    -webkit-line-clamp: 2;              /* Limit to 2 lines */
+    overflow: hidden;                   /* Hide overflowing text */
+    text-overflow: ellipsis;   
+}

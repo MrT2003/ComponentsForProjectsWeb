@@ -1,1 +1,14 @@
-<p>film-frame works!</p>
+    <div [routerLink]="'/description'" class="thumbnail" (click)="goToDescription(item)" style="cursor: pointer;">
+      <div class="rating">{{item.quality +" "+ item.language}}</div>
+      <img [src]="item.thumb_url" alt="thumbnail" />
+      <div class="details d-block">
+        <div class="details-top col-12 text-start">
+          <h6 class="film-tile" >{{ item.original_name }}</h6>
+        </div>
+        <div class="details-bottom d-flex justify-content-between">
+          <p>{{ item.created | date : "yyyy" }}</p>
+          <p *ngIf="item.current_episode.startsWith('Hoàn tất') || item.current_episode.startsWith('FULL')">Complete</p>
+          <p *ngIf="!(item.current_episode.startsWith('Hoàn tất') || item.current_episode.startsWith('FULL'))">On-Going</p>
+        </div>
+      </div>
+    </div>

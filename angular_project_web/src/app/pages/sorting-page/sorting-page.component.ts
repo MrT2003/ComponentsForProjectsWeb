@@ -6,10 +6,11 @@ import { MasterService } from '../../service/master.service';
 import { CountryList, GenreList, YearList } from '../../model/Categories';
 import { FormsModule } from '@angular/forms';
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
+import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
 @Component({
   selector: 'app-sorting-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule, LeftMenuComponent],
+  imports: [RouterModule, CommonModule, FormsModule, LeftMenuComponent, FilmFrameComponent],
   templateUrl: './sorting-page.component.html',
   styleUrl: './sorting-page.component.css',
 })

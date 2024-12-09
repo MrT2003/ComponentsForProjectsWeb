@@ -146,97 +146,10 @@
 }
 
 /*-------------------Thumbnail (for Movies & TV Series)----------------------*/
-.thumbnail {
-  position: relative;
-  text-align: center;
-  color: var(--white-color);
-  cursor: pointer;
-}
 
-.thumbnail .rating {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: var(--semi-opaque-dark-background);
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--white-color);
-  line-height: 17px;
-}
-
-.thumbnail img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.thumbnail .details {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  height: 50px;
-  color: var(--white-color);
-}
-
-.thumbnail .details .complete {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.details-top .details-top p {
-  font-family: "Lato", sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--white-color);
-  line-height: 17px;
-}
-
-.details-bottom p {
-  font-family: "Lato", sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--white-color);
-  line-height: 17px;
-  opacity: 70%;
-}
 
 /*-----------------------------------Right Menu-----------------------------------*/
 
-.right-menu-container {
-  position: relative;
-  overflow: hidden;
-  transition: width 0.3s ease;
-}
-
-.right-menu-container.col-3 {
-  width: 25%; /* Adjust this value as needed */
-}
-
-.right-menu-container.col-4 {
-  width: 33.33%; /* Adjust this value as needed */
-}
-
-.right-menu-content {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.3s ease;
-}
-
-.right-menu-container.col-3 .right-menu-content {
-  transform: translateX(25%); /* Adjust this value as needed */
-}
-
-.right-menu-container.col-4 .right-menu-content {
-  transform: translateX(0);
-}
 
 /* Adjust for full-width when the left menu is collapsed */
 .full-width {
