@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule,   } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { MenuToggleService } from '../../service/menu-toggle-service.service';
+
 @Component({
   selector: 'app-left-menu',
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './left-menu.component.html',
-  styleUrl: './left-menu.component.css'
+  styleUrls: ['./left-menu.component.css'] // Make sure the styleUrls array is correct
 })
-export class LeftMenuComponent{
+export class LeftMenuComponent implements OnInit {
   // icon left menu
   show = 'assets/res-leftmenu/Arrow down-circle.png';
   home = 'assets/res-leftmenu/Squircle.png';
@@ -21,16 +23,7 @@ export class LeftMenuComponent{
   logout = 'assets/res-leftmenu/Log Out.png';
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
-  constructor(private router: Router) {
-    this.setActivePage('home');
-  }
-
-  isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
-
-  toggleMenu(): void {
-    this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
-  }
-
+  // Declare all state variables to track which menu item is active
   isHome = false;
   isSorting = false;
   isRecent = false;
@@ -39,6 +32,27 @@ export class LeftMenuComponent{
   isContinue = false;
   isSettings = false;
 
+  isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
+
+  constructor(private router: Router, private menuToggleService: MenuToggleService) {}
+
+  ngOnInit(): void {
+    // Subscribe to the menu state to react to changes
+    this.menuToggleService.menuState$.subscribe(state => {
+      this.isCollapsed = !state; // Use isCollapsed to control visibility (inverted logic)
+    });
+
+    // Set the default active page
+    this.setActivePage('home');
+  }
+
+  // Toggle menu collapse
+  // toggleMenu(): void {
+  //   this.isCollapsed = !this.isCollapsed;
+  //   this.menuToggleService.setMenuState(this.isCollapsed); // Set state when toggling
+  // }
+
+  // Set active page logic based on input
   setActivePage(page: string) {
     this.isHome = page === 'home';
     this.isSorting = page === 'sorting';

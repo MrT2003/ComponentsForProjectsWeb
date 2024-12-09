@@ -7,6 +7,7 @@
 .navbar .logo {
   width: 120px; /* Adjust logo size */
   max-width: 100%; /* Make sure the logo resizes properly on smaller screens */
+  cursor: pointer;
 }
 
 /* Active Navigation Link */

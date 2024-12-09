@@ -73,13 +73,7 @@
 
   <!--Right menu-->
   <div [ngClass]="{'col-4': isExpanded, 'col-3': !isExpanded}" class="right-menu-container">
-    <!-- Avatar for expanding/collapsing the menu -->
-    <div class="avatar" (click)="toggleRightMenu()" style="color: red;">
-      menu
-    </div>
-
-    <!-- Right menu that expands to the left -->
-    <div class="p-3 bg-dark right-menu-content" >
+    <div class="p-3 bg-dark right-menu-content">
       <app-right-menu></app-right-menu>
     </div>
   </div>

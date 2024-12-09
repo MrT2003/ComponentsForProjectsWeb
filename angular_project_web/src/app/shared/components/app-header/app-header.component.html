@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg py-2 align-items-center justify-content-around">
   <!-- Logo Section (Image Toggle) -->
   <div class="col-2 logo mt-3 mx-2">
-    <img [src]="logo" alt="Logo" class="logo" />
+    <img [src]="logo" alt="Logo" class="logo" (click)="onLogoClick()"/>
   </div>
 
   <!-- Navigation Links -->
@@ -51,6 +51,7 @@
   </div>
 
   <!-- Account Section (Avatar and Dropdown) -->
+
   <div class="col-3 d-flex p-0 m-0 justify-content-end">
     <div class="d-flex align-items-center justify-content-end account me-3">
       <button class="btn btn-secondary me-3">
@@ -64,15 +65,12 @@
         role="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        
       >
         Samantha
       </a>
-      <ul
-        class="dropdown-menu custom-dropdown-menu dropdown-menu-dark"
-        aria-labelledby="navbarDarkDropdownMenuLink"
-      >
-      </ul>
-      <img [src]="avt" alt="avatar" />
+      <u></u>
+      <img [src]="avt" alt="avatar" (click)="toggleRightMenu()"/>
     </div>
   </div>
 </nav>

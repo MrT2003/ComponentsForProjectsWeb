@@ -10,6 +10,7 @@ import { FilmGridComponent } from '../../components/film-grid/film-grid.componen
 //SERVICES   
 import { MasterService } from '../../service/master.service';
 import { FilmsServiceService } from '../../service/films-service.service';
+import { MenuToggleService } from '../../service/menu-toggle-service.service';
 //MODELS
 import { APIMoviesModel, MovieList, NewestList, TvList } from '../../model/Movies';
 import { GenreList } from '../../model/Categories';
@@ -45,7 +46,7 @@ export class HomePageComponent implements OnInit{
   genre = 'assets/res-rightmenu/rick.jpg';
   ctn = 'assets/res-rightmenu/th.jpg';
 
-  constructor(private router: Router, private filmsService: FilmsServiceService) {}
+  constructor(private router: Router, private filmsService: FilmsServiceService, private menuToggleService: MenuToggleService) {}
 
   masterService = inject(MasterService);
   movieList = signal<MovieList []>([]);
@@ -57,6 +58,9 @@ export class HomePageComponent implements OnInit{
     this.loadAllMovies();
     this.loadAllTvSeries();
     this.loadNewestMovies();
+    this.menuToggleService.rightMenuState$.subscribe(state => {
+      this.isExpanded = !state; // Use isCollapsed to control visibility (inverted logic)
+    });
   }
 
   toggleRightMenu() {

@@ -1,92 +1,90 @@
 /* Left Menu Styling */
-.arrow-down{
-    width: 12%;
-    aspect-ratio: 1/1;
-  }
-  /* .logo{
-    height: 20px;
-  } */
-  .left-menu {
-      width: 14.5%; /* Độ rộng menu */
-      font-family: 'Lato', sans-serif;
-      /* padding: 0 10px; */
-      
-    }
-    
-    /* Logo Styling */
-  .left-menu img {
-      display: block;
-      max-width: 56%; /* Đảm bảo logo không vượt quá chiều rộng của menu */
-      height: auto;    /* Duy trì tỉ lệ gốc */
-      max-height: 80px; /* Giới hạn chiều cao của logo */
-      margin: 0 auto;  /* Căn giữa logo */
-      
-      
-    }
-    
-    .menu-section {
-      padding: 10px 0px;
-      /* background-color: red; */
-    }
-    
-    .section-title {
-     
-      padding: 10px 20px;
-      font-size: 17.33px;
-      text-transform: capitalize;
-      color: #AEAFB2;
-      margin-bottom: 10px;
-      white-space: nowrap; /* Ngăn chữ xuống dòng */
-      overflow: hidden; /* Cắt chữ nếu vượt quá khung */
-      text-overflow: ellipsis; /* Hiển thị "..." nếu chữ bị cắt */
-    }
-    .nav{
-      
-      white-space: nowrap; /* Ngăn chữ xuống dòng */
-      overflow: hidden; /* Cắt chữ nếu vượt quá khung */
-      text-overflow: ellipsis; /* Hiển thị "..." nếu chữ bị cắt */
-    }
-    
-    .nav-link {
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      font-size: 17.33px;
-      transition: background-color 0.2s ease;
-  
-      /* Make sure the nav-link has a restricted width */
-      overflow: hidden; /* Hide the overflow text */
-      text-overflow: ellipsis; /* Display ellipsis when overflow occurs */
-      white-space: nowrap; /* Prevent text wrapping */
-     
-    }
-  
-    .nav-link img{
-      max-width: 1em;
-      height: auto;    /* Duy trì tỉ lệ gốc */
-      padding: 0;
-      margin: 0 10px 0 0;
-    }
-    
-/*---------------EFFECTS LEFT MENU--------------*/
+.left-menu {
+  position: absolute; /* Absolutely position the menu */
+  left: 0; /* Align to the left of the viewport */
+  top: 100px; /* Align to the top of the viewport */
+  width: 14.5%; /* Default width of the menu */
+  font-family: 'Lato', sans-serif;
+  height: 100%; /* Ensure the menu takes the full height */
+  transition: width 0.3s ease, transform 0.3s ease; /* Smooth transition for width and transform */
+  overflow: hidden;
+  z-index: 999; /* Ensure the menu is on top of other content */
+  background-color: var(--semi-opaque-dark-background); 
+}
+
+/* To collapse the menu */
+.left-menu.collapsed {
+  width: 0; /* Collapse to 0 width */
+  transform: translateX(-100%); /* Move the menu off-screen */
+}
+
+/* When the menu is collapsed, hide the text and icons */
+.left-menu.collapsed .nav-link {
+  visibility: hidden; /* Hide the text and icons when collapsed */
+}
+
+/* Menu Section Styling */
+.menu-section {
+  padding: 10px 0px;
+}
+
+/* Section Title Styling */
+.section-title {
+  padding: 10px 20px;
+  font-size: 17.33px;
+  text-transform: capitalize;
+  color: #AEAFB2;
+  margin-bottom: 10px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Truncate text that overflows */
+  text-overflow: ellipsis; /* Display ellipsis when text is truncated */
+}
+
+.nav {
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+}
+
 .nav-link {
-    color: var(--white-color); /* Màu mặc định */
-    transition: color 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    background-color: var(--light-dark-background);
-    border-radius: 5px; /* Thêm góc bo nếu cần */
-  }
-  
-  .nav-link.active {
-    background-color: var(--blue-highlight);
-    border-radius: 5px;
-  }
-    .fix-padding{
-        padding-left: 2em;
-    }
-    .active{
-        background-color: var(--blue-highlight);
-        border-radius: 5px;
-    }
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  font-size: 17.33px;
+  transition: background-color 0.2s ease;
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Display ellipsis when overflow occurs */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.nav-link img {
+  max-width: 1em;
+  height: auto;
+  padding: 0;
+  margin: 0 10px 0 0;
+}
+
+/* Hover and active link styling */
+.nav-link {
+  color: var(--white-color);
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: var(--light-dark-background);
+  border-radius: 5px;
+}
+
+.nav-link.active {
+  background-color: var(--blue-highlight);
+  border-radius: 5px;
+}
+
+.fix-padding {
+  padding-left: 2em;
+}
+
+.active {
+  background-color: var(--blue-highlight);
+  border-radius: 5px;
+}

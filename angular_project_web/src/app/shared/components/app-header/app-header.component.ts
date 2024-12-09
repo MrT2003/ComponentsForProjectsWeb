@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { MasterService } from '../../../service/master.service';
-import { APIMoviesModel, MovieList } from '../../../model/Movies';
 
+import { MasterService } from '../../../service/master.service';
+import { MenuToggleService } from '../../../service/menu-toggle-service.service';
+
+import { APIMoviesModel, MovieList } from '../../../model/Movies';
 @Component({
   selector: 'app-app-header',
   standalone: true,
@@ -31,7 +33,7 @@ export class AppHeaderComponent implements OnInit{
     this.loadMovies();
   }
 
-  constructor(){
+  constructor(private menuToggleService: MenuToggleService) {
     this.setActivePage('home');
   }
 
@@ -60,5 +62,11 @@ export class AppHeaderComponent implements OnInit{
     this.isHome = page === 'home';
     this.isMovies = page === 'movies';
     this.isTvSeries = page === 'tvseries';
+  }
+  onLogoClick() {
+    this.menuToggleService.toggleLeftMenu();
+  }
+  toggleRightMenu() {
+    this.menuToggleService.toggleRightMenu();
   }
 }
