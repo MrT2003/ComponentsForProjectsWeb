@@ -1,1 +1,21 @@
-<p>film-grid works!</p>
+<div class="container mt-4">
+  <div class="description-section">
+    <div class="d-flex justify-content-between align-items-center">
+      <h4 class="description">{{ description }}</h4>
+      <!-- Conditionally show See More link based on notSorting -->
+      <span *ngIf="notSorting" class="see-more-link">
+        See More <i class="ri-arrow-right-s-line"></i>
+      </span>
+    </div>
+  </div>
+  
+    <!-- Film Grid Section -->
+    <div class="row">
+      @for (item of films; track $index) {
+        <div class="col-md-{{12 / displayFrame}}">
+          <app-film-frame [item]="item"></app-film-frame>
+        </div>
+      }
+    </div>
+</div>
+  

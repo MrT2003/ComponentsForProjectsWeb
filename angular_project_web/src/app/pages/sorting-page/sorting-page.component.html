@@ -45,27 +45,11 @@
       <button class="btn sorting-btn mx-4" (click)="filterMovies()">Sorting</button>
       <button class="btn btn-outline-secondary" (click)="resetFilters()" >Reset</button>
     </div>
-    <div class="container-fluid mt-5">
-      <div class="title-bar">
-        <div
-          class="my-auto me-2"
-          style="background-color: #00b9ae; width: 4px; height: 2em"
-        ></div>
-        <div
-          class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
-        >
-          <h4>SORTING</h4>
-        </div>
-      </div>
-
-      <hr />
-      <div class="row my-5">
-        @for (item of movieList(); track $index) {
-        <div class="col-md-3">
-          <app-film-frame [item]="item"></app-film-frame>
-        </div>
-        }
-      </div>
-    </div>
+    <app-film-grid 
+      [description]="'SORTING'" 
+      [displayFrame]="4" 
+      [films]="movieList()"
+      [notSorting]="false">
+    </app-film-grid>
   </div>
 </div>

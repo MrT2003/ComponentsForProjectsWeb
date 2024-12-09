@@ -3,11 +3,12 @@ import { Router, RouterModule } from '@angular/router';
 import { APIMoviesModel, MovieList } from '../../model/Movies';
 import { MasterService } from '../../service/master.service';
 import { CommonModule } from '@angular/common';
+import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
 
 @Component({
   selector: 'app-movie-page',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, FilmGridComponent],
   templateUrl: './movie-page.component.html',
   styleUrl: './movie-page.component.css'
 })

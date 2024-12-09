@@ -52,51 +52,22 @@
     </div>
 
     <!-- Movies -->
-    <div class="container mt-5">
-      <div class="title-bar">
-        <div
-          class="my-auto me-2"
-          style="background-color: #00b9ae; width: 4px; height: 2em"
-        ></div>
-        <div
-          class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
-        >
-          <h4>Movies</h4>
-          <p>See more >></p>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        @for (item of movieList().slice(0, 3); track $index) {
-        <div class="col-md-4">
-          <app-film-frame [item]="item"></app-film-frame>
-        </div>
-        }
-      </div>
+    <div class="container mt-4">
+    <app-film-grid 
+      [description]="'Movies'" 
+      [displayFrame]="3" 
+      [films]="movieList().slice(0, 3)">
+    </app-film-grid>
+      
     </div>
 
     <!-- TV series -->
-    <div class="container mt-5 mb-5">
-      <div class="title-bar">
-        <div
-          class="my-auto me-2"
-          style="background-color: #00b9ae; width: 4px; height: 2em"
-        ></div>
-        <div
-          class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
-        >
-          <h4>TV Series</h4>
-          <p>See more >></p>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        @for (item of tvList().slice(0, 3); track $index) {
-        <div class="col-md-4">
-          <app-film-frame [item]="item"></app-film-frame>
-        </div>
-        }
-      </div>
+    <div class="container mt-4 mb-5">
+      <app-film-grid 
+      [description]="'TV Series'" 
+      [displayFrame]="3" 
+      [films]="tvList().slice(0, 3)">
+    </app-film-grid>
     </div>
   </div>
 

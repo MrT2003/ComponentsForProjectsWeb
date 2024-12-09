@@ -1,0 +1,60 @@
+/* Description Section */
+.description-section {
+    border-left: 4px solid #00b9ae;
+    border-bottom: 1px solid #ffffff;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 1em;
+  }
+  
+  .description-section .d-flex {
+    display: flex;
+    justify-content: space-between; /* Ensure the description and "See More" link are pushed apart */
+    align-items: center; /* Vertically align the items */
+  }
+  
+  .description-section .description {
+    margin: 0; /* Remove default margin from h4 to align properly */
+    margin-top: 0.2em;
+    color: var(--white-color); /* Assuming your theme uses this variable */
+    font-size: 1.3rem;
+  }
+  
+  .see-more-link {
+    font-size: 0.9rem;
+    color: var(--white-color); /* Link color */
+    cursor: pointer; /* Pointer on hover */
+    text-decoration: none; /* Remove underline */
+    display: flex;
+    align-items: center; /* Aligns the icon and text */
+    opacity: 0.7;
+  }
+  
+  .see-more-link i {
+    margin-left: 5px; /* Space between the text and the icon */
+  }
+  
+  /* Make sure the image and grid content fits well */
+  .thumbnail {
+    margin-bottom: 20px;
+  }
+  
+  .film-tile {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .details {
+    padding-top: 10px;
+  }
+  
+  .rating {
+    font-size: 0.9rem;
+    color: gray;
+  }
+  
+  .img-fluid {
+    max-height: 250px;
+    object-fit: cover;
+  }
+  

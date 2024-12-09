@@ -3,6 +3,8 @@
   text-align: center;
   color: var(--white-color);
   cursor: pointer;
+  margin-bottom: 20px;  /* space between tiles */
+  padding: 10px; 
 }
 
 .thumbnail .rating {

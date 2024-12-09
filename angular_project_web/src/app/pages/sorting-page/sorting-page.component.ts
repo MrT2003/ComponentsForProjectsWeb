@@ -5,12 +5,14 @@ import { APIMoviesModel, MovieList } from '../../model/Movies';
 import { MasterService } from '../../service/master.service';
 import { CountryList, GenreList, YearList } from '../../model/Categories';
 import { FormsModule } from '@angular/forms';
+
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
 import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
+import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
 @Component({
   selector: 'app-sorting-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule, LeftMenuComponent, FilmFrameComponent],
+  imports: [RouterModule, CommonModule, FormsModule, LeftMenuComponent, FilmFrameComponent, FilmGridComponent],
   templateUrl: './sorting-page.component.html',
   styleUrl: './sorting-page.component.css',
 })

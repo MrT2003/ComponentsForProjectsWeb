@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { MasterService } from '../../service/master.service';
 
+import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
+
 @Component({
   selector: 'app-description-page',
   standalone: true,
