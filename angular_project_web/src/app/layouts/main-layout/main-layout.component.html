@@ -1,3 +1,15 @@
 <app-app-header></app-app-header>
-<router-outlet></router-outlet>
+
+<!-- Left Menu (Initially hidden, controlled via toggle) -->
+<app-left-menu *ngIf="leftMenuOpen" class="left-menu"></app-left-menu>
+
+<!-- Main Content -->
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Right Menu (Always visible) -->
+<!-- <app-right-menu class="right-menu"></app-right-menu> -->
+
 <app-app-footer></app-app-footer>
+

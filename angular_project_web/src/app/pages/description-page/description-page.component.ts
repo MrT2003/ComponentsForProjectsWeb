@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { MasterService } from '../../service/master.service';
 
+import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
 import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
-
+import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
 @Component({
   selector: 'app-description-page',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, FilmGridComponent, LeftMenuComponent],
   templateUrl: './description-page.component.html',
   styleUrl: './description-page.component.css',
 })
@@ -76,6 +77,4 @@ export class DescriptionPageComponent implements OnInit {
       },
     });
   }
-
-  
 }

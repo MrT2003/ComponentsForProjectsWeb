@@ -21,11 +21,18 @@ export class AppHeaderComponent implements OnInit{
   searchText: string = '';
   movieList = signal<MovieList []>([]);
   filteredMovies = signal<MovieList []>([]);
+  isHome = false;
+  isMovies = false;
+  isTvSeries = false;
 
   masterService = inject(MasterService)
 
   ngOnInit(): void {
     this.loadMovies();
+  }
+
+  constructor(){
+    this.setActivePage('home');
   }
 
   loadMovies(): void {
@@ -48,5 +55,10 @@ export class AppHeaderComponent implements OnInit{
       // Nếu không có gì để tìm kiếm, xóa danh sách kết quả
       this.filteredMovies.set([]);
     }
+  }
+  setActivePage(page: string) {
+    this.isHome = page === 'home';
+    this.isMovies = page === 'movies';
+    this.isTvSeries = page === 'tvseries';
   }
 }

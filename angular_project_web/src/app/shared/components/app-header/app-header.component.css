@@ -1,17 +1,20 @@
-.navbar{
+/* Navbar Styling */
+.navbar {
   z-index: 1;
-
 }
+
+/* Logo Styling */
 .navbar .logo {
-  width: 10%;
-  height: auto;
+  width: 120px; /* Adjust logo size */
+  max-width: 100%; /* Make sure the logo resizes properly on smaller screens */
 }
 
+/* Active Navigation Link */
 .nav-link.active {
   color: var(--blue-highlight);
   font-weight: bold;
   position: relative;
-} 
+}
 
 .nav-link.active::after {
   content: "";
@@ -23,23 +26,19 @@
   background-color: var(--blue-highlight);
 }
 
-.nav-link{ 
+.nav-link {
   color: #fff;
 }
 
 .navbar-nav {
   display: flex;
-  gap: 20px; 
-
-  margin-bottom: 0; 
+  gap: 20px; /* Adds space between the navbar items */
+  margin-bottom: 0;
 }
 
+/* Search Bar */
 .search-bar {
   flex-shrink: 1;
-  margin-left: auto; 
-}
-
-.search-bar {
   border: 1px solid #aeafb2;
   border-radius: 10px;
   overflow: hidden;
@@ -47,21 +46,22 @@
 
 .search-bar input::placeholder {
   color: #aeafb2;
-  opacity: 1; 
+  opacity: 1;
 }
 
 .search-bar input:focus {
-  outline: none; 
-  border-color: none; 
-  box-shadow: none; 
+  outline: none;
+  border-color: none;
+  box-shadow: none;
 }
 
+/* Account Section */
 .account img {
   width: 12%;
   border-radius: 12px;
 }
-/* Search result */
 
+/* Search Results */
 .search-results {
   position: absolute;
   top: 100%;
@@ -91,4 +91,23 @@
 
 .search-results img {
   border-radius: 5px;
+}
+
+/* Make Navbar Responsive */
+@media (max-width: 768px) {
+  .navbar .logo {
+    width: 100px; /* Adjust logo size on smaller screens */
+  }
+
+  .navbar-nav {
+    gap: 10px;  /* Reduce the gap on smaller screens */
+  }
+
+  .search-bar {
+    width: 100%;  /* Make the search bar take up full width on smaller screens */
+  }
+
+  .account img {
+    width: 25%;  /* Adjust avatar size on smaller screens */
+  }
 }
