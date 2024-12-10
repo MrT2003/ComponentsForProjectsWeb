@@ -1,6 +1,6 @@
 /* Description Section */
 .description-section {
-    border-left: 4px solid #00b9ae;
+    border-left: 4px solid var(--blue-highlight);
     border-bottom: 1px solid #ffffff;
     padding-left: 10px;
     padding-bottom: 10px;

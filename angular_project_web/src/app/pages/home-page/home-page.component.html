@@ -4,30 +4,32 @@
     [ngClass]="{'move-right': leftMenuOpen || isExpanded && leftMenuOpen, 'move-right-full': !isExpanded && leftMenuOpen}"
     class="col-md-7 col-sm-12 container-fluid text-light main-content transition-content">
     <!-- Carousel -->
-    <app-center-film-frame [newestFilm]="newestList().slice(0,3)"></app-center-film-frame>
-
+    
+    <div class="center-film-wrapper">
+      <app-center-film-frame [newestFilm]="newestList().slice(0,3)"></app-center-film-frame>
+    </div>
     <!-- Movies -->
-    <div class="container mt-4 d-none d-md-flex">
-    <app-film-grid 
-      [description]="'Movies'" 
-      [displayFrame]="3" 
-      [films]="movieList().slice(0, 3)">
-    </app-film-grid>
+    <div class="container mt-4 ">
+      <app-film-grid 
+        [description]="'Movies'" 
+        [displayFrame]="4" 
+        [films]="movieList().slice(0, 4)">
+      </app-film-grid>
       
     </div>
 
     <!-- TV series -->
     <div class="container mt-4 mb-5">
-      <app-film-grid 
-      [description]="'TV Series'" 
-      [displayFrame]="3" 
-      [films]="tvList().slice(0, 3)">
-    </app-film-grid>
+        <app-film-grid 
+        [description]="'TV Series'" 
+        [displayFrame]="4" 
+        [films]="tvList().slice(0, 4)">
+      </app-film-grid>
     </div>
   </div>
 
   <!--Right menu-->
-  <div [ngClass]="{'col-4': isExpanded, 'col-3': !isExpanded}" class="right-menu-container">
+  <div [ngClass]="{'col-4': isExpanded, 'col-3': !isExpanded}" class="right-menu-container d-none d-md-flex">
     <div class="p-3 bg-dark right-menu-content">
       <app-right-menu></app-right-menu>
     </div>

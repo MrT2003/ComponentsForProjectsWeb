@@ -2,7 +2,7 @@
 .left-menu {
   position: absolute; /* Absolutely position the menu */
   left: 0; /* Align to the left of the viewport */
-  top: 100px; /* Align to the top of the viewport */
+  top: 90px; /* Align to the top of the viewport */
   width: 14.5%; /* Default width of the menu */
   font-family: 'Lato', sans-serif;
   height: 100%; /* Ensure the menu takes the full height */

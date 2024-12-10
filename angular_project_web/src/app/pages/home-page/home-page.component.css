@@ -2,9 +2,6 @@
 .container-fluid {
     padding: 0 !important;
 }
-.transition-content {
-  transition: transform 0.3s ease-in-out; /* Smooth transition */
-}
 .main-content {
   transform: translateX(0); /* Default position */
 }
@@ -14,10 +11,10 @@
 .move-right-full {
   transform: translateX(130px); /* Move the content off-screen */
 }
-/* Adjust for full-width when the left menu is collapsed */
-.full-width {
-  width: 60%;
+.center-film-wrapper {
+  padding: 20px; /* Add your desired padding */
 }
+
 
 @media (max-width: 767.98px) {
   .main-content {

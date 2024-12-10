@@ -7,6 +7,7 @@ import { LeftMenuComponent } from '../../components/left-menu/left-menu.componen
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
 //SERVICES   
 import { MovieService } from '../../service/MovieService/movie.service';
+import { MenuToggleService } from '../../service/menu-toggle-service.service';
 //MODELS
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 
@@ -34,22 +35,20 @@ export class DescriptionPageComponent implements OnInit {
   logout = 'assets/res-leftmenu/Log Out.png';
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
-  isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
+  isLeftMenuOpen = false; 
 
   description: any;
   routerDesc = inject(Router);
-  constructor(private router: ActivatedRoute) {}
+  constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService) {}
   movieService = inject(MovieService);
   newestList = signal<NewestList[]>([]);
 
   ngOnInit(): void {
     this.loadDescription()
     this.loadNewestMovies();
-  }
-
-
-  toggleMenu(): void {
-    this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
+    this.menuToggleService.menuState$.subscribe((state) => {
+      this.isLeftMenuOpen = state;
+    })
   }
 
   loadDescription() {
@@ -62,22 +61,5 @@ export class DescriptionPageComponent implements OnInit {
     this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items); 
     })
-  }
-  // getMovie(){
-  //   const movies = this.movieList(); // Lấy danh sách phim từ signal
-  //   if (movies.length > 0) {
-  //     const randomIndex = Math.floor(Math.random() * movies.length); // Chọn chỉ số ngẫu nhiên
-  //     this.selectedMovie.set(movies[randomIndex]); // Gán bộ phim ngẫu nhiên vào signal
-  //   }
-  // }
-  goToDescription(movie: MovieList) {
-    this.routerDesc.navigate(['/description'], {
-      queryParams: {
-        name: movie.name,
-        thumb_url: movie.thumb_url,
-        description: movie.description,
-        poster_url: movie.poster_url,
-      },
-    });
   }
 }

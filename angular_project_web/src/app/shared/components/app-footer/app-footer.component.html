@@ -1,29 +1,31 @@
-
-<footer class="footer" >
-  <div class="px-0 py-4 m-0 container-fluid" >
+<footer class="footer">
+  <div class="container-fluid px-0 py-4">
     <div class="row h-100">
-      <div class="col-md-7 p-0 m-0 text-start">
-        <img class="p-0 m-0 my-4 logo" [src]="frame4" alt="logo" />
-        <p class="p-0 m-0 mb-3 col-10">
+      <!-- Left Section -->
+      <div class="col-lg-7 col-md-12 text-start mb-4 ">
+        <img class="logo my-4" [src]="frame4" alt="logo" />
+        <div class="mb-2"></div>
+        <p class="mb-3">
           Have <a href="#">feedback</a> or <a href="#">suggestions</a>? Don’t
           hesitate to share them with us!
         </p>
-        <p class="p-0 m-0 mb-3 col-10">
+        <p class="mb-3">
           Your contributions help us build a better website for everyone.
         </p>
-        <p class="p-0 m-0 col-10">Copyright © 2024 Watch Free Movie</p>
+        <p>Copyright © 2024 Watch Free Movie</p>
       </div>
-      <div class="col-md-5 container-input">
+      <!-- Right Section -->
+      <div class="col-lg-5 col-md-12">
         <form>
           <div class="row">
-            <div class="col-md-6 p-2">
+            <div class="col-md-6 mb-3">
               <input
                 type="text"
                 class="form-control form-control-lg input"
                 placeholder="Full Name"
               />
             </div>
-            <div class="col-md-6 p-2 ps-0">
+            <div class="col-md-6 mb-3">
               <input
                 type="email"
                 class="form-control form-control-lg input"
@@ -31,18 +33,16 @@
               />
             </div>
           </div>
-          <div class="">
+          <div class="mb-3">
             <textarea
-              class="form-control input p-2 mb-2"
-              cols="5"
-              rows="5"
+              class="form-control input"
+              rows="4"
               placeholder="Your message"
             ></textarea>
           </div>
-
-          <div class="">
-            <button type="submit" class="btn mb-2">
-              <i class="fa-regular fa-paper-plane"></i> Send Feedback
+          <div>
+            <button type="submit" class="btn">
+              <i class="fa-regular fa-paper-plane me-2"></i> Send Feedback
             </button>
           </div>
         </form>

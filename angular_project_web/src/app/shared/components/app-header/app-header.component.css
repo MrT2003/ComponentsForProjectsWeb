@@ -1,67 +1,73 @@
 /* Navbar Styling */
 .navbar {
+  background-color: transparent !important;
+  padding: 0 15px;
   z-index: 1;
+  border: none;
 }
 
-/* Logo Styling */
-.navbar .logo {
-  width: 120px; /* Adjust logo size */
-  max-width: 100%; /* Make sure the logo resizes properly on smaller screens */
+/* Logo */
+.navbar .logo img {
+  width: 120px;
   cursor: pointer;
 }
 
-/* Active Navigation Link */
-.nav-link.active {
-  color: var(--blue-highlight);
-  font-weight: bold;
-  position: relative;
+/* Navigation Links */
+.navbar-nav .nav-link {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-.nav-link.active::after {
+.navbar-nav .nav-link.active {
+  color: var(--blue-highlight);
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link.active::after {
   content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
+  display: block;
   width: 100%;
   height: 2px;
   background-color: var(--blue-highlight);
-}
-
-.nav-link {
-  color: #fff;
-}
-
-.navbar-nav {
-  display: flex;
-  gap: 20px; /* Adds space between the navbar items */
-  margin-bottom: 0;
+  margin-top: 2px;
 }
 
 /* Search Bar */
-.search-bar {
+.search-bar-wrapper {
+  margin-left: 1em;
   flex-shrink: 1;
-  border: 1px solid #aeafb2;
+}
+
+.search-bar {
+  width: 100%;
+}
+
+.search-bar .input-group {
   border-radius: 10px;
   overflow: hidden;
 }
 
 .search-bar input::placeholder {
   color: #aeafb2;
-  opacity: 1;
 }
 
 .search-bar input:focus {
   outline: none;
-  border-color: none;
   box-shadow: none;
 }
 
 /* Account Section */
-.account img {
-  width: 12%;
-  border-radius: 12px;
+.account-section .btn-secondary {
+  background-color: #444;
+  border: none;
 }
 
+.account-section .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 /* Search Results */
 .search-results {
   position: absolute;
@@ -93,22 +99,43 @@
 .search-results img {
   border-radius: 5px;
 }
-
-/* Make Navbar Responsive */
-@media (max-width: 768px) {
-  .navbar .logo {
-    width: 100px; /* Adjust logo size on smaller screens */
-  }
-
+/* Responsive Design */
+@media (max-width: 992px) {
   .navbar-nav {
-    gap: 10px;  /* Reduce the gap on smaller screens */
+    display: flex;
+    justify-content: space-evenly;
   }
 
-  .search-bar {
-    width: 100%;  /* Make the search bar take up full width on smaller screens */
+  .account-section .btn-secondary {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar-wrapper {
+    margin-left: 0;
+    justify-content: flex-start;
   }
 
-  .account img {
-    width: 25%;  /* Adjust avatar size on smaller screens */
+  .search-bar .input-group {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .search-bar-wrapper {
+    margin-left: 0;
+    order: 2;
+    margin-top: 10px;
+  }
+
+  .account-section {
+    order: 3;
+    margin-top: 10px;
   }
 }

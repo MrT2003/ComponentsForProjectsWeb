@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { APIMoviesModel } from '../../model/Movies';
+import { MovieDetailsModel } from '../../model/WatchMovies';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,11 @@ export class MovieService {
   }
   getMoviesByGenres(genre: string): Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(`${this.apiMovies}genres/${genre}`);
+  }
+  
+  // WATCH MOVIES
+  watchMovie(slug: string): Observable<MovieDetailsModel> {
+    return this.http.get<MovieDetailsModel>(`${this.apiMovies}/${slug}`);
   }
   
 

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilmFrameComponent } from '../film-frame/film-frame.component';
+import { FilmsServiceService } from '../../service/films-service.service';
 import { MovieList } from '../../model/Movies';
 @Component({
   selector: 'app-film-grid',
@@ -14,4 +15,7 @@ export class FilmGridComponent {
   @Input() displayFrame: number = 3;
   @Input() films: MovieList[] = []; 
   @Input() notSorting: boolean = true; 
+
+  constructor(private filmsService: FilmsServiceService) {}
+  
 }
