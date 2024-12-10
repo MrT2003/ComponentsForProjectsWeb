@@ -1,158 +1,27 @@
 /*-----------------------------------Carousel-----------------------------------*/
-.carousel {
-  width: 100%;
-  margin: auto;
-  border-radius: 15px;
-  overflow: hidden;
-  margin-top: 50px;
+.container-fluid {
+    padding: 0 !important;
 }
-
-.carousel-inner img {
-  width: 100%;
-  aspect-ratio: 2/1;
-  object-fit: cover;
-  border-radius: 10px;
+.transition-content {
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
 }
-
-.custom-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  z-index: 10;
+.main-content {
+  transform: translateX(0); /* Default position */
 }
-
-.custom-indicators .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--white-color);
+.move-right {
+  transform: translateX(60px); /* Adjust value based on how far you want to move */
 }
-
-.dot.active {
-  background-color: var(--blue-highlight);
+.move-right-full {
+  transform: translateX(130px); /* Move the content off-screen */
 }
-
-.carousel-inner {
-  position: relative;
-}
-
-.carousel-control-next,
-.carousel-control-prev {
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  top: 50%;
-}
-
-.carousel-control-next {
-  right: 20px;
-}
-
-.carousel-control-prev {
-  left: 20px;
-}
-
-.left-btn,
-.right-btn {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  width: 30px;
-  height: 30px;
-}
-
-.carousel-item {
-  position: relative;
-}
-
-.filter {
-  position: absolute;
-  width: 150%;
-  height: 100%;
-  aspect-ratio: 2/1;
-  object-fit: cover;
-  border-radius: 10px;
-  background-color: var(--half-opaque-dark-background);
-}
-
-.name-film {
-  position: absolute;
-  top: 30px;
-  left: 50px;
-  color: var(--white-color);
-  font-size: 45px;
-  font-weight: bold;
-}
-
-.watch-list {
-  width: 20%;
-  height: 12%;
-  position: absolute;
-  bottom: 50px;
-  left: 20px;
-  color: var(--white-color);
-  font-size: 17px;
-  font-weight: 800;
-  background-color: rgba(249, 249, 249, 0.2);
-  padding: 10px 20px;
-  border-radius: 15px;
-  z-index: 1;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.watch-list i {
-  margin-right: 10px;
-}
-
-.watch-now {
-  width: 20%;
-  height: 12%;
-  position: absolute;
-  bottom: 50px;
-  right: 20px;
-  cursor: pointer;
-  color: var(--dark-background);
-  font-weight: 800;
-  font-size: 17px;
-  background-color: var(--blue-highlight);
-  padding: 10px 20px;
-  border-radius: 15px;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/*-------------------Thumbnail (for Movies & TV Series)----------------------*/
-
-
-/*-----------------------------------Right Menu-----------------------------------*/
-
-
 /* Adjust for full-width when the left menu is collapsed */
 .full-width {
   width: 60%;
+}
+
+@media (max-width: 767.98px) {
+  .main-content {
+    transform: none !important; /* Ensure no translations occur */
+  }
 }
 

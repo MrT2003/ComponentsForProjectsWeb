@@ -49,12 +49,15 @@ export class HomePageComponent implements OnInit{
 
   constructor(private router: Router, private filmsService: FilmsServiceService, private menuToggleService: MenuToggleService) {}
 
+  leftMenuOpen: boolean = false;
   masterService = inject(MasterService);
   movieList = signal<MovieList []>([]);
   tvList = signal<TvList []>([]);
   newestList = signal<NewestList[]>([]);
   genreList =  signal<GenreList[]>([]);
   isExpanded = false;
+  moveRight = false;
+  moveRightFull = false;
   ngOnInit(): void {
     this.loadAllMovies();
     this.loadAllTvSeries();
@@ -62,6 +65,15 @@ export class HomePageComponent implements OnInit{
     this.menuToggleService.rightMenuState$.subscribe(state => {
       this.isExpanded = !state; // Use isCollapsed to control visibility (inverted logic)
     });
+    this.menuToggleService.menuState$.subscribe(state => {
+      this.leftMenuOpen = state;
+    });
+    if ((this.isExpanded && this.leftMenuOpen) || this.leftMenuOpen) {
+      this.moveRight = true;
+    }
+    if (!this.isExpanded && this.leftMenuOpen) {
+      this.moveRightFull = true;
+    }
   }
 
   toggleRightMenu() {
@@ -93,9 +105,6 @@ export class HomePageComponent implements OnInit{
 
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
 
-  toggleMenu(): void {
-    this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
-  }
 
   goToWatch(movie: MovieList){
     this.filmsService.goToWatch(movie);

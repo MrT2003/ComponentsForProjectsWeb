@@ -1,10 +1,8 @@
 <div class="row whole">
-  <!--Left menu-->
-
-
   <!--Main content-->
   <div
-    class="col-md-7 col-sm-12 container-fluid text-light">
+    [ngClass]="{'move-right': leftMenuOpen || isExpanded && leftMenuOpen, 'move-right-full': !isExpanded && leftMenuOpen}"
+    class="col-md-7 col-sm-12 container-fluid text-light main-content transition-content">
     <!-- Carousel -->
     <app-center-film-frame [newestFilm]="newestList().slice(0,3)"></app-center-film-frame>
 
