@@ -7,6 +7,7 @@ import { LeftMenuComponent } from '../../components/left-menu/left-menu.componen
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
 import {FilmFrameComponent} from '../../components/film-frame/film-frame.component';
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
+import { CenterFilmFrameComponent } from '../../components/center-film-frame/center-film-frame.component';
 //SERVICES   
 import { MasterService } from '../../service/master.service';
 import { FilmsServiceService } from '../../service/films-service.service';
@@ -18,7 +19,7 @@ import { GenreList } from '../../model/Categories';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent, RightMenuComponent, FilmFrameComponent, FilmGridComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, RightMenuComponent, CenterFilmFrameComponent, FilmGridComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
