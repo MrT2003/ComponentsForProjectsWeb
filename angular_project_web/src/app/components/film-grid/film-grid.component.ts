@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilmFrameComponent } from '../film-frame/film-frame.component';
-import { FilmsServiceService } from '../../service/films-service.service';
 import { MovieList } from '../../model/Movies';
+import { FilmsServiceService } from '../../service/FilmService/films-service.service';
 @Component({
   selector: 'app-film-grid',
   standalone: true,

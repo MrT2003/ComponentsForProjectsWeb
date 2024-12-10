@@ -7,7 +7,8 @@ import { LeftMenuComponent } from '../../components/left-menu/left-menu.componen
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
 //SERVICES   
 import { MovieService } from '../../service/MovieService/movie.service';
-import { MenuToggleService } from '../../service/menu-toggle-service.service';
+import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
+
 //MODELS
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 
