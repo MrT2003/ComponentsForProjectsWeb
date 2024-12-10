@@ -1,6 +1,6 @@
-<div class=" d-flex">
-    <!--Left menu-->
-  <aside class="col-2 left-menu  text-light">
+<div class="d-flex">
+  <!--Left menu-->
+  <aside class="col-2 left-menu text-light">
     <div class="d-flex flex-column h-100">
       <!-- Logo Section -->
       <!-- <div class="logo my-4">
@@ -58,7 +58,7 @@
           <ul class="nav flex-column">
             <li class="nav-item">
               <a [routerLink]="'/settings'" class="nav-link text-light">
-                <img [src]="settings" alt="home-icon"/> Settings
+                <img [src]="settings" alt="home-icon" /> Settings
               </a>
             </li>
             <li class="nav-item">
@@ -71,46 +71,49 @@
       </nav>
     </div>
   </aside>
-    <div class="col-10 text-light ">
-        <!-- Genres Section -->
-        <div class="part-genres">
-            <!-- <h2 class="fw-bold">Genres</h2> -->
-            <div class="title-bar mt-3">
+  <div class="col-10 text-light">
+    <!-- Genres Section -->
+    <div class="part-genres">
+      <!-- <h2 class="fw-bold">Genres</h2> -->
+      <div class="title-bar mt-3">
+        <div
+          class="my-auto me-2"
+          style="background-color: #00b9ae; width: 4px; height: 2em"
+        ></div>
+        <div
+          class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
+        >
+          <h4>Genres</h4>
+          <!-- <p>See more >></p> -->
+        </div>
+      </div>
+      <hr />
+      <!-- Genres Grid -->
+      <div class="grid-container mb-4">
+        <!-- @for (item of genreList().slice(0, 22); track $index) { -->
+        <div
+          *ngFor="let item of genreList(); let i = index; trackBy: trackById"
+        >
+          <!-- Drama -->
+          <div class="container-fix">
+            <div class="card text-white w-100">
+              <div class="container-fluid filter"></div>
+              <img
+                [src]="item.image"
+                class="card-img larger-image"
+                alt="Drama"
+              />
               <div
-                class="my-auto me-2"
-                style="background-color: #00b9ae; width: 4px; height: 2em"
-              ></div>
-              <div
-                class="container-fluid d-flex justify-content-between label p-0 m-0 text-light"
+                class="card-img-overlay d-flex justify-content-center align-items-center"
               >
-                <h4>Genres</h4>
-                <!-- <p>See more >></p> -->
+                <h5 class="card-title fw-bold">{{ item.name }}</h5>
               </div>
             </div>
-            <hr />
-            <!-- Genres Grid -->
-            <div class="grid-container mb-4">
-              <!-- @for (item of genreList().slice(0, 22); track $index) { -->
-              <div *ngFor="let item of genreList(); let i = index; trackBy: trackById">
-                <!-- Drama -->
-                <div class=" container-fix  ">
-                <div class="card text-white w-100 ">
-                  <div class="container-fluid filter "></div>
-                  <img [src]="item.image" class="card-img larger-image" alt="Drama" />
-                  <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <h5 class="card-title fw-bold">{{item.name}}</h5>
-                  </div>
-                </div>
-                </div>
-            </div>
-              
-            <!-- } -->
-              
-             
-            </div>
           </div>
-  
-         
-  
+        </div>
+
+        <!-- } -->
+      </div>
     </div>
+  </div>
 </div>

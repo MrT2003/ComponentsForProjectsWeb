@@ -33,12 +33,13 @@ export class GenresPageComponent  implements OnInit{
 
 
   categoryService = inject(CategoryService);
+  
   genreList =  signal<GenreList[]>([]);
+  
   trackById(index: number, item: GenreList): number {
     return item._id; // Trả về thuộc tính `_id` làm giá trị duy nhất
   }
   ngOnInit(): void {
-    
     this.loadAllGenres();
   }
   loadAllGenres(){
