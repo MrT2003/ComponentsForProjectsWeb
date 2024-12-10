@@ -1,74 +1,46 @@
-<body>
-  <div class="row my-3 ms-2 container-movie">
-    <div class="col-8">
-      <div class="watching col-12 align-items-center">
-        <div class="d-flex">
-          <div class="my-auto me-2" style="background-color: #00b9ae; width: 4px; height: 2em"></div>
-          <div class="container-fluid label p-0 m-0 text-light">
-            <h4 class="d-block m-0 p-0 bg-red container">You are watching:</h4>
-            <hr class="p-0 m-0" />
-          </div>
-        </div>
-        <p class="title-watching text-light my-2">{{watch.name}}</p>
-
-        <div class="watching-frame col-12">
-          <div class="frame w-100 h-100 d-flex justify-content-center align-items-center">
-            <div class="play-button bg-secondary d-flex justify-content-center align-items-center">
-              <i class="fa-solid fa-play"></i>
-            </div>
-          </div>
-        </div>
-        <div class="rating d-flex gap-1 text-light my-3">
-          <p class="title-watching text-light my-0 me-2">Rating:</p>
-
-          <ul class="d-flex gap-1 p-0" style="list-style: none">
-            
-
-            <li>
-              <button type="button" class="btn btn-link active p-0">
-                <i class="fa-solid fa-star"></i>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn btn-link active p-0">
-                <i class="fa-solid fa-star"></i>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn btn-link active p-0">
-                <i class="fa-solid fa-star"></i>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn btn-link active p-0">
-                <i class="fa-solid fa-star"></i>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn btn-link p-0">
-                <i class="fa-solid fa-star"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div class="episode d-flex gap-1 text-light">
-          <p class="title-watching text-light my-0 me-2">Episode:</p>
-
-          <ul class="d-flex gap-2 p-0" style="list-style: none" *ngIf="episodeArray.length">
-
-            <li *ngFor="let episode of episodeArray">
-              <button type="button" class="btn active text-light p-0">
-                <span>{{ episode}}</span>
-              </button>
-            </li>
-            
-          </ul>
+<div class="row whole">
+  <div class="col-md-8 col-sm-12 container-fluid text-light">
+    <!-- Watching Section -->
+    <div class="watching col-12 align-items-center">
+      <div class="d-flex align-items-center">
+        <div class="container-fluid p-0">
+          <h4 class="title-border text-light">You are watching:</h4>
         </div>
       </div>
+      
+      <p class="title-watching text-light my-2">{{watch.name}}</p>
 
-      <app-comments></app-comments>
+      <div class="watching-frame col-12">
+        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center">
+          <div class="play-button bg-secondary d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-play"></i>
+          </div>
+        </div>
+      </div>
+      
 
+      <!-- Episode Section -->
+      <div class="py-3 episode d-flex gap-1 text-light">
+        <p class="title-watching text-light my-0 me-2">Episode:</p>
+
+        <ul class="d-flex gap-2 p-0" style="list-style: none" *ngIf="episodeArray.length">
+          <li *ngFor="let episode of episodeArray">
+            <button type="button" class="btn active text-light p-0">
+              <span>{{ episode }}</span>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-    <!--Right menu--> 
+
+    <!-- Comments Section -->
+    <app-comments></app-comments>
   </div>
-</body>
+
+  <!-- Right menu -->
+  <div [ngClass]="{'col-4': isExpanded, 'col-3': !isExpanded}" class="right-menu-container d-none d-md-flex">
+    <div class="p-3 bg-dark right-menu-content">
+      <app-right-menu></app-right-menu>
+    </div>
+  </div>
+</div>

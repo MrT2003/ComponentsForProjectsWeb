@@ -4,13 +4,16 @@ import { GenreList } from '../../model/Categories';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { CommonModule } from '@angular/common';
 import { MasterService } from '../../service/master.service';
+import {MenuToggleService} from '../../service/menu-toggle-service.service';
+
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { CommentComponent } from '../../components/comment-section/comment/comment.component';
 import { CommentsComponent } from "../../components/comment-section/comments/comments.component";
+import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
 @Component({
   selector: 'app-watch-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, PaginationComponent, CommentComponent, CommentsComponent],
+  imports: [RouterModule, CommonModule, PaginationComponent, CommentComponent, CommentsComponent, RightMenuComponent],
   templateUrl: './watch-page.component.html',
   styleUrl: './watch-page.component.css'
 })
@@ -22,7 +25,7 @@ export class WatchPageComponent implements OnInit{
   genre = 'assets/res-rightmenu/rick.jpg';
   ctn = 'assets/res-rightmenu/th.jpg';
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(private router: ActivatedRoute, private menuToggleService:MenuToggleService) {}
   masterService = inject(MasterService);
 
   watch:any;
@@ -31,11 +34,15 @@ export class WatchPageComponent implements OnInit{
   newestList = signal<NewestList[]>([]);
   genreList = signal<GenreList[]>([]);
   episodeArray: number[] = [];
+  isExpanded = false;
 
   ngOnInit(): void {
     this.loadNewestMovies();
     this.loadAllGenres();
     this.loadWatch();
+    this.menuToggleService.rightMenuState$.subscribe(state => {
+      this.isExpanded = !state; // Use isCollapsed to control visibility (inverted logic)
+    });
   }
 
   loadNewestMovies(){

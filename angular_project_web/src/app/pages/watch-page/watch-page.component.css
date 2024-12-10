@@ -4,94 +4,42 @@ body {
   box-sizing: border-box;
 }
 
-/*---------------------comment----------------------------------------*/
-.part-comment{
-    font-family: 'Lato', sans-serif;
-  }
-  .title-cmt{
-    font-family: 'Lato',sans-serif;
-    font-size: 24px;
-    font-weight: 900;
-  }
- .comment {
-    color: #fff;
-    background-color: #2B303D;
-  }
-
-  .cmt-box {
-    position: relative;
-    border-radius: 8px;
-  }
-
-  .cmt-avt img {
-    width: 50px;
-    height: 50px;
-    border-radius: 15%;
-    object-fit: cover;
-  }
-
-  textarea {
-    
-    background-color: #242731;
-    border: none;
-    color: #fff;
-    resize: none;
-    padding: 10px;
-    width: 100%;
-  }
-
-  textarea::placeholder {
-    color: #8f8f8f;
-  }
-
-  .btn-comment {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--blue-highlight);
-    border: none;
-    color: #fff;
-    font-weight: 700;
-    border-radius: 5px;
-    padding: 5px 10px;
-    transition: all 0.3s ease;
-  }
-
-  .btn-comment:hover {
-    background-color: var(--blue-highlight);
-  }
-
-  .part-comment ul li{
-    background-color: #242731;
-  }
-
-  .cmt-time{
-color: var(--blue-highlight);
-  }
-
 /*---------------------watching ----------------------------------------*/
 .title-watching , .label span{
     font-family: 'Lato',sans-serif;
-    font-size: 24px;
-    font-weight: 900;
+    font-size: 0.8em;
+    font-weight: 700;
 }
 
 .watching-frame {
-    height: 500px;
-   background-color: var(--light-dark-background);
+  aspect-ratio: 16 / 9; /* Maintain a 16:9 aspect ratio */
+  background-color: var(--light-dark-background);
+  width: 100%; /* Ensure it spans the full width of its container */
+}
+
+.frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .play-button {
-    width: 50px;
-    aspect-ratio: 1/1;
-    border-radius: 50px;
-    color: var(--grey);
-    cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--blue-highlight);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-.play-button i{
-    z-index: 1;
-    color: var(--white-color);
+
+.play-button i {
+  color: #fff;
 }
+
 .rating .btn{
     color: #808080;
 }
@@ -122,6 +70,28 @@ color: var(--blue-highlight);
 .episode .active{
     background-color: var(--blue-highlight);
 }
+.right-menu-container {
+  margin: 0; /* Ensure no extra margin on the container */
+  padding: 0; /* Ensure no extra padding */
+}
+
+.right-menu-content {
+  width: 100%; /* Ensure the content spans the entire width */
+  padding: 0; /* Remove internal padding if necessary */
+}
+
+.container-movie {
+  margin: 0; /* Ensure no extra margin on the entire row */
+  padding: 0; /* Ensure no extra padding */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling caused by overflow */
+}
+
+
 
 
 
