@@ -1,56 +1,85 @@
+/* Container Styles */
 .descript {
+  position: relative;
   font-family: 'Lato', sans-serif;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -2;
+  z-index: 0; /* Confine stacking context */
 }
-.descript .main-content{
-  background-color: rgba(0, 0, 0, 0.5);
+
+/* Gradient Overlay */
+.descript .gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(22, 24, 30, 0.3) 0%,
+    rgba(22, 24, 30, 0.35) 10%,
+    rgba(22, 24, 30, 0.40) 20%,
+    rgba(22, 24, 30, 0.5) 30%,
+    rgba(22, 24, 30, 0.7) 40%,
+    rgba(22, 24, 30, 0.7) 50%,
+    rgba(22, 24, 30, 1) 70%,
+    rgba(22, 24, 30, 1) 100%
+  );
+  z-index: -1; /* Ensure gradient is below content */
 }
+
+/* Main Content Styles */
+.descript .main-content {
+  position: relative; /* Ensure stacking context for content */
+  z-index: 1; /* Content is above the gradient overlay */
+  padding: 20px;
+  border-radius: 10px; /* Optional for visual distinction */
+}
+
+/* Poster Styling */
 .poster {
   display: flex;
-  /* justify-content: center; */
   width: 100em;
   height: auto;
   margin-right: 2em;
-  /* background-color: red; */
-  z-index: 1;
+  z-index: 2; /* Ensure poster image is above the gradient */
   overflow: hidden;
-  
 }
 
 .poster img {
   border-radius: 10px;
   overflow: hidden;
   width: 30em;
-  object-fit: cover; 
-  z-index: 1;
+  object-fit: cover;
+  z-index: 2;
 }
 
-
+/* Text and Details */
 .details h1 {
   font-size: 50px;
   font-weight: 800;
   line-height: 50px;
   margin-bottom: 50px;
-  z-index: 1;
+  z-index: 2; /* Ensure text is above the gradient */
 }
 
 .details p {
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 30px;
-  z-index: 1;
-
+  z-index: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .details .rating {
   font-size: 37px;
   margin-right: 10%;
-  z-index: 1;
-
+  z-index: 2;
 }
 
 .details .genres .badge {
@@ -60,28 +89,28 @@
   padding: 9px 14px;
   font-size: 17px;
   font-weight: 800;
-  z-index: 1;
-
+  z-index: 2;
 }
 
 .details .evaluation {
   margin-bottom: 5%;
   display: flex;
   align-items: center;
-  z-index: 1;
-
+  z-index: 2;
 }
 
+/* Buttons and Actions */
 .details .actions {
   width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1;
-
+  z-index: 2;
 }
 
 .details .actions .btn {
+  position: relative; /* Ensure buttons stay clickable */
+  z-index: 2;
   margin-right: 10px;
   font-size: 20px;
   font-weight: 600;
@@ -91,288 +120,44 @@
   display: inline-block;
   min-width: 100px;
   padding: 10px 20px;
-  z-index: 1;
-
 }
 
 .details .actions .btn-watch {
   background-color: var(--blue-highlight);
-  z-index: 1;
-
+  z-index: 2;
 }
-
 
 .details .actions .icon-favor {
   font-size: 46px;
   color: var(--blue-highlight);
-  z-index: 1;
-
+  z-index: 2;
 }
 
-
-
-/* YOU MAY LIKE */
-.title-bar h4 {
-  font-weight: 700;
-  margin-bottom: 0;
-  z-index: 1;
-
+/* Film Grid Styling */
+.container-fluid.col-12 {
+  position: relative; /* Confine stacking context for the film grid */
+  z-index: 2; /* Ensure grid is above the gradient overlay */
 }
 
-.title-bar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  z-index: 1;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .poster img {
+    width: 20em; /* Adjust for smaller screens */
+  }
 
+  .details h1 {
+    font-size: 40px; /* Reduce font size for smaller screens */
+    line-height: 40px;
+  }
+
+  .details p {
+    font-size: 18px;
+  }
+
+  .details .actions .btn {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
 }
 
-.title-bar p {
-  margin-bottom: 0;
-  cursor: pointer;
-  z-index: 1;
-
-}
-
-hr {
-  margin-top: 0;
-  z-index: 1;
-
-}
-
-.thumbnail {
-  position: relative;
-  text-align: center;
-  color: white;
-  cursor: pointer;
-  z-index: 1;
-
-}
-
-.thumbnail .rating {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 5px;
-  border-radius: 5px;
-  z-index: 1;
-
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--white-color);
-  line-height: 17px;
-}
-
-.thumbnail img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  border-radius: 10px;
-  z-index: 1;
-
-}
-
-.thumbnail .details {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  height: 50px;
-  z-index: 1;
-
-}
-
-.thumbnail .details .complete {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  z-index: 1;
-
-}
-
-.details-left {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  z-index: 1;
-
-}
-
-.details-left p {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--white-color);
-  line-height: 17px;
-  z-index: 1;
-
-}
-
-.details-right {
-  text-align: right;
-  margin-top: 30px;
-  columns: var(--white-color);
-  z-index: 1;
-
-}
-
-.details-right p {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--white-color);
-  line-height: 17px;
-  z-index: 1;
-
-}
-
-.thumbnail .details .complete {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  z-index: 1;
-
-}
-
-.title-bar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  z-index: 1;
-
-}
-
-.title-bar h4,
-.title-bar p {
-  margin-bottom: 0;
-  z-index: 1;
-
-}
-
-hr {
-  margin-top: 0;
-  z-index: 1;
-
-}
-
-/*-----------------------------------LEFT MENU ------------------------------------------------------ */
-.left-menu {
-  z-index: 1;
-}
-
-.arrow-down {
-  width: 12%;
-  aspect-ratio: 1/1;
-}
-
-.left-menu {
-  width: 14.5%;
-  font-family: 'Lato', sans-serif;
-}
-
-.left-menu.collapsed {
-  width: 0;
-  overflow: hidden;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.left-menu.collapsed .section-title,
-.left-menu.collapsed .nav-link span {
-  display: none;
-}
-
-.left-menu.collapsed .nav-link img {
-  margin: 0 auto;
-}
-
-
-/* SHOW ICON Styling */
-.left-menu .icon {
-  margin: 5% 0 0 6%;
-  width: 30px;
-  height: auto;
-  cursor: pointer;
-}
-
-.toggle-icon .icon-out {
-  position: absolute;
-  top: 12%;
-  left: 1%;
-  cursor: pointer;
-  width: 30px;
-  z-index: 10;
-}
-
-.menu-section {
-  padding: 10px 0px;
-
-}
-
-.section-title {
-  
-
-  padding: 10px 20px;
-  font-size: 17.33px;
-  text-transform: capitalize;
-  color: var(--white-color);
-  margin-bottom: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  opacity: 67%;
-
-}
-
-.nav {
-  
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.nav-link {
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  font-size: 17.33px;
-  transition: background-color 0.2s ease;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-}
-
-.nav-link img {
-  max-width: 1em;
-  height: auto;
-  padding: 0;
-  margin: 0 10px 0 0;
-}
-
-
-.nav-link.active {
-  color: var(--blue-highlight);
-
-}
-
-/*---------------EFFECTS LEFT MENU--------------*/
-.nav-link {
-  color: var(--white-color);
-  /* Màu mặc định */
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.nav-link:hover {
-  background-color:var(--light-dark-background);
-  border-radius: 5px;
-}
-
-.nav-link.active {
-  color: var(--dark-background);
-  background-color: var(--blue-highlight);
-  border-radius: 5px;
-}
+ 

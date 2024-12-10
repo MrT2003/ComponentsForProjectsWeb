@@ -1,30 +1,19 @@
-<div class="container-fluid p-0 descript d-flex text-light " [ngStyle]="{'background-image': 'url(' + description.poster_url+ ')'}">
-  <!--Left menu-->
-  <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
-    <!-- <app-left-menu></app-left-menu> -->
-  </aside>
-  <!-- Icon hiển thị khi menu thu nhỏ -->
-  <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
-    <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
-  </div>
-  <div class="col-10 p-4 main-content " [class.full-width]="isCollapsed">
-    <div
-      class="container m-0 mt-5 d-flex p-0 align-items-center"
-    >
-      <div class="poster ">
+<div class="container-fluid p-0 descript d-flex text-light" 
+    [ngStyle]="{'background-image': 'url(' + description.poster_url + ')'}">
+  <div class="gradient-overlay"></div>
+  <div class="col-12 p-4 main-content">
+    <div class="container m-0 mt-5 d-flex p-0 align-items-center">
+      <div class="poster">
         <img [src]="description.thumb_url" alt="poster" class="img-fluid" />
       </div>
-
-      <div class="details col-8 ">
+      <div class="details col-8">
         <h1>{{ description.name }}</h1>
         <p>{{ description.description }}</p>
         <div class="d-flex align-items-center evaluation">
-          <!-- <div class="rating"><span>⭐ 7.8</span></div> -->
           <div class="genres d-flex">
             <span class="badge">Fantasy</span>
-            <span class="badge">Fantasy</span>
-            <span class="badge">Fantasy</span>
-            <span class="badge">Fantasy</span>
+            <span class="badge">Drama</span>
+            <span class="badge">War</span>
           </div>
         </div>
         <div class="actions mt-3">
@@ -34,18 +23,15 @@
           </button>
           <button
             [routerLink]="'/watch'"
-            routerLinkActive="active"
-            class="btn btn-watch align-items-center py-2 text-light"
-          >
-            <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i>
-            WATCH NOW
+            class="btn btn-watch align-items-center py-2 text-light">
+            <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i> WATCH NOW
           </button>
         </div>
       </div>
     </div>
-
     <div class="container-fluid col-12 mt-5">
-      <app-film-grid [films]="newestList().slice(0,6)" [description]="'YOU MAY ALSO LIKE'" [notSorting]="false" [displayFrame]="6"></app-film-grid> 
+      <app-film-grid [films]="newestList().slice(0,6)" [description]="'YOU MAY ALSO LIKE'" 
+                     [notSorting]="false" [displayFrame]="6"></app-film-grid>
     </div>
   </div>
 </div>

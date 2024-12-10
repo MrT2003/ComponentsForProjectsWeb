@@ -1,6 +1,8 @@
 /* Navbar Styling */
 .navbar {
+  background-color: transparent !important; /* Ensure the navbar background is transparent */
   z-index: 1;
+  border: none; /* Remove any borders if present */
 }
 
 /* Logo Styling */

@@ -140,4 +140,10 @@ body {
 .col-sm-12{
   padding: 1em 2em;
 }
+.move-right {
+  transform: translateX(60px); /* Adjust value based on how far you want to move */
+}
+.move-right-full {
+  transform: translateX(130px); /* Move the content off-screen */
+}
 

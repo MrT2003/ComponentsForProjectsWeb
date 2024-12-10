@@ -60,21 +60,4 @@ export class DescriptionPageComponent implements OnInit {
       this.newestList.set(res.items); 
     })
   }
-  // getMovie(){
-  //   const movies = this.movieList(); // Lấy danh sách phim từ signal
-  //   if (movies.length > 0) {
-  //     const randomIndex = Math.floor(Math.random() * movies.length); // Chọn chỉ số ngẫu nhiên
-  //     this.selectedMovie.set(movies[randomIndex]); // Gán bộ phim ngẫu nhiên vào signal
-  //   }
-  // }
-  goToDescription(movie: MovieList) {
-    this.routerDesc.navigate(['/description'], {
-      queryParams: {
-        name: movie.name,
-        thumb_url: movie.thumb_url,
-        description: movie.description,
-        poster_url: movie.poster_url,
-      },
-    });
-  }
 }

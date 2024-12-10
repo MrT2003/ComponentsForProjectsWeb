@@ -12,7 +12,7 @@ export class FilmsServiceService {
   goToDescription(movie: MovieList) {
     this.router.navigate(['/description'], {
       queryParams: {
-        name: movie.name,
+        name: movie.original_name,
         thumb_url: movie.thumb_url,
         description: movie.description,
         poster_url: movie.poster_url,
@@ -24,7 +24,7 @@ export class FilmsServiceService {
   goToWatch(movie: MovieList) {
     this.router.navigate(['/watch'], {
       queryParams: {
-        name: movie.name,
+        name: movie.original_name,
         total_episodes: movie.total_episodes,
         poster_url: movie.poster_url,
       },
