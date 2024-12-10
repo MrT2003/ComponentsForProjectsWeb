@@ -1,8 +1,11 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MasterService } from '../../service/master.service';
-import { GenreList } from '../../model/Categories';
 import { CommonModule } from '@angular/common';
+
+//SERVICES  
+import { CategoryService } from '../../service/CategoryService/category.service';
+//MODELS
+import { RouterModule } from '@angular/router';
+import { GenreList } from '../../model/Categories';
 
 @Component({
   selector: 'app-genres-page',
@@ -29,7 +32,7 @@ export class GenresPageComponent  implements OnInit{
   logout = 'assets/res-leftmenu/Log Out.png';
 
 
-  masterService = inject(MasterService);
+  categoryService = inject(CategoryService);
   genreList =  signal<GenreList[]>([]);
   trackById(index: number, item: GenreList): number {
     return item._id; // Trả về thuộc tính `_id` làm giá trị duy nhất
@@ -39,7 +42,7 @@ export class GenresPageComponent  implements OnInit{
     this.loadAllGenres();
   }
   loadAllGenres(){
-    this.masterService.getAllGenres().subscribe((res:GenreList[]) => {
+    this.categoryService.getAllGenres().subscribe((res:GenreList[]) => {
       this.genreList.set(res); 
     })
   }

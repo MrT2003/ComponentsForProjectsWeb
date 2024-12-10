@@ -1,15 +1,22 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { GenreList } from '../../model/Categories';
-import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { CommonModule } from '@angular/common';
-import { MasterService } from '../../service/master.service';
-import {MenuToggleService} from '../../service/menu-toggle-service.service';
 
+//COMPONENTS
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { CommentComponent } from '../../components/comment-section/comment/comment.component';
 import { CommentsComponent } from "../../components/comment-section/comments/comments.component";
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
+//SERVICES   
+import {MenuToggleService} from '../../service/menu-toggle-service.service';
+import { MovieService } from '../../service/MovieService/movie.service';
+import { CategoryService } from '../../service/CategoryService/category.service';
+//MODELS
+import { GenreList } from '../../model/Categories';
+import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
+
+
+
 @Component({
   selector: 'app-watch-page',
   standalone: true,
@@ -26,11 +33,12 @@ export class WatchPageComponent implements OnInit{
   ctn = 'assets/res-rightmenu/th.jpg';
 
   constructor(private router: ActivatedRoute, private menuToggleService:MenuToggleService) {}
-  masterService = inject(MasterService);
+  //servie
+  movieService = inject(MovieService);
+  categoryService = inject(CategoryService);
 
   watch:any;
   routerDesc = inject(Router);
-
   newestList = signal<NewestList[]>([]);
   genreList = signal<GenreList[]>([]);
   episodeArray: number[] = [];
@@ -46,14 +54,14 @@ export class WatchPageComponent implements OnInit{
   }
 
   loadNewestMovies(){
-    this.masterService.getNewestMovies().subscribe((res:APIMoviesModel) => {
+    this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items); 
 
     })
   }
 
   loadAllGenres(){
-    this.masterService.getAllGenres().subscribe((res:GenreList[]) => {
+    this.categoryService.getAllGenres().subscribe((res:GenreList[]) => {
       this.genreList.set(res); 
     })
   }

@@ -2,7 +2,9 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule} from '@angular/router';
 //SERVICES  
-import { MasterService } from '../../service/master.service';
+import { MovieService } from '../../service/MovieService/movie.service';
+import { CategoryService } from '../../service/CategoryService/category.service';
+
 //MODELS
 import { APIMoviesModel, MovieList, NewestList, TvList } from '../../model/Movies';
 import { GenreList } from '../../model/Categories';
@@ -15,7 +17,7 @@ import { GenreList } from '../../model/Categories';
 })
 export class RightMenuComponent implements OnInit {
 
-  constructor(private router: Router, private masterService: MasterService) {}
+  constructor(private router: Router, private movieService: MovieService, private categoryService: CategoryService) {}
 
   newestList = signal<NewestList[]>([]);
   genreList =  signal<GenreList[]>([]);
@@ -26,20 +28,20 @@ export class RightMenuComponent implements OnInit {
   }
 
   loadAllGenres(){
-    this.masterService.getAllGenres().subscribe((res:GenreList[]) => {
+    this.categoryService.getAllGenres().subscribe((res:GenreList[]) => {
       this.genreList.set(res); 
     })
   }
 
   loadNewestMovies(){
-    this.masterService.getNewestMovies().subscribe((res:APIMoviesModel) => {
+    this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items); 
 
     })
   }
 
   // loadContinueMovies(){
-  //   this.masterService.getContinueMovies().subscribe((res:APIMoviesModel) => {
+  //   this.movieService.getContinueMovies().subscribe((res:APIMoviesModel) => {
   //     this.movieList.set(res.items); 
   //   })
   // }

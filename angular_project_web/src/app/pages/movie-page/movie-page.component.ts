@@ -1,9 +1,13 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { APIMoviesModel, MovieList } from '../../model/Movies';
-import { MasterService } from '../../service/master.service';
 import { CommonModule } from '@angular/common';
+
+//COMPONENTS
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
+//SERVICES 
+import { MovieService } from '../../service/MovieService/movie.service';
+//MODELS
+import { APIMoviesModel, MovieList } from '../../model/Movies';
 
 @Component({
   selector: 'app-movie-page',
@@ -27,7 +31,7 @@ export class MoviePageComponent implements OnInit {
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
 
-  masterService = inject(MasterService);
+  movieService = inject(MovieService);
   movieList = signal<MovieList[]>([]);
   router = inject(Router);
 
@@ -43,7 +47,7 @@ export class MoviePageComponent implements OnInit {
     this.router.navigate(['/settings']);
   }
   loadAllMovies() {
-    this.masterService.getAllMovies().subscribe((res:APIMoviesModel) => {
+    this.movieService.getAllMovies().subscribe((res:APIMoviesModel) => {
       this.movieList.set(res.items);
     })
   }

@@ -8,9 +8,9 @@ import { RightMenuComponent } from '../../components/right-menu/right-menu.compo
 import {FilmFrameComponent} from '../../components/film-frame/film-frame.component';
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
 //SERVICES   
-import { MasterService } from '../../service/master.service';
 import { FilmsServiceService } from '../../service/films-service.service';
 import { MenuToggleService } from '../../service/menu-toggle-service.service';
+import { MovieService } from '../../service/MovieService/movie.service';
 //MODELS
 import { APIMoviesModel, MovieList, NewestList, TvList } from '../../model/Movies';
 import { GenreList } from '../../model/Categories';
@@ -48,7 +48,7 @@ export class HomePageComponent implements OnInit{
 
   constructor(private router: Router, private filmsService: FilmsServiceService, private menuToggleService: MenuToggleService) {}
 
-  masterService = inject(MasterService);
+  movieService = inject(MovieService);
   movieList = signal<MovieList []>([]);
   tvList = signal<TvList []>([]);
   newestList = signal<NewestList[]>([]);
@@ -68,19 +68,19 @@ export class HomePageComponent implements OnInit{
   }
 
   loadAllMovies() {
-    this.masterService.getAllMovies().subscribe((res:APIMoviesModel) => {
+    this.movieService.getAllMovies().subscribe((res:APIMoviesModel) => {
       this.movieList.set(res.items);
     })
   }
   
   loadAllTvSeries() {
-    this.masterService.getAllTvSeries().subscribe((res:APIMoviesModel) => {
+    this.movieService.getAllTvSeries().subscribe((res:APIMoviesModel) => {
       this.tvList.set(res.items);
     })
   }
 
   loadNewestMovies(){
-    this.masterService.getNewestMovies().subscribe((res:APIMoviesModel) => {
+    this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items); 
 
     })

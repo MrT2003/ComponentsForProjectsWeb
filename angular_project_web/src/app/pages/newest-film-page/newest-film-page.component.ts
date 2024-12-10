@@ -1,9 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { MasterService } from '../../service/master.service';
-import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
+
+//COMPONENTS
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
+//SERVICES   
+import { MovieService } from '../../service/MovieService/movie.service';
+//MODELS
+import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 
 @Component({
   selector: 'app-newest-film-page',
@@ -39,7 +43,7 @@ export class NewestFilmPageComponent implements OnInit{
     // this.loadNewestMovies()
   }
 
-  masterService = inject(MasterService)
+  movieService = inject(MovieService)
   movieList = signal<MovieList []>([]);
   newestList = signal<MovieList []>([]);
   selectedMovie = signal<MovieList | null>(null);
@@ -50,13 +54,13 @@ export class NewestFilmPageComponent implements OnInit{
   onWatchMovie() { this.router.navigate(['/watch']); }
 
   loadNewestMovies() {
-    this.masterService.getNewestMovies().subscribe((res:APIMoviesModel) => {
+    this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items);
     })
   }
 
   loadAllMovies() {
-    this.masterService.getAllMovies().subscribe((res: APIMoviesModel) => {
+    this.movieService.getAllMovies().subscribe((res: APIMoviesModel) => {
       this.movieList.set(res.items);
       this.selectRandomMovie(); // Hoặc chọn phim đầu tiên tùy nhu cầu
     });
