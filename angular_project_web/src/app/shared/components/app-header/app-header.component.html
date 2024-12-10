@@ -1,36 +1,27 @@
-<nav class="navbar navbar-expand-lg py-2 align-items-center justify-content-around">
-  <!-- Logo Section (Image Toggle) -->
-  <div class="col-2 logo mt-3 mx-2">
-    <img [src]="logo" alt="Logo" class="logo" (click)="onLogoClick()"/>
+<nav class="navbar navbar-expand-lg py-2 align-items-center justify-content-between">
+  <!-- Logo Section -->
+  <div class="col-log-2 navbar-brand logo">
+    <img [src]="logo" alt="Logo" class="logo" (click)="onLogoClick()" />
   </div>
 
   <!-- Navigation Links -->
-  <div class="mb-2 mb-lg-0 col-3 d-flex justify-content-around">
-    <ul class="navbar-nav d-flex w-100 justify-content-around">
+  <div class="d-none d-lg-flex col-lg-4 justify-content-center">
+    <ul class="navbar-nav d-flex justify-content-around w-100">
       <li class="nav-item">
-        <a class="nav-link" 
-          [routerLink]="'/home'" 
-          [ngClass]="{'active': isHome}"
-          (click)="setActivePage('home')">Home</a>
+        <a class="nav-link" [routerLink]="'/home'" [ngClass]="{'active': isHome}" (click)="setActivePage('home')">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" 
-           [routerLink]="'/movie'"
-           [ngClass]="{'active': isMovies}"
-          (click)="setActivePage('movies')">Movies</a>
+        <a class="nav-link" [routerLink]="'/movie'" [ngClass]="{'active': isMovies}" (click)="setActivePage('movies')">Movies</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" 
-           [routerLink]="'/tvseries'"
-           [ngClass]="{'active': isTvSeries}"
-          (click)="setActivePage('tvseries')">TV Series</a>
+        <a class="nav-link" [routerLink]="'/tvseries'" [ngClass]="{'active': isTvSeries}" (click)="setActivePage('tvseries')">TV Series</a>
       </li>
     </ul>
   </div>
 
-  <!-- Search Bar Section -->
-  <div class="col-3 p-0 m-0 d-flex justify-content-around">
-    <form class="align-items-center search-bar w-100">
+  <!-- Search Bar -->
+  <div class="search-bar-wrapper col-lg-5 col-md-6 d-flex align-items-center justify-content-center">
+    <form class="search-bar w-100">
       <div class="input-group">
         <span class="input-group-text bg-dark text-light border-0">
           <img [src]="search" alt="Search" width="16" height="16" />
@@ -49,31 +40,41 @@
       </div>
     </form>
   </div>
-
-  <!-- Account Section (Avatar and Dropdown) -->
-
-  <div class="col-3 d-flex p-0 m-0 justify-content-end">
-    <div class="d-flex align-items-center justify-content-end account me-3">
-      <button class="btn btn-secondary me-3">
-        <i class="fa-regular fa-moon"></i>
-      </button>
-      
+    <div class="search-results" *ngIf="filteredMovies() && filteredMovies()!.length > 0">
+    <ul class="list-group">
+      <li *ngFor="let movie of filteredMovies()" class="list-group-item">
+        <img
+          [src]="movie.poster_url"
+          alt="{{ movie.name }}"
+          width="50"
+          height="50"
+          class="me-2"
+        />
+        <span>{{ movie.name }}</span>
+      </li>
+    </ul>
+  </div>
+  <!-- Account Section -->
+  <div class="account-section d-flex align-items-center col-lg-3 justify-content-end">
+    <button class="btn btn-secondary me-3 d-lg-flex d-none">
+      <i class="fa-regular fa-moon"></i>
+    </button>
+    <div class="account-dropdown d-flex align-items-center">
       <a
-        class="nav-link me-2 dropdown-toggle text-light"
+        class="nav-link dropdown-toggle text-light"
         href="#"
         id="navbarDarkDropdownMenuLink"
         role="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
-        
       >
         Samantha
       </a>
-      <u></u>
-      <img [src]="avt" alt="avatar" (click)="toggleRightMenu()"/>
+      <img [src]="avt" alt="avatar" class="avatar ms-2" (click)="toggleRightMenu()" />
     </div>
   </div>
 </nav>
+
 
 
 
