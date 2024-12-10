@@ -1,0 +1,207 @@
+/*-----------------------------------Carousel-----------------------------------*/
+.carousel {
+    width: 100%;
+    margin: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 50px;
+  }
+  
+  .carousel-inner img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .custom-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 20px; /* Adjust the position for visibility */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Ensure proper centering */
+    padding: 10px 20px;
+    background-color: rgba(27, 27, 27, 0.3); /* Semi-transparent background */
+    border-radius: 10px;
+    z-index: 10; /* Ensure it appears above the carousel */
+  }
+  
+  .custom-indicators .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .dot.active {
+    background-color: var(--blue-highlight) !important; /* Highlight the active dot */
+  }
+  
+  .carousel-inner {
+    position: relative;
+  }
+  
+  .carousel-control-next,
+  .carousel-control-prev {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 50%;
+  }
+  
+  .carousel-control-next {
+    right: 20px;
+  }
+  
+  .carousel-control-prev {
+    left: 20px;
+  }
+  
+  .left-btn,
+  .right-btn {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .carousel-item {
+    position: relative;
+  }
+  
+  .filter {
+    position: absolute;
+    width: 150%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 10px;
+    background-color: var(--half-opaque-dark-background);
+  }
+  
+  .name-film {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    color: var(--white-color);
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  /* Watchlist and Watch Now Buttons */
+  .watch-list,
+  .watch-now {
+    width: auto; /* Allow dynamic width based on content */
+    height: auto; /* Allow dynamic height based on content */
+    position: absolute;
+    bottom: 20px;
+    padding: 10px 20px; /* Apply consistent padding */
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 15px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  
+  /* Watchlist Specific */
+  .watch-list {
+    left: 20px;
+    background-color: rgba(249, 249, 249, 0.2); /* Light background */
+    color: var(--white-color); /* White text color */
+  }
+  
+  .watch-list i {
+    margin-right: 10px; /* Add space between icon and text */
+  }
+  
+  /* Watch Now Specific */
+  .watch-now {
+    right: 20px;
+    background-color: var(--blue-highlight); /* Highlighted background */
+    color: var(--dark-background); /* Dark text color */
+  }
+  
+  /*-----------------------------------Responsive Adjustments-----------------------------------*/
+  
+  /* Medium Screens (Tablets) */
+  @media (max-width: 768px) {
+  
+    .custom-indicators {
+      bottom: 10px; /* Move indicators closer to the bottom */
+      gap: 5px;
+    }
+  
+    .custom-indicators .dot {
+      width: 10px;
+      height: 10px;
+    }
+  
+    .name-film {
+      font-size: 1.7em; /* Reduce title size */
+    }
+  
+    .watch-list,
+    .watch-now {
+      bottom: 20px;
+      padding: 8px 16px; /* Reduce padding for smaller screens */
+      font-size: 0.9em; /* Adjust font size */
+    }
+  }
+  
+  /* Small Screens (Mobile) */
+  @media (max-width: 576px) {
+  
+    .custom-indicators {
+      bottom: 5px; /* Further reduce spacing */
+      gap: 3px;
+      padding: 5px 10px; /* Adjust padding */
+    }
+  
+    .custom-indicators .dot {
+      width: 8px;
+      height: 8px;
+    }
+  
+    .name-film {
+      font-size: 1.5em; /* Further reduce title size */
+      top: 15px; /* Move title closer to the top */
+      left: 20px;
+    }
+  
+    .watch-list,
+    .watch-now {
+      bottom: 15px;
+      padding: 6px 12px; /* Adjust padding */
+      font-size: 0.8em; /* Smaller font size */
+      border-radius: 5px;
+    }
+  
+    .watch-list {
+      left: 10px; /* Adjust position */
+    }
+  
+    .watch-now {
+      right: 10px; /* Adjust position */
+    }
+  }
+  

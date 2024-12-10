@@ -1,58 +1,13 @@
 <div class="row whole">
-  <!--Left menu-->
-  <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
-    <app-left-menu></app-left-menu>
-  </aside>
-  <!-- Icon hiển thị khi menu thu nhỏ -->
-  <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
-    <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
-  </div>
-
   <!--Main content-->
   <div
-    class="col-6 container-fluid text-light"
-    [class.full-width]="isCollapsed"
-  >
+    [ngClass]="{'move-right': leftMenuOpen || isExpanded && leftMenuOpen, 'move-right-full': !isExpanded && leftMenuOpen}"
+    class="col-md-7 col-sm-12 container-fluid text-light main-content transition-content">
     <!-- Carousel -->
-    <div id="demo" class="carousel slide mx-auto" data-bs-ride="carousel">
-      <!-- Custom Indicators -->
-      <div class="custom-indicators">
-        <span class="dot active" data-bs-target="#demo" data-bs-slide-to="0"></span>
-        <span class="dot" data-bs-target="#demo" data-bs-slide-to="1"></span>
-        <span class="dot" data-bs-target="#demo" data-bs-slide-to="2"></span>
-      </div>
-
-      <!-- The slideshow/carousel -->
-      <div class="carousel-inner">
-        @for (item of newestList().slice(0,3); track $index){
-        <div class="carousel-item active">
-          <div class="container-fluid filter"></div>
-          <img [src]="item.poster_url" alt="background" class="d-block image-fix" />
-          <div class="name-film">{{item.name}}</div>
-          <div class="watch-list">
-            <i class="fa-solid fa-plus"></i>
-            Watchlist
-          </div>
-          <div [routerLink]="'/watch'" class="watch-now" (click)="goToWatch(item)" style="cursor: pointer;">Watch Now</div>
-        </div>
-      }
-
-        <!-- Left and right controls/icons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-          <div class="left-btn">
-            <span class="carousel-control-prev-icon"></span>
-          </div>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-          <div class="right-btn">
-            <span class="carousel-control-next-icon"></span>
-          </div>
-        </button>
-      </div>
-    </div>
+    <app-center-film-frame [newestFilm]="newestList().slice(0,3)"></app-center-film-frame>
 
     <!-- Movies -->
-    <div class="container mt-4">
+    <div class="container mt-4 d-none d-md-flex">
     <app-film-grid 
       [description]="'Movies'" 
       [displayFrame]="3" 

@@ -7,6 +7,7 @@ import { LeftMenuComponent } from '../../components/left-menu/left-menu.componen
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
 import {FilmFrameComponent} from '../../components/film-frame/film-frame.component';
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
+import { CenterFilmFrameComponent } from '../../components/center-film-frame/center-film-frame.component';
 //SERVICES   
 import { FilmsServiceService } from '../../service/films-service.service';
 import { MenuToggleService } from '../../service/menu-toggle-service.service';
@@ -18,7 +19,7 @@ import { GenreList } from '../../model/Categories';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent, RightMenuComponent, FilmFrameComponent, FilmGridComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, RightMenuComponent, CenterFilmFrameComponent, FilmGridComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
@@ -54,6 +55,9 @@ export class HomePageComponent implements OnInit{
   newestList = signal<NewestList[]>([]);
   genreList =  signal<GenreList[]>([]);
   isExpanded = false;
+  moveRight = false;
+  moveRightFull = false;
+  leftMenuOpen: boolean = false;
   ngOnInit(): void {
     this.loadAllMovies();
     this.loadAllTvSeries();
@@ -61,6 +65,15 @@ export class HomePageComponent implements OnInit{
     this.menuToggleService.rightMenuState$.subscribe(state => {
       this.isExpanded = !state; // Use isCollapsed to control visibility (inverted logic)
     });
+    this.menuToggleService.menuState$.subscribe(state => {
+      this.leftMenuOpen = state;
+    });
+    if ((this.isExpanded && this.leftMenuOpen) || this.leftMenuOpen) {
+      this.moveRight = true;
+    }
+    if (!this.isExpanded && this.leftMenuOpen) {
+      this.moveRightFull = true;
+    }
   }
 
   toggleRightMenu() {
@@ -92,9 +105,6 @@ export class HomePageComponent implements OnInit{
 
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
 
-  toggleMenu(): void {
-    this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
-  }
 
   goToWatch(movie: MovieList){
     this.filmsService.goToWatch(movie);

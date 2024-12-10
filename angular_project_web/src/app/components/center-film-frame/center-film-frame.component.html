@@ -1,0 +1,51 @@
+<div id="demo" class="carousel slide mx-auto" data-bs-ride="carousel">
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      @for (item of newestFilm; track $index) {
+        <div class="carousel-item active">
+          <div class="container-fluid filter"></div>
+          <img [src]="item.poster_url" alt="background" class="d-block image-fix" />
+          <div class="name-film">{{item.original_name}}</div>
+          <div class="button watch-list">
+            <i class="fa-solid fa-plus"></i> Watchlist
+          </div>
+          <div [routerLink]="'/watch'" class="button watch-now" (click)="goToWatch(item)">
+            Watch Now
+          </div>
+          <div class="custom-indicators">
+            <span
+              class="dot"
+              [ngClass]="{'active': $index === 0}"
+              data-bs-target="#demo"
+              data-bs-slide-to="0"
+            ></span>
+            <span
+              class="dot"
+              [ngClass]="{'active': $index === 1}"
+              data-bs-target="#demo"
+              data-bs-slide-to="1"
+            ></span>
+            <span
+              class="dot"
+              [ngClass]="{'active': $index === 2}"
+              data-bs-target="#demo"
+              data-bs-slide-to="2"
+            ></span>
+          </div>
+        </div>
+      }
+    </div>
+  
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <div class="left-btn">
+        <span class="carousel-control-prev-icon"></span>
+      </div>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <div class="right-btn">
+        <span class="carousel-control-next-icon"></span>
+      </div>
+    </button>
+  </div>
+  
