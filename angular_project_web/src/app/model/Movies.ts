@@ -71,3 +71,4 @@ export interface NewestList{
   director: any
   casts: string
 }
+

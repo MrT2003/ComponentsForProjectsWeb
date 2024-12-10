@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
+import { MovieService } from '../../service/MovieService/movie.service';
+import { APIMoviesModel} from '../../model/Movies';
+import { ContinueMovie } from '../../model/List';
+import { ContnListService } from '../../service/ContnListService/contn-list.service';
+// import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-setting-page',
@@ -10,7 +15,7 @@ import { LeftMenuComponent } from "../../components/left-menu/left-menu.componen
   templateUrl: './setting-page.component.html',
   styleUrl: './setting-page.component.css',
 })
-export class SettingPageComponent {
+export class SettingPageComponent implements OnInit {
   lokiPath = 'assets/images/loki.jpg';
   avatarPath = 'assets/images/avatar.jpg';
   cameraPath = 'assets/images/camera.png';
@@ -29,8 +34,37 @@ export class SettingPageComponent {
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
+  movieService = inject(MovieService)
+  // watchMovie: BehaviorSubject<WatchMovie[]> = new BehaviorSubject<WatchMovie[]>([]);
+  continueMovie = signal<ContinueMovie[]>([]);
+continueList: any;
+  // watchMovie: WatchMovie[] = [];
+  // Thêm phương thức trackByIndex 
+  trackByIndex(index: number): number { return index; }
+
+  constructor(private contListService: ContnListService) {}
+  ngOnInit(): void { 
+    this.loadContinueList(); 
+  }
 
   toggleMenu(): void {
     this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
   }
+
+  // loadContinuelist(): void { 
+  //   this.contListService.getContnList().subscribe((res: APIMoviesModel) => { 
+  //     this.continueMovie.set(res.items);
+  //   })
+  // }
+  loadContinueList(): void {
+    this.contListService.getContinueList().subscribe(
+      (res: APIMoviesModel) => {
+        this.continueMovie.set(res.items);// Giả sử dữ liệu trả về có thuộc tính `items`
+      },
+      (error) => {
+        console.error('Error fetching continue list', error);
+      }
+    );
+  }
+
 }

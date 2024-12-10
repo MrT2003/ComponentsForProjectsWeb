@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
 
-import { FilmsServiceService } from '../../service/films-service.service';
+import { FilmsServiceService } from '../../service/FilmService/films-service.service';
 //MODELS
 import { MovieList } from '../../model/Movies';
 @Component({

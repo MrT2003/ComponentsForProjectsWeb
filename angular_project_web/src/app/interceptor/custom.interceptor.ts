@@ -1,6 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { AuthService } from '../service/auth.service';
+import { AuthService } from '../service/AuthService/auth.service';
 
 // Function-based Interceptor
 export const customInterceptor: HttpInterceptorFn = (req, next) => {

@@ -5,12 +5,9 @@
   }"
 > -->
 
-<div
-  class="row"
-  [ngStyle]="{
+<div class="row" [ngStyle]="{
     'background-image': 'url(' + selectedMovie()?.poster_url + ')'
-  }"
->
+  }">
 
   <!--Left menu-->
   <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
@@ -24,14 +21,16 @@
   <div class="col-10" [class.full-width]="isCollapsed">
     <div class="poster">
       <div class="upper-part mx-5" *ngIf="selectedMovie() as movie">
-        <div class="title my-0">{{ movie.name }}</div>
+      <div class="upper-part mx-5">
+
+        <div class="title my-0">{{ movie.name }}</div> 
         <div class="description">
           {{ movie.description }}
         </div>
         <div class="buttons my-5">
           <button
             class="btn btn-watch align-items-center py-2 text-light"
-            (click)="onWatchMovie()"
+            (click)="goToWatch(movie)"
           >
             <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i>WATCH
             NOW
@@ -44,16 +43,19 @@
       <div class="below-par">
         <div class="container-row">
           @for (item of newestList(); track $index) {
-            <div class="thumbnail">
+            <div class="thumbnail" (click)="goToDescription(item)" style="cursor: pointer;">
               <div class="rating">{{item.quality}}</div>
               <img [src]="item.thumb_url" alt="Loki" />
               <div class="details d-block">
                 <div class="details-top col-12 text-start">
-                  <h5>{{item.name}}</h5>
+                  <h5>{{item.original_name}}</h5>
                 </div>
               </div>
             </div>
           }
+
+
+
         </div>
       </div>
     </div>

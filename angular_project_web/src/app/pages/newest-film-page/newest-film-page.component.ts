@@ -4,20 +4,24 @@ import { Router, RouterModule } from '@angular/router';
 
 //COMPONENTS
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
+import { FilmGridComponent } from "../../components/film-grid/film-grid.component";
+
 //SERVICES   
 import { MovieService } from '../../service/MovieService/movie.service';
+import { FilmsServiceService } from '../../service/FilmService/films-service.service';
+
 //MODELS
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 
 @Component({
   selector: 'app-newest-film-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, FilmGridComponent],
   templateUrl: './newest-film-page.component.html',
   styleUrl: './newest-film-page.component.css',
 })
 export class NewestFilmPageComponent implements OnInit{
-  constructor(private router: Router) {} 
+  constructor(private router: Router,private filmsService: FilmsServiceService) {} 
   lokiPath = 'assets/images/loki.jpg';
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
@@ -38,20 +42,23 @@ export class NewestFilmPageComponent implements OnInit{
   
   isCollapsed = false; 
 
-  ngOnInit(): void {
-    this.loadAllMovies()
-    // this.loadNewestMovies()
-  }
+
 
   movieService = inject(MovieService)
   movieList = signal<MovieList []>([]);
   newestList = signal<MovieList []>([]);
   selectedMovie = signal<MovieList | null>(null);
 
+
+  ngOnInit(): void {
+    this.loadAllMovies()
+    this.loadNewestMovies();
+    // this.loadNewestMovies()
+  }
   toggleMenu(): void {
     this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
   }
-  onWatchMovie() { this.router.navigate(['/watch']); }
+  // onWatchMovie() { this.router.navigate(['/watch']); }
 
   loadNewestMovies() {
     this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
@@ -72,5 +79,10 @@ export class NewestFilmPageComponent implements OnInit{
       this.selectedMovie.set(movies[randomIndex]); // Gán bộ phim ngẫu nhiên vào signal
     }
   }
-  
+  goToWatch(movie: MovieList){
+    this.filmsService.goToWatch(movie);
+  }
+  goToDescription(movie: MovieList) {
+    this.filmsService.goToDescription(movie);
+  }
 }

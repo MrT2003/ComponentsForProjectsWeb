@@ -5,7 +5,7 @@ import { AppFooterComponent } from '../../shared/components/app-footer/app-foote
 import { AppHeaderComponent } from '../../shared/components/app-header/app-header.component';
 import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
-import { MenuToggleService } from '../../service/menu-toggle-service.service';
+import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
 @Component({
   selector: 'app-main-layout',
   standalone: true,

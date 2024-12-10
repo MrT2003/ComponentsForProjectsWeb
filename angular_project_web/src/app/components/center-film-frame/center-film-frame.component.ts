@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { NewestList, MovieList } from '../../model/Movies';
 
-import { FilmsServiceService } from '../../service/films-service.service';
+import { FilmsServiceService } from '../../service/FilmService/films-service.service';
 @Component({
   selector: 'app-center-film-frame',
   standalone: true,

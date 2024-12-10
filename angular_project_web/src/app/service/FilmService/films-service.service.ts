@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { MovieList } from '../model/Movies';
+import { MovieList } from '../../model/Movies';
 @Injectable({
   providedIn: 'root'
 })

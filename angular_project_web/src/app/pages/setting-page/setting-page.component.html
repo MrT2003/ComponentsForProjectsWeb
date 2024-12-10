@@ -36,97 +36,24 @@
         </li>
       </ul>
       <div class="row container-row">
-        <div class="col-md-3">
+        @for (item of continueMovie(); track $index) {
+        <!-- <div *ngFor="let item of (watchMovie | async)?.slice(0, 2); let $index = index; trackBy: trackByIndex" class="col-md-3"> -->
           <div [routerLink]="'/description'" class="thumbnail">
             <div class="rating">⭐ 7.8</div>
             <img [src]="lokiPath" alt="Loki" />
             <div class="details">
               <div class="details-left">
-                <h5>Loki</h5>
+                <!-- <h5>{{item.name}}</h5> -->
                 <p>2023</p>
               </div>
               <div class="details-right"><p>Complete</p></div>
             </div>
           </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <h5>Loki</h5>
-                <p>2023</p>
-              </div>
-              <div class="details-right"><p>Complete</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <h5>Loki</h5>
-                <p>2023</p>
-              </div>
-              <div class="details-right"><p>Complete</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <h5>Loki</h5>
-                <p>2023</p>
-              </div>
-              <div class="details-right"><p>Complete</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <h5>Loki</h5>
-                <p>2023</p>
-              </div>
-              <div class="details-right"><p>Complete</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <h5>Loki</h5>
-                <p>2023</p>
-              </div>
-              <div class="details-right"><p>Complete</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <h5>Loki</h5>
-                <p>2023</p>
-              </div>
-              <div class="details-right"><p>Complete</p></div>
-            </div>
-          </div>
-        </div>
+        }
+        <!-- </div> -->
+         
+
+
         <div class="col-md-3">
           <div class="thumbnail">
             <div class="rating">⭐ 7.8</div>
@@ -156,3 +83,4 @@
     </div>
   </div>
 </div>
+

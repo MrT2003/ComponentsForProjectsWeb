@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 //SERVICES   
-import { MenuToggleService } from '../../../service/menu-toggle-service.service';
+import { MenuToggleService } from '../../../service/MenuService/menu-toggle-service.service';
 import { MovieService } from '../../../service/MovieService/movie.service';
 //MODELS
 import { APIMoviesModel, MovieList } from '../../../model/Movies';

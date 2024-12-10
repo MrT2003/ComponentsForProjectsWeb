@@ -5,12 +5,11 @@ import { Router, RouterModule } from '@angular/router';
 //COMPONENTS
 import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
-import {FilmFrameComponent} from '../../components/film-frame/film-frame.component';
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
 import { CenterFilmFrameComponent } from '../../components/center-film-frame/center-film-frame.component';
 //SERVICES   
-import { FilmsServiceService } from '../../service/films-service.service';
-import { MenuToggleService } from '../../service/menu-toggle-service.service';
+import { FilmsServiceService } from '../../service/FilmService/films-service.service';
+import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
 import { MovieService } from '../../service/MovieService/movie.service';
 //MODELS
 import { APIMoviesModel, MovieList, NewestList, TvList } from '../../model/Movies';
@@ -58,6 +57,7 @@ export class HomePageComponent implements OnInit{
   moveRight = false;
   moveRightFull = false;
   leftMenuOpen: boolean = false;
+      
   ngOnInit(): void {
     this.loadAllMovies();
     this.loadAllTvSeries();

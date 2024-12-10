@@ -8,7 +8,7 @@ import { CommentComponent } from '../../components/comment-section/comment/comme
 import { CommentsComponent } from "../../components/comment-section/comments/comments.component";
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
 //SERVICES   
-import {MenuToggleService} from '../../service/menu-toggle-service.service';
+import {MenuToggleService} from '../../service/MenuService/menu-toggle-service.service';
 import { MovieService } from '../../service/MovieService/movie.service';
 import { CategoryService } from '../../service/CategoryService/category.service';
 //MODELS
