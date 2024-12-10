@@ -1,14 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { APIMoviesModel, MovieList } from '../../model/Movies';
-import { MasterService } from '../../service/master.service';
-import { CountryList, GenreList, YearList } from '../../model/Categories';
-import { FormsModule } from '@angular/forms';
-
+//COMPONENTS
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
 import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
+//SERVICES
+import { CategoryService } from '../../service/CategoryService/category.service';
+import { MovieService } from '../../service/MovieService/movie.service';
+//MODELS
+import { MovieList } from '../../model/Movies';
+import { CountryList, GenreList, YearList } from '../../model/Categories';
+import { FormsModule } from '@angular/forms';
+
+
 @Component({
   selector: 'app-sorting-page',
   standalone: true,
@@ -31,10 +36,12 @@ export class SortingPageComponent implements OnInit {
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
 
-  masterService = inject(MasterService);
+  categoryService = inject(CategoryService);
   genreList = signal<GenreList[]>([]);
   yearList = signal<YearList[]>([]);
   countryList = signal<CountryList[]>([]);
+
+  movieService = inject(MovieService);
   movieList = signal<MovieList[]>([]);
 
   selectedGenre: string = '';
@@ -47,19 +54,19 @@ export class SortingPageComponent implements OnInit {
     this.loadCountries();
   }
   loadGenres() {
-    this.masterService.getAllGenres().subscribe((res: GenreList[]) => {
+    this.categoryService.getAllGenres().subscribe((res: GenreList[]) => {
       this.genreList.set(res);
     });
   }
 
   loadYears() {
-    this.masterService.getAllYears().subscribe((res: YearList[]) => {
+    this.categoryService.getAllYears().subscribe((res: YearList[]) => {
       this.yearList.set(res);
     });
   }
 
   loadCountries() {
-    this.masterService.getAllCoutries().subscribe((res: CountryList[]) => {
+    this.categoryService.getAllCoutries().subscribe((res: CountryList[]) => {
       this.countryList.set(res);
     });
   }
@@ -70,7 +77,7 @@ export class SortingPageComponent implements OnInit {
 
   filterMovies() {
     if (this.selectedYear) {
-      this.masterService.getMoviesByYears(this.selectedYear).subscribe(
+      this.movieService.getMoviesByYears(this.selectedYear).subscribe(
         (res) => {
           this.movieList.set(res.items);
         },
@@ -79,7 +86,7 @@ export class SortingPageComponent implements OnInit {
         }
       );
     } else if (this.selectedGenre) {
-      this.masterService.getMoviesByGenres(this.selectedGenre).subscribe(
+      this.movieService.getMoviesByGenres(this.selectedGenre).subscribe(
         (res) => {
           this.movieList.set(res.items);
         },
@@ -88,7 +95,7 @@ export class SortingPageComponent implements OnInit {
         }
       );
     } else if (this.selectedCountry) {
-      this.masterService.getMoviesByCountries(this.selectedCountry).subscribe(
+      this.movieService.getMoviesByCountries(this.selectedCountry).subscribe(
         (res) => {
           this.movieList.set(res.items);
         },

@@ -1,19 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { APIMoviesModel } from '../model/Movies';
-import { CountryList, GenreList, YearList } from '../model/Categories';
+import { APIMoviesModel } from '../../model/Movies';
+import { MovieDetailsModel } from '../../model/WatchMovies';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MasterService {
-
+export class MovieService {
   apiMovies: String = 'http://localhost:5000/api/movies/';
-  apiCategories: String = 'http://localhost:5000/api/categories/';
-
+  
   constructor(private http: HttpClient) {}
-
+  
   // MOVIES
   getAllMovies():Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(this.apiMovies + "movies")
@@ -35,15 +33,12 @@ export class MasterService {
     return this.http.get<APIMoviesModel>(`${this.apiMovies}genres/${genre}`);
   }
   
+  // WATCH MOVIES
+  watchMovie(slug: string): Observable<MovieDetailsModel> {
+    return this.http.get<MovieDetailsModel>(`${this.apiMovies}/${slug}`);
+  }
+  
 
-  //CATEGORIES
-  getAllGenres():Observable<GenreList[]> {
-    return this.http.get<GenreList[]>(this.apiCategories + "genres")
-  }
-  getAllYears():Observable<YearList[]> {
-    return this.http.get<YearList[]>(this.apiCategories + "years")
-  }
-  getAllCoutries():Observable<CountryList[]> {
-    return this.http.get<CountryList[]>(this.apiCategories + "countries")
-  }
+  
+
 }

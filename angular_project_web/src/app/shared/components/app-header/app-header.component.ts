@@ -3,9 +3,10 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MasterService } from '../../../service/master.service';
+//SERVICES   
 import { MenuToggleService } from '../../../service/menu-toggle-service.service';
-
+import { MovieService } from '../../../service/MovieService/movie.service';
+//MODELS
 import { APIMoviesModel, MovieList } from '../../../model/Movies';
 @Component({
   selector: 'app-app-header',
@@ -27,7 +28,7 @@ export class AppHeaderComponent implements OnInit{
   isMovies = false;
   isTvSeries = false;
 
-  masterService = inject(MasterService)
+  movieService = inject(MovieService)
 
   ngOnInit(): void {
     this.loadMovies();
@@ -38,7 +39,7 @@ export class AppHeaderComponent implements OnInit{
   }
 
   loadMovies(): void {
-    this.masterService.getAllMovies().subscribe((res: APIMoviesModel) => {
+    this.movieService.getAllMovies().subscribe((res: APIMoviesModel) => {
       this.movieList.set(res.items);
     });
   }

@@ -1,12 +1,15 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { RouterModule, ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
-import { MasterService } from '../../service/master.service';
 
+//COMPONENTS
 import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
-import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
+//SERVICES   
+import { MovieService } from '../../service/MovieService/movie.service';
+//MODELS
+import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
+
 @Component({
   selector: 'app-description-page',
   standalone: true,
@@ -36,7 +39,7 @@ export class DescriptionPageComponent implements OnInit {
   description: any;
   routerDesc = inject(Router);
   constructor(private router: ActivatedRoute) {}
-  masterService = inject(MasterService);
+  movieService = inject(MovieService);
   newestList = signal<NewestList[]>([]);
 
   ngOnInit(): void {
@@ -56,7 +59,7 @@ export class DescriptionPageComponent implements OnInit {
   }
 
   loadNewestMovies(){
-    this.masterService.getNewestMovies().subscribe((res:APIMoviesModel) => {
+    this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items); 
     })
   }
