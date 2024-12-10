@@ -4,11 +4,13 @@ import { GenreList } from '../../model/Categories';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { CommonModule } from '@angular/common';
 import { MasterService } from '../../service/master.service';
-
+import { PaginationComponent } from '../../components/pagination/pagination.component';
+import { CommentComponent } from '../../components/comment-section/comment/comment.component';
+import { CommentsComponent } from "../../components/comment-section/comments/comments.component";
 @Component({
   selector: 'app-watch-page',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, PaginationComponent, CommentComponent, CommentsComponent],
   templateUrl: './watch-page.component.html',
   styleUrl: './watch-page.component.css'
 })

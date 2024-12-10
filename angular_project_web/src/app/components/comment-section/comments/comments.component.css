@@ -1,0 +1,14 @@
+.part-comment{
+    font-family: 'Lato', sans-serif;
+  }
+.title-cmt{
+    font-family: 'Lato',sans-serif;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+.comment {
+    color: var(--white-color);
+    background-color: #2B303D;
+    border-radius: 5px;
+    padding: 1em;
+}

@@ -1,0 +1,52 @@
+  .cmt-box {
+    position: relative;
+    border-radius: 8px;
+  }
+
+  .cmt-avt img {
+    width: 50px;
+    height: 50px;
+    border-radius: 15%;
+    object-fit: cover;
+  }
+
+  textarea {
+    background-color: var(--half-opaque-dark-background);
+    border: none;
+    color: #fff;
+    font-size: 0.7em;
+    resize: none;
+    padding: 1em;
+    width: 100%;
+  }
+
+  textarea::placeholder {
+    color: #8f8f8f;
+  }
+
+  .btn-comment {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    background-color: var(--blue-highlight);
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-comment:hover {
+    background-color: var(--blue-highlight);
+  }
+
+
+  @media (max-width: 768px) {
+
+  
+    .btn-comment {
+      align-self: flex-end; /* Keep the button aligned to the right */
+      margin-top: 10px; /* Add spacing above the button */
+      font-size: 0.5em;
+    }
+  }

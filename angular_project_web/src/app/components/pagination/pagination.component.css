@@ -1,0 +1,57 @@
+.pagination-dark .page-item {
+  background-color: transparent;
+}
+
+.pagination-dark .page-link {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 1rem;
+}
+
+.pagination-dark .page-link:hover {
+  background-color: #444;
+}
+
+.pagination-dark .page-item.disabled .page-link {
+  cursor: not-allowed;
+  color: #8f8f8f;
+}
+
+.pagination-dark .page-item.active .page-link {
+  cursor: pointer;
+  background-color: var(--blue-highlight);
+  color: #fff;
+}
+
+.pagination-dark .page-item:not(.disabled) .page-link {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .pagination-dark {
+    justify-content: center; /* Center pagination on smaller screens */
+  }
+
+  .pagination-dark .page-link {
+    font-size: 0.85rem; /* Reduce font size for smaller screens */
+    padding: 6px 10px; /* Adjust padding */
+  }
+
+  .pagination-dark .page-item {
+    margin: 2px; /* Add space between items for better touch targets */
+  }
+}
+
+@media (max-width: 576px) {
+  .pagination-dark .page-item {
+    flex: 1 1 auto; /* Allow items to wrap and occupy available space */
+  }
+
+  .pagination-dark .page-link {
+    text-align: center;
+    padding: 6px 8px; /* Further reduce padding */
+  }
+}
