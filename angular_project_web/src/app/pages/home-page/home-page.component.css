@@ -2,9 +2,6 @@
 .container-fluid {
     padding: 0 !important;
 }
-.transition-content {
-  transition: transform 0.3s ease-in-out; /* Smooth transition */
-}
 .main-content {
   transform: translateX(0); /* Default position */
 }

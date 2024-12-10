@@ -1,30 +1,30 @@
-<div class="container-fluid p-0 descript d-flex text-light" 
+<div class="container-fluid p-0 descript text-light d-flex justify-content-center align-items-center" 
     [ngStyle]="{'background-image': 'url(' + description.poster_url + ')'}">
   <div class="gradient-overlay"></div>
-  <div class="col-12 p-4 main-content">
-    <div class="container m-0 mt-5 d-flex p-0 align-items-center">
+  <div  [ngClass]="{'move-right': isLeftMenuOpen}"
+        class="col-10 main-content transition-content">
+    <div class="d-flex flex-wrap poster-container align-items-center">
       <div class="poster">
         <img [src]="description.thumb_url" alt="poster" class="img-fluid" />
       </div>
-      <div class="details col-8">
+
+      <div class="details col-md-8">
         <h1>{{ description.name }}</h1>
         <p>{{ description.description }}</p>
-        <div class="d-flex align-items-center evaluation">
-          <div class="genres d-flex">
-            <span class="badge">Fantasy</span>
-            <span class="badge">Drama</span>
-            <span class="badge">War</span>
-          </div>
+        <div class="genres">
+          <span class="badge">Fantasy</span>
+          <span class="badge">Drama</span>
+          <span class="badge">War</span>
         </div>
-        <div class="actions mt-3">
-          <i class="icon-favor me-2 fa-regular fa-heart"></i>
+        <div class="actions">
+          <i class="icon-favor fa-regular fa-heart"></i>
           <button class="btn btn-outline-light align-items-center py-2">
             <i class="fa-solid fa-plus text-light me-2"></i> MY LIST
           </button>
           <button
             [routerLink]="'/watch'"
             class="btn btn-watch align-items-center py-2 text-light">
-            <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i> WATCH NOW
+            <i class="fa-regular fa-circle-play text-light me-2"></i> WATCH NOW
           </button>
         </div>
       </div>
