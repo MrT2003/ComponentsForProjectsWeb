@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 //SERVICES  
 import { CategoryService } from '../../service/CategoryService/category.service';
+import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
 //MODELS
 import { RouterModule } from '@angular/router';
 import { GenreList } from '../../model/Categories';
@@ -30,17 +31,22 @@ export class GenresPageComponent  implements OnInit{
   continue = 'assets/res-leftmenu/Continue.png';
   settings = 'assets/res-leftmenu/Settings.png';
   logout = 'assets/res-leftmenu/Log Out.png';
-
+  isLeftMenuOpen = false;
 
   categoryService = inject(CategoryService);
   
   genreList =  signal<GenreList[]>([]);
+
+  constructor(private menuToggleService: MenuToggleService) { }
   
   trackById(index: number, item: GenreList): number {
     return item._id; // Trả về thuộc tính `_id` làm giá trị duy nhất
   }
   ngOnInit(): void {
     this.loadAllGenres();
+    this.menuToggleService.menuState$.subscribe((state) => {
+      this.isLeftMenuOpen = state;
+    });
   }
   loadAllGenres(){
     this.categoryService.getAllGenres().subscribe((res:GenreList[]) => {

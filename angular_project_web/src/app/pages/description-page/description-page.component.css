@@ -83,7 +83,7 @@
   margin-bottom: 2em;
   padding: 8px 12px;
   font-size: 0.9rem;
-  font-weight: 700;  
+  font-weight: 700;
 
 
 }
@@ -129,6 +129,9 @@
 
 /* Medium Screens (Tablets) */
 @media (max-width: 768px) {
+  .main-content{
+    transform: none !important; /* Ensure no translations occur */
+  }
   .poster-container {
     flex-direction: column;
     align-items: center;

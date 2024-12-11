@@ -1,0 +1,19 @@
+<div class="card text-white w-100 p-0 m-0 d-flex flex-column">
+    <div class="card-img-wrapper ">
+      <img [src]="poster_url" class="card-img h-100" alt="newest thumbnail" />
+      <div class="card-img-overlay p-2 d-flex flex-column justify-content-end">
+        <h5 class="card-title card-newest">{{name}}</h5>
+        <div class="card-details  details d-flex align-items-center justify-content-between">
+          <p class="card-newest text-start">{{current_episode}}</p>
+        </div>
+        <div class="card-buttons d-flex gap-2">
+          <button class="btn btn-left col-3">
+            <span class="fw-bold">+</span>
+          </button>
+          <button class="btn btn-primary btn-sm col-8">
+            <span class="fw-bold">Watch</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,23 +1,89 @@
 /* Left Menu Styling */
 .left-menu {
-  position: absolute; /* Absolutely position the menu */
-  left: 0; /* Align to the left of the viewport */
-  top: 90px; /* Align to the top of the viewport */
-  width: 14.5%; /* Default width of the menu */
+  position: absolute; /* Keeps it positioned to the left */
+  left: 0;
+  top: 77px; /* Adjusts to be below any header if necessary */
+  min-width: 200px; /* Minimum width for the menu */
+  max-width: 20%; /* Dynamically scales width up to 20% of the screen */
   font-family: 'Lato', sans-serif;
-  height: 100%; /* Ensure the menu takes the full height */
-  transition: width 0.3s ease, transform 0.3s ease; /* Smooth transition for width and transform */
-  overflow: hidden;
-  z-index: 999; /* Ensure the menu is on top of other content */
-  background-color: var(--semi-opaque-dark-background); 
+  transition: all 0.3s ease; /* Smooth transitions for width and transform */
+  overflow-y: auto; /* Adds vertical scrolling if content overflows */
+  overflow-x: hidden; /* Prevents horizontal overflow */
+  z-index: 1000; /* Ensures menu stays on top */
+  background-color: var(--semi-opaque-dark-background); /* Background color */
 }
+
+/* Collapsed Menu */
+.left-menu.collapsed {
+  min-width: 0; /* Collapses the menu to 0 width */
+  max-width: 0;
+  transform: translateX(-100%); /* Moves the menu off-screen */
+  height: calc(100vh - 90px); /* Retains dynamic height when collapsed */
+}
+
+/* Menu Section Styling */
+.menu-section {
+  padding: 10px 0px;
+  flex-shrink: 0; /* Prevents shrinking of sections when resizing */
+}
+
+/* Navigation Link Styling */
+.nav {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  flex-grow: 1; /* Ensures menu grows to fill available space */
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 1rem; /* Scalable font size */
+  white-space: nowrap; /* Prevents text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+}
+
+.nav-link img {
+  max-width: 1em;
+  height: auto;
+  margin-right: 10px;
+}
+
+/* Content Wrapper Adjustment */
+.content-wrapper {
+  margin-left: min(20%, 250px); /* Matches left menu max width */
+  transition: margin-left 0.3s ease;
+  height: 100%; /* Adjusts to full available height */
+}
+
+.left-menu.collapsed + .content-wrapper {
+  margin-left: 0; /* Resets margin when menu is collapsed */
+}
+
+/* Enable Scroll for Long Menus */
+.left-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.left-menu::-webkit-scrollbar-thumb {
+  background-color: var(--blue-highlight);
+  border-radius: 3px;
+}
+
 
 /* To collapse the menu */
 .left-menu.collapsed {
   width: 0; /* Collapse to 0 width */
   transform: translateX(-100%); /* Move the menu off-screen */
 }
-
+.content-wrapper {
+  margin-left: 14.5%; /* Same as the width of the menu */
+  transition: margin-left 0.3s ease; /* Smooth adjustment */
+}
+.left-menu.collapsed + .content-wrapper {
+  margin-left: 0; /* Reset margin when the menu is collapsed */
+}
 /* When the menu is collapsed, hide the text and icons */
 .left-menu.collapsed .nav-link {
   visibility: hidden; /* Hide the text and icons when collapsed */

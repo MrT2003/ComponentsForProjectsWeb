@@ -5,13 +5,16 @@ import { Router, RouterModule} from '@angular/router';
 import { MovieService } from '../../service/MovieService/movie.service';
 import { CategoryService } from '../../service/CategoryService/category.service';
 
+import { GenreFrameComponent } from '../genre-frame/genre-frame.component';
+import { NewestFrameComponent } from '../newest-frame/newest-frame.component';
+import { ContinueFrameComponent } from '../continue-frame/continue-frame.component';
 //MODELS
 import { APIMoviesModel, MovieList, NewestList, TvList } from '../../model/Movies';
 import { GenreList } from '../../model/Categories';
 @Component({
   selector: 'app-right-menu',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, GenreFrameComponent, NewestFrameComponent, ContinueFrameComponent],
   templateUrl: './right-menu.component.html',
   styleUrl: './right-menu.component.css'
 })

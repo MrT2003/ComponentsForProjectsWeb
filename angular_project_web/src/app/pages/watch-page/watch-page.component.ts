@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 //COMPONENTS
 import { PaginationComponent } from '../../components/pagination/pagination.component';
-import { CommentComponent } from '../../components/comment-section/comment/comment.component';
+import { CommentComponent } from '../../components/comment/comment.component';
 import { CommentsComponent } from '../../components/comment-section/comments/comments.component';
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
 //SERVICES
@@ -20,7 +20,13 @@ import { SafeUrlPipe } from '../../pipes/SafeUrlPipe';
 @Component({
   selector: 'app-watch-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, CommentsComponent, SafeUrlPipe],
+  imports: [
+    RouterModule,
+    CommonModule,
+    CommentsComponent,
+    RightMenuComponent,
+    SafeUrlPipe
+  ],
   templateUrl: './watch-page.component.html',
   styleUrl: './watch-page.component.css',
 })

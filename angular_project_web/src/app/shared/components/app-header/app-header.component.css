@@ -112,6 +112,12 @@
 }
 
 @media (max-width: 768px) {
+  .navbar .logo img {
+    width: 70px;
+    margin: 0 !important;
+    cursor: pointer;
+  }
+
   .search-bar-wrapper {
     margin-left: 0;
     justify-content: flex-start;
@@ -123,6 +129,11 @@
 }
 
 @media (max-width: 576px) {
+  .navbar .logo img {
+    width: 50px;
+    margin: 0 !important;
+    cursor: pointer;
+  }
   .navbar {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -132,6 +143,7 @@
     margin-left: 0;
     order: 2;
     margin-top: 10px;
+    width: 60%;
   }
 
   .account-section {
