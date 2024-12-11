@@ -7,8 +7,8 @@ import { PaginationComponent } from '../../components/pagination/pagination.comp
 import { CommentComponent } from '../../components/comment-section/comment/comment.component';
 import { CommentsComponent } from '../../components/comment-section/comments/comments.component';
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
-//SERVICES   
-import {MenuToggleService} from '../../service/MenuService/menu-toggle-service.service';
+//SERVICES
+import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
 import { MovieService } from '../../service/MovieService/movie.service';
 import { CategoryService } from '../../service/CategoryService/category.service';
 //MODELS
@@ -16,22 +16,16 @@ import { GenreList } from '../../model/Categories';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { MovieDetailsModel } from '../../model/WatchMovies';
 import { SafeUrlPipe } from '../../pipes/SafeUrlPipe';
+
 @Component({
   selector: 'app-watch-page',
   standalone: true,
-  imports: [
-    RouterModule,
-    CommonModule,
-    CommentsComponent,
-    SafeUrlPipe
-  ],
+  imports: [RouterModule, CommonModule, CommentsComponent, SafeUrlPipe],
   templateUrl: './watch-page.component.html',
   styleUrl: './watch-page.component.css',
 })
 export class WatchPageComponent implements OnInit {
-  [x: string]: any;
   avtcmt = 'assets/images/avatar.jpg';
-  //img right menu
   newest = 'assets/res-rightmenu/rick.jpg';
   genre = 'assets/res-rightmenu/rick.jpg';
   ctn = 'assets/res-rightmenu/th.jpg';
@@ -40,27 +34,23 @@ export class WatchPageComponent implements OnInit {
     private router: ActivatedRoute,
     private menuToggleService: MenuToggleService
   ) {}
-  //servie
   movieService = inject(MovieService);
   categoryService = inject(CategoryService);
   route = inject(ActivatedRoute);
-
 
   watch: any;
   routerDesc = inject(Router);
   newestList = signal<NewestList[]>([]);
   genreList = signal<GenreList[]>([]);
-  episodeArray: number[] = [];
+  episodeArray: any[] = [];  // Changed to store episode data with embed URL, slug, etc.
   isExpanded = false;
   slug: string | undefined;
   embedUrl: string | null = null;
 
-  // watchmovie = signal<MovieDetailsModel[]>([]);
   ngOnInit(): void {
     this.loadNewestMovies();
     this.loadAllGenres();
-    this.loadWatch();
-    this.loadWatchMovie();
+    this.loadWatchMovie(); // Call the method to load movie data
     this.menuToggleService.rightMenuState$.subscribe((state) => {
       this.isExpanded = !state; // Use isCollapsed to control visibility (inverted logic)
     });
@@ -78,56 +68,38 @@ export class WatchPageComponent implements OnInit {
     });
   }
 
-  // loadWatchMovie(): void {
-  //   if (this.slug) {
-  //     this.movieService.watchMovie(this.slug).subscribe((res: MovieDetailsModel) => {
-  //       this.watchmovie.set([res]);
-  //     });
-  //   } else {
-  //     console.error('Slug is undefined');
-  //   }
-  // }
-
   loadWatchMovie(): void {
     this.route.queryParams.subscribe((params) => {
       const slug = params['slug'];
       if (slug) {
-        this.movieService.watchMovie(slug).subscribe(
-          (data: MovieDetailsModel) => {
+        this.movieService
+          .watchMovie(slug)
+          .subscribe((data: MovieDetailsModel) => {
             this.watch = data;
-            const firstEpisode = data.movie.episodes[0]?.items[0];
+            console.log(this.watch.name);
+            this.episodeArray = data.movie.episodes.map((episode) => {
+              return episode.items.map((item) => ({
+                episodeNumber: item.name, 
+                embedUrl: item.embed,     
+                slug: item.slug,          
+              }));
+            }).flat();
+
+            const firstEpisode = this.episodeArray[0];
             if (firstEpisode) {
-              this.embedUrl = firstEpisode.embed;
+              this.embedUrl = firstEpisode.embedUrl;
+              this.slug = firstEpisode.slug;
             }
-          },
-        );
+          });
       }
     });
   }
 
-  loadWatch() {
-    this.router.queryParams.subscribe((params) => {
-      const totalEpisodes = parseInt(params['total_episodes'], 10) || 0;
-      this.watch = {
-        name: params['name'],
-        total_episodes: totalEpisodes,
-        poster_url: params['poster_url'],
-        slug: params['slug'],
-      };
-      this.episodeArray = Array.from(
-        { length: totalEpisodes },
-        (_, i) => i + 1
-      ); // Tạo mảng [1, 2, ..., totalEpisodes]
-    });
+  changeEpisode(episodeSlug: string): void {
+    const episode = this.episodeArray.find(e => e.slug === episodeSlug);
+    if (episode) {
+      this.embedUrl = episode.embedUrl;  // Cập nhật URL cho iframe
+      this.slug = episode.slug;  // Cập nhật slug cho tập được chọn
+    }
   }
-  // goToWatch(movie: MovieList) {
-  //   this.routerDesc.navigate(['/watch'], {
-  //     queryParams: {
-  //       name: movie.name,
-  //       total_episodes: movie.total_episodes,
-  //       poster_url: movie.poster_url,
-  //       slug: movie.slug,
-  //     },
-  //   });
-  // }
 }
