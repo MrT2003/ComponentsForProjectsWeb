@@ -1,15 +1,7 @@
-<div class="row w-100" style="min-height: 100vh;">
-  <!--Left menu-->
-  <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
-    <app-left-menu></app-left-menu>
-  </aside>
-  <!-- Icon hiển thị khi menu thu nhỏ -->
-  <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
-    <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
-  </div>
-  <div class="col-10" [class.full-width]="isCollapsed">
+<div class="row w-100 d-flex justify-content-center" style="min-height: 100vh;">
+  <div class="col-10">
     <div
-      class="d-flex align-items-center mt-4 mb-3 pt-4 select-container"
+      class="d-flex align-items-center pt-4 select-container flex-wrap"
       [ngClass]="{ 'with-menu': !isCollapsed, 'without-menu': isCollapsed }"
     >
       <select
@@ -42,8 +34,10 @@
           {{ country.name }}
         </option>
       </select>
-      <button class="btn sorting-btn mx-4" (click)="filterMovies()">Sorting</button>
-      <button class="btn btn-outline-secondary" (click)="resetFilters()" >Reset</button>
+      <div class="button-group ms-md-auto"> <!-- Add this wrapper -->
+        <button class="btn sorting-btn mx-md-3 mx-lg-3" (click)="filterMovies()">Sorting</button>
+        <button class="btn btn-outline-secondary" (click)="resetFilters()">Reset</button>
+      </div>
     </div>
     <app-film-grid 
       [description]="'SORTING'" 
@@ -51,5 +45,5 @@
       [films]="movieList()"
       [notSorting]="false">
     </app-film-grid>
-  </div>
+  </div>  
 </div>

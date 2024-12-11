@@ -37,8 +37,4 @@ export class MovieService {
   watchMovie(slug: string): Observable<MovieDetailsModel> {
     return this.http.get<MovieDetailsModel>(`${this.apiMovies}${slug}`);
   }
-  
-
-  
-
 }

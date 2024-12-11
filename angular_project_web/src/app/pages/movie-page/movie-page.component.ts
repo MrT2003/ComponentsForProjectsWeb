@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 //COMPONENTS
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
+import { PaginationComponent } from '../../components/pagination/pagination.component';
 //SERVICES 
 import { MovieService } from '../../service/MovieService/movie.service';
 //MODELS
@@ -12,7 +13,7 @@ import { APIMoviesModel, MovieList } from '../../model/Movies';
 @Component({
   selector: 'app-movie-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, FilmGridComponent],
+  imports: [RouterModule, CommonModule, FilmGridComponent, PaginationComponent],
   templateUrl: './movie-page.component.html',
   styleUrl: './movie-page.component.css'
 })
