@@ -33,7 +33,7 @@
 .main-content {
   position: relative;
   z-index: 1;
-  padding: 20px;
+  padding: 2em;
 }
 
 /* Poster Styling */
@@ -67,12 +67,13 @@
 
 .details p {
   font-size: 1.2rem;
-  margin-bottom: 20px;
+  margin-bottom: 1em;
   display: -webkit-box;
   -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+
 }
 
 .genres .badge {
@@ -82,7 +83,9 @@
   margin-bottom: 2em;
   padding: 8px 12px;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 700;  
+
+
 }
 
 /* Buttons and Actions */

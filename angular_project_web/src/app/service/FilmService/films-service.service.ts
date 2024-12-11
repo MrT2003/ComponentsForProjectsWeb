@@ -27,6 +27,7 @@ export class FilmsServiceService {
         name: movie.original_name,
         total_episodes: movie.total_episodes,
         poster_url: movie.poster_url,
+        slug: movie.slug,
       },
     });
   }

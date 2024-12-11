@@ -14,6 +14,7 @@ import { CategoryService } from '../../service/CategoryService/category.service'
 //MODELS
 import { GenreList } from '../../model/Categories';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
+import { MovieDetailsModel } from '../../model/WatchMovies';
 
 @Component({
   selector: 'app-watch-page',
@@ -51,7 +52,8 @@ export class WatchPageComponent implements OnInit {
   genreList = signal<GenreList[]>([]);
   episodeArray: number[] = [];
   isExpanded = false;
-
+  slug: string | undefined;
+  watchmovie = signal<MovieDetailsModel[]>([]);
   ngOnInit(): void {
     this.loadNewestMovies();
     this.loadAllGenres();
@@ -72,6 +74,15 @@ export class WatchPageComponent implements OnInit {
       this.genreList.set(res);
     });
   }
+  loadWatchMovie(): void {
+    if (this.slug) {
+      this.movieService.watchMovie(this.slug).subscribe((res: MovieDetailsModel) => {
+        this.watchmovie.set([res]);
+      });
+    } else {
+      console.error('Slug is undefined');
+    }
+  }
   loadWatch() {
     this.router.queryParams.subscribe((params) => {
       const totalEpisodes = parseInt(params['total_episodes'], 10) || 0;
@@ -79,6 +90,7 @@ export class WatchPageComponent implements OnInit {
         name: params['name'],
         total_episodes: totalEpisodes,
         poster_url: params['poster_url'],
+        slug: params['slug'],
       };
       this.episodeArray = Array.from(
         { length: totalEpisodes },
@@ -92,6 +104,7 @@ export class WatchPageComponent implements OnInit {
         name: movie.name,
         total_episodes: movie.total_episodes,
         poster_url: movie.poster_url,
+        slug: movie.slug,
       },
     });
   }

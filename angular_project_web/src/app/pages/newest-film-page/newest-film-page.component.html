@@ -42,9 +42,16 @@
       </div>
       <div class="below-par">
         <div class="container-row">
+          <!-- @for (item of newestList; track $index) {
+            <div class="col-md-{{12 / displayFrame}} col-sm-6">
+              <app-newfilm-frame [item]="item"></app-newfilm-frame>
+            </div>
+          } -->
+
+
           @for (item of newestList(); track $index) {
             <div class="thumbnail" (click)="goToDescription(item)" style="cursor: pointer;">
-              <div class="rating">{{item.quality}}</div>
+              <div class="rating">{{item.quality}} {{item.language}}</div>
               <img [src]="item.thumb_url" alt="Loki" />
               <div class="details d-block">
                 <div class="details-top col-12 text-start">

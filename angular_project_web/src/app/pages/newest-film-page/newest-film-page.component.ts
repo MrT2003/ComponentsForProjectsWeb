@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, Input, OnInit, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 //COMPONENTS
@@ -12,15 +12,22 @@ import { FilmsServiceService } from '../../service/FilmService/films-service.ser
 
 //MODELS
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
+import { NewfilmFrameComponent } from "../../components/newfilm-frame/newfilm-frame.component";
 
 @Component({
   selector: 'app-newest-film-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent, FilmGridComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, FilmGridComponent, NewfilmFrameComponent],
   templateUrl: './newest-film-page.component.html',
   styleUrl: './newest-film-page.component.css',
 })
+
 export class NewestFilmPageComponent implements OnInit{
+// newest: any;
+// displayFrame: any;
+
+
+
   constructor(private router: Router,private filmsService: FilmsServiceService) {} 
   lokiPath = 'assets/images/loki.jpg';
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
@@ -36,7 +43,8 @@ export class NewestFilmPageComponent implements OnInit{
   settings = 'assets/res-leftmenu/Settings.png';
   logout = 'assets/res-leftmenu/Log Out.png';
 
-
+  @Input() newest: NewestList[] = []; 
+  @Input() displayFrame: number = 3;
   
 
   

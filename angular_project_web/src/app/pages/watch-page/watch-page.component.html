@@ -8,12 +8,32 @@
         </div>
       </div>
       
-      <p class="title-watching text-light my-2">{{watch.name}}</p>
+      <p class="title-watching text-light my-2">{{watch.name}} {{watch.slug}}</p>
 
       <div class="watching-frame col-12">
         <div class="frame w-100 h-100 d-flex justify-content-center align-items-center">
         </div>
       </div>
+      <p>Test: hiện dữ liệu watchmovie()</p>
+
+      <div>Độ dài mảng watchmovie (phải là 1): {{ watchmovie().length }}</div>
+      <div *ngIf="watchmovie().length > 0">
+        <div *ngFor="let movie of watchmovie()">
+          <h1>{{ movie.movie.name }}</h1>
+          <p>{{ movie.movie.description }}</p>
+          <div *ngFor="let episode of movie.movie.episodes">
+            <h3>{{ episode.server_name }}</h3>
+            <div *ngFor="let item of episode.items">
+              <p>{{ item.name }}</p>
+              <!-- <iframe [src]="item.embed | safeUrl" width="560" height="315"></iframe> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+        
+      
       
 
       <!-- Episode Section -->
@@ -35,9 +55,9 @@
   </div>
 
   <!-- Right menu -->
-  <div [ngClass]="{'col-4': isExpanded, 'col-3': !isExpanded}" class="right-menu-container d-none d-md-flex">
+  <!-- <div [ngClass]="{'col-4': isExpanded, 'col-3': !isExpanded}" class="right-menu-container d-none d-md-flex">
     <div class="p-3 bg-dark right-menu-content">
       <app-right-menu></app-right-menu>
     </div>
-  </div>
+  </div> -->
 </div>
