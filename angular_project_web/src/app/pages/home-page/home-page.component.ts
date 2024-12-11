@@ -125,6 +125,7 @@ export class HomePageComponent implements OnInit {
   goToWatch(movie: MovieList) {
     this.filmsService.goToWatch(movie);
   }
+  
   goToDescription(movie: MovieList) {
     this.filmsService.goToDescription(movie);
   }

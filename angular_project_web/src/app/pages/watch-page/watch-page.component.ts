@@ -15,17 +15,15 @@ import { CategoryService } from '../../service/CategoryService/category.service'
 import { GenreList } from '../../model/Categories';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { MovieDetailsModel } from '../../model/WatchMovies';
-
+import { SafeUrlPipe } from '../../pipes/SafeUrlPipe';
 @Component({
   selector: 'app-watch-page',
   standalone: true,
   imports: [
     RouterModule,
     CommonModule,
-    PaginationComponent,
-    CommentComponent,
     CommentsComponent,
-    RightMenuComponent,
+    SafeUrlPipe
   ],
   templateUrl: './watch-page.component.html',
   styleUrl: './watch-page.component.css',
@@ -45,6 +43,8 @@ export class WatchPageComponent implements OnInit {
   //servie
   movieService = inject(MovieService);
   categoryService = inject(CategoryService);
+  route = inject(ActivatedRoute);
+
 
   watch: any;
   routerDesc = inject(Router);
@@ -53,11 +53,14 @@ export class WatchPageComponent implements OnInit {
   episodeArray: number[] = [];
   isExpanded = false;
   slug: string | undefined;
-  watchmovie = signal<MovieDetailsModel[]>([]);
+  embedUrl: string | null = null;
+
+  // watchmovie = signal<MovieDetailsModel[]>([]);
   ngOnInit(): void {
     this.loadNewestMovies();
     this.loadAllGenres();
     this.loadWatch();
+    this.loadWatchMovie();
     this.menuToggleService.rightMenuState$.subscribe((state) => {
       this.isExpanded = !state; // Use isCollapsed to control visibility (inverted logic)
     });
@@ -74,15 +77,34 @@ export class WatchPageComponent implements OnInit {
       this.genreList.set(res);
     });
   }
+
+  // loadWatchMovie(): void {
+  //   if (this.slug) {
+  //     this.movieService.watchMovie(this.slug).subscribe((res: MovieDetailsModel) => {
+  //       this.watchmovie.set([res]);
+  //     });
+  //   } else {
+  //     console.error('Slug is undefined');
+  //   }
+  // }
+
   loadWatchMovie(): void {
-    if (this.slug) {
-      this.movieService.watchMovie(this.slug).subscribe((res: MovieDetailsModel) => {
-        this.watchmovie.set([res]);
-      });
-    } else {
-      console.error('Slug is undefined');
-    }
+    this.route.queryParams.subscribe((params) => {
+      const slug = params['slug'];
+      if (slug) {
+        this.movieService.watchMovie(slug).subscribe(
+          (data: MovieDetailsModel) => {
+            this.watch = data;
+            const firstEpisode = data.movie.episodes[0]?.items[0];
+            if (firstEpisode) {
+              this.embedUrl = firstEpisode.embed;
+            }
+          },
+        );
+      }
+    });
   }
+
   loadWatch() {
     this.router.queryParams.subscribe((params) => {
       const totalEpisodes = parseInt(params['total_episodes'], 10) || 0;
@@ -98,14 +120,14 @@ export class WatchPageComponent implements OnInit {
       ); // Tạo mảng [1, 2, ..., totalEpisodes]
     });
   }
-  goToWatch(movie: MovieList) {
-    this.routerDesc.navigate(['/watch'], {
-      queryParams: {
-        name: movie.name,
-        total_episodes: movie.total_episodes,
-        poster_url: movie.poster_url,
-        slug: movie.slug,
-      },
-    });
-  }
+  // goToWatch(movie: MovieList) {
+  //   this.routerDesc.navigate(['/watch'], {
+  //     queryParams: {
+  //       name: movie.name,
+  //       total_episodes: movie.total_episodes,
+  //       poster_url: movie.poster_url,
+  //       slug: movie.slug,
+  //     },
+  //   });
+  // }
 }

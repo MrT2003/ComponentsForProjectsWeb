@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -10,14 +10,23 @@ import { FilmsServiceService } from '../../service/FilmService/films-service.ser
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './center-film-frame.component.html',
-  styleUrl: './center-film-frame.component.css'
+  styleUrl: './center-film-frame.component.css',
 })
 export class CenterFilmFrameComponent {
-    @Input() newestFilm: MovieList[] = [];
+  @Input() newestFilm: MovieList[] = [];
 
-    constructor(private filmsService: FilmsServiceService) {}
+  constructor(private filmsService: FilmsServiceService) {}
 
-    goToWatch(movie: MovieList){
-      this.filmsService.goToWatch(movie);
-    }
+  router = inject(Router);
+
+  goToWatch(movie: MovieList) {
+    this.router.navigate(['/watch'], {
+      queryParams: {
+        name: movie.name,
+        total_episodes: movie.total_episodes,
+        poster_url: movie.poster_url,
+        slug: movie.slug,
+      },
+    });
+  }
 }

@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieList } from '../../model/Movies';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FilmsServiceService {
-
   constructor(private router: Router) {}
 
   // Navigate to the description page with the movie's data
