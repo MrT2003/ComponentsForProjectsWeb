@@ -7,11 +7,13 @@ import { MenuToggleService } from '../../service/MenuService/menu-toggle-service
 //MODELS
 import { RouterModule } from '@angular/router';
 import { GenreList } from '../../model/Categories';
+import { GenreFrameComponent } from "../../components/genre-frame/genre-frame.component";
+import { GenreGridComponent } from '../../components/genre-grid/genre-grid.component';
 
 @Component({
   selector: 'app-genres-page',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, GenreFrameComponent, GenreGridComponent,],
   templateUrl: './genres-page.component.html',
   styleUrl: './genres-page.component.css'
 })

@@ -1,0 +1,8 @@
+
+<div class="row">
+    @for (item of items; track $index) {
+      <div class="col-md-{{12 / displayFrame}} col-sm-6">
+        <app-genre-frame [item]="item"></app-genre-frame>
+      </div>
+    }
+</div>

@@ -77,8 +77,19 @@
     /*-----------------------------------GENRES------------------------------------------------------ */
     .grid-container{
       display: grid;             /* Kích hoạt CSS Grid */
-      grid-template-columns: repeat(2, 1fr); /* Tạo 2 cột đều nhau */
+      grid-template-columns: repeat(3, 1fr); /* Tạo 3 cột đều nhau */
       gap: 30px;                
+    }
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột khi màn hình nhỏ */
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .grid-container {
+        grid-template-columns: 1fr; /* 1 cột khi màn hình rất nhỏ */
+      }
     }
 
     .filter {
