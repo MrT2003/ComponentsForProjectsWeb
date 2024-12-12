@@ -12,14 +12,21 @@
       </div>
     </div>
     <!-- Genres Grid -->
-    <div class="row">
+    <!-- <div class="row">
       @for (item of genreList().slice(0, 8); track $index) {
-      <!-- Thriller -->
+     
        <div class="col-6 my-2 container-fix">
         <app-genre-frame [name]="item.name" [image]="item.image"></app-genre-frame>
       </div>
     }
-    </div>
+    </div> -->
+    <app-menu-genre-grid [items]="genreList()" [columns]="2" [trackByFn]="trackById">
+      <ng-template let-item>
+        <div class="container-fix">
+          <app-genre-frame [image]="item.image" [name]="item.name"></app-genre-frame>
+        </div>
+      </ng-template>
+    </app-menu-genre-grid>
   </div>
 
   <!-- Newest -->

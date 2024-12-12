@@ -1,8 +1,7 @@
-.right-menu{
+/* .right-menu{
     background-color: var(--light-dark-background);
   }
   .card{
-    /* width: 10em; */
     height: auto;
     aspect-ratio: 2/1;
   }
@@ -28,9 +27,9 @@
   }
   h2{
     size: 0.4em;
-  }
+  } */
   /* continue */
-  .continue-cards {
+  /* .continue-cards {
     display: flex;
     gap: 20px;
   }
@@ -70,9 +69,9 @@
     background-color: var(--blue-highlight);
     border-color: var(--blue-highlight);
   }
-  
+   */
   /* genre */
-  .genres-cards {
+  /* .genres-cards {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -97,9 +96,9 @@
     height: 100%;
     text-align: center;
   }
-  
+   */
   /* newest */
-  .card {                               /*all right-menu cards*/
+  /* .card {                              
     position: relative;
     background-color: var(--semi-opaque-dark-background);
     color: var(--white-color);
@@ -122,7 +121,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Đẩy nội dung xuống dưới cùng */
+    justify-content: flex-end; 
     background: var(--half-opaque-dark-background) ;
   }
   .card-details {
@@ -184,10 +183,9 @@
   }
   .card-buttons .btn-left{
     background-color: rgba(249, 249, 249, 0.2);
-    /* opacity: 20%; */
     color: var(--white-color);
-    backdrop-filter: blur(10px); /* Đặt giá trị độ mờ (blur) cho nền */ 
-    -webkit-backdrop-filter: blur(10px); /* Để hỗ trợ các trình duyệt WebKit như Safari */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
   
   }
   
@@ -204,4 +202,4 @@
   .progress .progress-bar {
     background-color: var(--blue-highlight);
   }
-  
+   */
