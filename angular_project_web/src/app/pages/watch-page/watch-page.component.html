@@ -7,11 +7,11 @@
           <h4 class="title-border text-light">You are watching:</h4>
         </div>
       </div>
-  
+
       <p class="title-watching text-light my-2">
         {{ watch?.name ? watch.name : 'Loading...' }}
       </p>
-  
+
       <div class="watching-frame col-12 mt-4">
         <div
           class="frame w-100 h-100 d-flex justify-content-center align-items-center"
@@ -27,11 +27,11 @@
           <p *ngIf="!embedUrl">Không có dữ liệu phim để chiếu</p>
         </div>
       </div>
-  
+
       <!-- Episode Section -->
       <div class="py-3 episode d-flex gap-1 text-light">
         <p class="title-watching text-light my-0 me-2">Episode:</p>
-  
+
         <ul
           class="d-flex gap-2 p-0"
           style="list-style: none"
@@ -44,17 +44,17 @@
               [ngClass]="{ active: episode.slug === slug }"
               (click)="changeEpisode(episode.slug)"
             >
-              <span>{{ episode.episodeNumber }}</span> <!-- Show episode number -->
+              <span class="text-white">{{ episode.episodeNumber }}</span> <!-- Show episode number -->
             </button>
           </li>
         </ul>
       </div>
     </div>
-  
+
     <!-- Comments Section -->
     <app-comments [movieId]="'8d16ceffefdf12da61a9c91065435848'"></app-comments>
   </div>
-  
+
 
   <!-- Right menu -->
   <div [ngClass]="{'col-4': isExpanded, 'col-3': !isExpanded}" class="right-menu-container d-none d-md-flex">

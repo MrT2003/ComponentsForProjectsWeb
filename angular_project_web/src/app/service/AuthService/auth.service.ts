@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, map  } from 'rxjs';
-// import { jwtDecode } from 'jwt-decode'; 
+// import { jwtDecode } from 'jwt-decode';
 // Sửa import cho chính xác (không dùng `jwtDecode` dưới dạng object)
 import { User } from '../../model/User';
 
@@ -21,7 +21,7 @@ export class AuthService {
     if (savedUser) {
       this.currentUserSubject.next(savedUser); // Set the user if found in localStorage
     }
-  }  
+  }
 
   login(email: string, password: string): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/login`, { email, password }).pipe(
@@ -47,12 +47,12 @@ export class AuthService {
   }
 
   saveUser(user: User): void {
-    // localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSubject.next(user); // Update the current user
   }
 
   getUser(): User | null {
-    return this.currentUserSubject.value;
+    return JSON.parse(localStorage.getItem('user') || 'null');
   }
 
   isLoggedIn(): boolean {
