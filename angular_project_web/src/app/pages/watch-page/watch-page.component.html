@@ -9,7 +9,7 @@
       </div>
 
       <p class="title-watching text-light my-2">
-        {{ watch?.name ? watch.name : 'Loading...' }}
+        {{ watch?.name ? watch?.original_name : 'Loading...' }}
       </p>
 
       <div class="watching-frame col-12 mt-4">
@@ -29,7 +29,7 @@
       </div>
 
       <!-- Episode Section -->
-      <div class="py-3 episode d-flex gap-1 text-light">
+      <!-- <div class="py-3 episode d-flex gap-1 text-light">
         <p class="title-watching text-light my-0 me-2">Episode:</p>
 
         <ul
@@ -44,7 +44,27 @@
               [ngClass]="{ active: episode.slug === slug }"
               (click)="changeEpisode(episode.slug)"
             >
-              <span class="text-white">{{ episode.episodeNumber }}</span> <!-- Show episode number -->
+              <span class="text-white">{{ episode.episodeNumber }}</span>
+            </button>
+          </li>
+        </ul>
+      </div> -->
+
+      <!-- Episode Section -->
+      <div class="py-3 episode d-flex gap-1 text-light">
+        <p class="title-watching text-light my-0 me-2">Episode:</p>
+
+        <ul class="d-flex gap-2 p-0" style="list-style: none" *ngIf="episodeArray.length">
+          <li *ngFor="let episode of episodeArray">
+            <button
+              type="button"
+              class="btn"
+              [ngClass]="{ active: episode.slug === slug }"
+              (click)="changeEpisode(episode.slug)"
+            >
+              <!-- <span class="text-white">{{ episode.name }}</span> -->
+              <span class="text-white">{{episodeArray.length}}</span>
+
             </button>
           </li>
         </ul>

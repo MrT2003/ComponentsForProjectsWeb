@@ -14,7 +14,7 @@ import { CategoryService } from '../../service/CategoryService/category.service'
 //MODELS
 import { GenreList } from '../../model/Categories';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
-import { MovieDetailsModel } from '../../model/WatchMovies';
+import { MovieDetailsModel, MovieDetail, EpisodeItem } from '../../model/WatchMovies';
 import { SafeUrlPipe } from '../../pipes/SafeUrlPipe';
 
 @Component({
@@ -44,11 +44,14 @@ export class WatchPageComponent implements OnInit {
   categoryService = inject(CategoryService);
   route = inject(ActivatedRoute);
 
-  watch: any;
+  // watch: any;
+  watch: MovieDetail|undefined ;
   routerDesc = inject(Router);
   newestList = signal<NewestList[]>([]);
   genreList = signal<GenreList[]>([]);
-  episodeArray: any[] = [];  // Changed to store episode data with embed URL, slug, etc.
+  episodeArray: EpisodeItem[] = [];  
+  // Changed to store episode data with embed URL, slug, etc.
+  // episodeArray: (EpisodeItem & { episodeNumber: string })[] = [];
   isExpanded = false;
   slug: string | undefined;
   embedUrl: string | null = null;
@@ -65,37 +68,38 @@ export class WatchPageComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       const slug = params['slug'];
       if (slug) {
-        this.movieService
-          .watchMovie(slug)
-          .subscribe((data: MovieDetailsModel) => {
-            this.movieID = data.movie.id;
-            this.watch = data;
-            console.log(this.watch.name);
-            this.episodeArray = data.movie.episodes.map((episode) => {
-              return episode.items.map((item) => ({
-                episodeNumber: item.name, 
-                embedUrl: item.embed,     
-                slug: item.slug,          
-              }));
-            }).flat();
-
-            const firstEpisode = this.episodeArray[0];
-            if (firstEpisode) {
-              this.embedUrl = firstEpisode.embedUrl;
-              this.slug = firstEpisode.slug;
-            }
-          });
+        this.movieService.watchMovie(slug).subscribe((data: MovieDetailsModel) => {
+          this.watch = data.movie;
+  
+          // Xử lý danh sách tập phim
+          // this.episodeArray = data.movie.episodes.reduce((acc: EpisodeItem[], episode) => {
+          //   return acc.concat(episode.items);
+          // }, []);
+          this.episodeArray = data.movie.episodes.map((episode) => episode.items).flat();
+          console.log('Episode Array:', this.episodeArray); // Kiểm tra dữ liệu
+  
+          // Lấy tập phim đầu tiên
+          const firstEpisode = this.episodeArray[0];
+          if (firstEpisode) {
+            this.embedUrl = firstEpisode.embed;
+            this.slug = firstEpisode.slug;
+          }
+        });
       }
     });
   }
+  
+  
 
   changeEpisode(episodeSlug: string): void {
     const episode = this.episodeArray.find(e => e.slug === episodeSlug);
     if (episode) {
-      this.embedUrl = episode.embedUrl;  // Cập nhật URL cho iframe
+      this.embedUrl = episode.embed;  // Cập nhật URL cho iframe
       this.slug = episode.slug;  // Cập nhật slug cho tập được chọn
     }
   }
+
+  
 
   
 }
