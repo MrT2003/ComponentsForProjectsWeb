@@ -5,49 +5,44 @@
   }"
 > -->
 
-<div class="row" [ngStyle]="{
-    'background-image': 'url(' + selectedMovie()?.poster_url + ')'
-  }">
+<div class="newest container-fluid text-light"
+[ngStyle]="{
+  'background-image': 'url(' + selectedMovie()?.poster_url + ')',
+  'background-repeat': 'no-repeat', 
+  'background-size': 'cover', 
+  'background-position': 'center'
+}">
 
-  <!--Left menu-->
-  <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
-    <app-left-menu></app-left-menu>
-  </aside>
-  <!-- Icon hiển thị khi menu thu nhỏ -->
-  <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
-    <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
-  </div>
-
-  <div class="col-10" [class.full-width]="isCollapsed">
-    <div class="poster">
-      <div class="upper-part mx-5" *ngIf="selectedMovie() as movie">
-      <div class="upper-part mx-5">
-
-        <div class="title my-0">{{ movie.name }}</div> 
-        <div class="description">
-          {{ movie.description }}
-        </div>
-        <div class="buttons my-5">
-          <button
-            class="btn btn-watch align-items-center py-2 text-light"
-            (click)="goToWatch(movie)"
-          >
-            <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i>WATCH
-            NOW
-          </button>
-          <button [routerLink]="'/description'" class="btn btn-detail ms-4">
-            DETAIL
-          </button>
+  <div class="gradient-overlay"></div>
+  <div  [ngClass]="{'move-right': isLeftMenuOpen}"
+      class=" main-content transition-content" *ngIf="selectedMovie() as movie">
+      <div class="container-fluid">
+        <div class="d-flex flex-wrap poster-container align-items-center">
+          <div class="poster">
+            <img [src]="movie.thumb_url" alt="poster" class="img-fluid" />
+          </div>
+    
+          <div class="details col-md-8">
+            <h1>{{ movie.name }}</h1>
+            <p>{{ movie.description }}</p>
+            <div class="buttons my-5">
+              <button
+                class="btn btn-watch align-items-center py-2 text-light"
+                (click)="goToWatch(movie)"
+              >
+                <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i>WATCH
+                NOW
+              </button>
+              <button [routerLink]="'/description'" class="btn btn-detail ms-4">
+                DETAIL
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="below-par">
+      
+      <div class="below-part">
         <div class="container-row">
-          <!-- @for (item of newestList; track $index) {
-            <div class="col-md-{{12 / displayFrame}} col-sm-6">
-              <app-newfilm-frame [item]="item"></app-newfilm-frame>
-            </div>
-          } -->
-
 
           @for (item of newestList(); track $index) {
             <div class="thumbnail" (click)="goToDescription(item)" style="cursor: pointer;">
@@ -61,10 +56,8 @@
             </div>
           }
 
-
-
         </div>
       </div>
-    </div>
-  </div>
+      </div>
 </div>
+ 

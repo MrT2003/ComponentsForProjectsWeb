@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, OnInit, signal, inject, Input } from '@angular/core';
 import { RouterModule, ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -38,7 +38,11 @@ export class DescriptionPageComponent implements OnInit {
 
   isLeftMenuOpen = false; 
 
-  description: any;
+  description: any ;
+  // @Input() description: MovieList[] = [];
+  
+  // description = signal<MovieList[]>([]);
+
   routerDesc = inject(Router);
   constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService) {}
   movieService = inject(MovieService);

@@ -48,8 +48,8 @@ export class NewestFilmPageComponent implements OnInit{
   
 
   
-  isCollapsed = false; 
-
+  // isCollapsed = false; 
+  isLeftMenuOpen = false; 
 
 
   movieService = inject(MovieService)
@@ -61,11 +61,10 @@ export class NewestFilmPageComponent implements OnInit{
   ngOnInit(): void {
     this.loadAllMovies()
     this.loadNewestMovies();
-    // this.loadNewestMovies()
   }
-  toggleMenu(): void {
-    this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
-  }
+  // toggleMenu(): void {
+  //   this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
+  // }
   // onWatchMovie() { this.router.navigate(['/watch']); }
 
   loadNewestMovies() {
