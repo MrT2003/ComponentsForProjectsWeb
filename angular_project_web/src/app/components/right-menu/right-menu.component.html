@@ -49,7 +49,12 @@
       <!-- Drama -->
       @for (item of newestList().slice(0,4); track $index){
       <div class="col-6 container-fix mb-3">
-          <app-newest-frame [name]="item.original_name" [current_episode]="item.current_episode" [poster_url]="item.poster_url"></app-newest-frame>
+          <app-newest-frame 
+          [name]="item.original_name" 
+          [current_episode]="item.current_episode" 
+          [poster_url]="item.poster_url"
+          [item] = "item"
+          ></app-newest-frame>
       </div>
     }
      

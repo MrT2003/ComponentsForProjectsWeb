@@ -9,14 +9,17 @@ export class FilmsServiceService {
 
   // Navigate to the description page with the movie's data
   goToDescription(movie: MovieList) {
+    
     this.router.navigate(['/description'], {
       queryParams: {
         name: movie.original_name,
         thumb_url: movie.thumb_url,
         description: movie.description,
         poster_url: movie.poster_url,
+        movie: JSON.stringify(movie),
       },
     });
+    
   }
 
   // Navigate to the watch page with the movie's data
@@ -27,6 +30,7 @@ export class FilmsServiceService {
         total_episodes: movie.total_episodes,
         poster_url: movie.poster_url,
         slug: movie.slug,
+        movie: JSON.stringify(movie)
       },
     });
   }

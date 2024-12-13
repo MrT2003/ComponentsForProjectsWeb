@@ -20,13 +20,15 @@ export class FilmFrameComponent {
 
   @Input() item!: MovieList;
 
-  goToDescription(movie: MovieList) {
+  goToDescription(movie: MovieList){
     this.filmsService.goToDescription(movie);
   }
+
 
   checkIfComplete() {
     if (this.item.current_episode.startsWith('Hoàn tất') || this.item.current_episode.startsWith('FULL')) {
       this.isComplete = true;
     }
   }
+
 }

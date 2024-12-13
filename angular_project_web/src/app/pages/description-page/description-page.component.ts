@@ -11,6 +11,7 @@ import { MenuToggleService } from '../../service/MenuService/menu-toggle-service
 
 //MODELS
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
+import { FilmsServiceService } from '../../service/FilmService/films-service.service';
 
 @Component({
   selector: 'app-description-page',
@@ -38,15 +39,14 @@ export class DescriptionPageComponent implements OnInit {
 
   isLeftMenuOpen = false; 
 
-  description: any ;
-  // @Input() description: MovieList[] = [];
+  description!: MovieList;
   
-  // description = signal<MovieList[]>([]);
-
   routerDesc = inject(Router);
-  constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService) {}
+  constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService, private filmsService: FilmsServiceService ) {}
   movieService = inject(MovieService);
   newestList = signal<NewestList[]>([]);
+  // @Input() item!: MovieList;
+
 
   ngOnInit(): void {
     this.loadDescription()
@@ -56,15 +56,27 @@ export class DescriptionPageComponent implements OnInit {
     })
   }
 
+  // loadDescription() {
+  //   this.router.queryParams.subscribe((params) => {
+  //     this.description = JSON.parse(params.movie);
+  //   });
+  // }
   loadDescription() {
     this.router.queryParams.subscribe((params) => {
-      this.description = params;
+      if (params['movie']) {
+        this.description = JSON.parse(params['movie']);
+      }
     });
   }
+  
 
   loadNewestMovies(){
     this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items); 
     })
   }
+  goToWatch(movie: MovieList) {
+    this.filmsService.goToWatch(movie);
+  }
 }
+
