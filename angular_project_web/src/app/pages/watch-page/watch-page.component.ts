@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 //COMPONENTS
 import { PaginationComponent } from '../../components/pagination/pagination.component';
-import { CommentComponent } from '../../components/comment/comment.component';
+import { CommentComponent } from '../../components/comment-section/comment/comment.component';
 import { CommentsComponent } from '../../components/comment-section/comments/comments.component';
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
 //SERVICES
@@ -52,25 +52,12 @@ export class WatchPageComponent implements OnInit {
   isExpanded = false;
   slug: string | undefined;
   embedUrl: string | null = null;
+  movieID!: string;
 
   ngOnInit(): void {
-    this.loadNewestMovies();
-    this.loadAllGenres();
     this.loadWatchMovie(); // Call the method to load movie data
     this.menuToggleService.rightMenuState$.subscribe((state) => {
       this.isExpanded = !state; // Use isCollapsed to control visibility (inverted logic)
-    });
-  }
-
-  loadNewestMovies() {
-    this.movieService.getNewestMovies().subscribe((res: APIMoviesModel) => {
-      this.newestList.set(res.items);
-    });
-  }
-
-  loadAllGenres() {
-    this.categoryService.getAllGenres().subscribe((res: GenreList[]) => {
-      this.genreList.set(res);
     });
   }
 
@@ -81,6 +68,7 @@ export class WatchPageComponent implements OnInit {
         this.movieService
           .watchMovie(slug)
           .subscribe((data: MovieDetailsModel) => {
+            this.movieID = data.movie.id;
             this.watch = data;
             console.log(this.watch.name);
             this.episodeArray = data.movie.episodes.map((episode) => {
@@ -108,4 +96,6 @@ export class WatchPageComponent implements OnInit {
       this.slug = episode.slug;  // Cập nhật slug cho tập được chọn
     }
   }
+
+  
 }

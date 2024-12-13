@@ -1,28 +1,24 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { APIMoviesModel } from '../../model/Movies';
+import { inject, Injectable } from '@angular/core';
+import { APIMoviesModel, MovieList } from '../../model/Movies';
 import { Observable } from 'rxjs';
+// import { ContinueList, PostContinueMovie } from '../../model/List';
 // import {AuthService} from ;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContnListService {
-  apiUrl: string = 'http://localhost:5000/api/lists/continueList';
+  apiUrl: string = 'http://localhost:5000/api/lists';
 
-  constructor(private http: HttpClient) {}
-  
+  http = inject(HttpClient);
 
-  // getContnList():Observable<APIMoviesModel> {
-  //   return this.http.get<APIMoviesModel>(this.apiContnList)
-  // } 
-  getContinueList(): Observable<APIMoviesModel> {
-    const token = localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2RhOWJmZDI3NWRmMmFiOGY2NTIwYiIsImlhdCI6MTczMzg2NDIzMSwiZXhwIjoxNzMzOTUwNjMxfQ.-gdJMBqCUjTwmo0aJhH6F6RJCrk-LZe1MiAhZ9Z_80s'); // Giả sử bạn lưu token vào localStorage
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    console.log( "aloalo");
-    return this.http.get<APIMoviesModel>(this.apiUrl, { headers });
-  }
-  
+  // getContinueList(): Observable<ContinueList[]> {
+  //   return this.http.get<ContinueList[]>(this.apiUrl + '/watchList');
+  // }
+
+  // postContinueList(movie: Partial<ContinueList>): Observable<ContinueList[]> {
+  //   console.log('Sending data to API:', movie); // Log dữ liệu trước khi gửi
+  //   return this.http.post<ContinueList[]>(`${this.apiUrl}`, movie);
+  // }
 }
-
-

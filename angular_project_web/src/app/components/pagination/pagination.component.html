@@ -1,45 +1,95 @@
 <div class="d-flex col-12 justify-content-center align-items-center my-0">
   <!-- Pagination for larger screens -->
-  <!-- <ul class="pagination pagination-dark d-flex gap-2 py-0 mt-2 mb-0 flex-wrap d-none d-md-flex">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" aria-label="Previous">
+  <ul class="pagination pagination-dark d-flex gap-2 py-0 mt-2 mb-0 flex-wrap d-none d-md-flex">
+    <!-- Previous Button -->
+    <li
+      class="page-item"
+      [class.disabled]="currentPage === 1"
+      (click)="previousPage()"
+    >
+      <a class="page-link" href="javascript:void(0)" aria-label="Previous">
         <span aria-hidden="true">
           <i class="fa-solid fa-arrow-left me-2"></i>
-          Previous</span>
-      </a>
-    </li>
-    <li class="page-item active">
-      <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item disabled">
-      <a class="page-link" href="#">...</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">67</a></li>
-    <li class="page-item"><a class="page-link" href="#">68</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">Next
-          <i class="fa-solid fa-arrow-right ms-2"></i>
+          Previous
         </span>
       </a>
     </li>
-  </ul> -->
 
-  <!-- Pagination for smaller screens -->
-  <ul class="pagination pagination-dark d-flex gap-2 py-0 mt-2 mb-0 flex-wrap">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" aria-label="Previous">
+    <!-- Page Numbers -->
+    <li
+      *ngFor="let page of getPagesArray(); let i = index"
+      class="page-item"
+      [class.active]="currentPage === page"
+      (click)="goToPage(page)"
+    >
+      <a class="page-link" href="javascript:void(0)">{{ page }}</a>
+    </li>
+
+    <!-- Ellipsis for Larger Pagination -->
+    <li
+      *ngIf="totalPages > maxVisiblePages && currentPage < totalPages - maxVisiblePages"
+      class="page-item disabled"
+    >
+      <a class="page-link" href="javascript:void(0)">...</a>
+    </li>
+
+    <!-- Last Page -->
+    <li
+      *ngIf="totalPages > maxVisiblePages"
+      class="page-item"
+      [class.active]="currentPage === totalPages"
+      (click)="goToPage(totalPages)"
+    >
+      <a class="page-link" href="javascript:void(0)">{{ totalPages }}</a>
+    </li>
+
+    <!-- Next Button -->
+    <li
+      class="page-item"
+      [class.disabled]="currentPage === totalPages"
+      (click)="nextPage()"
+    >
+      <a class="page-link" href="javascript:void(0)" aria-label="Next">
         <span aria-hidden="true">
-          <i class="fa-solid fa-arrow-left me-2"></i>
-          Previous</span>
+          Next <i class="fa-solid fa-arrow-right ms-2"></i>
+        </span>
       </a>
     </li>
+  </ul>
+
+  
+  <!-- Pagination for smaller screens -->
+  <ul class="pagination pagination-dark d-flex gap-2 py-0 mt-2 mb-0 flex-wrap d-md-none">
+    <!-- Previous Button -->
+    <li
+      class="page-item"
+      [class.disabled]="currentPage === 1"
+      (click)="previousPage()"
+    >
+      <a class="page-link" href="javascript:void(0)" aria-label="Previous">
+        <span aria-hidden="true">
+          <i class="fa-solid fa-arrow-left me-2"></i>
+          Previous
+        </span>
+      </a>
+    </li>
+
+    <!-- Current Page and Total Pages -->
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">Next
-          <i class="fa-solid fa-arrow-right ms-2"></i>
+      <a class="page-link" href="javascript:void(0)">
+        Page {{ currentPage }} of {{ totalPages }}
+      </a>
+    </li>
+
+    <!-- Next Button -->
+    <li
+      class="page-item"
+      [class.disabled]="currentPage === totalPages"
+      (click)="nextPage()"
+    >
+      <a class="page-link" href="javascript:void(0)" aria-label="Next">
+        <span aria-hidden="true">
+          Next <i class="fa-solid fa-arrow-right ms-2"></i>
         </span>
       </a>
     </li>
