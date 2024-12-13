@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 descript text-light d-flex justify-content-center align-items-center" 
+<div class="container-fluid p-0 descript text-light d-flex justify-content-center align-items-center"
     [ngStyle]="{'background-image': 'url(' + description.poster_url + ')'}">
   <div class="gradient-overlay"></div>
   <div  [ngClass]="{'move-right': isLeftMenuOpen}"
@@ -12,17 +12,19 @@
         <h1>{{ description.name }}</h1>
         <p>{{ description.description }}</p>
         <div class="genres">
-          <span class="badge">Fantasy</span>
-          <span class="badge">Drama</span>
-          <span class="badge">War</span>
+          <span class="badge me-md-4" *ngFor="let genre of description.genres.split(', ')">
+            {{ genre }}
+          </span>
         </div>
         <div class="actions">
-          <i class="icon-favor fa-regular fa-heart"></i>
+          <i *ngIf="!isFavorite"  class="icon-favor fa-regular fa-heart" (click)="addToFavoriteList()"></i>
+          <i *ngIf="isFavorite"  class="icon-favor fa-solid fa-heart" (click)="deleteFavoriteList()" ></i>
           <button class="btn btn-outline-light align-items-center py-2">
             <i class="fa-solid fa-plus text-light me-2"></i> MY LIST
           </button>
           <button
             [routerLink]="'/watch'"
+            (click)="addToContinueList()"
             class="btn btn-watch align-items-center py-2 text-light">
             <i class="fa-regular fa-circle-play text-light me-2"></i> WATCH NOW
           </button>
@@ -30,7 +32,7 @@
       </div>
     </div>
     <div class="container-fluid col-12 mt-5">
-      <app-film-grid [films]="newestList().slice(0,6)" [description]="'YOU MAY ALSO LIKE'" 
+      <app-film-grid [films]="newestList().slice(0,6)" [description]="'YOU MAY ALSO LIKE'"
                      [notSorting]="false" [displayFrame]="6"></app-film-grid>
     </div>
   </div>

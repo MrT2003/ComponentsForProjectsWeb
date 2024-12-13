@@ -23,6 +23,10 @@ export class MovieService {
     return this.http.get<APIMoviesModel>(this.apiMovies + 'tv-series');
   }
 
+  getMoviesDetails(slug: string): Observable<any> {
+    return this.http.get<any>(this.apiMovies + slug);
+  }
+
   getMoviesByYears(year: string): Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(`${this.apiMovies}year/${year}`);
   }

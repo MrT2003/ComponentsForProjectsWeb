@@ -5,17 +5,21 @@ import { LeftMenuComponent } from '../../components/left-menu/left-menu.componen
 import { MovieService } from '../../service/MovieService/movie.service';
 import { APIMoviesModel } from '../../model/Movies';
 import { User } from '../../model/User';
-
-import { ContnListService } from '../../service/ContnListService/contn-list.service';
+import { ListItem } from '../../model/List';
+// import { ContnListService } from '../../service/ContnListService/contn-list.service';
 import { AuthService } from '../../service/AuthService/auth.service';
-
-import { ContinueList, PostContinueMovie } from '../../model/List';
+import { WatchListService } from '../../service/WatchListService/watch-list.service';
+import { ContinueListService } from '../../service/ContinueListService/continue-list.service';
+import { FavoriteListService } from '../../service/FavoriteListService/favorite-list.service';
+import { ListManagerService } from '../../service/ListManagerService/list-manager.service';
+import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
+// import { ContinueList, PostContinueMovie } from '../../model/List';
 // import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-setting-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, FilmFrameComponent],
   templateUrl: './setting-page.component.html',
   styleUrl: './setting-page.component.css',
 })
@@ -25,48 +29,69 @@ export class SettingPageComponent implements OnInit {
   cameraPath = 'assets/images/camera.png';
   logoutPath = 'assets/images/Log Out.png';
 
-  // icon left menu
-  show = 'assets/res-leftmenu/Arrow down-circle.png';
-  home = 'assets/res-leftmenu/Squircle.png';
-  sort = 'assets/res-leftmenu/Discover.png';
-  recent = 'assets/res-leftmenu/Recent.png';
-  playlists = 'assets/res-leftmenu/Playlists.png';
-  watchlist = 'assets/res-leftmenu/Watchlist.png';
-  continue = 'assets/res-leftmenu/Continue.png';
-  settings = 'assets/res-leftmenu/Settings.png';
-  logout = 'assets/res-leftmenu/Log Out.png';
-  sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
-  isCollapsed = false; 
   movieService = inject(MovieService);
-  registerObj: PostContinueMovie = new PostContinueMovie()
-  
-  continueList = signal<ContinueList[]>([]);
-  contListService = inject(ContnListService);
+
+  favoriteList: ListItem[] = [];
+  watchList: ListItem[] = [];
+  continueList: ListItem[] = [];
+  renderList: ListItem[] = [];
+
+  isFavorite = false;
+  isContinue = false;
+  isWatchList = false;
+  // registerObj: PostContinueMovie = new PostContinueMovie()
+
+  // continueList = signal<ContinueList[]>([]);
+  // contListService = inject(ContnListService);
 
   user: User | null = null;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router,
+              private authService: AuthService,
+              private favoriteListService: FavoriteListService,
+              private watchListService: WatchListService,
+              private continueListService: ContinueListService,
+              private listManager: ListManagerService) {}
   ngOnInit(): void {
-    this.loadContinueList();
+    // this.loadContinueList();
     this.user = this.authService.getUser();
-    
-  }
-
-  toggleMenu(): void {
-    this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
-  }
-
-  loadContinueList() {
-    this.contListService.getContinueList().subscribe((res: ContinueList[]) => {
-      this.continueList.set(res);
+    console.log('User:', this.user);
+    this.favoriteListService.getFavoriteList().subscribe((data) => {
+      this.listManager.setFavoriteList(data);
     });
+
+    this.watchListService.getWatchList().subscribe((data) => {
+      this.listManager.setWatchList(data);
+    });
+
+    this.continueListService.getContinueList().subscribe((data) => {
+      this.listManager.setContinueList(data);
+    });
+    this.listManager.renderList$.subscribe((list) => {
+      this.renderList = list;
+    });
+    this.listManager.isFavorite$.subscribe(
+      (state) => (this.isFavorite = state)
+    );
+    this.listManager.isWatchList$.subscribe(
+      (state) => (this.isWatchList = state)
+    );
+    this.listManager.isContinue$.subscribe(
+      (state) => (this.isContinue = state)
+    );
   }
 
-  addMovie() {
-    this.contListService.postContinueList(this.registerObj).subscribe((res: ContinueList[]) => {
-      this.continueList.set(res);
-    });
+  openFavoriteList(): void {
+    this.listManager.openFavoriteList();
+  }
+
+  openWatchList(): void {
+    this.listManager.openWatchList();
+  }
+
+  openContinueList(): void {
+    this.listManager.openContinueList();
   }
   logOut(): void {
     this.authService.logout();
@@ -75,4 +100,3 @@ export class SettingPageComponent implements OnInit {
     });
   }
 }
-                            
