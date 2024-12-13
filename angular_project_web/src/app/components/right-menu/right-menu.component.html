@@ -75,7 +75,11 @@
     <div class="row">
       @for (item of newestList().slice(0,4); track $index){
         <div class="col-6 container-fix mb-3">
-              <app-continue-frame [name]="item.original_name" [current_episode]="item.current_episode" [thumb_url]="item.poster_url"></app-continue-frame>
+              <app-continue-frame 
+              [name]="item.original_name" 
+              [current_episode]="item.current_episode" 
+              [thumb_url]="item.poster_url"
+              [item] = "item"></app-continue-frame>
         </div>
       }
     </div>
