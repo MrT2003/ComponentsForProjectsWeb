@@ -23,7 +23,13 @@
 .pagination-dark .page-item.active .page-link {
   cursor: pointer;
   background-color: var(--blue-highlight);
+  outline: none; /* Remove outline when active */
+  box-shadow: none; /* Ensure no shadow effect */
   color: #fff;
+}
+.pagination-dark .page-link:focus {
+  outline: none; /* Remove outline on focus */
+  box-shadow: none; /* Remove focus shadow */
 }
 
 .pagination-dark .page-item:not(.disabled) .page-link {

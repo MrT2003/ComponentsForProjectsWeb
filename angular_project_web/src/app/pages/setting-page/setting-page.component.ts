@@ -1,17 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
+import { Router, RouterModule } from '@angular/router';
+import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
 import { MovieService } from '../../service/MovieService/movie.service';
-import { APIMoviesModel} from '../../model/Movies';
-import { ContinueMovie } from '../../model/List';
-import { ContnListService } from '../../service/ContnListService/contn-list.service';
+import { APIMoviesModel } from '../../model/Movies';
+import { User } from '../../model/User';
+import { ListItem } from '../../model/List';
+// import { ContnListService } from '../../service/ContnListService/contn-list.service';
+import { AuthService } from '../../service/AuthService/auth.service';
+import { WatchListService } from '../../service/WatchListService/watch-list.service';
+import { ContinueListService } from '../../service/ContinueListService/continue-list.service';
+import { FavoriteListService } from '../../service/FavoriteListService/favorite-list.service';
+import { ListManagerService } from '../../service/ListManagerService/list-manager.service';
+import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
+// import { ContinueList, PostContinueMovie } from '../../model/List';
 // import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-setting-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, FilmFrameComponent],
   templateUrl: './setting-page.component.html',
   styleUrl: './setting-page.component.css',
 })
@@ -21,50 +29,74 @@ export class SettingPageComponent implements OnInit {
   cameraPath = 'assets/images/camera.png';
   logoutPath = 'assets/images/Log Out.png';
 
-  // icon left menu
-  show = 'assets/res-leftmenu/Arrow down-circle.png';
-  home = 'assets/res-leftmenu/Squircle.png';
-  sort = 'assets/res-leftmenu/Discover.png';
-  recent = 'assets/res-leftmenu/Recent.png';
-  playlists = 'assets/res-leftmenu/Playlists.png';
-  watchlist = 'assets/res-leftmenu/Watchlist.png';
-  continue = 'assets/res-leftmenu/Continue.png';
-  settings = 'assets/res-leftmenu/Settings.png';
-  logout = 'assets/res-leftmenu/Log Out.png';
-  sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
-  isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
-  movieService = inject(MovieService)
-  // watchMovie: BehaviorSubject<WatchMovie[]> = new BehaviorSubject<WatchMovie[]>([]);
-  continueMovie = signal<ContinueMovie[]>([]);
-continueList: any;
-  // watchMovie: WatchMovie[] = [];
-  // Thêm phương thức trackByIndex 
-  trackByIndex(index: number): number { return index; }
+  movieService = inject(MovieService);
 
-  constructor(private contListService: ContnListService) {}
-  ngOnInit(): void { 
-    this.loadContinueList(); 
-  }
+  favoriteList: ListItem[] = [];
+  watchList: ListItem[] = [];
+  continueList: ListItem[] = [];
+  renderList: ListItem[] = [];
 
-  toggleMenu(): void {
-    this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
-  }
+  isFavorite = false;
+  isContinue = false;
+  isWatchList = false;
+  // registerObj: PostContinueMovie = new PostContinueMovie()
 
-  // loadContinuelist(): void { 
-  //   this.contListService.getContnList().subscribe((res: APIMoviesModel) => { 
-  //     this.continueMovie.set(res.items);
-  //   })
-  // }
-  loadContinueList(): void {
-    this.contListService.getContinueList().subscribe(
-      (res: APIMoviesModel) => {
-        this.continueMovie.set(res.items);// Giả sử dữ liệu trả về có thuộc tính `items`
-      },
-      (error) => {
-        console.error('Error fetching continue list', error);
-      }
+  // continueList = signal<ContinueList[]>([]);
+  // contListService = inject(ContnListService);
+
+  user: User | null = null;
+
+  constructor(private router: Router,
+              private authService: AuthService,
+              private favoriteListService: FavoriteListService,
+              private watchListService: WatchListService,
+              private continueListService: ContinueListService,
+              private listManager: ListManagerService) {}
+  ngOnInit(): void {
+    // this.loadContinueList();
+    this.user = this.authService.getUser();
+    console.log('User:', this.user);
+    this.favoriteListService.getFavoriteList().subscribe((data) => {
+      this.listManager.setFavoriteList(data);
+    });
+
+    this.watchListService.getWatchList().subscribe((data) => {
+      this.listManager.setWatchList(data);
+    });
+
+    this.continueListService.getContinueList().subscribe((data) => {
+      this.listManager.setContinueList(data);
+    });
+    this.listManager.renderList$.subscribe((list) => {
+      this.renderList = list;
+    });
+    this.listManager.isFavorite$.subscribe(
+      (state) => (this.isFavorite = state)
+    );
+    this.listManager.isWatchList$.subscribe(
+      (state) => (this.isWatchList = state)
+    );
+    this.listManager.isContinue$.subscribe(
+      (state) => (this.isContinue = state)
     );
   }
 
+  openFavoriteList(): void {
+    this.listManager.openFavoriteList();
+  }
+
+  openWatchList(): void {
+    this.listManager.openWatchList();
+  }
+
+  openContinueList(): void {
+    this.listManager.openContinueList();
+  }
+  logOut(): void {
+    this.authService.logout();
+    this.router.navigate(['/signin']).then(() => {
+      console.log('Navigated to /signin');
+    });
+  }
 }

@@ -1,72 +1,47 @@
-<div class="row">
-  <!--Left menu-->
-  <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
-    <app-left-menu></app-left-menu>
-  </aside>
-  <!-- Icon hiển thị khi menu thu nhỏ -->
-  <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
-    <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
-  </div>
-  <div class="col-10 m-0 p-0" [class.full-width]="isCollapsed">
-    <div class="profile-header">
+<div class="row d-flex justify-content-center ">
+  <div class="col-10 m-0 p-0">
+    <div class="profile-header" [ngStyle]="{'background-image': 'url(' + user?.image + ')'}">
       <div class="profile-picture">
-        <img [src]="avatarPath" alt="Profile Picture" />
+        <img [src]="user?.avatar" alt="Profile Picture" />
       </div>
-      <div class="profile-name">Samantha</div>
+      <div class="profile-name">{{user?.fullName}}</div>
       <div class="profile-camera">
         <img [src]="cameraPath" alt="camera" />
       </div>
       <div class="log-out">
-        <button class="btn btn-design">
+        <a class="btn btn-design" (click)="logOut()">
           <img [src]="logoutPath" alt="logout icon" /> Log Out
-        </button>
+        </a>
       </div>
     </div>
 
     <div class="container playlist-container">
       <ul class="nav nav-tabs pt-4 ps-2">
         <li class="nav-item nav-fix">
-          <a class="nav-link" href="">Playlist</a>
-        </li>
-        <li class="nav-item active nav-fix ps-2">
-          <a class="nav-link active" href="">Watch List</a>
+          <a [ngClass]="{'active': isFavorite}" class="nav-link" (click)="openFavoriteList()" >Favorite list</a>
         </li>
         <li class="nav-item nav-fix ps-2">
-          <a class="nav-link" href="">Continue List</a>
+          <a [ngClass]="{'active': isWatchList}" class="nav-link" (click)="openWatchList()" >Watch List</a>
+        </li>
+        <li class="nav-item nav-fix ps-2">
+          <a [ngClass]="{'active': isContinue}" class="nav-link" (click)="openContinueList()" >Continue List</a>
         </li>
       </ul>
       <div class="row container-row">
-        @for (item of continueMovie(); track $index) {
-        <!-- <div *ngFor="let item of (watchMovie | async)?.slice(0, 2); let $index = index; trackBy: trackByIndex" class="col-md-3"> -->
-          <div [routerLink]="'/description'" class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <!-- <h5>{{item.name}}</h5> -->
-                <p>2023</p>
-              </div>
-              <div class="details-right"><p>Complete</p></div>
-            </div>
+        @for (item of renderList; track $index) {
+          <div class="col-md-2 col-sm-6">
+            <app-film-frame [item]="{
+              thumb_url: item.poster,
+              original_name: item.name,
+              created: item.year,
+              current_episode: item.currentEpisode,
+              quality: item.quality,
+              language: item.language,
+              slug: item.slug
+            }"></app-film-frame>
           </div>
         }
-        <!-- </div> -->
-         
 
-
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="rating">⭐ 7.8</div>
-            <img [src]="lokiPath" alt="Loki" />
-            <div class="details">
-              <div class="details-left">
-                <h5>Loki</h5>
-                <p>2023</p>
-              </div>
-              <div class="details-right"><p>Complete</p></div>
-            </div>
-          </div>
-        </div>
       </div>
       <nav aria-label="Page navigation">
         <ul class="pagination">

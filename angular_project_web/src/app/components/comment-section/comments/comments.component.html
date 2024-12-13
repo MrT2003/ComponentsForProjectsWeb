@@ -1,16 +1,27 @@
 <div class="part-comment text-light  my-4 col-12">
     <p class="title-cmt text-light my-2">Comment:</p>
 
-    <div class="comment  col-12 py-3">
+    <div class="comment col-12 py-3">
       
-      <app-comment-upload></app-comment-upload>
-
-      <ul class="col-12 gap-1 p-0 m-0 text-light" style="list-style: none">
-        <app-comment></app-comment>
-        <app-comment></app-comment>
-        <app-comment></app-comment>
-      </ul>
-      
-      <app-pagination></app-pagination>
+      <app-comment-upload
+      [movieId]="movieId"
+      (commentAdded)="onCommentAdded($event)"
+      ></app-comment-upload>
+      <div *ngIf="comments && comments.length > 0">
+        <ul class="col-12 gap-1 p-0 m-0 text-light" style="list-style: none">
+          @for (comment of comments; track $index) {
+            <app-comment [comment]="comment"></app-comment>
+          }
+        </ul>      
+        <app-pagination
+          [currentPage]="currentPage"
+          [totalPages]="totalPages"
+          [maxVisiblePages]="5"
+          (pageChange)="onPageChange($event)"
+        ></app-pagination>
+      </div>
+      <div *ngIf="!comments || comments.length === 0">
+        <p class="text-center text-white">No comments yet</p>
+      </div>
     </div>
 </div>

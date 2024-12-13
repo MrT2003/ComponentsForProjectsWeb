@@ -45,5 +45,13 @@
       [films]="movieList()"
       [notSorting]="false">
     </app-film-grid>
+
+    <app-pagination 
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    [maxVisiblePages]="5"
+    (pageChange)="pageChanged($event)"
+    ></app-pagination>
+    
   </div>  
 </div>

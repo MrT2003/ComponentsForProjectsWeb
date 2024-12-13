@@ -1,4 +1,4 @@
-    <div [routerLink]="'/description'" class="thumbnail" (click)="goToDescription(item)" style="cursor: pointer;">
+    <div class="thumbnail" (click)="goToDescription()" style="cursor: pointer;">
       <div class="rating">{{item.quality +" "+ item.language}}</div>
       <img [src]="item.thumb_url" alt="thumbnail" />
       <div class="details d-block">
