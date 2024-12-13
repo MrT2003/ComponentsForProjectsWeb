@@ -7,6 +7,9 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    justify-content: center;
+    overflow-y: auto;
+
 }
 
 .left {
@@ -18,7 +21,7 @@ body {
 
 .left .logo img {
     position: absolute;
-    font-size: 24px;
+    font-size: 2em;
     font-weight: bold;
     margin-bottom: 20px;
     left: 20px;
@@ -28,14 +31,14 @@ body {
 
 .left .greeting {
     position: absolute;
-    bottom: 20px;
-    left: 40px;
+    bottom: 1.5em;
+    left: 2em;
 }
 
 .left .welcome {
     color: var(--white-color);
     font-family: 'Lato', sans-serif;
-    font-size: 48px;
+    font-size: 2.5em;
     font-weight: 900;
     margin-bottom: 10px;
 }
@@ -45,58 +48,58 @@ body {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     color: var(--white-color);
-    font-size: 26px;
+    font-size: 0.7em;
     max-width: 60%;
 }
 
 .right {
-
     display: flex;
     /* Enables flexbox */
     justify-content: center;
     /* Centers horizontally */
     align-items: center;
     /* Centers vertically */
-    padding: 0px;
+    padding: 20px 0px;
     width: 46%;
-    height: 100vh;
-    /* Adjust to full height of viewport */
+    min-height: 100vh /* Đảm bảo chiều cao tối thiểu */ 
 }
 
 .right .container-form {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 74%;
-    height: 80%;
+    /* height: 80%; */
     border-radius: 10px;
-
+    bottom: 1px;
+    justify-self: center;
 }
 
 .right h2 {
     color: var(--blue-highlight);
-    
+    /* margin-top: 40px; */
+    /* margin-bottom: 10px; */
     font-family: 'Lato', sans-serif;
     font-weight: 900;
+    font-size: 2em;
 }
 
 .container-form {
     font-family: 'Lato', sans-serif;
-    font-size: 18px;
-
+    font-size: 0.8em;
 }
 
 .container-form input {
     font-family: 'Lato', sans-serif;
-    font-size: 18px;
+    font-size: 0.8em;
     border: 0;
     background-color: var(--light-grey);
-    margin-bottom: 10px;
-
-
+    margin-bottom: 0.5em;
 }
 
 .container-form button {
 
-    margin-top: 10px;
+    margin-top: 0.5em;
 }
 
 .input-container {
@@ -107,7 +110,8 @@ body {
 
 .input-container input {
     width: 100%;
-    padding-right: 40px;
+    padding-right: 2em;
+
     /* Tạo khoảng trống cho biểu tượng */
 }
 
@@ -124,6 +128,33 @@ body {
     margin-bottom: 15px;
 }
 
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    /* Distributes space between elements */
+    align-items: center;
+    /* Aligns items vertically */
+    font-size: 0.8em;
+}
+.forgot{
+    text-align: end;
+}
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+    margin: auto 0;
+    position: relative;
+    z-index: 1;
+}
+
+.remember-me label {
+    margin-left: 5px;
+    z-index: 1;
+}
+
 .btn-primary {
     background-color: var(--blue-highlight);
     border: none;
@@ -131,7 +162,7 @@ body {
 
 .orwith {
     font-family: 'Lato', sans-serif;
-    font-size: 20px;
+    font-size: 1em;
 }
 
 .social-buttons {
@@ -144,10 +175,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    /* Adjust this size as needed */
-    height: 40px;
-    /* Adjust this size as needed */
+    width: 2em;
+    height: 2em;
     padding: 0;
     margin: 5px;
     border-radius: 50%;
@@ -157,9 +186,7 @@ body {
 
 .social-buttons img {
     max-width: 50%;
-    /* Ensures the image is well within the button */
     max-height: 50%;
-    /* Ensures the image is well within the button */
     object-fit: cover;
 }
 
@@ -171,10 +198,13 @@ body {
 
     background-color: var(--blue-highlight);
 }
+
+
 .sign-in {
     font-family: 'Lato', sans-serif;
-    font-size: 18px;
-    margin: 0 20px;
+    font-size: 0.8em;
+    margin: 0.5em;
     text-align: center;
     margin: 10px 0;
 }
+

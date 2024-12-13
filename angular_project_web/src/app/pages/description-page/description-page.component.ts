@@ -56,11 +56,7 @@ export class DescriptionPageComponent implements OnInit {
     })
   }
 
-  // loadDescription() {
-  //   this.router.queryParams.subscribe((params) => {
-  //     this.description = JSON.parse(params.movie);
-  //   });
-  // }
+ 
   loadDescription() {
     this.router.queryParams.subscribe((params) => {
       if (params['movie']) {
