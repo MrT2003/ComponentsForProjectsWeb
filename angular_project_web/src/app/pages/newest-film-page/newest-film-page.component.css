@@ -47,7 +47,7 @@
 
 .poster {
   flex: 1;
-  max-width: 30%;
+  max-width: 15em;
 }
 
 .poster img {
@@ -189,8 +189,8 @@
   align-items: center;
   justify-content: center;
   overflow-x: scroll;
-  gap: 80px;
-  margin-top: 5%;
+  gap: 1.5em;
+  margin-top: 0px;
   scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
   -ms-overflow-style: none; /* Ẩn thanh cuộn trên Internet Explorer và Edge */
 }
@@ -201,7 +201,8 @@
   position: relative;
   text-align: center;
   color: var(--white-color);
-  min-width: 250px;
+  min-width: 5em;
+  aspect-ratio: 2/1;
   transition: transform 0.3s, box-shadow 0.3s;
   border-radius: 10px;
 }
@@ -244,13 +245,48 @@
   white-space: normal;
 }
 
-/* 
-.details-top  
-.details-top p {
-  font-family: 'Lato', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--white-color)b2;
-  line-height: 17px;
-} */
+/* Button Move */
+
+.below-part {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 2em;
+  padding: 0px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.scroll-btn.left {
+  left: 0;
+  margin: 0;
+}
+
+.scroll-btn.right {
+  right: 0;
+  margin: 0;
+}
+
+.container-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 86vw;
+}
+
+.thumbnail {
+  flex: 0 0 auto;
+  width: 200px; /* Adjust the width as needed */
+  margin-right: 10px;
+}
+
 

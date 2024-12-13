@@ -56,7 +56,25 @@ export class NewestFilmPageComponent implements OnInit{
   movieList = signal<MovieList []>([]);
   newestList = signal<MovieList []>([]);
   selectedMovie = signal<MovieList | null>(null);
-
+  hoveredMovie!: MovieList
+  
+  // hoveredMovie: MovieList = {
+  //   name: '',
+  //   slug: '',
+  //   original_name: '',
+  //   thumb_url: '',
+  //   poster_url: '',
+  //   created: '',
+  //   modified: '',
+  //   description: '',
+  //   total_episodes: 0,
+  //   current_episode: '',
+  //   time: '',
+  //   quality: '',
+  //   language: '',
+  //   director: '',
+  //   casts: ''
+  // };
 
   ngOnInit(): void {
     this.loadAllMovies()
@@ -67,10 +85,19 @@ export class NewestFilmPageComponent implements OnInit{
   // }
   // onWatchMovie() { this.router.navigate(['/watch']); }
 
+  updateHoveredMovie(movie: MovieList) { this.hoveredMovie = movie; }
+
   loadNewestMovies() {
     this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items);
+
+      if (this.newestList().length > 0) { 
+        // Gán giá trị đầu tiên của newestList cho hoveredMovie
+        this.hoveredMovie = this.newestList()[0];
+      }
+      
     })
+    
   }
 
   loadAllMovies() {
@@ -92,4 +119,25 @@ export class NewestFilmPageComponent implements OnInit{
   goToDescription(movie: MovieList) {
     this.filmsService.goToDescription(movie);
   }
+
+  scrollLeft() {
+    const container = document.querySelector('.container-row');
+    if (container) {
+      container.scrollBy({
+        left: -300, // Adjust the scroll amount as needed
+        behavior: 'smooth'
+      });
+    }
+  }
+  
+  scrollRight() {
+    const container = document.querySelector('.container-row');
+    if (container) {
+      container.scrollBy({
+        left: 300, // Adjust the scroll amount as needed
+        behavior: 'smooth'
+      });
+    }
+  }
+  
 }

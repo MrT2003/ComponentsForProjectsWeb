@@ -7,7 +7,7 @@
 
 <div class="newest container-fluid text-light"
 [ngStyle]="{
-  'background-image': 'url(' + selectedMovie()?.poster_url + ')',
+  'background-image': 'url(' + hoveredMovie.poster_url + ')',
   'background-repeat': 'no-repeat', 
   'background-size': 'cover', 
   'background-position': 'center'
@@ -16,19 +16,19 @@
   <div class="gradient-overlay"></div>
   <div  [ngClass]="{'move-right': isLeftMenuOpen}"
       class=" main-content transition-content" *ngIf="selectedMovie() as movie">
-      <div class="container-fluid">
-        <div class="d-flex flex-wrap poster-container align-items-center">
+      <div class="container-fluid d-flex ">
+        <div class="d-flex flex-wrap poster-container align-items-stretch">
           <div class="poster">
-            <img [src]="movie.thumb_url" alt="poster" class="img-fluid" />
+            <img [src]="hoveredMovie.thumb_url" alt="poster" class="img-fluid" />
           </div>
     
           <div class="details col-md-8">
-            <h1>{{ movie.name }}</h1>
-            <p>{{ movie.description }}</p>
+            <h1>{{ hoveredMovie.name }}</h1>
+            <p>{{ hoveredMovie.description }}</p>
             <div class="buttons my-5">
               <button
                 class="btn btn-watch align-items-center py-2 text-light"
-                (click)="goToWatch(movie)"
+                (click)="goToWatch(hoveredMovie)"
               >
                 <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i>WATCH
                 NOW
@@ -41,23 +41,27 @@
         </div>
       </div>
       
-      <div class="below-part">
-        <div class="container-row">
-
-          @for (item of newestList(); track $index) {
-            <div class="thumbnail" (click)="goToDescription(item)" style="cursor: pointer;">
-              <div class="rating">{{item.quality}} {{item.language}}</div>
-              <img [src]="item.thumb_url" alt="Loki" />
-              <div class="details d-block">
-                <div class="details-top col-12 text-start">
-                  <h5>{{item.original_name}}</h5>
-                </div>
+      <div class="below-part position-relative">
+        <button class="scroll-btn left" (click)="scrollLeft()">&#10094;</button>
+        <!-- <button class="scroll-btn left" >&#10094;</button> -->
+        
+        <div class="container-row d-flex overflow-hidden mx-auto">
+          <!-- Add thumbnails here -->
+          <div *ngFor="let item of newestList(); let i = index" class="thumbnail" (mouseover)="updateHoveredMovie(item)" (click)="goToDescription(item)" style="cursor: pointer;">
+            <div class="rating">{{item.quality}} {{item.language}}</div>
+            <img [src]="item.thumb_url" alt="Loki" />
+            <div class="details d-block">
+              <div class="details-top col-12 text-start">
+                <h5>{{item.original_name}}</h5>
               </div>
             </div>
-          }
-
+          </div>
         </div>
+        <button class="scroll-btn right" (click)="scrollRight()">&#10095;</button>
+        <!-- <button class="scroll-btn right">&#10095;</button> -->
+        
       </div>
-      </div>
+      
+    </div>
 </div>
  
