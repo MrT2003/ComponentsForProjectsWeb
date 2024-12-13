@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, map  } from 'rxjs';
-import { jwtDecode } from 'jwt-decode'; // Sửa import cho chính xác (không dùng `jwtDecode` dưới dạng object)
+// import { jwtDecode } from 'jwt-decode'; 
+// Sửa import cho chính xác (không dùng `jwtDecode` dưới dạng object)
 import { User } from '../../model/User';
 
 @Injectable({
@@ -80,3 +81,7 @@ export class AuthService {
     return null; // Trường hợp không có token
   }
 }
+function jwtDecode(token: string): { id: string; } {
+  throw new Error('Function not implemented.');
+}
+

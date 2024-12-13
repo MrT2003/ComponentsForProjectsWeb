@@ -32,6 +32,9 @@ export class MovieService {
   getMoviesByGenres(genre: string): Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(`${this.apiMovies}genres/${genre}`);
   }
+  getMoviesByPages(page:number):Observable<APIMoviesModel>{
+    return this.http.get<APIMoviesModel>(`${this.apiMovies}movies?page=${page}`);
+  }
 
   // WATCH MOVIES
   watchMovie(slug: string): Observable<MovieDetailsModel> {

@@ -96,4 +96,6 @@ export class WatchPageComponent implements OnInit {
       this.slug = episode.slug;  // Cập nhật slug cho tập được chọn
     }
   }
+
+  
 }
