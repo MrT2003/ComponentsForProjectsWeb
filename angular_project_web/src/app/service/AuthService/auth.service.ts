@@ -46,13 +46,12 @@ export class AuthService {
   }
 
   saveUser(user: User): void {
-    localStorage.setItem('user', JSON.stringify(user));
+    // localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSubject.next(user); // Update the current user
   }
 
   getUser(): User | null {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+    return this.currentUserSubject.value;
   }
 
   isLoggedIn(): boolean {

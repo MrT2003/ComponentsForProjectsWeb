@@ -11,6 +11,11 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
+  // Get user by ID
+  getUserById(userId: string): Observable<User> {
+      return this.http.get<User>(`${this.apiUrl}/${userId}`);
+  }
+
   // Update user profile
   updateUserProfile(data: Partial<User>): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}`, data);
