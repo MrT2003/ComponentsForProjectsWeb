@@ -1,10 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
 import { MovieService } from '../../service/MovieService/movie.service';
 import { APIMoviesModel } from '../../model/Movies';
+import { User } from '../../model/User';
+
 import { ContnListService } from '../../service/ContnListService/contn-list.service';
+import { AuthService } from '../../service/AuthService/auth.service';
+
 import { ContinueList, PostContinueMovie } from '../../model/List';
 // import { BehaviorSubject } from 'rxjs';
 
@@ -39,8 +43,14 @@ export class SettingPageComponent implements OnInit {
   
   continueList = signal<ContinueList[]>([]);
   contListService = inject(ContnListService);
+
+  user: User | null = null;
+
+  constructor(private router: Router, private authService: AuthService) {}
   ngOnInit(): void {
     this.loadContinueList();
+    this.user = this.authService.getUser();
+    
   }
 
   toggleMenu(): void {
@@ -56,6 +66,12 @@ export class SettingPageComponent implements OnInit {
   addMovie() {
     this.contListService.postContinueList(this.registerObj).subscribe((res: ContinueList[]) => {
       this.continueList.set(res);
+    });
+  }
+  logOut(): void {
+    this.authService.logout();
+    this.router.navigate(['/signin']).then(() => {
+      console.log('Navigated to /signin');
     });
   }
 }

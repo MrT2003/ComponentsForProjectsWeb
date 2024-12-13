@@ -1,26 +1,23 @@
-<div class="row">
-  <!--Left menu-->
-  <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
-    <app-left-menu></app-left-menu>
-  </aside>
+<div class="row d-flex justify-content-center ">
+
   <!-- Icon hiển thị khi menu thu nhỏ -->
   <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
     <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
   </div>
   <div class="col-10 m-0 p-0" [class.full-width]="isCollapsed">
-    <div class="profile-header">
+    <div class="profile-header" [ngStyle]="{'background-image': 'url(' + user?.image + ')'}">
       <div class="profile-picture">
-        <img [src]="avatarPath" alt="Profile Picture" />
+        <img [src]="user?.avatar" alt="Profile Picture" />
       </div>
-      <div class="profile-name">Samantha</div>
+      <div class="profile-name">{{user?.fullName}}</div>
       <div class="profile-camera">
         <img [src]="cameraPath" alt="camera" />
       </div>
       <div class="log-out">
-        <button class="btn btn-design">
+        <a class="btn btn-design" (click)="logOut()">
           <img [src]="logoutPath" alt="logout icon" /> Log Out
-        </button>
-      </div>
+        </a>
+      </div>      
     </div>
 
     <div class="container playlist-container">
