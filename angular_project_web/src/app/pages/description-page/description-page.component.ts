@@ -12,6 +12,9 @@ import { MenuToggleService } from '../../service/MenuService/menu-toggle-service
 //MODELS
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { FilmsServiceService } from '../../service/FilmService/films-service.service';
+import { ContinueListService } from '../../service/ContinueListService/continue-list.service';
+import { FavoriteListService } from '../../service/FavoriteListService/favorite-list.service';
+import { ListItem } from '../../model/List';
 
 @Component({
   selector: 'app-description-page',
@@ -38,11 +41,11 @@ export class DescriptionPageComponent implements OnInit {
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
   isLeftMenuOpen = false; 
-
-  description!: MovieList;
+  isFavorite = false;
+  description!: any;
   
   routerDesc = inject(Router);
-  constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService, private filmsService: FilmsServiceService ) {}
+  constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService, private continueListService: ContinueListService, private favoriteListService: FavoriteListService, private filmsService: FilmsServiceService ) {}
   movieService = inject(MovieService);
   newestList = signal<NewestList[]>([]);
   // @Input() item!: MovieList;
@@ -74,5 +77,71 @@ export class DescriptionPageComponent implements OnInit {
   goToWatch(movie: MovieList) {
     this.filmsService.goToWatch(movie);
   }
+
+  addToContinueList(): void {
+    const continueListItem: Partial<ListItem> = {
+      listType: 'continueList',
+      movieId: this.description.id, // Replace 'id' with the actual field name for movie ID
+      name: this.description.name,
+      poster: this.description.thumb_url,
+      slug: this.description.slug,
+      currentEpisode: this.description.current_episode, // Default episode for newly added movies
+      quality: this.description.quality || 'HD',
+      language: this.description.language || 'Vietsub',
+      year: this.description.year,
+    };
+
+    this.continueListService.addToContinueList(continueListItem).subscribe({
+      next: () => {
+        this.routerDesc.navigate(['/watch']); // Navigate to the watch page
+      },
+      error: (err) => {
+        console.error('Error adding movie to Continue List:', err);
+      },
+    });
+  }
+  addToFavoriteList(): void {
+    const favoriteListItem: Partial<ListItem> = {
+      listType: 'favoriteList',
+      movieId: this.description.id, // Replace 'id' with the actual field name for movie ID
+      name: this.description.name,
+      poster: this.description.thumb_url,
+      slug: this.description.slug,
+      currentEpisode: this.description.current_episode, // Default episode for newly added movies
+      quality: this.description.quality || 'HD',
+      language: this.description.language || 'Vietsub',
+      year: this.description.year,
+    };
+
+    this.favoriteListService.addToFavoriteList(favoriteListItem).subscribe({
+      next: () => {
+        this.isFavorite = true; // Navigate to the watch page
+      },
+      error: (err) => {
+        console.error('Error adding movie to Continue List:', err);
+      },
+    });
+  }
+  deleteFavoriteList(): void {
+    this.favoriteListService.deleteFromFavoriteList(this.description.id).subscribe({
+      next: () => {
+        this.isFavorite = false; // Navigate to the watch page
+      },
+      error: (err) => {
+        console.error('Error deleting movie from Favorite List:', err);
+      },
+    });
+  }
+
+  checkInitialFavorite(): void {
+    this.favoriteListService.getFavoriteList().subscribe({
+      next: (data) => {
+        const found = data.find((item) => item.movieId === this.description.id);
+        this.isFavorite = !!found;
+      },
+      error: (err) => console.error('Error fetching favorite list:', err),
+    });
+  }
+
 }
 

@@ -3,7 +3,6 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../service/AuthService/auth.service';
-
 @Component({
   selector: 'app-sign-in-page',
   standalone: true,
@@ -18,7 +17,7 @@ export class SignInPageComponent {
 
   email = '';
   password = '';
-
+  
   // constructor(private router: Router) {}
   http = inject(HttpClient);
   router = inject(Router);
@@ -27,7 +26,6 @@ export class SignInPageComponent {
   onSignIn(): void {
     this.authService.login(this.email, this.password).subscribe(
       (response) => {
-        this.authService.saveToken(response.token);
         this.router.navigate(['/home']); // Chuyển hướng sau khi đăng nhập thành công
       },
       (error) => {

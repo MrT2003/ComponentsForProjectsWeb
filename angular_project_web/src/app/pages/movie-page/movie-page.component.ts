@@ -36,9 +36,15 @@ export class MoviePageComponent implements OnInit {
   movieList = signal<MovieList[]>([]);
   router = inject(Router);
 
+  currentPage = 1; 
+  itemsPerPage = 10; 
+  totalItems = 0;
+  totalPages = 0; 
 
   ngOnInit(): void {
-    this.loadAllMovies();
+    // this.loadAllMovies();
+    this.loadMoviesByPages(this.currentPage);
+
   }
   
   toggleMenu(): void {
@@ -52,6 +58,15 @@ export class MoviePageComponent implements OnInit {
       this.movieList.set(res.items);
     })
   }
+ 
+  loadMoviesByPages(page: number) {
+    this.movieService.getMoviesByPages(page).subscribe((res: APIMoviesModel) => {
+      this.movieList.set(res.items);
+      this.totalItems = res.paginate.total_items; // Cập nhật totalItems từ phản hồi của API
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Tính lại tổng số trang
+    });
+  }
+
 
   goToDescription(movie: MovieList) {
     this.router.navigate(['/description'], {
@@ -63,6 +78,12 @@ export class MoviePageComponent implements OnInit {
       },
     });
   }
+
+  pageChanged(newPage: number) { 
+    this.currentPage = newPage; 
+    this.loadMoviesByPages(newPage);
+    }
+
 
   
 }
