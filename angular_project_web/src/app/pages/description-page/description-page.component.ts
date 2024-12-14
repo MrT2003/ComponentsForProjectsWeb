@@ -45,7 +45,7 @@ export class DescriptionPageComponent implements OnInit {
   description!: any;
   
   routerDesc = inject(Router);
-  constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService, private continueListService: ContinueListService, private favoriteListService: FavoriteListService, private filmsService: FilmsServiceService ) {}
+  constructor(private activeRouter: ActivatedRoute, private menuToggleService: MenuToggleService, private continueListService: ContinueListService, private favoriteListService: FavoriteListService, private filmsService: FilmsServiceService ) {}
   movieService = inject(MovieService);
   newestList = signal<NewestList[]>([]);
   // @Input() item!: MovieList;
@@ -60,13 +60,20 @@ export class DescriptionPageComponent implements OnInit {
   }
 
  
+  // loadDescription() {
+  //   this.router.queryParams.subscribe((params) => {
+  //     if (params['movie']) {
+  //       this.description = JSON.parse(params['movie']);
+  //     }
+  //   });
+  // }
   loadDescription() {
-    this.router.queryParams.subscribe((params) => {
-      if (params['movie']) {
-        this.description = JSON.parse(params['movie']);
-      }
+    this.activeRouter.queryParams.subscribe((params) => {
+      this.description = params;
+      console.log('Description:', this.description);
     });
   }
+
   
 
   loadNewestMovies(){
