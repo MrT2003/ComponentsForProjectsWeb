@@ -5,13 +5,11 @@ import { RouterModule } from '@angular/router';
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
 import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
-import { PaginationComponent } from '../../components/pagination/pagination.component';
-
 //SERVICES
 import { CategoryService } from '../../service/CategoryService/category.service';
 import { MovieService } from '../../service/MovieService/movie.service';
 //MODELS
-import { APIMoviesModel, MovieList } from '../../model/Movies';
+import { MovieList } from '../../model/Movies';
 import { CountryList, GenreList, YearList } from '../../model/Categories';
 import { FormsModule } from '@angular/forms';
 
@@ -19,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-sorting-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule, LeftMenuComponent, FilmFrameComponent, FilmGridComponent, PaginationComponent],
+  imports: [RouterModule, CommonModule, FormsModule, LeftMenuComponent, FilmFrameComponent, FilmGridComponent],
   templateUrl: './sorting-page.component.html',
   styleUrl: './sorting-page.component.css',
 })
@@ -49,11 +47,6 @@ export class SortingPageComponent implements OnInit {
   selectedGenre: string = '';
   selectedYear: string = '';
   selectedCountry: string = '';
-
-  currentPage = 1; 
-  itemsPerPage = 10; 
-  totalItems = 0;
-  totalPages = 0; 
 
   ngOnInit(): void {
     this.loadGenres();
@@ -113,7 +106,6 @@ export class SortingPageComponent implements OnInit {
     } else {
       console.warn('No filters selected!');
     }
-    this.loadMoviesByPages(this.currentPage);
   }
 
   resetFilters() {
@@ -127,28 +119,4 @@ export class SortingPageComponent implements OnInit {
 
     console.log('Filters reset. Ready for new selection!');
   }
-
-  loadMoviesByPages(page: number) {
-    let observable;
-
-    if (this.selectedYear) {
-      observable = this.movieService.getMoviesByYearsAndPages(this.selectedYear, this.currentPage);
-    } else if (this.selectedGenre) {
-      observable = this.movieService.getMoviesByGenresAndPages(this.selectedGenre, this.currentPage);
-    } else if (this.selectedCountry) {
-      observable = this.movieService.getMoviesByCountriesAndPages(this.selectedCountry, this.currentPage);
-    } else {
-      observable = this.movieService.getMoviesByPages(page); // Default to all movies if no filters
-    }
-
-    observable.subscribe((res: APIMoviesModel) => {
-      this.movieList.set(res.items);
-      this.totalItems = res.paginate.total_items; 
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-    });
-  }
-  pageChanged(newPage: number) { 
-    this.currentPage = newPage; 
-    this.loadMoviesByPages(newPage);
-    }
 }
