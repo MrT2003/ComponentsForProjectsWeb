@@ -39,11 +39,19 @@
         <button class="btn btn-outline-secondary" (click)="resetFilters()">Reset</button>
       </div>
     </div>
-    <app-film-grid
-      [description]="'SORTING'"
-      [displayFrame]="4"
+    <app-film-grid 
+      [description]="'SORTING'" 
+      [displayFrame]="4" 
       [films]="movieList()"
       [notSorting]="false">
     </app-film-grid>
-  </div>
+
+    <app-pagination 
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    [maxVisiblePages]="5"
+    (pageChange)="pageChanged($event)"
+    ></app-pagination>
+    
+  </div>  
 </div>
