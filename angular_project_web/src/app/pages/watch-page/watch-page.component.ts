@@ -69,7 +69,7 @@ export class WatchPageComponent implements OnInit {
           .watchMovie(slug)
           .subscribe((data: MovieDetailsModel) => {
             this.movieID = data.movie.id;
-            this.watch = data;
+            this.watch = data.movie;
             console.log(this.watch.name);
             this.episodeArray = data.movie.episodes.map((episode) => {
               return episode.items.map((item) => ({
