@@ -1,17 +1,19 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, OnInit, signal, inject, Input } from '@angular/core';
 import { RouterModule, ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 //COMPONENTS
 import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
-//SERVICES
+//SERVICES   
 import { MovieService } from '../../service/MovieService/movie.service';
 import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
-import { ContinueListService } from '../../service/ContinueListService/continue-list.service';
-import { FavoriteListService } from '../../service/FavoriteListService/favorite-list.service';
+
 //MODELS
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
+import { FilmsServiceService } from '../../service/FilmService/films-service.service';
+import { ContinueListService } from '../../service/ContinueListService/continue-list.service';
+import { FavoriteListService } from '../../service/FavoriteListService/favorite-list.service';
 import { ListItem } from '../../model/List';
 
 @Component({
@@ -38,24 +40,33 @@ export class DescriptionPageComponent implements OnInit {
   logout = 'assets/res-leftmenu/Log Out.png';
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
-  isLeftMenuOpen = false;
+  isLeftMenuOpen = false; 
   isFavorite = false;
-
-  description: any;
+  description!: any;
+  
   routerDesc = inject(Router);
-  constructor(private activeRouter: ActivatedRoute, private router: Router, private menuToggleService: MenuToggleService, private continueListService: ContinueListService, private favoriteListService: FavoriteListService) {}
+  constructor(private activeRouter: ActivatedRoute, private menuToggleService: MenuToggleService, private continueListService: ContinueListService, private favoriteListService: FavoriteListService, private filmsService: FilmsServiceService ) {}
   movieService = inject(MovieService);
   newestList = signal<NewestList[]>([]);
+  // @Input() item!: MovieList;
+
 
   ngOnInit(): void {
     this.loadDescription()
-    this.checkInitialFavorite();
     this.loadNewestMovies();
     this.menuToggleService.menuState$.subscribe((state) => {
       this.isLeftMenuOpen = state;
     })
   }
 
+ 
+  // loadDescription() {
+  //   this.router.queryParams.subscribe((params) => {
+  //     if (params['movie']) {
+  //       this.description = JSON.parse(params['movie']);
+  //     }
+  //   });
+  // }
   loadDescription() {
     this.activeRouter.queryParams.subscribe((params) => {
       this.description = params;
@@ -63,11 +74,17 @@ export class DescriptionPageComponent implements OnInit {
     });
   }
 
+  
+
   loadNewestMovies(){
     this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
-      this.newestList.set(res.items);
+      this.newestList.set(res.items); 
     })
   }
+  goToWatch(movie: MovieList) {
+    this.filmsService.goToWatch(movie);
+  }
+
   addToContinueList(): void {
     const continueListItem: Partial<ListItem> = {
       listType: 'continueList',
@@ -83,7 +100,7 @@ export class DescriptionPageComponent implements OnInit {
 
     this.continueListService.addToContinueList(continueListItem).subscribe({
       next: () => {
-        this.router.navigate(['/watch']); // Navigate to the watch page
+        this.routerDesc.navigate(['/watch']); // Navigate to the watch page
       },
       error: (err) => {
         console.error('Error adding movie to Continue List:', err);
@@ -132,4 +149,6 @@ export class DescriptionPageComponent implements OnInit {
       error: (err) => console.error('Error fetching favorite list:', err),
     });
   }
+
 }
+

@@ -5,66 +5,63 @@
   }"
 > -->
 
-<div class="row" [ngStyle]="{
-    'background-image': 'url(' + selectedMovie()?.poster_url + ')'
-  }">
+<div class="newest container-fluid text-light"
+[ngStyle]="{
+  'background-image': 'url(' + hoveredMovie.poster_url + ')',
+  'background-repeat': 'no-repeat', 
+  'background-size': 'cover', 
+  'background-position': 'center'
+}">
 
-  <!--Left menu-->
-  <aside class="col-2 left-menu text-light" [class.collapsed]="isCollapsed">
-    <app-left-menu></app-left-menu>
-  </aside>
-  <!-- Icon hiển thị khi menu thu nhỏ -->
-  <div *ngIf="isCollapsed" class="toggle-icon" (click)="toggleMenu()">
-    <img [src]="sideBarPath" alt="Collapse Menu" class="icon-out" />
-  </div>
-
-  <div class="col-10" [class.full-width]="isCollapsed">
-    <div class="poster">
-      <div class="upper-part mx-5" *ngIf="selectedMovie() as movie">
-      <div class="upper-part mx-5">
-
-        <div class="title my-0">{{ movie.name }}</div> 
-        <div class="description">
-          {{ movie.description }}
-        </div>
-        <div class="buttons my-5">
-          <button
-            class="btn btn-watch align-items-center py-2 text-light"
-            (click)="goToWatch(movie)"
-          >
-            <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i>WATCH
-            NOW
-          </button>
-          <button [routerLink]="'/description'" class="btn btn-detail ms-4">
-            DETAIL
-          </button>
+  <div class="gradient-overlay"></div>
+  <div  [ngClass]="{'move-right': isLeftMenuOpen}"
+      class=" main-content transition-content" *ngIf="selectedMovie() as movie">
+      <div class="container-fluid d-flex ">
+        <div class="d-flex flex-wrap poster-container align-items-stretch">
+          <div class="poster">
+            <img [src]="hoveredMovie.thumb_url" alt="poster" class="img-fluid" />
+          </div>
+    
+          <div class="details col-md-8">
+            <h1>{{ hoveredMovie.original_name }}</h1>
+            <p>{{ hoveredMovie.description }}</p>
+            <div class="buttons my-5">
+              <button
+                class="btn btn-watch align-items-center py-2 text-light"
+                (click)="goToWatch(hoveredMovie)"
+              >
+                <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i>WATCH
+                NOW
+              </button>
+              <button [routerLink]="'/description'" class="btn btn-detail ms-4">
+                DETAIL
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="below-par">
-        <div class="container-row">
-          <!-- @for (item of newestList; track $index) {
-            <div class="col-md-{{12 / displayFrame}} col-sm-6">
-              <app-newfilm-frame [item]="item"></app-newfilm-frame>
-            </div>
-          } -->
-
-
-          @for (item of newestList(); track $index) {
-            <div class="thumbnail" (click)="goToDescription(item)" style="cursor: pointer;">
-              <div class="rating">{{item.quality}} {{item.language}}</div>
-              <img [src]="item.thumb_url" alt="Loki" />
-              <div class="details d-block">
-                <div class="details-top col-12 text-start">
-                  <h5>{{item.original_name}}</h5>
-                </div>
+      
+      <div class="below-part position-relative">
+        <button class="scroll-btn left" (click)="scrollLeft()">&#10094;</button>
+        <!-- <button class="scroll-btn left" >&#10094;</button> -->
+        
+        <div class="container-row d-flex overflow-hidden mx-auto">
+          <!-- Add thumbnails here -->
+          <div *ngFor="let item of newestList(); let i = index" class="thumbnail" (mouseover)="updateHoveredMovie(item)" (click)="goToDescription(item)" style="cursor: pointer;">
+            <div class="rating">{{item.quality}} {{item.language}}</div>
+            <img [src]="item.thumb_url" alt="Loki" />
+            <div class="details d-block">
+              <div class="details-top col-12 text-start">
+                <h5>{{item.original_name}}</h5>
               </div>
             </div>
-          }
-
-
-
+          </div>
         </div>
+        <button class="scroll-btn right" (click)="scrollRight()">&#10095;</button>
+        <!-- <button class="scroll-btn right">&#10095;</button> -->
+        
       </div>
+      
     </div>
-  </div>
 </div>
+ 

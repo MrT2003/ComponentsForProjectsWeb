@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router, RouterModule} from '@angular/router';
+import { FilmsServiceService } from '../../service/FilmService/films-service.service';
+import { MovieList } from '../../model/Movies';
 
 @Component({
   selector: 'app-continue-frame',
@@ -12,5 +14,12 @@ export class ContinueFrameComponent {
     @Input() thumb_url!: string;
     @Input() name!: string;
     @Input() current_episode!: string;
+    @Input() item!: MovieList;
     
+    constructor(private filmsService: FilmsServiceService) {}
+
+    
+    goToWatch(movie: MovieList) {
+      this.filmsService.goToWatch(movie);
+    }
 }

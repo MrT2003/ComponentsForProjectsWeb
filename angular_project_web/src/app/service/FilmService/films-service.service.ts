@@ -28,8 +28,10 @@ export class FilmsServiceService {
         thumb_url: movie.thumb_url,
         description: movie.description,
         genres: genres || '', // Pass an empty string if genres is undefined
+        movie: JSON.stringify(movie),
       },
     });
+    
   }
 
   // Navigate to the watch page with the movie's data
@@ -40,6 +42,7 @@ export class FilmsServiceService {
         total_episodes: movie.total_episodes,
         poster_url: movie.poster_url,
         slug: movie.slug,
+        movie: JSON.stringify(movie)
       },
     });
   }

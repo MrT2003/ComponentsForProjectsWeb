@@ -10,7 +10,7 @@
           <button class="btn btn-left col-3">
             <span class="fw-bold">+</span>
           </button>
-          <button class="btn btn-primary btn-sm col-8">
+          <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8" (click)="goToWatch(item)" >
             <span class="fw-bold">Watch</span>
           </button>
         </div>

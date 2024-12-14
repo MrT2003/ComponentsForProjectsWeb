@@ -38,8 +38,8 @@ export class MoviePageComponent implements OnInit {
 
   currentPage = 1; 
   itemsPerPage = 10; 
-  totalItems = 2000;
-  totalPages = this.totalItems/this.itemsPerPage; 
+  totalItems = 0;
+  totalPages = 0; 
 
   ngOnInit(): void {
     // this.loadAllMovies();
@@ -58,12 +58,14 @@ export class MoviePageComponent implements OnInit {
       this.movieList.set(res.items);
     })
   }
+ 
   loadMoviesByPages(page: number) {
-    this.movieService.getMoviesByPages(page).subscribe((res:APIMoviesModel) => {
+    this.movieService.getMoviesByPages(page).subscribe((res: APIMoviesModel) => {
       this.movieList.set(res.items);
-    })
+      this.totalItems = res.paginate.total_items; // Cập nhật totalItems từ phản hồi của API
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Tính lại tổng số trang
+    });
   }
-
 
 
   goToDescription(movie: MovieList) {
@@ -80,7 +82,6 @@ export class MoviePageComponent implements OnInit {
   pageChanged(newPage: number) { 
     this.currentPage = newPage; 
     this.loadMoviesByPages(newPage);
-    // Logic để tải dữ liệu của trang mới nếu cần 
     }
 
 
