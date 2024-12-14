@@ -12,6 +12,7 @@ import { FilmsServiceService } from '../../service/FilmService/films-service.ser
 })
 export class FilmGridComponent {
   @Input() description!: string;
+  @Input() displayRow: number = 12;
   @Input() displayFrame: number = 3;
   @Input() films: MovieList[] = []; 
   @Input() notSorting: boolean = true; 

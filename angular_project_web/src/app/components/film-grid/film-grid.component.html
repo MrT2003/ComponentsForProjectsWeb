@@ -12,7 +12,7 @@
     <!-- Film Grid Section -->
     <div class="row">
       @for (item of films; track $index) {
-        <div class="col-md-{{12 / displayFrame}} col-sm-6">
+        <div class="col-md-{{displayRow / displayFrame}} col-sm-6">
           <app-film-frame [item]="item"></app-film-frame>
         </div>
       }
