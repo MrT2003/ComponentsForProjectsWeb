@@ -39,9 +39,22 @@ export class MovieService {
   getMoviesByPages(page:number):Observable<APIMoviesModel>{
     return this.http.get<APIMoviesModel>(`${this.apiMovies}movies?page=${page}`);
   }
-
+  getMoviesByYearsAndPages(year: string,page:number): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(`${this.apiMovies}year/${year}?page=${page}`);
+  }
+  getMoviesByCountriesAndPages(country: string,page:number): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(`${this.apiMovies}country/${country}?page=${page}`);
+  }
+  getMoviesByGenresAndPages(genre: string,page:number): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(`${this.apiMovies}genres/${genre}?page=${page}`);
+  }
+  getTvSeriesByPages(page:number): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(`${this.apiMovies}tv-series?page=${page}`);
+  }
   // WATCH MOVIES
   watchMovie(slug: string): Observable<MovieDetailsModel> {
     return this.http.get<MovieDetailsModel>(`${this.apiMovies}${slug}`);
   }
+
+  
 }

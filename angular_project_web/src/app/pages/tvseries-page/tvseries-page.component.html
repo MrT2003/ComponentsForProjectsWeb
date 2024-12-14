@@ -6,6 +6,12 @@
     
     <div class="container-fluid mt-4 mb-5" >
       <app-film-grid [films]="tvList()" [description]="'TV Series'" [notSorting]="false" [displayFrame]="4"></app-film-grid>
+      <app-pagination 
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    [maxVisiblePages]="5"
+    (pageChange)="pageChanged($event)"
+    ></app-pagination>
     </div>
   </div>
 </div>

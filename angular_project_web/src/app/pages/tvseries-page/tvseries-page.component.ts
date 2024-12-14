@@ -8,11 +8,12 @@ import { FilmGridComponent } from '../../components/film-grid/film-grid.componen
 import { MovieService } from '../../service/MovieService/movie.service';
 //MODELS
 import { APIMoviesModel, MovieList, TvList } from '../../model/Movies';
+import { PaginationComponent } from '../../components/pagination/pagination.component';
 
 @Component({
   selector: 'app-tvseries-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, FilmGridComponent],
+  imports: [RouterModule, CommonModule, FilmGridComponent, PaginationComponent],
   templateUrl: './tvseries-page.component.html',
   styleUrl: './tvseries-page.component.css'
  
@@ -37,9 +38,16 @@ export class TvseriesPageComponent implements OnInit {
   
   router = inject(Router);
 
+  
+  currentPage = 1; 
+  itemsPerPage = 10; 
+  totalItems = 0;
+  totalPages = 0; 
+
 
   ngOnInit(): void {
-    this.loadAllTvSeries();
+    // this.loadAllTvSeries();
+    this.loadTvSeriesByPages(this.currentPage);
     
   }
   
@@ -49,9 +57,11 @@ export class TvseriesPageComponent implements OnInit {
   onSetting(): void {
     this.router.navigate(['/settings']);
   }
-  loadAllTvSeries() {
-    this.movieService.getAllTvSeries().subscribe((res:APIMoviesModel) => {
+  loadTvSeriesByPages(page: number) {
+    this.movieService.getTvSeriesByPages(page).subscribe((res:APIMoviesModel) => {
       this.tvList.set(res.items);
+      this.totalItems = res.paginate.total_items; // Cập nhật totalItems từ phản hồi của API
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage); // Tính lại tổng số trang
     })
   }
   goToDescription(movie: MovieList) {
@@ -63,6 +73,12 @@ export class TvseriesPageComponent implements OnInit {
       },
     });
   }
+  
+  pageChanged(newPage: number) { 
+    this.currentPage = newPage; 
+    this.loadTvSeriesByPages(newPage);
+    }
+
 
 }
 
