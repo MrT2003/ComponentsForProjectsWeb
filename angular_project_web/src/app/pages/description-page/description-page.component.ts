@@ -45,14 +45,15 @@ export class DescriptionPageComponent implements OnInit {
   description!: any;
   
   routerDesc = inject(Router);
-  constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService, private continueListService: ContinueListService, private favoriteListService: FavoriteListService, private filmsService: FilmsServiceService ) {}
+  constructor(private activeRouter: ActivatedRoute, private menuToggleService: MenuToggleService, private continueListService: ContinueListService, private favoriteListService: FavoriteListService, private filmsService: FilmsServiceService ) {}
   movieService = inject(MovieService);
   newestList = signal<NewestList[]>([]);
   // @Input() item!: MovieList;
 
 
   ngOnInit(): void {
-    this.loadDescription()
+    this.loadDescription();
+    this.checkInitialFavorite();
     this.loadNewestMovies();
     this.menuToggleService.menuState$.subscribe((state) => {
       this.isLeftMenuOpen = state;
@@ -61,18 +62,17 @@ export class DescriptionPageComponent implements OnInit {
 
  
   loadDescription() {
-    this.router.queryParams.subscribe((params) => {
-      if (params['movie']) {
-        this.description = JSON.parse(params['movie']);
-      }
+    this.activeRouter.queryParams.subscribe((params) => {
+      this.description = params;
+      console.log('Description:', this.description);
     });
   }
-  
 
   loadNewestMovies(){
     this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items); 
     })
+    console.log(this.newestList);
   }
   goToWatch(movie: MovieList) {
     this.filmsService.goToWatch(movie);
@@ -138,6 +138,7 @@ export class DescriptionPageComponent implements OnInit {
       next: (data) => {
         const found = data.find((item) => item.movieId === this.description.id);
         this.isFavorite = !!found;
+        console.log('Initial favorite status:', this.isFavorite);
       },
       error: (err) => console.error('Error fetching favorite list:', err),
     });

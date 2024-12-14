@@ -17,18 +17,38 @@ export class FilmFrameComponent {
 
   isComplete = false;
 
+  @Input() quality!: string;
+  @Input() language!: string;
+  @Input() thumb_url!: string;
+  @Input() original_name!: string;
+  @Input() year!: string;
+  @Input() current_episode!: string;
+  @Input() slug!: string;
+  slugChoose!: string;
+
   constructor(private router: Router, private filmsService: FilmsServiceService, private movieService: MovieService) {}
+  @Input() item!: any;
 
-  @Input() item!: MovieList;
-
-  goToDescription(movie: MovieList){
-    this.filmsService.goToDescription(movie);
+  goToDescription() {
+    this.getSlug();
+    this.movieService.getMoviesDetails(this.slugChoose).subscribe((data) => {
+      console.log("SHow me",data);
+      this.filmsService.goToDescription(data.movie);
+    });
   }
-
 
   checkIfComplete() {
     if (this.item.current_episode.startsWith('Hoàn tất') || this.item.current_episode.startsWith('FULL')) {
       this.isComplete = true;
+    }
+  }
+  getSlug() {
+    if (this.item.slug) {
+      this.slugChoose  = this.item.slug;
+    } else
+    if (this.slug)
+    {
+      this.slugChoose = this.slug;
     }
   }
 
