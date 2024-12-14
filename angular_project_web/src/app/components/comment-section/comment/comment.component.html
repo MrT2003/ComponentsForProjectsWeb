@@ -1,13 +1,13 @@
 <li class="d-flex gap-3 p-3 mb-3 align-items-start comment-frame">
     <div class="cmt-avt">
-      <img [src]="comment.userId.avatar" alt="Avatar" />
+      <img [src]="comment.userId?.avatar" alt="Avatar" />
     </div>
     <div class="d-flex flex-column flex-grow-1">
-      <span class="fw-bold text-white name">{{comment.userId.fullName}}</span>
+      <span class="fw-bold text-white name">{{comment.userId?.fullName}}</span>
       <p class="m-0 text-white">
-        {{comment.text}}
+        {{comment?.text}}
       </p>
-      <span class="cmt-time mt-2">{{comment.duration}}</span>
+      <span class="cmt-time mt-2">{{comment?.duration}}</span>
     </div>
   </li>
   
