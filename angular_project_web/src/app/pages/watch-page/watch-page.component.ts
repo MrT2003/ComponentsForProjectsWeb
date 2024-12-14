@@ -73,9 +73,9 @@ export class WatchPageComponent implements OnInit {
             console.log(this.watch.name);
             this.episodeArray = data.movie.episodes.map((episode) => {
               return episode.items.map((item) => ({
-                episodeNumber: item.name, 
-                embedUrl: item.embed,     
-                slug: item.slug,          
+                episodeNumber: item.name,
+                embedUrl: item.embed,
+                slug: item.slug,
               }));
             }).flat();
 
@@ -97,5 +97,5 @@ export class WatchPageComponent implements OnInit {
     }
   }
 
-  
+
 }

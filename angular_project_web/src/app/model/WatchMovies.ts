@@ -3,7 +3,7 @@ export interface MovieDetailsModel {
   movie: MovieDetail;
 }
 
-interface MovieDetail {
+export interface MovieDetail {
   id: string;
   name: string;
   slug: string;
@@ -44,7 +44,7 @@ interface Episode {
   items: EpisodeItem[];
 }
 
-interface EpisodeItem {
+export interface EpisodeItem {
   name: string;
   slug: string;
   embed: string;
