@@ -65,16 +65,16 @@ export interface ListItem {
   name: string;
   poster: string;
   slug: string;
-  currentEpisode?: string;
+  currentEpisode: string;
   process?: string;
-  quality?: string;
-  language?: string;
-  year?: string;
+  quality: string;
+  language: string;
+  year: string;
   listType: 'favoriteList' | 'watchList' | 'continueList';
   totalUploadEpisodes?: number;
   clickedEpisode?: number;
   createdAt?: string;
   updatedAt?: string;
-  current_episode?: string;
+  current_episode: string;
 }
 
