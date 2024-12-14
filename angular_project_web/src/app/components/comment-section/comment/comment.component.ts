@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { Comment } from '../../../model/Comment';
 @Component({
   selector: 'app-comment',
   standalone: true,
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './comment.component.css'
 })
 export class CommentComponent {
-  avtcmt = 'assets/images/avatar.jpg';
+  @Input() comment!: Comment;
 }

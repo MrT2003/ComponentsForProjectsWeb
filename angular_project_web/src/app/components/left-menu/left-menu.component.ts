@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
-
+import { AuthService } from '../../service/AuthService/auth.service';
 @Component({
   selector: 'app-left-menu',
   standalone: true,
@@ -34,7 +34,7 @@ export class LeftMenuComponent implements OnInit {
 
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
 
-  constructor(private router: Router, private menuToggleService: MenuToggleService) {}
+  constructor(private router: Router, private menuToggleService: MenuToggleService, private authService: AuthService) {}
 
   ngOnInit(): void {
     // Subscribe to the menu state to react to changes
@@ -46,12 +46,6 @@ export class LeftMenuComponent implements OnInit {
     this.setActivePage('home');
   }
 
-  // Toggle menu collapse
-  // toggleMenu(): void {
-  //   this.isCollapsed = !this.isCollapsed;
-  //   this.menuToggleService.setMenuState(this.isCollapsed); // Set state when toggling
-  // }
-
   // Set active page logic based on input
   setActivePage(page: string) {
     this.isHome = page === 'home';
@@ -61,5 +55,9 @@ export class LeftMenuComponent implements OnInit {
     this.isWatchlist = page === 'watchlist';
     this.isContinue = page === 'continue';
     this.isSettings = page === 'settings';
+  }
+  logOut(): void {
+    this.authService.logout();
+    this.router.navigate(['/signin']);
   }
 }

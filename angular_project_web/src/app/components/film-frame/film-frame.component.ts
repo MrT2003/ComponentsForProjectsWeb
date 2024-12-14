@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 
 import { FilmsServiceService } from '../../service/FilmService/films-service.service';
+import { MovieService } from '../../service/MovieService/movie.service';
 //MODELS
 import { MovieList } from '../../model/Movies';
 @Component({
@@ -16,7 +17,7 @@ export class FilmFrameComponent {
 
   isComplete = false;
 
-  constructor(private router: Router, private filmsService: FilmsServiceService) {}
+  constructor(private router: Router, private filmsService: FilmsServiceService, private movieService: MovieService) {}
 
   @Input() item!: MovieList;
 

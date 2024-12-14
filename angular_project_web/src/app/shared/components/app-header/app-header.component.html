@@ -63,9 +63,9 @@
       <a
         class="nav-link  text-light d-md-flex d-none"
       >
-        Samantha
+        {{user?.fullName}}
       </a>
-      <img [src]="avt" alt="avatar" class="avatar ms-2" (click)="toggleRightMenu()" />
+      <img [src]="user?.avatar" alt="avatar" class="avatar ms-2" (click)="toggleRightMenu()" />
     </div>
   </div>
 </nav>

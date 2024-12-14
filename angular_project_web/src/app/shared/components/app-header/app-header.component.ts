@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { User} from '../../../model/User';
 //SERVICES   
 import { MenuToggleService } from '../../../service/MenuService/menu-toggle-service.service';
 import { MovieService } from '../../../service/MovieService/movie.service';
+import { AuthService } from '../../../service/AuthService/auth.service';
 //MODELS
 import { APIMoviesModel, MovieList } from '../../../model/Movies';
 @Component({
@@ -28,13 +29,20 @@ export class AppHeaderComponent implements OnInit{
   isMovies = false;
   isTvSeries = false;
 
+  user: User | null = null;
+
   movieService = inject(MovieService)
 
   ngOnInit(): void {
     this.loadMovies();
+    this.user = this.authService.getUser();
+    this.authService.currentUser$.subscribe((user) => {
+      console.log('Current user:', user); // Debugging user data
+      this.user = user;
+    });
   }
 
-  constructor(private menuToggleService: MenuToggleService) {
+  constructor(private menuToggleService: MenuToggleService, private authService: AuthService) {
     this.setActivePage('home');
   }
 

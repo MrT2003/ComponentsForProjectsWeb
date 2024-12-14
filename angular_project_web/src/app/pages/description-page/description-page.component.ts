@@ -5,13 +5,15 @@ import { CommonModule } from '@angular/common';
 //COMPONENTS
 import { LeftMenuComponent } from '../../components/left-menu/left-menu.component';
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
-//SERVICES   
+//SERVICES
 import { MovieService } from '../../service/MovieService/movie.service';
 import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
-
+import { ContinueListService } from '../../service/ContinueListService/continue-list.service';
+import { FavoriteListService } from '../../service/FavoriteListService/favorite-list.service';
 //MODELS
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
 import { FilmsServiceService } from '../../service/FilmService/films-service.service';
+import { ListItem } from '../../model/List';
 
 @Component({
   selector: 'app-description-page',
@@ -37,12 +39,13 @@ export class DescriptionPageComponent implements OnInit {
   logout = 'assets/res-leftmenu/Log Out.png';
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
-  isLeftMenuOpen = false; 
+  isLeftMenuOpen = false;
+  isFavorite = false;
 
   description!: MovieList;
   
   routerDesc = inject(Router);
-  constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService, private filmsService: FilmsServiceService ) {}
+  constructor(private router: ActivatedRoute, private menuToggleService: MenuToggleService) {}
   movieService = inject(MovieService);
   newestList = signal<NewestList[]>([]);
   // @Input() item!: MovieList;
@@ -50,6 +53,7 @@ export class DescriptionPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadDescription()
+    this.checkInitialFavorite();
     this.loadNewestMovies();
     this.menuToggleService.menuState$.subscribe((state) => {
       this.isLeftMenuOpen = state;
@@ -59,20 +63,15 @@ export class DescriptionPageComponent implements OnInit {
  
   loadDescription() {
     this.router.queryParams.subscribe((params) => {
-      if (params['movie']) {
-        this.description = JSON.parse(params['movie']);
-      }
+      this.description = params;
     });
   }
   
 
   loadNewestMovies(){
     this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
-      this.newestList.set(res.items); 
+      this.newestList.set(res.items);
     })
-  }
-  goToWatch(movie: MovieList) {
-    this.filmsService.goToWatch(movie);
   }
 }
 

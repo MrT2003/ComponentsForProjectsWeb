@@ -1,11 +1,16 @@
 <div class="row w-100">
-
-  <div class="col-12" [class.full-width]="isCollapsed">
+  
+  <div class="col-12 " [class.full-width]="isCollapsed">
     
     <div class="container-fluid mt-4 mb-5" >
      <app-film-grid [films]="movieList()" [description]="'Movies'" [notSorting]="false" [displayFrame]="4"></app-film-grid> 
-       <!-- <app-pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [currentPage]="currentPage" (pageChanged)="pageChanged($event)"></app-pagination> -->
-       <app-pagination></app-pagination>
+       <!-- <app-pagination [totalItems]="200" [itemsPerPage]="10" [currentPage]="currentPage" (pageChanged)="pageChanged($event)"></app-pagination> -->
+       <app-pagination 
+       [currentPage]="currentPage"
+       [totalPages]="totalPages"
+       [maxVisiblePages]="5"
+       (pageChange)="pageChanged($event)"
+       ></app-pagination>
     </div>
 
   
