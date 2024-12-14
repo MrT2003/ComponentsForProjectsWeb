@@ -24,14 +24,7 @@ export class CenterFilmFrameComponent {
   router = inject(Router);
 
   goToWatch(movie: MovieList) {
-    this.router.navigate(['/watch'], {
-      queryParams: {
-        name: movie.name,
-        total_episodes: movie.total_episodes,
-        poster_url: movie.poster_url,
-        slug: movie.slug,
-      },
-    });
+    this.filmsService.goToWatch(movie);
   }
 
   // goToWatch(movie: MovieList) {

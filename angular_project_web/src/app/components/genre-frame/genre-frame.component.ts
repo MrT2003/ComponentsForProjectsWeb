@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
+import { GenreList } from '../../model/Categories';
 
 @Component({
   selector: 'app-genre-frame',
@@ -10,4 +11,6 @@ import { Component, Input } from '@angular/core';
 export class GenreFrameComponent {
     @Input() image!: string;
     @Input() name!: string;
+    @Input() itemTemplate!: TemplateRef<any>; // TemplateRef để render mỗi item
+    @Input() item!: GenreList;
 }

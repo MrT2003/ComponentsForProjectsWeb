@@ -12,14 +12,21 @@
       </div>
     </div>
     <!-- Genres Grid -->
-    <div class="row">
+    <!-- <div class="row">
       @for (item of genreList().slice(0, 8); track $index) {
-      <!-- Thriller -->
+     
        <div class="col-6 my-2 container-fix">
         <app-genre-frame [name]="item.name" [image]="item.image"></app-genre-frame>
       </div>
     }
-    </div>
+    </div> -->
+    <app-menu-genre-grid [items]="genreList()" [columns]="2" [trackByFn]="trackById">
+      <ng-template let-item>
+        <div class="container-fix">
+          <app-genre-frame [image]="item.image" [name]="item.name"></app-genre-frame>
+        </div>
+      </ng-template>
+    </app-menu-genre-grid>
   </div>
 
   <!-- Newest -->
@@ -42,7 +49,12 @@
       <!-- Drama -->
       @for (item of newestList().slice(0,4); track $index){
       <div class="col-6 container-fix mb-3">
-          <app-newest-frame [name]="item.original_name" [current_episode]="item.current_episode" [poster_url]="item.poster_url"></app-newest-frame>
+          <app-newest-frame 
+          [name]="item.original_name" 
+          [current_episode]="item.current_episode" 
+          [poster_url]="item.poster_url"
+          [item] = "item"
+          ></app-newest-frame>
       </div>
     }
      
@@ -68,8 +80,13 @@
     <div class="row">
       @for (item of newestList().slice(0,4); track $index){
         <div class="col-6 container-fix mb-3">
-              <app-continue-frame [name]="item.original_name" [current_episode]="item.current_episode" [thumb_url]="item.poster_url"></app-continue-frame>
+              <app-continue-frame 
+              [name]="item.original_name" 
+              [current_episode]="item.current_episode" 
+              [thumb_url]="item.poster_url"
+              [item] = "item"></app-continue-frame>
         </div>
       }
     </div>
+ 
   </div>

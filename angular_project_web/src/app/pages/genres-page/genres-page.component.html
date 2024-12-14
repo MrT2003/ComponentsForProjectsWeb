@@ -18,32 +18,15 @@
         </div>
       </div>
       <hr />
-      <!-- Tạo thành một component genre frame riêng rồi tạo thêm 1 component genre grid để chứ các genre frame nha Dương-->
-      <!-- Genres Grid -->
-      <div class="grid-container mb-4">
-        <!-- @for (item of genreList().slice(0, 22); track $index) { -->
-        <div
-          *ngFor="let item of genreList(); let i = index; trackBy: trackById"
-        >
-          <!-- Drama -->
+
+      <app-genre-grid [items]="genreList()" [columns]="3" [trackByFn]="trackById">
+        <ng-template let-item>
           <div class="container-fix">
-            <div class="card text-white w-100">
-              <div class="container-fluid filter"></div>
-              <img
-                [src]="item.image"
-                class="card-img larger-image"
-                alt="Drama"
-              />
-              <div
-                class="card-img-overlay d-flex justify-content-center align-items-center"
-              >
-                <h5 class="card-title fw-bold">{{ item.name }}</h5>
-              </div>
-            </div>
+            <app-genre-frame [image]="item.image" [name]="item.name"></app-genre-frame>
           </div>
-        </div>
-        <!-- } -->
-      </div>
+        </ng-template>
+      </app-genre-grid>
+      
     </div>
   </div>
 </div>

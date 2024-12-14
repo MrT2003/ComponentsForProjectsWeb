@@ -8,6 +8,7 @@
     aspect-ratio: 2 / 1; /* Maintain the 2:1 aspect ratio */
     overflow: hidden; /* Hide any overflowing content */
     border-radius: 10px; /* Optional, for rounded corners */
+  
   }
   
   /* Card Image Styling */
@@ -17,7 +18,13 @@
     object-fit: cover; /* Ensures the image covers the entire wrapper */
     object-position: center; /* Center the image within the wrapper */
     display: block;
+    min-width: 100%; /* Ensure the image does not shrink below the frame width */
+    min-height: 100%; /* Ensure the image does not shrink below the frame height */
   }
+
+.image-wrapper[small-image] {
+  background-size: 150%; /* Phóng to hình ảnh nhỏ */
+}
   
   /* Black Overlay */
   .image-wrapper .overlay {
@@ -43,4 +50,11 @@
     z-index: 2; /* Ensure it sits above the black overlay */
     text-align: center;
   }
+  .card-title{
+    font-size: clamp(1em, 2vw, 3em);;
+    
+  }
+
+
+
   
