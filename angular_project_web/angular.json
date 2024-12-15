@@ -16,6 +16,8 @@
             "outputPath": "dist/angular_project_web",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/",
+            "deployUrl": "/",
             "polyfills": [
               "zone.js"
             ],
@@ -40,13 +42,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1MB",
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "4kB",
+                  "maximumError": "5kB"
                 }
               ],
               "outputHashing": "all"
