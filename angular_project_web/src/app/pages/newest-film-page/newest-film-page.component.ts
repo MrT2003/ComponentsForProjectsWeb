@@ -56,25 +56,25 @@ export class NewestFilmPageComponent implements OnInit{
   movieList = signal<MovieList []>([]);
   newestList = signal<MovieList []>([]);
   selectedMovie = signal<MovieList | null>(null);
-  hoveredMovie!: MovieList
+  // hoveredMovie!: MovieList
   
-  // hoveredMovie: MovieList = {
-  //   name: '',
-  //   slug: '',
-  //   original_name: '',
-  //   thumb_url: '',
-  //   poster_url: '',
-  //   created: '',
-  //   modified: '',
-  //   description: '',
-  //   total_episodes: 0,
-  //   current_episode: '',
-  //   time: '',
-  //   quality: '',
-  //   language: '',
-  //   director: '',
-  //   casts: ''
-  // };
+  hoveredMovie: MovieList = {
+    name: '',
+    slug: '',
+    original_name: '',
+    thumb_url: '',
+    poster_url: '',
+    created: '',
+    modified: '',
+    description: '',
+    total_episodes: 0,
+    current_episode: '',
+    time: '',
+    quality: '',
+    language: '',
+    director: '',
+    casts: ''
+  };
 
   ngOnInit(): void {
     this.loadAllMovies()

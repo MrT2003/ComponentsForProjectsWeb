@@ -33,7 +33,7 @@
                 <i class="fa-regular fa-circle-play text-light me-2 mt-1"></i>WATCH
                 NOW
               </button>
-              <button [routerLink]="'/description'" class="btn btn-detail ms-4">
+              <button [routerLink]="'/description'" class="btn btn-detail ms-4" (click)="goToDescription(hoveredMovie)">
                 DETAIL
               </button>
             </div>

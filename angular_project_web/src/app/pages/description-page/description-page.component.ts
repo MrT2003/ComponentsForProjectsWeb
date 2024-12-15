@@ -15,6 +15,7 @@ import { FilmsServiceService } from '../../service/FilmService/films-service.ser
 import { ContinueListService } from '../../service/ContinueListService/continue-list.service';
 import { FavoriteListService } from '../../service/FavoriteListService/favorite-list.service';
 import { ListItem } from '../../model/List';
+import { MovieDetail } from '../../model/WatchMovies';
 
 @Component({
   selector: 'app-description-page',
@@ -89,6 +90,7 @@ export class DescriptionPageComponent implements OnInit {
       quality: this.description.quality || 'HD',
       language: this.description.language || 'Vietsub',
       year: this.description.year,
+
     };
 
     this.continueListService.addToContinueList(continueListItem).subscribe({
