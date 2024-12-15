@@ -36,27 +36,50 @@ export class MovieService {
   getMoviesByGenres(genre: string): Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(`${this.apiMovies}genres/${genre}`);
   }
-  getMoviesByPages(page:number):Observable<APIMoviesModel>{
-    return this.http.get<APIMoviesModel>(`${this.apiMovies}movies?page=${page}`);
+  getMoviesByPages(page: number): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(
+      `${this.apiMovies}movies?page=${page}`
+    );
   }
-  getMoviesByYearsAndPages(year: string,page:number): Observable<APIMoviesModel> {
-    return this.http.get<APIMoviesModel>(`${this.apiMovies}year/${year}?page=${page}`);
+  getMoviesByYearsAndPages(
+    year: string,
+    page: number
+  ): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(
+      `${this.apiMovies}year/${year}?page=${page}`
+    );
   }
-  getMoviesByCountriesAndPages(country: string,page:number): Observable<APIMoviesModel> {
-    return this.http.get<APIMoviesModel>(`${this.apiMovies}country/${country}?page=${page}`);
+  getMoviesByCountriesAndPages(
+    country: string,
+    page: number
+  ): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(
+      `${this.apiMovies}country/${country}?page=${page}`
+    );
   }
-  getMoviesByGenresAndPages(genre: string,page:number): Observable<APIMoviesModel> {
-    return this.http.get<APIMoviesModel>(`${this.apiMovies}genres/${genre}?page=${page}`);
+  getMoviesByGenresAndPages(
+    genre: string,
+    page: number
+  ): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(
+      `${this.apiMovies}genres/${genre}?page=${page}`
+    );
   }
-  getTvSeriesByPages(page:number): Observable<APIMoviesModel> {
-    return this.http.get<APIMoviesModel>(`${this.apiMovies}tv-series?page=${page}`);
+  getTvSeriesByPages(page: number): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(
+      `${this.apiMovies}tv-series?page=${page}`
+    );
   }
+
   // WATCH MOVIES
   watchMovie(slug: string): Observable<MovieDetailsModel> {
     return this.http.get<MovieDetailsModel>(`${this.apiMovies}${slug}`);
   }
 
- 
-
-  
+  // http://localhost:5000/api/movies/search?keyword=hoang
+  getMoviesByKey(character: string): Observable<APIMoviesModel> {
+    return this.http.get<APIMoviesModel>(
+      `${this.apiMovies}search?keyword=${character}`
+    );
+  }
 }

@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg py-2 align-items-center justify-content-between">
+<nav
+  class="navbar navbar-expand-lg py-2 align-items-center justify-content-between"
+>
   <!-- Logo Section -->
-  <div class=" navbar-brand logo">
+  <div class="navbar-brand logo">
     <img [src]="logo" alt="Logo" class="logo" (click)="onLogoClick()" />
   </div>
 
@@ -8,24 +10,46 @@
   <div class="d-none d-lg-flex col-lg-4 justify-content-center">
     <ul class="navbar-nav d-flex justify-content-around w-100">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/home'" [ngClass]="{'active': isHome}" (click)="setActivePage('home')">Home</a>
+        <a
+          class="nav-link"
+          [routerLink]="'/home'"
+          [ngClass]="{ active: isHome }"
+          (click)="setActivePage('home')"
+          >Home</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/movie'" [ngClass]="{'active': isMovies}" (click)="setActivePage('movies')">Movies</a>
+        <a
+          class="nav-link"
+          [routerLink]="'/movie'"
+          [ngClass]="{ active: isMovies }"
+          (click)="setActivePage('movies')"
+          >Movies</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/tvseries'" [ngClass]="{'active': isTvSeries}" (click)="setActivePage('tvseries')">TV Series</a>
+        <a
+          class="nav-link"
+          [routerLink]="'/tvseries'"
+          [ngClass]="{ active: isTvSeries }"
+          (click)="setActivePage('tvseries')"
+          >TV Series</a
+        >
       </li>
     </ul>
   </div>
 
   <!-- Search Bar -->
-  <div class="search-bar-wrapper col-lg-5 col-md-6 col-sm-6 d-flex align-items-center justify-content-center">
+  <div
+    class="search-bar-wrapper col-lg-5 col-md-6 col-sm-6 d-flex align-items-center justify-content-center"
+  >
     <form class="search-bar w-100">
       <div class="input-group">
+        <!-- Icon tìm kiếm -->
         <span class="input-group-text bg-dark text-light border-0">
           <img [src]="search" alt="Search" width="16" height="16" />
         </span>
+        <!-- Ô nhập tìm kiếm -->
         <input
           type="text"
           [(ngModel)]="searchText"
@@ -34,56 +58,66 @@
           placeholder="Search"
           (input)="onSearch()"
         />
+        <!-- Icon filter -->
         <span class="input-group-text bg-dark text-light border-0">
           <img [src]="filter" alt="Filter" width="16" height="16" />
         </span>
       </div>
     </form>
   </div>
-    <div class="search-results" *ngIf="filteredMovies() && filteredMovies()!.length > 0">
+
+  <!-- Hiển thị kết quả tìm kiếm -->
+  <div
+    class="search-results"
+    *ngIf="searchText.trim() && filteredMovies() && filteredMovies().length > 0"
+  >
     <ul class="list-group">
-      <li *ngFor="let movie of filteredMovies()" class="list-group-item">
+      <li
+        *ngFor="let movie of filteredMovies()"
+        class="list-group-item d-flex align-items-center"
+        (click)="goToDescriptionFromSearch(movie)"
+      >
+        <!-- Poster phim -->
         <img
           [src]="movie.poster_url"
-          alt="{{ movie.name }}"
+          alt="{{ movie.original_name }}"
           width="50"
           height="50"
           class="me-2"
         />
-        <span>{{ movie.name }}</span>
+        <!-- Tên phim -->
+        <span>{{ movie.original_name }}</span>
       </li>
     </ul>
   </div>
+
+  <!-- Thông báo không tìm thấy phim -->
+  <div
+    class="search-results"
+    *ngIf="
+      searchText.trim() && filteredMovies() && filteredMovies().length === 0
+    "
+  >
+    <p class="text-center text-light">No movies found matching your search.</p>
+  </div>
+
   <!-- Account Section -->
-  <div class="account-section d-flex align-items-center col-lg-3 justify-content-end">
+  <div
+    class="account-section d-flex align-items-center col-lg-3 justify-content-end"
+  >
     <button class="btn btn-secondary me-3 d-lg-flex d-none">
       <i class="fa-regular fa-moon"></i>
     </button>
     <div class="account-dropdown d-flex align-items-center">
-      <a
-        class="nav-link  text-light d-md-flex d-none"
-      >
-        {{user?.fullName}}
+      <a class="nav-link text-light d-md-flex d-none">
+        {{ user?.fullName }}
       </a>
-      <img [src]="user?.avatar" alt="avatar" class="avatar ms-2" (click)="toggleRightMenu()" />
+      <img
+        [src]="user?.avatar"
+        alt="avatar"
+        class="avatar ms-2"
+        (click)="toggleRightMenu()"
+      />
     </div>
   </div>
 </nav>
-
-
-
-
-<!-- <div class="search-results" *ngIf="filteredMovies() && filteredMovies()!.length > 0">
-  <ul class="list-group">
-    <li *ngFor="let movie of filteredMovies()" class="list-group-item">
-      <img
-        [src]="movie.poster_url"
-        alt="{{ movie.name }}"
-        width="50"
-        height="50"
-        class="me-2"
-      />
-      <span>{{ movie.name }}</span>
-    </li>
-  </ul>
-</div> -->
