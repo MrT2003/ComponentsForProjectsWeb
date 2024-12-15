@@ -53,6 +53,7 @@ export class WatchPageComponent implements OnInit {
   slug: string | undefined;
   embedUrl: string | null = null;
   movieID!: string;
+  name!: string;
 
   ngOnInit(): void {
     this.loadWatchMovie(); // Call the method to load movie data
@@ -69,6 +70,7 @@ export class WatchPageComponent implements OnInit {
           .watchMovie(slug)
           .subscribe((data: MovieDetailsModel) => {
             this.movieID = data.movie.id;
+            this.name = data.movie. original_name;  
             this.watch = data;
             console.log(this.watch.name);
             this.episodeArray = data.movie.episodes.map((episode) => {

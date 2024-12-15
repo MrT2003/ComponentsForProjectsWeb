@@ -1,6 +1,7 @@
 /* Card Wrapper for Images */
 .card{
     background-color: var(--light-dark-background);
+    cursor: pointer;
 }
 .image-wrapper {
     position: relative;

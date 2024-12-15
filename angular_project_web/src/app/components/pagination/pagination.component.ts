@@ -41,19 +41,33 @@ export class PaginationComponent {
   // Emit event when the previous button is clicked
   previousPage(): void {
     if (this.currentPage > 1) {
-      this.pageChange.emit(this.currentPage - 1);
+      const newPage = this.currentPage - 1;
+      if (newPage !== this.currentPage) {
+        this.pageChange.emit(newPage);
+        window.scrollTo(0, 0);
+      }
     }
   }
+  
 
   // Emit event when the next button is clicked
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
-      this.pageChange.emit(this.currentPage + 1);
+      const newPage = this.currentPage + 1;
+      if (newPage !== this.currentPage) {
+        this.pageChange.emit(newPage);
+        window.scrollTo(0, 0);
+      }
     }
   }
+  
 
   // Emit event when a specific page is selected
   goToPage(page: number): void {
-    this.pageChange.emit(page);
+    if (page !== this.currentPage) {
+      this.pageChange.emit(page);
+      window.scrollTo(0, 0);
+    }
   }
+  
 }

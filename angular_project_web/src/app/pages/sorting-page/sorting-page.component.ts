@@ -49,6 +49,7 @@ export class SortingPageComponent implements OnInit {
   selectedGenre: string = '';
   selectedYear: string = '';
   selectedCountry: string = '';
+  sorting: boolean = false;
 
   currentPage = 1; 
   itemsPerPage = 10; 
@@ -87,10 +88,6 @@ export class SortingPageComponent implements OnInit {
     });
   }
 
-  toggleMenu(): void {
-    this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
-  }
-
   filterMovies() {
     if (this.selectedYear) {
       this.movieService.getMoviesByYears(this.selectedYear).subscribe(
@@ -123,6 +120,7 @@ export class SortingPageComponent implements OnInit {
       console.warn('No filters selected!');
     }
     this.loadMoviesByPages(this.currentPage);
+    this.sorting = true;
   }
 
   resetFilters() {
@@ -130,7 +128,7 @@ export class SortingPageComponent implements OnInit {
     this.selectedYear = '';
     this.selectedCountry = '';
     this.selectedGenre = '';
-
+    this.sorting = false;
     // Reset danh sách phim
     this.movieList.set([]);
 

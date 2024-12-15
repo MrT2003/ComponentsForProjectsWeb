@@ -45,13 +45,15 @@
       [films]="movieList()"
       [notSorting]="false">
     </app-film-grid>
-
+    
     <app-pagination 
+    *ngIf="sorting"
     [currentPage]="currentPage"
     [totalPages]="totalPages"
     [maxVisiblePages]="5"
     (pageChange)="pageChanged($event)"
     ></app-pagination>
+    <div class="mb-3"></div>
     
   </div>  
 </div>

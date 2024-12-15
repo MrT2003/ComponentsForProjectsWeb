@@ -9,7 +9,7 @@
       </div>
 
       <p class="title-watching text-light my-2">
-        {{ watch?.name ? watch?.original_name : 'Loading...' }}
+        {{ name ? name : 'Loading...' }}
       </p>
 
       <div class="watching-frame col-12 mt-4">
@@ -52,7 +52,7 @@
     </div>
 
     <!-- Comments Section -->
-    <app-comments [movieId]="'8d16ceffefdf12da61a9c91065435848'"></app-comments>
+    <app-comments [movieId]="'movieID'"></app-comments>
   </div>
 
 
