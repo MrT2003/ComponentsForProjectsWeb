@@ -1,6 +1,15 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/angular_project_web/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
