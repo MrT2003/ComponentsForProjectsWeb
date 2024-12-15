@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 //COMPONENTS
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
 import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
@@ -54,11 +54,20 @@ export class SortingPageComponent implements OnInit {
   itemsPerPage = 10; 
   totalItems = 0;
   totalPages = 0; 
+  route = inject(ActivatedRoute);
 
   ngOnInit(): void {
     this.loadGenres();
     this.loadYears();
     this.loadCountries();
+
+    this.route.queryParams.subscribe(params => {
+      if (params['genre']) {
+        this.selectedGenre = params['genre'];
+        this.filterMovies();
+        
+      }
+    });
   }
   loadGenres() {
     this.categoryService.getAllGenres().subscribe((res: GenreList[]) => {
@@ -151,4 +160,6 @@ export class SortingPageComponent implements OnInit {
     this.currentPage = newPage; 
     this.loadMoviesByPages(newPage);
     }
+
+    
 }

@@ -56,5 +56,7 @@ export class MovieService {
     return this.http.get<MovieDetailsModel>(`${this.apiMovies}${slug}`);
   }
 
+ 
+
   
 }

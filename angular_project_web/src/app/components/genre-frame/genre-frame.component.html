@@ -1,4 +1,4 @@
-<div class="card text-white w-100 mb-4">
+<div class="card text-white w-100 mb-4" (click)="goToGenre(item.slug)">
   <div class="image-wrapper">
     <img [src]="item.image" class="card-img" [alt]="item.name" />
     <div class="overlay"></div> <!-- Black overlay -->
