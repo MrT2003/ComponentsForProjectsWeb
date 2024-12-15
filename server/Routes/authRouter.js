@@ -13,8 +13,7 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
     const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
-    res.cookie("jwt", token, { httpOnly: true, secure: false });
-    res.redirect("http://localhost:4200/home");
+    res.json({ message: "Successfully logged in with Google!", user: req.user, token });
   }
 );
 
