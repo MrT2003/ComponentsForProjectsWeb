@@ -7,7 +7,7 @@ import { ListItem } from '../../model/List';
   providedIn: 'root',
 })
 export class ContinueListService {
-  private apiUrl = 'http://localhost:5000/api/lists/continueList';
+  private apiUrl = 'https://kh-movie-server.vercel.app/api/lists/continueList';
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +18,7 @@ export class ContinueListService {
 
   // Add to continue list
   // addToContinueList(item: Partial<ListItem>): Observable<ListItem> {
-  //   return this.http.post<ListItem>('http://localhost:5000/api/lists', item);
+  //   return this.http.post<ListItem>('https://kh-movie-server.vercel.app/lists', item);
   // }
   addToContinueList(item: Partial<ListItem>): Observable<ListItem> {
 
@@ -29,14 +29,14 @@ export class ContinueListService {
           const lastItem = list[list.length - 1];
           this.deleteFromContinueList(lastItem.movieId).subscribe(() => {
             // After deleting the last item, add the new one
-            this.http.post<ListItem>('http://localhost:5000/api/lists', item).subscribe((newItem) => {
+            this.http.post<ListItem>('https://kh-movie-server.vercel.app/api/lists', item).subscribe((newItem) => {
               observer.next(newItem);
               observer.complete();
             });
           });
         } else {
           // Add item directly if the list is below the limit
-          this.http.post<ListItem>('http://localhost:5000/api/lists', item).subscribe((newItem) => {
+          this.http.post<ListItem>('https://kh-movie-server.vercel.app/api/lists', item).subscribe((newItem) => {
             observer.next(newItem);
             observer.complete();
           });

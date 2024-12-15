@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoryService {
   
-  apiCategories: String = 'http://localhost:5000/api/categories/';
+  apiCategories: String = 'https://kh-movie-server.vercel.app/api/categories/';
   constructor(private http: HttpClient) { }
   //CATEGORIES
   getAllGenres():Observable<GenreList[]> {

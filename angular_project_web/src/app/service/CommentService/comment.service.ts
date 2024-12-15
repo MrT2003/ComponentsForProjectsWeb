@@ -7,7 +7,7 @@ import { Comment } from '../../model/Comment';
   providedIn: 'root',
 })
 export class CommentService {
-  private apiUrl = 'http://localhost:5000/api/comments';
+  private apiUrl = 'https://kh-movie-server.vercel.app/api/comments';
 
   constructor(private http: HttpClient) {}
 

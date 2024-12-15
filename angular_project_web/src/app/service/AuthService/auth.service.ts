@@ -9,7 +9,7 @@ import { User } from '../../model/User';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/api/users';
+  private apiUrl = 'https://kh-movie-server.vercel.app/api/users';
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   http = inject(HttpClient);
 

@@ -8,7 +8,7 @@ import { MovieDetailsModel } from '../../model/WatchMovies';
   providedIn: 'root',
 })
 export class MovieService {
-  apiMovies: String = 'http://localhost:5000/api/movies/';
+  apiMovies: String = 'https://kh-movie-server.vercel.app/api/movies/';
 
   constructor(private http: HttpClient) {}
 
@@ -76,7 +76,7 @@ export class MovieService {
     return this.http.get<MovieDetailsModel>(`${this.apiMovies}${slug}`);
   }
 
-  // http://localhost:5000/api/movies/search?keyword=hoang
+  // https://kh-movie-server.vercel.app/movies/search?keyword=hoang
   getMoviesByKey(character: string): Observable<APIMoviesModel> {
     return this.http.get<APIMoviesModel>(
       `${this.apiMovies}search?keyword=${character}`

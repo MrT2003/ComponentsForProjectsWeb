@@ -7,7 +7,7 @@ import { User } from '../../model/User';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:5000/api/users';
+  private apiUrl = 'https://kh-movie-server.vercel.app/api/users';
 
   constructor(private http: HttpClient) {}
 

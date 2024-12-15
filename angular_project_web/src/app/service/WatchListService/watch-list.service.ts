@@ -7,7 +7,7 @@ import { ListItem } from '../../model/List';
   providedIn: 'root',
 })
 export class WatchListService {
-  private apiUrl = 'http://localhost:5000/api/lists/watchList';
+  private apiUrl = 'https://kh-movie-server.vercel.app/api/lists/watchList';
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +18,7 @@ export class WatchListService {
 
   // Add to watch list
   addToWatchList(item: Partial<ListItem>): Observable<ListItem> {
-    return this.http.post<ListItem>('http://localhost:5000/api/lists', item);
+    return this.http.post<ListItem>('https://kh-movie-server.vercel.app/api/lists', item);
   }
 
   // Delete from watch list
