@@ -42,7 +42,7 @@
   </div>
     <div class="search-results" *ngIf="filteredMovies() && filteredMovies()!.length > 0">
     <ul class="list-group">
-      <li *ngFor="let movie of filteredMovies()" class="list-group-item">
+      <li *ngFor="let movie of filteredMovies()" class="list-group-item" (click)="goToDescriptionFromSearch(movie)">
         <img
           [src]="movie.poster_url"
           alt="{{ movie.name }}"
@@ -50,7 +50,7 @@
           height="50"
           class="me-2"
         />
-        <span>{{ movie.name }}</span>
+        <span>{{ movie.original_name }}</span>
       </li>
     </ul>
   </div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, Input, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { User} from '../../../model/User';
@@ -9,6 +9,7 @@ import { MovieService } from '../../../service/MovieService/movie.service';
 import { AuthService } from '../../../service/AuthService/auth.service';
 //MODELS
 import { APIMoviesModel, MovieList } from '../../../model/Movies';
+import { FilmsServiceService } from '../../../service/FilmService/films-service.service';
 @Component({
   selector: 'app-app-header',
   standalone: true,
@@ -17,6 +18,7 @@ import { APIMoviesModel, MovieList } from '../../../model/Movies';
   styleUrl: './app-header.component.css',
 })
 export class AppHeaderComponent implements OnInit{
+
 
   search = 'assets/images/search-icon.png';
   filter = 'assets/images/Filter.png';
@@ -33,8 +35,13 @@ export class AppHeaderComponent implements OnInit{
 
   movieService = inject(MovieService)
 
+  @Input() slug!: string;
+  slugChoose!: string;
+  @Input() item!: any;
+  
   ngOnInit(): void {
-    this.loadMovies();
+    // this.loadMovies();
+    this.loadAllMoviesAllPages();
     this.user = this.authService.getUser();
     this.authService.currentUser$.subscribe((user) => {
       console.log('Current user:', user); // Debugging user data
@@ -42,7 +49,7 @@ export class AppHeaderComponent implements OnInit{
     });
   }
 
-  constructor(private menuToggleService: MenuToggleService, private authService: AuthService) {
+  constructor(private menuToggleService: MenuToggleService, private authService: AuthService,  private filmsService: FilmsServiceService) {
     this.setActivePage('home');
   }
 
@@ -52,6 +59,32 @@ export class AppHeaderComponent implements OnInit{
     });
   }
 
+  loadAllMoviesAllPages(): void {
+    let currentPage = 1;
+    const allMovies: MovieList[] = [];
+    let totalPages = 10; // Khởi tạo với 1 để bắt đầu quá trình tải
+    
+    const loadPage = (page: number) => {
+      this.movieService.getMoviesByPages(page).subscribe((res: APIMoviesModel) => {
+        allMovies.push(...res.items);
+        // totalPages = res.paginate.total_page;
+        
+        if (page < totalPages) {
+          loadPage(page + 1); // Load next page
+        } else {
+          this.movieList.set(allMovies);
+          console.log('All movies loaded:', this.movieList()); // Log danh sách phim đã tải
+        }
+      }, (err) => {
+        console.error('Error fetching movies:', err);
+      });
+    };
+  
+    loadPage(currentPage);
+  }
+  
+  
+
   onSearch(): void {
     const searchText = this.searchText.trim().toLowerCase(); // Lấy giá trị từ input và chuyển thành chữ thường
     const movies = this.movieList(); // Lấy mảng phim từ signal
@@ -59,7 +92,8 @@ export class AppHeaderComponent implements OnInit{
     if (searchText) {
       // Tìm phim có tên chứa giá trị tìm kiếm
       const filtered = movies.filter((movie) =>
-        movie.name.toLowerCase().includes(searchText)
+        // movie.name.toLowerCase().includes(searchText) ||
+        movie.original_name.toLowerCase().includes(searchText)
       );
       this.filteredMovies.set(filtered); // Cập nhật filteredMovies
     } else {
@@ -78,4 +112,26 @@ export class AppHeaderComponent implements OnInit{
   toggleRightMenu() {
     this.menuToggleService.toggleRightMenu();
   }
+  goToDescription() {
+    this.getSlug();
+    this.movieService.getMoviesDetails(this.slugChoose).subscribe((data) => {
+      console.log("SHow me",data);
+      this.filmsService.goToDescription(data.movie);
+    });
+  }
+  getSlug() {
+    if (this.item.slug) {
+      this.slugChoose  = this.item.slug;
+    } else
+    if (this.slug)
+    {
+      this.slugChoose = this.slug;
+    }
+  }
+
+  goToDescriptionFromSearch(movie: MovieList) {
+      this.filmsService.goToDescription(movie);
+    }
+  
+    
 }
