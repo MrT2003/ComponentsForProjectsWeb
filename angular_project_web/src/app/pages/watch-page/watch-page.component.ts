@@ -14,7 +14,7 @@ import { CategoryService } from '../../service/CategoryService/category.service'
 //MODELS
 import { GenreList } from '../../model/Categories';
 import { APIMoviesModel, MovieList, NewestList } from '../../model/Movies';
-import { MovieDetailsModel } from '../../model/WatchMovies';
+import { EpisodeItem, MovieDetailsModel } from '../../model/WatchMovies';
 import { SafeUrlPipe } from '../../pipes/SafeUrlPipe';
 
 @Component({
@@ -48,7 +48,8 @@ export class WatchPageComponent implements OnInit {
   routerDesc = inject(Router);
   newestList = signal<NewestList[]>([]);
   genreList = signal<GenreList[]>([]);
-  episodeArray: any[] = [];  // Changed to store episode data with embed URL, slug, etc.
+  // episodeArray: any[] = [];  // Changed to store episode data with embed URL, slug, etc.
+  episodeArray = signal<EpisodeItem[]>([]); 
   isExpanded = false;
   slug: string | undefined;
   embedUrl: string | null = null;
@@ -66,38 +67,52 @@ export class WatchPageComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       const slug = params['slug'];
       if (slug) {
-        this.movieService
-          .watchMovie(slug)
-          .subscribe((data: MovieDetailsModel) => {
-            this.movieID = data.movie.id;
-            this.name = data.movie. original_name;  
-            this.watch = data;
-            console.log(this.watch.name);
-            this.episodeArray = data.movie.episodes.map((episode) => {
-              return episode.items.map((item) => ({
-                episodeNumber: item.name,
-                embedUrl: item.embed,
-                slug: item.slug,
-              }));
-            }).flat();
-
-            const firstEpisode = this.episodeArray[0];
-            if (firstEpisode) {
-              this.embedUrl = firstEpisode.embedUrl;
-              this.slug = firstEpisode.slug;
-            }
-          });
+        this.movieService.watchMovie(slug).subscribe((data: MovieDetailsModel) => {
+          // Lưu thông tin phim
+          this.movieID = data.movie.id;
+          this.name = data.movie.original_name;  
+          this.watch = data;
+  
+          // Chuyển đổi episodes sang EpisodeItem[]
+          this.episodeArray.set(
+            data.movie.episodes
+              .map((episode) =>
+                episode.items.map((item) => ({
+                  name: item.name,
+                  slug: item.slug,
+                  embed: item.embed,
+                  m3u8: item.m3u8,
+                }))
+              )
+              .flat()
+              .filter((value, index, self) => 
+                index === self.findIndex((t) => (
+                  t.slug === value.slug
+                ))
+              )
+          );
+          
+  
+          // Lấy tập đầu tiên làm mặc định nếu có
+          const firstEpisode = this.episodeArray()[0];
+          if (firstEpisode) {
+            this.embedUrl = firstEpisode.embed;
+            this.slug = firstEpisode.slug;
+          }
+        });
       }
     });
   }
+  
 
   changeEpisode(episodeSlug: string): void {
-    const episode = this.episodeArray.find(e => e.slug === episodeSlug);
+    const episode = this.episodeArray().find((e) => e.slug === episodeSlug);
     if (episode) {
-      this.embedUrl = episode.embedUrl;  // Cập nhật URL cho iframe
-      this.slug = episode.slug;  // Cập nhật slug cho tập được chọn
+      this.embedUrl = episode.embed;  // Cập nhật URL cho iframe
+      this.slug = episode.slug;      // Cập nhật slug của tập
     }
   }
+  
 
 
 }

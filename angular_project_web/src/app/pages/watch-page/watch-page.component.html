@@ -31,24 +31,25 @@
       <!-- Episode Section -->
       <div class="py-3 episode d-flex gap-1 text-light">
         <p class="title-watching text-light my-0 me-2">Episode:</p>
-
+      
         <ul
           class="d-flex gap-2 p-0"
           style="list-style: none"
-          *ngIf="episodeArray.length"
+          *ngIf="episodeArray() && episodeArray().length"
         >
-          <li *ngFor="let episode of episodeArray">
+          <li *ngFor="let episode of episodeArray()">
             <button
               type="button"
               class="btn"
               [ngClass]="{ active: episode.slug === slug }"
               (click)="changeEpisode(episode.slug)"
             >
-              <span class="text-white">{{ episode.episodeNumber }}</span> <!-- Show episode number -->
+              <span class="text-white">{{ episode.name }}</span> <!-- Số tập -->
             </button>
           </li>
         </ul>
       </div>
+      
     </div>
 
     <!-- Comments Section -->
