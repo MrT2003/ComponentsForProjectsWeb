@@ -13,7 +13,8 @@
       <app-film-grid 
         [description]="'Movies'" 
         [displayFrame]="4" 
-        [films]="movieList().slice(0, 4)">
+        [films]="movieList().slice(0, 4)"
+        [pageType]="'movie'">
       </app-film-grid>
       
     </div>
@@ -23,7 +24,8 @@
         <app-film-grid 
         [description]="'TV Series'" 
         [displayFrame]="4" 
-        [films]="tvList().slice(0, 4)">
+        [films]="tvList().slice(0, 4)"
+        [pageType]="'tvseries'">
       </app-film-grid>
     </div>
   </div>
