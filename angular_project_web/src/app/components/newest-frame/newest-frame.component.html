@@ -7,7 +7,7 @@
           <p class="card-newest text-start">{{current_episode}}</p>
         </div>
         <div class="card-buttons d-flex gap-2">
-          <button class="btn btn-left col-3">
+          <button class="btn btn-left col-3" (click)="addToWatchList()">
             <span class="fw-bold">+</span>
           </button>
           <button [routerLink]="'/watch'" class="btn btn-primary btn-sm col-8" (click)="goToWatch(item)" >

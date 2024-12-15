@@ -1,15 +1,19 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieList } from '../../model/Movies';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class FilmsServiceService {
-  constructor(private router: Router) {}
 
+  private loadingSubject = new BehaviorSubject<boolean>(true);
+  loading$: Observable<boolean> = this.loadingSubject.asObservable();
+
+  constructor(private router: Router) {}
   // Navigate to the description page with the movie's data
   goToDescription(movie: any) {
+    this.loadingSubject.next(true);
     // Safely extract genre names from category.2.list
     const genres = movie.category?.[2]?.list
       ?.map((item: any) => item.name) // Map each item to its name
@@ -31,13 +35,16 @@ export class FilmsServiceService {
         movie: JSON.stringify(movie),
       },
     });
-    
-  }
 
+  }
+  setLoading() {
+    this.loadingSubject.next(false);
+  }
   // Navigate to the watch page with the movie's data
   goToWatch(movie: any) {
     this.router.navigate(['/watch'], {
       queryParams: {
+        id: movie.id,
         name: movie.original_name,
         total_episodes: movie.total_episodes,
         poster_url: movie.poster_url,
@@ -46,7 +53,4 @@ export class FilmsServiceService {
       },
     });
   }
-
-  
-
 }

@@ -1,0 +1,19 @@
+/* Additional optional styles for customization */
+.spinner-border {
+    animation: spin 1s linear infinite;
+    border-color: var( --blue-highlight); /* Change the color to red */
+    border-right-color: transparent; /* Makes the spinner appear spinning */
+  }
+  p{
+    color: var(--blue-highlight);
+}
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+
+  }
+  

@@ -39,7 +39,9 @@ export class WatchPageComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private menuToggleService: MenuToggleService
-  ) {}
+  ) {
+    this.movieID = '';
+  }
   movieService = inject(MovieService);
   categoryService = inject(CategoryService);
   route = inject(ActivatedRoute);
@@ -49,7 +51,7 @@ export class WatchPageComponent implements OnInit {
   newestList = signal<NewestList[]>([]);
   genreList = signal<GenreList[]>([]);
   // episodeArray: any[] = [];  // Changed to store episode data with embed URL, slug, etc.
-  episodeArray = signal<EpisodeItem[]>([]); 
+  episodeArray = signal<EpisodeItem[]>([]);
   isExpanded = false;
   slug: string | undefined;
   embedUrl: string | null = null;
@@ -66,13 +68,14 @@ export class WatchPageComponent implements OnInit {
   loadWatchMovie(): void {
     this.route.queryParams.subscribe((params) => {
       const slug = params['slug'];
+      this.movieID = params['id'];
       if (slug) {
         this.movieService.watchMovie(slug).subscribe((data: MovieDetailsModel) => {
           // Lưu thông tin phim
           this.movieID = data.movie.id;
-          this.name = data.movie.original_name;  
+          this.name = data.movie.original_name;
           this.watch = data;
-  
+
           // Chuyển đổi episodes sang EpisodeItem[]
           this.episodeArray.set(
             data.movie.episodes
@@ -85,14 +88,14 @@ export class WatchPageComponent implements OnInit {
                 }))
               )
               .flat()
-              .filter((value, index, self) => 
+              .filter((value, index, self) =>
                 index === self.findIndex((t) => (
                   t.slug === value.slug
                 ))
               )
           );
-          
-  
+
+
           // Lấy tập đầu tiên làm mặc định nếu có
           const firstEpisode = this.episodeArray()[0];
           if (firstEpisode) {
@@ -103,7 +106,6 @@ export class WatchPageComponent implements OnInit {
       }
     });
   }
-  
 
   changeEpisode(episodeSlug: string): void {
     const episode = this.episodeArray().find((e) => e.slug === episodeSlug);
@@ -112,7 +114,6 @@ export class WatchPageComponent implements OnInit {
       this.slug = episode.slug;      // Cập nhật slug của tập
     }
   }
-  
 
 
 }

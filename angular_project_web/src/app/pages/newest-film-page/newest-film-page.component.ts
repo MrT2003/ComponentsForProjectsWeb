@@ -6,7 +6,7 @@ import { Router, RouterModule } from '@angular/router';
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
 import { FilmGridComponent } from "../../components/film-grid/film-grid.component";
 
-//SERVICES   
+//SERVICES
 import { MovieService } from '../../service/MovieService/movie.service';
 import { FilmsServiceService } from '../../service/FilmService/films-service.service';
 
@@ -28,7 +28,7 @@ export class NewestFilmPageComponent implements OnInit{
 
 
 
-  constructor(private router: Router,private filmsService: FilmsServiceService) {} 
+  constructor(private router: Router,private filmsService: FilmsServiceService) {}
   lokiPath = 'assets/images/loki.jpg';
   sideBarPath = 'assets/res-leftmenu/sidebar.png';
 
@@ -43,13 +43,13 @@ export class NewestFilmPageComponent implements OnInit{
   settings = 'assets/res-leftmenu/Settings.png';
   logout = 'assets/res-leftmenu/Log Out.png';
 
-  @Input() newest: NewestList[] = []; 
+  @Input() newest: NewestList[] = [];
   @Input() displayFrame: number = 3;
-  
 
-  
-  // isCollapsed = false; 
-  isLeftMenuOpen = false; 
+
+
+  // isCollapsed = false;
+  isLeftMenuOpen = false;
 
 
   movieService = inject(MovieService)
@@ -57,7 +57,7 @@ export class NewestFilmPageComponent implements OnInit{
   newestList = signal<MovieList []>([]);
   selectedMovie = signal<MovieList | null>(null);
   // hoveredMovie!: MovieList
-  
+
   hoveredMovie: MovieList = {
     name: '',
     slug: '',
@@ -91,13 +91,13 @@ export class NewestFilmPageComponent implements OnInit{
     this.movieService.getNewestMovies().subscribe((res:APIMoviesModel) => {
       this.newestList.set(res.items);
 
-      if (this.newestList().length > 0) { 
+      if (this.newestList().length > 0) {
         // Gán giá trị đầu tiên của newestList cho hoveredMovie
         this.hoveredMovie = this.newestList()[0];
       }
-      
+
     })
-    
+
   }
 
   loadAllMovies() {
@@ -117,7 +117,10 @@ export class NewestFilmPageComponent implements OnInit{
     this.filmsService.goToWatch(movie);
   }
   goToDescription(movie: MovieList) {
-    this.filmsService.goToDescription(movie);
+    this.movieService.getMoviesDetails(movie.slug).subscribe((data) => {
+      console.log("SHow me",data);
+      this.filmsService.goToDescription(data.movie);
+    });
   }
 
   scrollLeft() {
@@ -129,7 +132,7 @@ export class NewestFilmPageComponent implements OnInit{
       });
     }
   }
-  
+
   scrollRight() {
     const container = document.querySelector('.container-row');
     if (container) {
@@ -139,5 +142,5 @@ export class NewestFilmPageComponent implements OnInit{
       });
     }
   }
-  
+
 }

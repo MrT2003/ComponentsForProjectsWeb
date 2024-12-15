@@ -10,7 +10,7 @@
                   [ngClass]="{'active': isHome}"
                   (click)="setActivePage('home')"
                   class="nav-link text-light fix-padding"
-                  routerLinkActive="active"                  
+                  routerLinkActive="active"
                 >
                   <img [src]="home" alt="home-icon" /> Home
                 </a>
@@ -39,27 +39,23 @@
                 class="nav-link text-light fix-padding"
                 routerLinkActive="active"
               >
-                <img [src]="recent" alt="home-icon" /> Recent
+                <img [src]="recent" alt="home-icon" /> Newest
               </a>
             </li>
             <li class="nav-item">
               <a
                 [routerLink]="'/settings'"
-                [ngClass]="{'active': isPlaylists}"
-                (click)="setActivePage('playlists')"
+                (click)="openFavoriteList()"
                 class="nav-link text-light fix-padding"
-                routerLinkActive="active"
               >
-                <img [src]="playlists" alt="home-icon" /> Playlists
+                <img [src]="playlists" alt="home-icon" /> Favorite List
               </a>
             </li>
             <li class="nav-item">
               <a
                 [routerLink]="'/settings'"
-                [ngClass]="{'active': isWatchlist}"
-                (click)="setActivePage('watchlist')"
+                (click)="openWatchList()"
                 class="nav-link text-light fix-padding"
-                routerLinkActive="active"
               >
                 <img [src]="watchlist" alt="home-icon" /> Watchlist
               </a>
@@ -67,10 +63,8 @@
             <li class="nav-item">
               <a
                 [routerLink]="'/settings'"
-                [ngClass]="{'active': isContinue}"
-                (click)="setActivePage('continue')"
+                (click)="openContinueList()"
                 class="nav-link text-light fix-padding"
-                routerLinkActive="active"
               >
                 <img [src]="continue" alt="home-icon" /> Continue
               </a>

@@ -34,7 +34,6 @@ export interface MovieList {
   language: string;
   director: string;
   casts: string;
-
 }
 
 export interface TvList {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
 import { AuthService } from '../../service/AuthService/auth.service';
+import { ListManagerService } from '../../service/ListManagerService/list-manager.service';
 @Component({
   selector: 'app-left-menu',
   standalone: true,
@@ -27,14 +28,11 @@ export class LeftMenuComponent implements OnInit {
   isHome = false;
   isSorting = false;
   isRecent = false;
-  isPlaylists = false;
-  isWatchlist = false;
-  isContinue = false;
   isSettings = false;
 
   isCollapsed = false; // Trạng thái menu: mở (false) hoặc thu nhỏ (true)
 
-  constructor(private router: Router, private menuToggleService: MenuToggleService, private authService: AuthService) {}
+  constructor(private router: Router, private menuToggleService: MenuToggleService, private authService: AuthService, private listManager:ListManagerService) {}
 
   ngOnInit(): void {
     // Subscribe to the menu state to react to changes
@@ -51,10 +49,16 @@ export class LeftMenuComponent implements OnInit {
     this.isHome = page === 'home';
     this.isSorting = page === 'sorting';
     this.isRecent = page === 'newest';
-    this.isPlaylists = page === 'playlists';
-    this.isWatchlist = page === 'watchlist';
-    this.isContinue = page === 'continue';
     this.isSettings = page === 'settings';
+  }
+  openFavoriteList(): void {
+    this.listManager.openFavoriteList();
+  }
+  openWatchList(): void {
+    this.listManager.openWatchList();
+  }
+  openContinueList(): void {
+    this.listManager.openContinueList();
   }
   logOut(): void {
     this.authService.logout();

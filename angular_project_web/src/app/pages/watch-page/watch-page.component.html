@@ -1,3 +1,4 @@
+<div *ngIf="movieID">
 <div class="row whole">
   <div class="col-md-8 col-sm-12 container-fluid text-light">
     <!-- Watching Section -->
@@ -31,7 +32,7 @@
       <!-- Episode Section -->
       <div class="py-3 episode d-flex gap-1 text-light">
         <p class="title-watching text-light my-0 me-2">Episode:</p>
-      
+
         <ul
           class="d-flex gap-2 p-0"
           style="list-style: none"
@@ -49,11 +50,11 @@
           </li>
         </ul>
       </div>
-      
+
     </div>
 
     <!-- Comments Section -->
-    <app-comments [movieId]="'movieID'"></app-comments>
+    <app-comments [movieId]="movieID"></app-comments>
   </div>
 
 
@@ -63,4 +64,5 @@
       <app-right-menu></app-right-menu>
     </div>
   </div>
+</div>
 </div>

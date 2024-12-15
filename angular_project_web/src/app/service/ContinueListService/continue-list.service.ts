@@ -17,8 +17,32 @@ export class ContinueListService {
   }
 
   // Add to continue list
+  // addToContinueList(item: Partial<ListItem>): Observable<ListItem> {
+  //   return this.http.post<ListItem>('http://localhost:5000/api/lists', item);
+  // }
   addToContinueList(item: Partial<ListItem>): Observable<ListItem> {
-    return this.http.post<ListItem>('http://localhost:5000/api/lists', item);
+
+    return new Observable((observer) => {
+      this.getContinueList().subscribe((list) => {
+        // Check if the list has more than 18 items
+        if (list.length >= 18) {
+          const lastItem = list[list.length - 1];
+          this.deleteFromContinueList(lastItem.movieId).subscribe(() => {
+            // After deleting the last item, add the new one
+            this.http.post<ListItem>('http://localhost:5000/api/lists', item).subscribe((newItem) => {
+              observer.next(newItem);
+              observer.complete();
+            });
+          });
+        } else {
+          // Add item directly if the list is below the limit
+          this.http.post<ListItem>('http://localhost:5000/api/lists', item).subscribe((newItem) => {
+            observer.next(newItem);
+            observer.complete();
+          });
+        }
+      });
+    });
   }
 
   // Update continue list

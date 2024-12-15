@@ -75,7 +75,7 @@ export class HomePageComponent implements OnInit {
   moveRight = false;
   moveRightFull = false;
   leftMenuOpen: boolean = false;
-      
+
   ngOnInit(): void {
     this.loadAllMovies();
     this.loadAllTvSeries();
@@ -125,8 +125,11 @@ export class HomePageComponent implements OnInit {
   goToWatch(movie: MovieList) {
     this.filmsService.goToWatch(movie);
   }
-  
+
   goToDescription(movie: MovieList) {
-    this.filmsService.goToDescription(movie);
+      this.movieService.getMoviesDetails(movie.slug).subscribe((data) => {
+        console.log("SHow me",data);
+        this.filmsService.goToDescription(data.movie);
+      });
   }
 }

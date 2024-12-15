@@ -1,38 +1,42 @@
-<div class="container-fluid p-0 descript text-light d-flex justify-content-center align-items-center"
+<app-loading *ngIf="loading"></app-loading>
+
+<!-- Main Content -->
+<div *ngIf="!loading && description" class="container-fluid p-0 descript text-light d-flex justify-content-center align-items-center"
     [ngStyle]="{'background-image': 'url(' + description.poster_url + ')'}">
   <div class="gradient-overlay"></div>
-  <div  [ngClass]="{'move-right': isLeftMenuOpen}"
-        class="col-10 main-content transition-content">
+  <div [ngClass]="{'move-right': isLeftMenuOpen}" class="col-10 main-content transition-content">
     <div class="d-flex flex-wrap poster-container align-items-center">
       <div class="poster">
         <img [src]="description.thumb_url" alt="poster" class="img-fluid" />
       </div>
-
       <div class="details col-md-8">
         <h1>{{ description.name }}</h1>
         <p>{{ description.description }}</p>
         <div class="genres">
-          <span class="badge me-md-4" *ngFor="let genre of description.genres.split(', ')">
+          <!-- Genre badges -->
+          <span *ngFor="let genre of description.genres.split(',')" class="badge">
             {{ genre }}
           </span>
+          
         </div>
         <div class="actions">
-          <i *ngIf="!isFavorite"  class="icon-favor fa-regular fa-heart" (click)="addToFavoriteList()"></i>
-          <i *ngIf="isFavorite"  class="icon-favor fa-solid fa-heart" (click)="deleteFavoriteList()" ></i>
-          <button class="btn btn-outline-light align-items-center py-2">
-            <i class="fa-solid fa-plus text-light me-2"></i> MY LIST
+          <i *ngIf="!isFavorite$.value" class="icon-favor fa-regular fa-heart" (click)="addToFavoriteList()"></i>
+          <i *ngIf="isFavorite$.value" class="icon-favor fa-solid fa-heart" (click)="deleteFavoriteList()"></i>
+          <button class="btn btn-outline-light align-items-center py-2" (click)="toggleWatchList()">
+            <i [ngClass]="{'fa-plus': !isWatch$.value, 'fa-check': isWatch$.value}" class="fa-solid text-light me-2"></i>
+            MY LIST
           </button>
           <button
             [routerLink]="'/watch'"
-            class="btn btn-watch align-items-center py-2 text-light" (click)="goToWatch(description)">
+            class="btn btn-watch align-items-center py-2 text-light"
+            (click)="addToContinueList()">
             <i class="fa-regular fa-circle-play text-light me-2"></i> WATCH NOW
           </button>
         </div>
       </div>
     </div>
     <div class="container-fluid col-12 mt-5">
-      <app-film-grid [films]="newestList().slice(0,6)" [description]="'YOU MAY ALSO LIKE'"
-                     [notSorting]="false" [displayFrame]="6"></app-film-grid>
+      <app-film-grid [films]="newestList().slice(0,6)" [description]="'YOU MAY ALSO LIKE'" [notSorting]="false" [displayFrame]="6"></app-film-grid>
     </div>
   </div>
 </div>

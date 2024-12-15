@@ -27,7 +27,7 @@
           <a [ngClass]="{'active': isContinue}" class="nav-link" (click)="openContinueList()" >Continue List</a>
         </li>
       </ul>
-      <div class="row container-row">
+      <div class="row container-row mb-3">
         @for (item of renderList; track $index) {
           <div class="col-md-2 col-sm-6">
             <app-film-frame [item]="{
@@ -41,20 +41,7 @@
             }"></app-film-frame>
           </div>
         }
-
       </div>
-      <nav aria-label="Page navigation">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">...</a></li>
-          <li class="page-item"><a class="page-link" href="#">67</a></li>
-          <li class="page-item"><a class="page-link" href="#">68</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
     </div>
   </div>
 </div>

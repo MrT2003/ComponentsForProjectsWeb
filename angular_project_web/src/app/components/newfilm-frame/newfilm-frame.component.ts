@@ -1,7 +1,8 @@
 import { Component, Input  } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { FilmsServiceService } from '../../service/FilmService/films-service.service';
+import { MovieService } from '../../service/MovieService/movie.service';
 //MODELS
 import { MovieList, NewestList } from '../../model/Movies';
 @Component({
@@ -14,14 +15,17 @@ import { MovieList, NewestList } from '../../model/Movies';
 export class NewfilmFrameComponent {
   isComplete = false;
 
-  constructor(private router: Router, private filmsService: FilmsServiceService) {}
+  constructor(private router: Router, private filmsService: FilmsServiceService, private movieService: MovieService) {}
 
   @Input() item!: NewestList;
   @Input() displayFrame: number = 3;
-  @Input() newest: NewestList[] = []; 
+  @Input() newest: NewestList[] = [];
 
   goToDescription(movie: MovieList) {
-    this.filmsService.goToDescription(movie);
+    this.movieService.getMoviesDetails(movie.slug).subscribe((data) => {
+      console.log("SHow me",data);
+      this.filmsService.goToDescription(data.movie);
+    });
   }
 
   checkIfComplete() {
