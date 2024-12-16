@@ -17,6 +17,7 @@ import {
   NewestList,
   TvList,
 } from '../../model/Movies';
+import { LoadingComponent } from '../../components/loading/loading.component';
 import { GenreList } from '../../model/Categories';
 import { FilmsServiceService } from '../../service/FilmService/films-service.service';
 import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
@@ -31,6 +32,7 @@ import { MenuToggleService } from '../../service/MenuService/menu-toggle-service
     RightMenuComponent,
     CenterFilmFrameComponent,
     FilmGridComponent,
+    LoadingComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
@@ -75,6 +77,7 @@ export class HomePageComponent implements OnInit {
   moveRight = false;
   moveRightFull = false;
   leftMenuOpen: boolean = false;
+  loading = true;
 
   ngOnInit(): void {
     this.loadAllMovies();
@@ -92,6 +95,9 @@ export class HomePageComponent implements OnInit {
     if (!this.isExpanded && this.leftMenuOpen) {
       this.moveRightFull = true;
     }
+    setTimeout(() => {
+      this.loading = false; // Set loading to false after 1 second
+    }, 800);
   }
 
   toggleRightMenu() {

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 //COMPONENTS
 import { FilmGridComponent } from '../../components/film-grid/film-grid.component';
+import { LoadingComponent } from '../../components/loading/loading.component';
 //SERVICES   
 import { MovieService } from '../../service/MovieService/movie.service';
 //MODELS
@@ -13,7 +14,7 @@ import { PaginationComponent } from '../../components/pagination/pagination.comp
 @Component({
   selector: 'app-tvseries-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, FilmGridComponent, PaginationComponent],
+  imports: [RouterModule, CommonModule, FilmGridComponent, PaginationComponent, LoadingComponent],
   templateUrl: './tvseries-page.component.html',
   styleUrl: './tvseries-page.component.css'
  
@@ -43,12 +44,15 @@ export class TvseriesPageComponent implements OnInit {
   itemsPerPage = 10; 
   totalItems = 0;
   totalPages = 0; 
+  loading = true;
 
 
   ngOnInit(): void {
     // this.loadAllTvSeries();
     this.loadTvSeriesByPages(this.currentPage);
-    
+    setTimeout(() => {
+      this.loading = false; // Set loading to false after 1 second
+    }, 400); 
   }
   
   toggleMenu(): void {

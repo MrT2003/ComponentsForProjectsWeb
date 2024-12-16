@@ -1,10 +1,4 @@
-<!-- <div
-  class="container-fluid row"
-  [ngStyle]="{
-    'background-image': 'url(' + selectedMovie()?.poster_url + ')'
-  }"
-> -->
-
+<app-loading *ngIf="loading"></app-loading>
 <div class="newest container-fluid text-light"
 [ngStyle]="{
   'background-image': 'url(' + hoveredMovie.poster_url + ')',

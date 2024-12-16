@@ -46,7 +46,7 @@ export class FilmsServiceService {
       queryParams: {
         id: movie.id,
         name: movie.original_name,
-        total_episodes: movie.total_episodes,
+        // total_episodes: movie.total_episodes,
         poster_url: movie.poster_url,
         slug: movie.slug,
         movie: JSON.stringify(movie)

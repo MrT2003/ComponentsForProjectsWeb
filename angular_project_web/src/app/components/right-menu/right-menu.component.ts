@@ -1,3 +1,4 @@
+import { ContinueListService } from './../../service/ContinueListService/continue-list.service';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule} from '@angular/router';
@@ -10,6 +11,7 @@ import { NewestFrameComponent } from '../newest-frame/newest-frame.component';
 import { ContinueFrameComponent } from '../continue-frame/continue-frame.component';
 //MODELS
 import { APIMoviesModel, MovieList, NewestList, TvList } from '../../model/Movies';
+import { ListItem } from '../../model/List';
 import { GenreList } from '../../model/Categories';
 import { GenreGridComponent } from '../genre-grid/genre-grid.component';
 import { MenuGenreGridComponent } from "../menu-genre-grid/menu-genre-grid.component";
@@ -22,22 +24,30 @@ import { MenuGenreGridComponent } from "../menu-genre-grid/menu-genre-grid.compo
 })
 export class RightMenuComponent implements OnInit {
 
-  constructor(private router: Router, private movieService: MovieService, private categoryService: CategoryService) {}
+  constructor(private router: Router, private movieService: MovieService, private categoryService: CategoryService, private continueListService: ContinueListService) {}
 
   newestList = signal<NewestList[]>([]);
   genreList =  signal<GenreList[]>([]);
+  continueList: ListItem[] = [];
   trackById(index: number, item: GenreList): number {
     return item._id; // Trả về thuộc tính `_id` làm giá trị duy nhất
   }
   ngOnInit(): void{
     this.loadNewestMovies();
     this.loadAllGenres();
+    this.loadContinueList();
   }
 
   loadAllGenres(){
     this.categoryService.getAllGenres().subscribe((res:GenreList[]) => {
       this.genreList.set(res); 
     })
+  }
+  
+  loadContinueList(){
+    this.continueListService.getContinueList().subscribe((res:ListItem[]) => {
+      this.continueList = res; 
+    });
   }
 
   loadNewestMovies(){

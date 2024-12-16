@@ -13,13 +13,12 @@ import { ContinueListService } from '../../service/ContinueListService/continue-
 import { FavoriteListService } from '../../service/FavoriteListService/favorite-list.service';
 import { ListManagerService } from '../../service/ListManagerService/list-manager.service';
 import { FilmFrameComponent } from '../../components/film-frame/film-frame.component';
-// import { ContinueList, PostContinueMovie } from '../../model/List';
-// import { BehaviorSubject } from 'rxjs';
+import { LoadingComponent } from '../../components/loading/loading.component';
 
 @Component({
   selector: 'app-setting-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent, FilmFrameComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, FilmFrameComponent, LoadingComponent],
   templateUrl: './setting-page.component.html',
   styleUrl: './setting-page.component.css',
 })
@@ -40,6 +39,7 @@ export class SettingPageComponent implements OnInit {
   isFavorite = false;
   isContinue = false;
   isWatchList = false;
+  loading = true;
   // registerObj: PostContinueMovie = new PostContinueMovie()
 
   // continueList = signal<ContinueList[]>([]);
@@ -80,6 +80,9 @@ export class SettingPageComponent implements OnInit {
     this.listManager.isContinue$.subscribe(
       (state) => (this.isContinue = state)
     );
+    setTimeout(() => {
+      this.loading = false; // Set loading to false after 1 second
+    }, 400); 
   }
 
   openFavoriteList(): void {

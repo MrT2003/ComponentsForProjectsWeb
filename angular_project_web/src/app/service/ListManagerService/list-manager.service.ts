@@ -9,6 +9,9 @@ export class ListManagerService {
   private renderListSubject = new BehaviorSubject<ListItem[]>([]);
   renderList$ = this.renderListSubject.asObservable();
 
+  private renderContinueListSubject = new BehaviorSubject<ListItem[]>([]);
+  renderContinueList$ = this.renderContinueListSubject.asObservable();
+
   private isFavoriteSubject = new BehaviorSubject<boolean>(false);
   isFavorite$ = this.isFavoriteSubject.asObservable();
 
@@ -32,6 +35,10 @@ export class ListManagerService {
 
   setContinueList(list: ListItem[]): void {
     this.continueList = list;
+  }
+
+  getContinueList(): ListItem[] {
+    return this.continueList;
   }
 
   openFavoriteList(): void {

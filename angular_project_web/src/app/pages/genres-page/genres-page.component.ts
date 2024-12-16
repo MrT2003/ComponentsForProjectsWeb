@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { LoadingComponent } from '../../components/loading/loading.component';
 //SERVICES  
 import { CategoryService } from '../../service/CategoryService/category.service';
 import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
@@ -13,7 +13,7 @@ import { GenreGridComponent } from '../../components/genre-grid/genre-grid.compo
 @Component({
   selector: 'app-genres-page',
   standalone: true,
-  imports: [CommonModule, RouterModule, GenreFrameComponent, GenreGridComponent,],
+  imports: [CommonModule, RouterModule, GenreFrameComponent, GenreGridComponent, LoadingComponent],
   templateUrl: './genres-page.component.html',
   styleUrl: './genres-page.component.css'
 })
@@ -34,7 +34,7 @@ export class GenresPageComponent  implements OnInit{
   settings = 'assets/res-leftmenu/Settings.png';
   logout = 'assets/res-leftmenu/Log Out.png';
   isLeftMenuOpen = false;
-
+  loading = true;
   categoryService = inject(CategoryService);
   
   genreList =  signal<GenreList[]>([]);
@@ -49,6 +49,9 @@ export class GenresPageComponent  implements OnInit{
     this.menuToggleService.menuState$.subscribe((state) => {
       this.isLeftMenuOpen = state;
     });
+    setTimeout(() => {
+      this.loading = false; // Set loading to false after 1 second
+    }, 500);
   }
   loadAllGenres(){
     this.categoryService.getAllGenres().subscribe((res:GenreList[]) => {

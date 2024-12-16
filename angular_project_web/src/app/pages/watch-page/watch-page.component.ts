@@ -7,6 +7,7 @@ import { PaginationComponent } from '../../components/pagination/pagination.comp
 import { CommentComponent } from '../../components/comment-section/comment/comment.component';
 import { CommentsComponent } from '../../components/comment-section/comments/comments.component';
 import { RightMenuComponent } from '../../components/right-menu/right-menu.component';
+import { LoadingComponent } from '../../components/loading/loading.component';
 //SERVICES
 import { MenuToggleService } from '../../service/MenuService/menu-toggle-service.service';
 import { MovieService } from '../../service/MovieService/movie.service';
@@ -25,6 +26,7 @@ import { SafeUrlPipe } from '../../pipes/SafeUrlPipe';
     CommonModule,
     CommentsComponent,
     RightMenuComponent,
+    LoadingComponent,
     SafeUrlPipe
   ],
   templateUrl: './watch-page.component.html',
@@ -57,12 +59,15 @@ export class WatchPageComponent implements OnInit {
   embedUrl: string | null = null;
   movieID!: string;
   name!: string;
-
+  loading = true;
   ngOnInit(): void {
     this.loadWatchMovie(); // Call the method to load movie data
     this.menuToggleService.rightMenuState$.subscribe((state) => {
       this.isExpanded = !state; // Use isCollapsed to control visibility (inverted logic)
     });
+    setTimeout(() => {
+      this.loading = false; // Set loading to false after 1 second
+    }, 400);
   }
 
   loadWatchMovie(): void {

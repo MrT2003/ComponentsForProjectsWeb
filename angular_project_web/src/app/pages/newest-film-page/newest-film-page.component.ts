@@ -5,7 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 //COMPONENTS
 import { LeftMenuComponent } from "../../components/left-menu/left-menu.component";
 import { FilmGridComponent } from "../../components/film-grid/film-grid.component";
-
+import { LoadingComponent } from '../../components/loading/loading.component';
 //SERVICES
 import { MovieService } from '../../service/MovieService/movie.service';
 import { FilmsServiceService } from '../../service/FilmService/films-service.service';
@@ -17,7 +17,7 @@ import { NewfilmFrameComponent } from "../../components/newfilm-frame/newfilm-fr
 @Component({
   selector: 'app-newest-film-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, LeftMenuComponent, FilmGridComponent, NewfilmFrameComponent],
+  imports: [RouterModule, CommonModule, LeftMenuComponent, FilmGridComponent, NewfilmFrameComponent, LoadingComponent],
   templateUrl: './newest-film-page.component.html',
   styleUrl: './newest-film-page.component.css',
 })
@@ -50,7 +50,7 @@ export class NewestFilmPageComponent implements OnInit{
 
   // isCollapsed = false;
   isLeftMenuOpen = false;
-
+  loading = true;
 
   movieService = inject(MovieService)
   movieList = signal<MovieList []>([]);
@@ -79,6 +79,9 @@ export class NewestFilmPageComponent implements OnInit{
   ngOnInit(): void {
     this.loadAllMovies()
     this.loadNewestMovies();
+    setTimeout(() => {
+      this.loading = false; // Set loading to false after 1 second
+    }, 800);
   }
   // toggleMenu(): void {
   //   this.isCollapsed = !this.isCollapsed; // Đổi trạng thái
