@@ -14,7 +14,7 @@
           class="nav-link"
           [routerLink]="'/home'"
           [ngClass]="{ active: isHome }"
-          (click)="setActivePage('home')"
+          (click)="setActivePage()"
           >Home</a
         >
       </li>
@@ -23,7 +23,7 @@
           class="nav-link"
           [routerLink]="'/movie'"
           [ngClass]="{ active: isMovies }"
-          (click)="setActivePage('movies')"
+          (click)="setActivePage()"
           >Movies</a
         >
       </li>
@@ -32,7 +32,7 @@
           class="nav-link"
           [routerLink]="'/tvseries'"
           [ngClass]="{ active: isTvSeries }"
-          (click)="setActivePage('tvseries')"
+          (click)="setActivePage()"
           >TV Series</a
         >
       </li>

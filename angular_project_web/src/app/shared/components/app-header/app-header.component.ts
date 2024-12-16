@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { User } from '../../../model/User';
 // SERVICES
 import { MenuToggleService } from '../../../service/MenuService/menu-toggle-service.service';
@@ -42,10 +42,10 @@ export class AppHeaderComponent implements OnInit {
     private menuToggleService: MenuToggleService,
     private authService: AuthService,
     private filmsService: FilmsServiceService,
-    private movieService: MovieService
-  ) {
-    this.setActivePage('home');
-  }
+    private movieService: MovieService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     // Load toàn bộ danh sách phim khi khởi tạo
@@ -57,6 +57,13 @@ export class AppHeaderComponent implements OnInit {
       console.log('Current user:', user);
       this.user = user;
     });
+
+    this.router.events.subscribe(() => {
+      this.setActivePage();
+    });
+
+    // Set active page on init
+    this.setActivePage();
   }
 
   loadMovies(): void {
@@ -92,10 +99,11 @@ export class AppHeaderComponent implements OnInit {
     );
   }
 
-  setActivePage(page: string) {
-    this.isHome = page === 'home';
-    this.isMovies = page === 'movies';
-    this.isTvSeries = page === 'tvseries';
+  setActivePage() {
+    const currentPath = this.router.url;
+    this.isHome = currentPath === '/home';
+    this.isMovies = currentPath === '/movie';
+    this.isTvSeries = currentPath === '/tvseries';
   }
 
   onLogoClick() {
@@ -105,14 +113,6 @@ export class AppHeaderComponent implements OnInit {
   toggleRightMenu() {
     this.menuToggleService.toggleRightMenu();
   }
-
-  // goToDescription() {
-  //   this.getSlug();
-  //   this.movieService.getMoviesDetails(this.slugChoose).subscribe((data) => {
-  //     console.log('Show movie details:', data);
-  //     this.filmsService.goToDescription(data.movie);
-  //   });
-  // }
 
   getSlug(movie: MovieList) {
     if (movie.slug) {
