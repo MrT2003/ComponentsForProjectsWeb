@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/f6f6db90-570f-4e67-9003-dff638617357)
+
 # Movie Web Application
 
 Welcome to the Movie Streaming Web Application project! This project is designed to provide users with a seamless experience for browsing and streaming movies. It is built using Angular for the frontend.
@@ -92,14 +94,6 @@ Mobile App: Develop a mobile version using Angular's Ionic framework.
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Contact
-
-For any questions or feedback, please reach out to:
-
-Email: minhtrieu6212@example.com
-
-GitHub: MrT2003
 
 Enjoy building and streaming movies! 🎥🍿
 
