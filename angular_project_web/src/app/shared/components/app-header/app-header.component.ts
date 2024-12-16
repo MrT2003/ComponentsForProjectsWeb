@@ -32,7 +32,7 @@ export class AppHeaderComponent implements OnInit {
 
   user: User | null = null;
 
-  movieService = inject(MovieService);
+  // movieService = inject(MovieService);
 
   @Input() slug!: string;
   slugChoose!: string;
@@ -41,7 +41,8 @@ export class AppHeaderComponent implements OnInit {
   constructor(
     private menuToggleService: MenuToggleService,
     private authService: AuthService,
-    private filmsService: FilmsServiceService
+    private filmsService: FilmsServiceService,
+    private movieService: MovieService
   ) {
     this.setActivePage('home');
   }
@@ -105,17 +106,17 @@ export class AppHeaderComponent implements OnInit {
     this.menuToggleService.toggleRightMenu();
   }
 
-  goToDescription() {
-    this.getSlug();
-    this.movieService.getMoviesDetails(this.slugChoose).subscribe((data) => {
-      console.log('Show movie details:', data);
-      this.filmsService.goToDescription(data.movie);
-    });
-  }
+  // goToDescription() {
+  //   this.getSlug();
+  //   this.movieService.getMoviesDetails(this.slugChoose).subscribe((data) => {
+  //     console.log('Show movie details:', data);
+  //     this.filmsService.goToDescription(data.movie);
+  //   });
+  // }
 
-  getSlug() {
-    if (this.item.slug) {
-      this.slugChoose = this.item.slug;
+  getSlug(movie: MovieList) {
+    if (movie.slug) {
+      this.slugChoose = movie.slug;
     } else if (this.slug) {
       this.slugChoose = this.slug;
     }
@@ -125,5 +126,12 @@ export class AppHeaderComponent implements OnInit {
     this.filmsService.goToDescription(movie);
     this.filteredMovies.set([]);
     this.searchText = ''; // Xóa text đã nhập
+
+    this.getSlug(movie);
+    this.movieService.getMoviesDetails(this.slugChoose).subscribe((data) => {
+      console.log('Show movie details:', data);
+      this.filmsService.goToDescription(data.movie);
+    });
+
   }
 }
